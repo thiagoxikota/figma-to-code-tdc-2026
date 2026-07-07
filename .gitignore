@@ -1,0 +1,6 @@
+node_modules/
+*.local
+.DS_Store
+
+# dist/ é COMMITADO de propósito: é a camada zero-install do kit
+!dist/
