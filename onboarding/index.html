@@ -456,44 +456,25 @@
       ],
       checklist: ["Token gerado", "Começa com figd_", "Copiado num lugar seguro"] };
   }
-  function stepMcpEvent() {
-    return { key: "mcp", rail: "MCP", est: "3 min",
-      title: "Conecte o Claude ao Figma",
-      why: "Esta máquina já tem o atalho. O script insere só a entrada do MCP, faz backup e nunca imprime seu token.",
-      blocks: [
-        { type: "text", text: "Na área de trabalho, clique com o botão direito em <b>setup-figma-mcp.ps1</b> e escolha \"Run with PowerShell\". Cole o token quando pedir (ele não aparece na tela) e Enter." },
-        { type: "note", tone: "ok", text: "Deu certo quando aparecer: figma-console adicionado. Agora feche o Claude Desktop por completo e abra de novo." }
-      ],
-      checklist: ["Rodei o script", "Vi \"figma-console adicionado\"", "Fechei e reabri o Claude Desktop"] };
-  }
   function stepMcpOwn() {
     return { key: "mcp", rail: "MCP", est: "5 min",
       title: "Conecte o Claude ao Figma",
       why: "O MCP é o que deixa o Claude consultar o Figma. Ele roda por npx, sem instalar nada global.",
       blocks: [
-        { type: "text", text: "<b>Jeito guiado (recomendado):</b> baixe os scripts do kit e rode o de setup. Ele faz backup, preserva outros MCP e pede o token escondido." },
+        { type: "text", text: "No Claude Desktop: <b>Settings > Developer > Edit Config</b>. Ou abra direto o arquivo:" },
+        { type: "path", value: osPath("%APPDATA%\\Claude\\claude_desktop_config.json", "~/Library/Application Support/Claude/claude_desktop_config.json") },
+        { type: "text", text: "Cole a entrada abaixo dentro de <b>mcpServers</b> e salve. Se o arquivo estiver vazio ou só com <b>{}</b>, cole o bloco inteiro no lugar." },
+        { type: "json" },
+        { type: "note", tone: "warn", text: "Já tem outros MCP no arquivo? Não apague. Só acrescente a chave figma-console dentro de mcpServers, com vírgula entre os blocos." },
+        { type: "text", text: "<b>Atalho, só se você já baixou o projeto do kit:</b> dá pra rodar o script de setup no lugar de editar à mão. Ele faz backup, preserva outros MCP e pede o token num campo escondido." },
         { type: "cmd", label: osPath("PowerShell (botão direito > Run with PowerShell)", "Terminal (ou duplo-clique no .command)"),
           value: osPath("powershell -ExecutionPolicy Bypass -File setup-figma-mcp.ps1", "./setup-figma-mcp.command") },
-        { type: "text", text: "<b>Jeito manual:</b> abra o config e cole a entrada abaixo dentro de mcpServers (troque o token). Depois salve." },
-        { type: "path", value: osPath("%APPDATA%\\Claude\\claude_desktop_config.json", "~/Library/Application Support/Claude/claude_desktop_config.json") },
-        { type: "json" },
-        { type: "note", tone: "warn", text: "Já tem outros MCP no arquivo? Não apague. Só acrescente a chave figma-console dentro de mcpServers." },
         { type: "note", tone: "ok", text: "Salvou? Feche o Claude Desktop por completo " + osPath("(sair de vez, não só a janela)", "(Cmd+Q)") + " e abra de novo. O MCP só carrega no boot." }
       ],
       checklist: ["Entrada figma-console salva no config", "Token colado (começa com figd_)", "Fechei e reabri o Claude Desktop"] };
   }
   function stepBridge() {
     var pluginPath = osPath("%USERPROFILE%\\.figma-console-mcp\\plugin\\manifest.json", "~/.figma-console-mcp/plugin/manifest.json");
-    if (state.device === "event") {
-      return { key: "bridge", rail: "Bridge", est: "2 min",
-        title: "Ligue o plugin Bridge no Figma",
-        why: "O plugin é a ponte entre o Figma Desktop e o MCP. Sem ele aberto, o Claude não alcança o arquivo.",
-        blocks: [
-          { type: "diagram", dlabel: "No Figma Desktop", trail: ["Plugins", "Development", "Figma Console MCP Bridge"], foot: "Já importado nesta máquina. Rode e deixe o plugin aberto." },
-          { type: "text", text: "Selecione o frame <b>Tela demo</b> antes de testar." }
-        ],
-        checklist: ["Plugin Bridge rodando", "Frame \"Tela demo\" selecionado"] };
-    }
     return { key: "bridge", rail: "Bridge", est: "4 min",
       title: "Importe e ligue o plugin Bridge",
       why: "O MCP empacota o plugin sozinho no primeiro boot do Claude. Você só importa e roda.",
@@ -536,7 +517,10 @@
 
   function setupSteps() {
     if (state.device === "event") {
-      return [stepFigma(), stepClaude(), stepToken(), stepMcpEvent(), stepBridge(), stepTeste()];
+      // A maquina do evento vem com Node, Figma Desktop e Claude Desktop instalados e NADA
+      // alem disso (sem plugin importado, sem config armado, sem script, sem projeto).
+      // Entao a rota e igual a do computador proprio, sem o passo de instalar os apps.
+      return [stepFigma(), stepClaude(), stepToken(), stepMcpOwn(), stepBridge(), stepTeste()];
     }
     // computador próprio (windows ou mac)
     return [stepPrereq(), stepFigma(), stepClaude(), stepToken(), stepMcpOwn(), stepBridge(), stepTeste()];
@@ -693,7 +677,7 @@
     cov.appendChild(el("h1", null, "Prepare sua máquina"));
     cov.appendChild(el("p", "lede", "Uns quinze minutos de setup na máquina do evento (um pouco mais no seu) e você faz o fluxo real: o Claude lendo o seu Figma, gerando código e você corrigindo. Como você vai participar?"));
     var ch = el("div", "choices two");
-    ch.appendChild(choiceBtn("Máquina do evento", "Windows já com Figma, Claude e Node. Só faltam suas contas.", "mais rápido", "fast", function () { state.device = "event"; state.os = "windows"; go("setup"); }));
+    ch.appendChild(choiceBtn("Máquina do evento", "Windows com Figma, Claude e Node já instalados. O token, o MCP e o plugin você monta aqui, guiado.", "apps prontos", "fast", function () { state.device = "event"; state.os = "windows"; go("setup"); }));
     ch.appendChild(choiceBtn("Meu próprio computador", "Você traz o notebook. A gente confere o que precisa.", null, null, function () { state.device = "own"; go("os"); }));
     cov.appendChild(ch);
     cov.appendChild(twoDeviceNote());
