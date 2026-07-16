@@ -33,6 +33,8 @@ valores aparecem na tela demo como número cru, sem referência a token.
 
 Por que funciona: junta extração com uma pergunta de conformidade (valor cru versus token), a fundação de tudo que vem depois.
 
+Nota de palco: o arquivo tem 1 coleção (`Workshop Tokens`, 23 variáveis). Se a primeira leitura voltar sem token nenhum, é cache frio logo após reconectar; peça de novo e ele traz os 23. Não é o arquivo sem tokens.
+
 ## 4. Auditar inconsistências
 
 ```

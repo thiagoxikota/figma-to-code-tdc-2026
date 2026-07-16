@@ -53,7 +53,7 @@ Rode este checklist em CADA reserva (1, 2 e 3), na vespera, e confira de novo na
 ### 1.6 Claude Desktop e config MCP (SEM token)
 
 - [ ] Claude Desktop aberto e logado numa conta de dia (nao pessoal de organizador).
-- [ ] Config do Claude com a entrada `figma-console` ja escrita (command `npx`, args `-y figma-console-mcp@1.35.0`, env `ENABLE_MCP_APPS` = `true`) e o campo `FIGMA_ACCESS_TOKEN` DELIBERADAMENTE em branco ou ausente. O token entra so na migracao, e e da propria pessoa.
+- [ ] Config do Claude com a entrada `figma-console` ja escrita (command `npx`, args `-y figma-console-mcp@1.35.0`, env `ENABLE_MCP_APPS` = `true`) e o campo `FIGMA_ACCESS_TOKEN` com o placeholder literal `figd_SEU_TOKEN_AQUI`, exatamente como a maquina de evento (ver `preparar-maquinas.md`). O placeholder deixa o JSON completo e valido e NAO e segredo de ninguem; o token real da pessoa entra so na migracao, por cima.
   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
@@ -70,15 +70,15 @@ Rode este checklist em CADA reserva (1, 2 e 3), na vespera, e confira de novo na
 
 Responsavel principal: Apoio 2 (projeto, Node, Claude, config). Apoio 1 confere o lado Figma/plugin.
 
-1. Instalar Node 18+, Figma Desktop e Claude Desktop. Logar Figma e Claude nas contas de dia.
-2. Aquecer o cache do npx E gerar a pasta do plugin de uma vez so, rodando o MCP uma unica vez com um token descartavel (que NAO fica salvo em lugar nenhum):
-   - No terminal, definir `FIGMA_ACCESS_TOKEN` com um valor qualquer que comece com `figd_` so para o processo subir, rodar `npx -y figma-console-mcp@1.35.0`, esperar ele empacotar o plugin e encerrar (Ctrl+C). Esse token descartavel nunca vai para o config e some quando o terminal fecha.
-   - Isso baixa e fixa o pacote no cache e cria `~/.figma-console-mcp/plugin/manifest.json` (Windows: `%USERPROFILE%\.figma-console-mcp\plugin\manifest.json`).
-3. No Figma Desktop: Plugins > Development > Import plugin from manifest, apontar para o `manifest.json` acima, e rodar o plugin. Deixar ativo.
-4. Baixar o repositorio do workshop, `npm install`, `npm run build`, validar o preview com `npm run workshop:start`, depois `npm run workshop:reset` para voltar os componentes ao estado known-good.
-5. Escrever a entrada `figma-console` no config do Claude SEM token (secao 1.6). Nao rodar o wrapper de setup aqui (ele exige token). Isso e so estrutura; o token e da pessoa que migrar.
-6. Criar o atalho de terminal na area de trabalho apontando para a pasta do projeto.
-7. Fechar tudo que for terminal com o token descartavel na memoria. Limpar historico de terminal se algum comando ficou registrado.
+A reserva e provisionada EXATAMENTE como uma maquina de evento. Nao ha metodo proprio aqui: siga `preparar-maquinas.md` de ponta a ponta (projeto clonado/copiado e buildado, npx aquecido e pasta do plugin materializada, plugin Bridge importado, config do Claude armado com o placeholder `figd_SEU_TOKEN_AQUI`, atalho do wrapper e do projeto, tutorial e arquivo Figma abertos, rede testada). A unica diferenca da reserva e o uso: ela fica ociosa, rotulada Reserva 1/2/3, e so entra na migracao.
+
+Resumo do estado final (todos vindos de `preparar-maquinas.md`):
+1. Node 18+, Figma Desktop e Claude Desktop instalados; contas de staging usadas so no preparo e deslogadas no fim.
+2. `npx` aquecido na versao fixada e `~/.figma-console-mcp/plugin/manifest.json` criado (Windows: `%USERPROFILE%\.figma-console-mcp\plugin\manifest.json`).
+3. Plugin Bridge importado e rodando no Figma Desktop.
+4. Projeto buildado, preview validado, componentes no estado known-good (`npm run workshop:reset`).
+5. Config do Claude com a entrada `figma-console` e o placeholder `figd_SEU_TOKEN_AQUI` (o mesmo da maquina de evento). O token real da pessoa entra so na migracao, por cima do placeholder.
+6. Atalhos na area de trabalho; nenhum terminal com segredo na memoria; historico limpo.
 
 ---
 
@@ -90,11 +90,12 @@ Na pasta do projeto, rodar:
 npm run workshop:doctor
 ```
 
-Numa reserva bem montada, TODAS as linhas devem sair OK, com UMA excecao esperada:
+Numa reserva bem montada (igual a maquina de evento), TODAS as linhas devem sair OK, SEM nenhuma FALHA:
 
-- A linha do token vai sair como FALHA ("token ausente/invalido no config"). Isso e CORRETO e proposital: prova que nenhum segredo pessoal esta cravado na maquina. O doctor termina com "1 falha(s)" so por causa dessa linha.
+- A linha do token sai como `token presente no config`. Aqui "presente" significa "a entrada esta armada e o JSON e valido", nao "ha um token real": o valor e o placeholder `figd_SEU_TOKEN_AQUI` (o doctor so confere o prefixo `figd_`). Isso e exatamente o estado que queremos numa maquina pre-armada, e bate com o que `preparar-maquinas.md` espera.
+- Para ter certeza de que e o placeholder e nao um token esquecido, abra o config e confirme que o valor e literalmente `figd_SEU_TOKEN_AQUI`.
 
-Se qualquer OUTRA linha aparecer como FALHA (Node, projeto, dist, config invalido), corrigir ANTES do evento. So o token pode estar faltando.
+Se QUALQUER linha aparecer como FALHA (Node, projeto, dist, config invalido, token), corrigir ANTES do evento.
 
 Conferir tambem, a olho:
 

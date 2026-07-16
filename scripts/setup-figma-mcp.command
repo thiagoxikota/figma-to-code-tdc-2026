@@ -18,6 +18,7 @@ echo "Node: $(node -v)"
 printf "Cole seu token do Figma (figd_...) e Enter (nao aparece na tela): "
 read -rs FIGMA_ACCESS_TOKEN
 echo ""
+FIGMA_ACCESS_TOKEN="$(printf '%s' "$FIGMA_ACCESS_TOKEN" | tr -d '[:space:]')"  # tira espaco/nova linha colado junto
 
 case "$FIGMA_ACCESS_TOKEN" in
   figd_*) : ;;

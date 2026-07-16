@@ -17,7 +17,9 @@ $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
 try { $token = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr) }
 finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
 
-if (-not $token.StartsWith('figd_')) {
+if ($token) { $token = $token.Trim() }   # colar no Windows pode arrastar espaco/nova linha
+
+if (-not $token -or -not $token.StartsWith('figd_')) {
   Write-Host 'O token precisa comecar com figd_. Gere de novo no Figma e tente outra vez.' -ForegroundColor Red
   exit 1
 }

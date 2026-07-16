@@ -79,7 +79,8 @@ Não aceitar "o MCP aparece na lista" como sucesso. O teste real: pedir para o C
 - Arquivo de trabalho (bridge): "TDC 2026 - Do Figma ao codigo - DEMO", fileKey `aV212CPkZcQVFr7Sa97BAr`, página "03 Tela demo".
 - Arquivo público duplicável (participantes): `https://www.figma.com/community/file/1659374868260259462`.
 - Frame de leitura: `Tela demo`. Estrutura confirmada via MCP (16/07): título "Criar sua conta", caption de baixo contraste `#a29b93` (defeito plantado 3), grupo `fields` com Input email (fiel) e Input nome (outline, defeito 4), opt-in, e "Botao continuar" (frame DESACOPLADO do componente Button, fill cru `#c8352b`, defeito 1). Seis defeitos plantados no total (ver `outputs-prebaked/04-auditoria.md`).
-- Nota de ensaio: `figma_get_variables` no modo summary voltou 0 coleções do cache enquanto os nós carregam bound variables. Conferir com `refreshCache` no ensaio antes de confiar no prompt 3 (exportar tokens).
+- Tokens da demo (confirmado ao vivo 16/07 com `refreshCache`): 1 coleção `Workshop Tokens`, 23 variáveis (10 COLOR, 13 FLOAT). Nomes: `color/brand-primary`, `color/brand-primary-hover`, `color/surface`, `color/surface-alt`, `color/text`, `color/text-muted`, `color/border`, `color/focus`, `color/disabled-bg`, `color/disabled-text`, `space/1..4`, `radius/md`, `border/width`, `focus/ring-width`, `tap-target/min`, `size/icon`, `font-size/body`, `font-size/heading`, `font-weight/heading`, `line-height/body`.
+- Gotcha do cache (resolvido): a primeira chamada de `figma_get_variables` logo após reconectar pode voltar do cache com 0 coleções. Uma segunda chamada (ou `refreshCache`) traz as 23. No palco: se o prompt 3 (exportar tokens) voltar vazio, é cache frio, peça de novo; não é o arquivo sem tokens.
 
 ## Claude Desktop x Claude Code
 

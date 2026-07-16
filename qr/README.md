@@ -2,9 +2,9 @@
 
 `kit-dark-on-light.svg` e `kit.png` apontam para a URL curta do onboarding.
 
-URL atual (placeholder ate o Thi confirmar o host): `https://thiagoxikota.com/tdc`
+URL final (decidida 16/07): `https://thiagoxikota.com/tdc`. Hospedagem documentada em `ops/hospedagem.md` (arquivo estatico servido pela CDN da Netlify, mesmo arquivo do `onboarding/index.html`). Os dois QR ja foram regerados para essa URL em 16/07. Falta so o teste humano de scan (celular, de longe, no projetor) antes de imprimir.
 
-## Como regerar quando a URL final for definida
+## Como regerar se a URL mudar
 
 ```
 npx -y qrcode -t svg -o qr/kit-dark-on-light.svg "https://SUA_URL_FINAL"

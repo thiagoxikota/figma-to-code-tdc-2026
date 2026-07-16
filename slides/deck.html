@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Do Figma ao código sem handoff · TDC Florianópolis 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -8,8 +13,8 @@
     --bg-panel-2: #241C17;  /* painel mais claro */
     --ink: #FFFFFF;         /* branco puro */
     --ink-2: #F1EAE1;       /* branco morno, alto contraste */
-    --vermilion: #C8352B;   /* vermelho de marca */
-    --vermilion-bright: #FF4B3E; /* acento sobre fundo escuro */
+    --vermilion: #DC000C;   /* vermelho de marca (Xikota, D15) */
+    --vermilion-bright: #FF3B2F; /* acento sobre fundo escuro */
     --rule: #4A413B;        /* separador visível */
     --green: #1E5B3A;       /* rota rápida */
     --font: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -270,6 +275,8 @@
   body.only .slide { display: none; }
   body.only .slide.show { display: flex; }
 </style>
+</head>
+<body>
 
 <div class="deck">
 
@@ -328,7 +335,7 @@
 
   <!-- 5 · QR + URL curta -->
   <section class="slide s-qr" id="s5" data-n="5">
-    <div class="qrbox lg"><svg class="qrsvg" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
+    <div class="qrbox lg"><svg class="qrsvg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="QR para thiagoxikota.com/tdc"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h3m1 0h1m2 0h2m1 0h1m3 0h7M4 5.5h1m5 0h1m3 0h2m1 0h2m1 0h3m1 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h3m1 0h1m2 0h2m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h1m1 0h5m2 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m2 0h2m2 0h1m2 0h1m3 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m4 0h3m1 0h3M4 12.5h1m1 0h1m3 0h2m2 0h2m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1m1 0h1M4 13.5h1m2 0h2m4 0h2m1 0h3m2 0h1m1 0h1m2 0h2m3 0h2M4 14.5h1m4 0h2m1 0h1m2 0h1m3 0h1m3 0h1m2 0h1m1 0h3m1 0h1M6 15.5h1m6 0h2m2 0h1m4 0h1m2 0h2m2 0h1M4 16.5h2m2 0h1m1 0h1m2 0h5m1 0h2m2 0h2m1 0h2m4 0h1M4 17.5h1m4 0h1m3 0h2m1 0h1m3 0h1m1 0h3m1 0h2m3 0h2M4 18.5h4m2 0h9m1 0h2m1 0h2m3 0h1m3 0h1M4 19.5h1m1 0h4m1 0h1m3 0h2m1 0h3m3 0h3m1 0h1M4 20.5h2m4 0h2m2 0h1m1 0h3m4 0h1m2 0h2m4 0h1M6 21.5h2m1 0h1m1 0h1m3 0h1m1 0h2m4 0h5m2 0h3M4 22.5h5m1 0h7m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m2 0h1M6 23.5h2m3 0h2m3 0h2m5 0h2m3 0h1M4 24.5h2m3 0h2m4 0h1m1 0h1m1 0h2m3 0h6m1 0h1M12 25.5h1m1 0h3m3 0h1m3 0h1m3 0h3m1 0h1M4 26.5h7m1 0h1m4 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 27.5h1m5 0h1m7 0h3m1 0h3m3 0h1M4 28.5h1m1 0h3m1 0h1m3 0h2m1 0h2m2 0h9M4 29.5h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m2 0h1m1 0h3m2 0h4M4 30.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h2m3 0h1m1 0h1m2 0h1m2 0h2M4 31.5h1m5 0h1m2 0h1m3 0h2m2 0h1m2 0h1m1 0h1m2 0h1M4 32.5h7m1 0h1m1 0h8m2 0h1m1 0h1m1 0h1m3 0h1"/></svg></div>
     <div class="copy">
       <div class="eyebrow">Comece por aqui</div>
       <div class="lead">Tudo do workshop mora nesse link.</div>
@@ -389,7 +396,7 @@
           <div class="big">18 min</div>
         </div>
         <div class="urlrow">
-          <div class="qrbox sm"><svg class="qrsvg" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
+          <div class="qrbox sm"><svg class="qrsvg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="QR para thiagoxikota.com/tdc"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h3m1 0h1m2 0h2m1 0h1m3 0h7M4 5.5h1m5 0h1m3 0h2m1 0h2m1 0h3m1 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h3m1 0h1m2 0h2m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h1m1 0h5m2 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m2 0h2m2 0h1m2 0h1m3 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m4 0h3m1 0h3M4 12.5h1m1 0h1m3 0h2m2 0h2m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1m1 0h1M4 13.5h1m2 0h2m4 0h2m1 0h3m2 0h1m1 0h1m2 0h2m3 0h2M4 14.5h1m4 0h2m1 0h1m2 0h1m3 0h1m3 0h1m2 0h1m1 0h3m1 0h1M6 15.5h1m6 0h2m2 0h1m4 0h1m2 0h2m2 0h1M4 16.5h2m2 0h1m1 0h1m2 0h5m1 0h2m2 0h2m1 0h2m4 0h1M4 17.5h1m4 0h1m3 0h2m1 0h1m3 0h1m1 0h3m1 0h2m3 0h2M4 18.5h4m2 0h9m1 0h2m1 0h2m3 0h1m3 0h1M4 19.5h1m1 0h4m1 0h1m3 0h2m1 0h3m3 0h3m1 0h1M4 20.5h2m4 0h2m2 0h1m1 0h3m4 0h1m2 0h2m4 0h1M6 21.5h2m1 0h1m1 0h1m3 0h1m1 0h2m4 0h5m2 0h3M4 22.5h5m1 0h7m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m2 0h1M6 23.5h2m3 0h2m3 0h2m5 0h2m3 0h1M4 24.5h2m3 0h2m4 0h1m1 0h1m1 0h2m3 0h6m1 0h1M12 25.5h1m1 0h3m3 0h1m3 0h1m3 0h3m1 0h1M4 26.5h7m1 0h1m4 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 27.5h1m5 0h1m7 0h3m1 0h3m3 0h1M4 28.5h1m1 0h3m1 0h1m3 0h2m1 0h2m2 0h9M4 29.5h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m2 0h1m1 0h3m2 0h4M4 30.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h2m3 0h1m1 0h1m2 0h1m2 0h2M4 31.5h1m5 0h1m2 0h1m3 0h2m2 0h1m2 0h1m1 0h1m2 0h1M4 32.5h7m1 0h1m1 0h8m2 0h1m1 0h1m1 0h1m3 0h1"/></svg></div>
           <div class="url">thiagoxikota.com/tdc</div>
         </div>
         <div class="help">Travou? Mão pra cima. O apoio vai até a sua dupla.</div>
@@ -468,7 +475,7 @@
         <li>Um input fora do padrão dos outros</li>
         <li>Cor crua no botão, sem token</li>
       </ul>
-      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. O prompt 9 faz a IA comparar como o designer do sistema.</div>
+      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. O prompt de comparação faz a IA revisar como o designer do sistema.</div>
     </div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
@@ -542,43 +549,8 @@
 </div>
 
 <script>
-  // QR placeholder: padrão determinístico com 3 finder patterns (não codifica dado real).
-  // Renderiza em todos os <svg class="qrsvg">. Será trocado pelo QR real.
-  (function () {
-    var svgs = document.querySelectorAll('svg.qrsvg');
-    if (!svgs.length) return;
-    var N = 29, NS = 'http://www.w3.org/2000/svg';
-    function build(svg) {
-      function rect(x, y, w, h) {
-        var r = document.createElementNS(NS, 'rect');
-        r.setAttribute('x', x); r.setAttribute('y', y);
-        r.setAttribute('width', w); r.setAttribute('height', h);
-        r.setAttribute('fill', '#0E0C0B');
-        svg.appendChild(r);
-      }
-      function finder(ox, oy) {
-        rect(ox, oy, 7, 7);
-        var w = document.createElementNS(NS, 'rect');
-        w.setAttribute('x', ox + 1); w.setAttribute('y', oy + 1);
-        w.setAttribute('width', 5); w.setAttribute('height', 5);
-        w.setAttribute('fill', '#fff'); svg.appendChild(w);
-        rect(ox + 2, oy + 2, 3, 3);
-      }
-      var seed = 1337;
-      function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
-      function inFinder(x, y) {
-        return (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
-      }
-      for (var y = 0; y < N; y++) {
-        for (var x = 0; x < N; x++) {
-          if (inFinder(x, y)) continue;
-          if (rnd() > 0.5) rect(x, y, 1, 1);
-        }
-      }
-      finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
-    }
-    svgs.forEach(build);
-  })();
+  // O QR é REAL, inline no SVG (codifica https://thiagoxikota.com/tdc). Fonte:
+  // qr/kit-dark-on-light.svg, regerado em 16/07. Sem script de geração aqui.
 
   // Modo screenshot: ?only=N isola um slide para captura headless.
   (function () {
@@ -589,3 +561,5 @@
     if (el) el.classList.add('show');
   })();
 </script>
+</body>
+</html>

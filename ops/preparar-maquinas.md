@@ -33,6 +33,7 @@ Quem executa: Apoio 1 e Apoio 2, com o Bruno validando o resultado. Fazer isso n
 - Windows 10/11 (ou macOS numa reserva). Node 18 ou mais novo instalado (`node -v`).
 - Git instalado (para o clone) e permissão de rodar PowerShell.
 - Acesso à internet liberado para: registro npm, github.com e loopback local (127.0.0.1).
+- **O repositório é PRIVADO.** Clone anônimo falha (404). Duas saídas, escolha uma: (a) `gh` (GitHub CLI) instalado e logado uma vez com `gh auth login` na conta thiagoxikota, e usar `gh repo clone`; ou (b) não clonar em cada máquina: gerar a pasta do projeto UMA vez (na máquina do organizador) e copiá-la para as demais por pendrive ou rede. A cópia já vem com `node_modules` e `dist/`, então nas outras máquinas basta rodar o build pra revalidar.
 - Uma conta de staging (não pessoal) do Figma e do Claude para a etapa de importar o plugin e conferir o ambiente. Ela é usada só na preparação e sai no fim (ver "Antes de fechar a máquina").
 
 Local canônico do projeto (use sempre o mesmo caminho em todas as máquinas):
@@ -53,7 +54,7 @@ Windows (PowerShell):
 ```powershell
 mkdir C:\TDC -Force | Out-Null
 cd C:\TDC
-git clone https://github.com/thiagoxikota/figma-to-code-tdc-2026.git
+gh repo clone thiagoxikota/figma-to-code-tdc-2026
 cd figma-to-code-tdc-2026
 npm install
 npm run build
@@ -63,7 +64,7 @@ macOS (zsh/bash):
 
 ```bash
 mkdir -p ~/TDC && cd ~/TDC
-git clone https://github.com/thiagoxikota/figma-to-code-tdc-2026.git
+gh repo clone thiagoxikota/figma-to-code-tdc-2026
 cd figma-to-code-tdc-2026
 npm install
 npm run build
