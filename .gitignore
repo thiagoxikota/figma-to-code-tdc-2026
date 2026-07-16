@@ -1,6 +1,7 @@
 node_modules/
 *.local
 .DS_Store
+*.tsbuildinfo
 
 # dist/ é COMMITADO de propósito: é a camada zero-install do kit
 !dist/

@@ -44,6 +44,8 @@ Figma > menu do usuário > Settings > Security > Personal access tokens > Genera
 
 **Claude Code:** na pasta do projeto, `claude mcp add figma-console -e FIGMA_ACCESS_TOKEN=figd_seuTokenAqui -- npx -y figma-console-mcp@latest`
 
+**Trave a versão (importante pra time e pra reprodutibilidade):** `@latest` puxa a versão mais nova toda vez, e um update no meio da semana pode quebrar seu setup sozinho. Pra um fluxo que não pode surpreender (CI, máquina de palestra, time inteiro), rode `npm view figma-console-mcp version`, pegue o número e troque `@latest` pela versão exata que você testou (por exemplo `figma-console-mcp@1.4.2`). No dia de uma demo ao vivo, versão travada não é preciosismo, é seguro.
+
 ## Passo 3: instale o plugin bridge no Figma Desktop
 
 1. Baixe o repositório: github.com/southleft/figma-console-mcp (Code > Download ZIP)

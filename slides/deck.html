@@ -1,0 +1,569 @@
+<title>Do Figma ao código sem handoff · TDC Florianópolis 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0E0C0B;          /* quase preto */
+    --bg-panel: #1A1512;    /* painel */
+    --bg-panel-2: #241C17;  /* painel mais claro */
+    --ink: #FFFFFF;         /* branco puro */
+    --ink-2: #F1EAE1;       /* branco morno, alto contraste */
+    --vermilion: #C8352B;   /* vermelho de marca */
+    --vermilion-bright: #FF4B3E; /* acento sobre fundo escuro */
+    --rule: #4A413B;        /* separador visível */
+    --font: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, "Roboto Mono", monospace;
+  }
+
+  html, body {
+    background: #050403;
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+
+  .slide {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+    display: flex;
+    padding: 120px;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* ---------- componentes compartilhados ---------- */
+  .eyebrow {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--vermilion-bright);
+  }
+
+  .brandbar {
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    bottom: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink-2);
+    border-top: 3px solid var(--rule);
+    padding-top: 30px;
+  }
+  .brandbar .dot { color: var(--vermilion-bright); padding: 0 14px; }
+
+  /* ---------- Slide 1: cold open ---------- */
+  .s-coldopen { align-items: center; justify-content: center; background: #060504; }
+  .s-coldopen h1 {
+    font-size: 190px;
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -4px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .s-coldopen h1 .p { color: var(--vermilion-bright); }
+
+  /* ---------- Refrão (slides 2 e 12, idênticos) ---------- */
+  .s-refrao { align-items: center; justify-content: center; text-align: center; flex-direction: column; }
+  .s-refrao .main {
+    font-size: 138px;
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -3px;
+    color: #FFFFFF;
+  }
+  .s-refrao .divider {
+    width: 320px;
+    height: 8px;
+    background: var(--vermilion);
+    border-radius: 4px;
+    margin: 64px 0;
+  }
+  .s-refrao .sub {
+    font-size: 58px;
+    font-weight: 700;
+    color: var(--ink-2);
+    max-width: 1300px;
+  }
+
+  /* ---------- Slide 3: quem está no palco ---------- */
+  .s-stage { flex-direction: column; justify-content: center; gap: 80px; }
+  .s-stage .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; }
+  .person {
+    background: var(--bg-panel);
+    border: 3px solid var(--rule);
+    border-radius: 24px;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .person .avatar {
+    width: 168px; height: 168px; border-radius: 50%;
+    background: var(--vermilion);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 72px; font-weight: 900;
+  }
+  .person .name { font-size: 64px; font-weight: 900; color: #fff; }
+  .person .line { font-size: 36px; font-weight: 600; line-height: 1.42; color: var(--ink-2); }
+
+  /* ---------- Slide 4: structural convergence ---------- */
+  .s-conv { align-items: center; gap: 100px; }
+  .s-conv .visual { display: flex; align-items: center; gap: 72px; flex: 0 0 auto; }
+  .grid-same { display: grid; grid-template-columns: repeat(3, 150px); gap: 26px; }
+  .mini {
+    width: 150px; height: 180px;
+    background: var(--bg-panel);
+    border: 2px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .mini .bar { background: #6C635B; border-radius: 4px; }
+  .mini .bar.a { height: 46px; }
+  .mini .bar.b { height: 12px; width: 80%; }
+  .mini .bar.c { height: 12px; width: 60%; }
+  .distinct {
+    width: 200px; height: 244px;
+    background: var(--vermilion);
+    border: 4px solid var(--vermilion-bright);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+    box-shadow: 0 0 0 12px rgba(200,53,43,0.18);
+  }
+  .distinct .bar { background: #fff; border-radius: 5px; }
+  .distinct .bar.a { height: 60px; }
+  .distinct .bar.b { height: 16px; width: 85%; }
+  .distinct .bar.c { height: 16px; width: 65%; }
+  .s-conv .copy { display: flex; flex-direction: column; gap: 40px; max-width: 760px; }
+  .s-conv .statement { font-size: 60px; font-weight: 800; line-height: 1.12; color: #fff; }
+  .s-conv .highlight {
+    font-size: 40px; font-weight: 800; color: #fff;
+    background: var(--vermilion); align-self: flex-start;
+    padding: 18px 30px; border-radius: 14px;
+  }
+
+  /* ---------- Slide 5: specification literacy ---------- */
+  .s-spec { flex-direction: column; justify-content: center; gap: 90px; }
+  .s-spec .flow { display: flex; align-items: center; gap: 60px; }
+  .chip-old {
+    font-size: 46px; font-weight: 800; color: var(--ink-2);
+    background: var(--bg-panel); border: 3px solid var(--rule);
+    border-radius: 18px; padding: 40px 52px; white-space: nowrap;
+  }
+  .arrow { flex: 1; display: flex; align-items: center; }
+  .arrow .line { height: 24px; background: var(--vermilion); flex: 1; border-radius: 12px 0 0 12px; }
+  .arrow .head {
+    width: 0; height: 0;
+    border-top: 46px solid transparent;
+    border-bottom: 46px solid transparent;
+    border-left: 64px solid var(--vermilion);
+  }
+  .chip-new {
+    font-size: 58px; font-weight: 900; color: #fff;
+    background: var(--vermilion); border-radius: 18px; padding: 44px 56px;
+    line-height: 1.15; text-align: center;
+  }
+  .s-spec .statement { font-size: 56px; font-weight: 800; color: #fff; line-height: 1.15; max-width: 1500px; }
+
+  /* ---------- Slide 6: anatomia do fluxo ---------- */
+  .s-anat { flex-direction: column; justify-content: center; gap: 90px; }
+  .pipe { display: flex; align-items: center; gap: 0; }
+  .box {
+    font-size: 56px; font-weight: 900; color: #fff;
+    background: var(--bg-panel); border: 4px solid var(--rule);
+    border-radius: 20px; padding: 56px 0; width: 360px; text-align: center;
+  }
+  .box.accent { border-color: var(--vermilion); }
+  .conn { width: 90px; height: 12px; background: var(--vermilion); flex: 0 0 auto; }
+  .gap-wrap { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .gap-bracket { width: 100%; border-top: 6px solid var(--vermilion-bright); height: 40px; border-left: 6px solid var(--vermilion-bright); border-right: 6px solid var(--vermilion-bright); border-radius: 0 0 20px 20px; }
+  .s-anat .statement { font-size: 52px; font-weight: 800; color: #fff; line-height: 1.18; max-width: 1560px; }
+
+  /* ---------- Slide 7: dois caminhos ---------- */
+  .s-paths { flex-direction: column; justify-content: center; gap: 56px; }
+  .s-paths .note { font-size: 40px; font-weight: 700; color: var(--ink-2); max-width: 1500px; }
+  .s-paths .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .path { background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 24px; padding: 56px; display: flex; flex-direction: column; gap: 34px; }
+  .path .head { font-size: 50px; font-weight: 900; color: #fff; }
+  .path .head .tag { font-size: 32px; font-weight: 800; margin-left: 16px; padding: 8px 20px; border-radius: 999px; }
+  .path .tag.free { background: #1E5B3A; color: #fff; }
+  .path .tag.paid { background: var(--vermilion); color: #fff; }
+  .path ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .path li { font-size: 38px; font-weight: 600; color: var(--ink-2); display: flex; align-items: center; gap: 20px; }
+  .path li::before { content: ""; width: 16px; height: 16px; background: var(--vermilion-bright); border-radius: 50%; flex: 0 0 auto; }
+
+  /* ---------- Slide 8: ao vivo ---------- */
+  .s-live { align-items: center; justify-content: center; background: #060504; }
+  .s-live h1 { font-size: 260px; font-weight: 900; letter-spacing: -6px; color: #fff; }
+  .s-live h1 .p { color: var(--vermilion-bright); }
+
+  /* ---------- Slide 9: ache a inconsistência ---------- */
+  .s-find { align-items: center; gap: 110px; }
+  .s-find .screen { flex: 0 0 auto; }
+  .democard {
+    width: 560px; background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+  }
+  .democard .img { height: 230px; background: #C9BFB4; }
+  .democard .body { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .democard .t { font-size: 40px; font-weight: 800; color: #1F1C1A; }
+  .democard .d { font-size: 28px; font-weight: 500; color: #4A443E; line-height: 1.4; }
+  .democard .btn { align-self: flex-start; background: #C8352B; color: #fff; font-size: 30px; font-weight: 700; padding: 18px 40px; border-radius: 8px; margin-top: 8px; }
+  .s-find .copy { display: flex; flex-direction: column; gap: 48px; }
+  .s-find .timer { font-size: 300px; font-weight: 900; line-height: 0.9; color: var(--vermilion-bright); }
+  .s-find .timer span { font-size: 120px; }
+  .s-find .q { font-size: 58px; font-weight: 800; color: #fff; max-width: 720px; line-height: 1.12; }
+
+  /* ---------- Slide 10: o que a IA não fez ---------- */
+  .s-didnt { flex-direction: column; justify-content: center; gap: 56px; }
+  .s-didnt .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .didcol { border-radius: 24px; padding: 56px; display: flex; flex-direction: column; gap: 30px; }
+  .didcol.did { background: var(--bg-panel); border: 3px solid var(--rule); }
+  .didcol.didnt { background: var(--vermilion); }
+  .didcol h3 { font-size: 44px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+  .didcol.did h3 { color: var(--ink-2); }
+  .didcol.didnt h3 { color: #fff; }
+  .didcol ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .didcol li { font-size: 40px; font-weight: 700; }
+  .didcol.did li { color: var(--ink-2); }
+  .didcol.didnt li { color: #fff; }
+  .s-didnt .statement { font-size: 48px; font-weight: 800; color: #fff; line-height: 1.2; }
+
+  /* ---------- Slide 11: prompt coletivo ---------- */
+  .s-prompt { flex-direction: column; justify-content: center; gap: 52px; }
+  .s-prompt .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .pcard { border-radius: 22px; overflow: hidden; border: 3px solid var(--rule); }
+  .pcard .cap { font-size: 34px; font-weight: 800; padding: 26px 40px; letter-spacing: 1px; }
+  .pcard.generic .cap { background: var(--bg-panel-2); color: var(--ink-2); }
+  .pcard.spec .cap { background: var(--vermilion); color: #fff; }
+  .pcard .code { background: #100C0A; padding: 48px 40px; min-height: 320px; font-family: var(--mono); font-size: 38px; color: #fff; line-height: 1.5; }
+  .pcard.spec .code { display: flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 600; }
+  .cursor { display: inline-block; width: 20px; height: 46px; background: var(--vermilion-bright); }
+  .s-prompt .statement { font-size: 48px; font-weight: 800; color: #fff; line-height: 1.18; max-width: 1600px; }
+
+  /* ---------- Slide 13: kit e QR ---------- */
+  .s-kit { align-items: center; gap: 120px; }
+  .qrbox { flex: 0 0 auto; background: #fff; padding: 40px; border-radius: 24px; }
+  .qrbox svg { display: block; width: 460px; height: 460px; }
+  .s-kit .copy { display: flex; flex-direction: column; gap: 48px; max-width: 900px; }
+  .s-kit .lead { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.1; }
+  .prereqs { display: flex; flex-wrap: wrap; gap: 20px; }
+  .prereq { font-size: 34px; font-weight: 800; color: #fff; background: var(--bg-panel); border: 3px solid var(--vermilion); border-radius: 999px; padding: 20px 34px; }
+  .s-kit .sub { font-size: 38px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
+
+  /* ---------- Slide 14: rota final ---------- */
+  .s-end { flex-direction: column; justify-content: center; gap: 64px; }
+  .s-end .routes { display: flex; gap: 48px; }
+  .route { flex: 1; background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 24px; padding: 56px; }
+  .route .k { font-size: 32px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); }
+  .route .v { font-size: 68px; font-weight: 900; color: #fff; margin-top: 16px; }
+  .s-end .bios { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .s-end .bio { font-size: 34px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
+  .s-end .bio b { color: #fff; font-weight: 900; display: block; font-size: 40px; margin-bottom: 8px; }
+  .s-end .thanks { font-size: 44px; font-weight: 800; color: #fff; }
+  .s-end .thanks .em { color: var(--vermilion-bright); }
+
+  /* ---------- print: uma página por slide, 1920x1080 ---------- */
+  @media print {
+    @page { size: 1920px 1080px; margin: 0; }
+    html, body { background: #fff; }
+    .deck { gap: 0; padding: 0; }
+    .slide { box-shadow: none; }
+  }
+
+  /* ---------- modo screenshot: ?only=N mostra só um slide ---------- */
+  body.only .deck { padding: 0; gap: 0; }
+  body.only .slide { display: none; }
+  body.only .slide.show { display: flex; }
+</style>
+
+<div class="deck">
+
+  <!-- 1 · Cold open -->
+  <section class="slide s-coldopen" id="s1" data-n="1">
+    <h1>A execução ficou barata<span class="p">.</span></h1>
+  </section>
+
+  <!-- 2 · Refrão (1a vez) -->
+  <section class="slide s-refrao" id="s2" data-n="2">
+    <div class="main">Ferramentas mudam.<br>Princípios permanecem.</div>
+    <div class="divider"></div>
+    <div class="sub">Saber especificar é a competência da década.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 3 · Quem está no palco -->
+  <section class="slide s-stage" id="s3" data-n="3">
+    <div class="eyebrow">Quem está no palco</div>
+    <div class="cols">
+      <div class="person">
+        <div class="avatar">TX</div>
+        <div class="name">Thiago Xikota</div>
+        <div class="line">Product designer com background em Ciência da Computação, pesquisador na UFSC, autor de Design na Era da IA (Casa do Código, em produção).</div>
+      </div>
+      <div class="person">
+        <div class="avatar">BB</div>
+        <div class="name">Bruno Bach</div>
+        <div class="line">Líder do Friends of Figma Florianópolis, voz de engenharia.</div>
+      </div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 4 · Structural Convergence -->
+  <section class="slide s-conv" id="s4" data-n="4">
+    <div class="visual">
+      <div class="grid-same">
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+      </div>
+      <div class="distinct"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
+    </div>
+    <div class="copy">
+      <div class="eyebrow">Structural Convergence</div>
+      <div class="statement">Quando todo mundo aceita o default, todo mundo entrega a mesma coisa.</div>
+      <div class="highlight">Efeito grande. Magnitude em verificação.</div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>AIMEDIA 2026, IARIA</span></div>
+  </section>
+
+  <!-- 5 · Specification Literacy -->
+  <section class="slide s-spec" id="s5" data-n="5">
+    <div class="eyebrow">Specification Literacy</div>
+    <div class="flow">
+      <div class="chip-old">execução manual</div>
+      <div class="arrow"><div class="line"></div><div class="head"></div></div>
+      <div class="chip-new">especificar, validar,<br>integrar, decidir</div>
+    </div>
+    <div class="statement">O trabalho migrou da mão para a cabeça que especifica.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 6 · Anatomia do fluxo -->
+  <section class="slide s-anat" id="s6" data-n="6">
+    <div class="eyebrow">Anatomia do fluxo</div>
+    <div class="pipe">
+      <div class="box">Figma</div>
+      <div class="conn"></div>
+      <div class="box accent">MCP</div>
+      <div class="conn"></div>
+      <div class="box accent">IA</div>
+      <div class="conn"></div>
+      <div class="box">código</div>
+    </div>
+    <div class="statement">Quatro peças. E o buraco que sempre existiu entre a primeira e a última.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 7 · Dois caminhos de MCP -->
+  <section class="slide s-paths" id="s7" data-n="7">
+    <div class="eyebrow">Dois caminhos de MCP</div>
+    <div class="note">No palco vamos de gratuito. Os dois existem, e cada um serve a um contexto.</div>
+    <div class="cols">
+      <div class="path">
+        <div class="head">Community<span class="tag free">gratuito</span></div>
+        <ul>
+          <li>Figma Console MCP</li>
+          <li>npx</li>
+          <li>Token pessoal</li>
+          <li>Node 18+</li>
+          <li>Figma Desktop</li>
+        </ul>
+      </div>
+      <div class="path">
+        <div class="head">Oficial<span class="tag paid">pago</span></div>
+        <ul>
+          <li>Dev Mode MCP server</li>
+          <li>Plano com Dev seat</li>
+          <li>Roda local</li>
+        </ul>
+      </div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 8 · Divisor de demo -->
+  <section class="slide s-live" id="s8" data-n="8">
+    <h1>Ao vivo<span class="p">.</span></h1>
+  </section>
+
+  <!-- 9 · Ache a inconsistência -->
+  <section class="slide s-find" id="s9" data-n="9">
+    <div class="screen">
+      <div class="democard">
+        <div class="img"></div>
+        <div class="body">
+          <div class="t">Plano Anual</div>
+          <div class="d">Acesso completo à plataforma por doze meses, com suporte prioritário.</div>
+          <div class="btn">Assinar agora</div>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <div class="eyebrow">Ache a inconsistência</div>
+      <div class="timer">60<span>s</span></div>
+      <div class="q">Quantos erros vocês acham antes da IA?</div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 10 · O que a IA não fez -->
+  <section class="slide s-didnt" id="s10" data-n="10">
+    <div class="eyebrow">O que a IA não fez</div>
+    <div class="cols">
+      <div class="didcol did">
+        <h3>Fez</h3>
+        <ul>
+          <li>ler</li>
+          <li>exportar</li>
+          <li>gerar</li>
+          <li>auditar</li>
+          <li>comparar</li>
+        </ul>
+      </div>
+      <div class="didcol didnt">
+        <h3>Não fez</h3>
+        <ul>
+          <li>escolher o problema</li>
+          <li>definir a regra</li>
+          <li>aceitar o resultado</li>
+          <li>decidir o que entra no código</li>
+        </ul>
+      </div>
+    </div>
+    <div class="statement">Tudo que importou foi decisão humana. A IA só foi rápida no resto.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 11 · Prompt coletivo -->
+  <section class="slide s-prompt" id="s11" data-n="11">
+    <div class="eyebrow">Prompt coletivo</div>
+    <div class="cols">
+      <div class="pcard generic">
+        <div class="cap">Prompt genérico</div>
+        <div class="code">gera esse card em React</div>
+      </div>
+      <div class="pcard spec">
+        <div class="cap">Prompt especificado pela sala</div>
+        <div class="code">preenchido ao vivo<span class="cursor"></span></div>
+      </div>
+    </div>
+    <div class="statement">A diferença entre esses dois códigos não é a ferramenta. É o quanto vocês especificaram.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 12 · Refrão (2a vez, idêntico ao 2) -->
+  <section class="slide s-refrao" id="s12" data-n="12">
+    <div class="main">Ferramentas mudam.<br>Princípios permanecem.</div>
+    <div class="divider"></div>
+    <div class="sub">Saber especificar é a competência da década.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+  </section>
+
+  <!-- 13 · Kit e QR -->
+  <section class="slide s-kit" id="s13" data-n="13">
+    <div class="qrbox"><svg id="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
+    <div class="copy">
+      <div class="eyebrow">Kit e QR</div>
+      <div class="lead">O setup inteiro está nesse QR, com os riscos mapeados.</div>
+      <div class="prereqs">
+        <span class="prereq">Node 18+</span>
+        <span class="prereq">Figma Desktop</span>
+        <span class="prereq">Token pessoal do Figma</span>
+        <span class="prereq">10 minutos, uma vez só</span>
+      </div>
+      <div class="sub">Ninguém instala MCP no meio de 100 pessoas com o wifi do evento. Você roda em casa.</div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>QR do kit (placeholder)</span></div>
+  </section>
+
+  <!-- 14 · Rota final -->
+  <section class="slide s-end" id="s14" data-n="14">
+    <div class="eyebrow">Onde continuar</div>
+    <div class="routes">
+      <div class="route">
+        <div class="k">Newsletter</div>
+        <div class="v">Notas de Produto</div>
+      </div>
+      <div class="route">
+        <div class="k">Site</div>
+        <div class="v">thiagoxikota.com</div>
+      </div>
+    </div>
+    <div class="bios">
+      <div class="bio"><b>Thiago Xikota</b>product designer, pesquisador na UFSC, autor de Design na Era da IA (Casa do Código, em produção).</div>
+      <div class="bio"><b>Bruno Bach</b>líder do Friends of Figma Florianópolis, voz de engenharia.</div>
+    </div>
+    <div class="thanks">Obrigado, <span class="em">IxDA Florianópolis</span> e <span class="em">Friends of Figma Florianópolis</span>.</div>
+  </section>
+
+</div>
+
+<script>
+  // QR placeholder: padrão determinístico com 3 finder patterns (não codifica dado real).
+  (function () {
+    var svg = document.getElementById('qr');
+    if (!svg) return;
+    var N = 29, NS = 'http://www.w3.org/2000/svg';
+    function rect(x, y, w, h) {
+      var r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', x); r.setAttribute('y', y);
+      r.setAttribute('width', w); r.setAttribute('height', h);
+      r.setAttribute('fill', '#0E0C0B');
+      svg.appendChild(r);
+    }
+    function finder(ox, oy) {
+      rect(ox, oy, 7, 7);
+      var w = document.createElementNS(NS, 'rect');
+      w.setAttribute('x', ox + 1); w.setAttribute('y', oy + 1);
+      w.setAttribute('width', 5); w.setAttribute('height', 5);
+      w.setAttribute('fill', '#fff'); svg.appendChild(w);
+      rect(ox + 2, oy + 2, 3, 3);
+    }
+    // pseudo-random determinístico
+    var seed = 1337;
+    function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+    function inFinder(x, y) {
+      return (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
+    }
+    for (var y = 0; y < N; y++) {
+      for (var x = 0; x < N; x++) {
+        if (inFinder(x, y)) continue;
+        if (rnd() > 0.5) rect(x, y, 1, 1);
+      }
+    }
+    finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
+  })();
+
+  // Modo screenshot: ?only=N isola um slide para captura headless.
+  (function () {
+    var m = /[?&]only=(\d+)/.exec(location.search);
+    if (!m) return;
+    document.body.classList.add('only');
+    var el = document.getElementById('s' + m[1]);
+    if (el) el.classList.add('show');
+  })();
+</script>

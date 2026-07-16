@@ -4,18 +4,35 @@ Kit do workshop apresentado no The Developer's Conference Florianópolis 2026 (2
 
 A tese em uma frase: a IA não lê a sua tela, ela lê o que você conseguiu especificar. O resto ela inventa.
 
+## Dois caminhos, escolha o seu
+
+### Na sala do TDC (sem instalar nada)
+
+Roda no Claude Desktop com a sua conta. Sem MCP, sem terminal, sem arquivo.
+
+1. Abra o Claude Desktop e entre com a sua conta (a gratuita serve).
+2. Cole o par de prompts de [`prompts/standalone.md`](prompts/standalone.md): um raso, um especificado.
+3. O artifact do Claude renderiza o componente na sua tela. A sala especifica junto e o output muda na sua frente.
+
+Sem conta? Abra `dist/index.html` no navegador e acompanhe o preview.
+
+### Em casa (o pipeline completo com MCP)
+
+A IA lê o arquivo de Figma de verdade via MCP: ela audita o design contra os próprios tokens e gera o componente a partir da estrutura, não de um print. Setup único de uns 10 minutos em [`kit/setup-10min.md`](kit/setup-10min.md).
+
 ## O que tem aqui
 
-O arco completo da demo, reproduzível na sua máquina: a IA lê um arquivo de Figma via MCP, audita o design contra os próprios tokens, gera um componente React de dois jeitos (com e sem especificação) e o resultado é validado como um PR de verdade.
-
 ```
-prompts/prompts.md      Os 10 prompts do workshop, prontos pra copiar
-kit/setup-10min.md      Setup completo do Figma Console MCP (o que não fizemos no palco)
-app/                    (raiz deste repo) Preview em Vite com os dois slots: raso vs especificado
-src/tokens.css          A fonte de verdade dos tokens do mini design system
-outputs-prebaked/       Outputs de referência gerados nos ensaios
-screenshots/            Comparações design vs código
-dist/                   Build estático: abre sem instalar nada
+prompts/prompts.md       Os 10 prompts do workshop, prontos pra copiar
+prompts/standalone.md    O par raso vs especificado pro exercício da sala (Claude Desktop, sem setup)
+kit/setup-10min.md       Setup completo do Figma Console MCP (o que não fizemos no palco)
+kit/cartao-de-bancada.md Cartão impresso, 1 por máquina na sala
+kit/feedback-form.md     As 3 perguntas de feedback
+app/                     (raiz deste repo) Preview em Vite com os dois slots: raso vs especificado
+src/tokens.css           A fonte de verdade dos tokens do mini design system
+outputs-prebaked/        Outputs de referência dos ensaios + o diff-callout do code toggle (05c)
+screenshots/             Comparações design vs código
+dist/                    Build estático: abre sem instalar nada
 ```
 
 ## Como rodar o preview
@@ -38,7 +55,9 @@ npm run dev
 
 ## Arquivo Figma da demo
 
-[Link do arquivo público duplicável: publicar antes do evento]
+Arquivo público, duplicável na Community: https://www.figma.com/community/file/1659374868260259462
+
+Duplique pra sua conta e rode os prompts contra ele. É o mesmo arquivo da demo do palco: um mini design system com tokens, três componentes e uma tela com seis inconsistências plantadas.
 
 ## Honestidade sobre o setup
 
