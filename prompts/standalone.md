@@ -1,12 +1,21 @@
-# Prompts standalone (nível A, na sala do TDC)
+# Prompts standalone (fallback e treino de casa)
 
-Material do bloco mão na máquina. Roda direto no Claude Desktop, sem MCP, sem terminal, sem arquivo aberto. Cola o prompt na conversa e o artifact do Claude renderiza o componente na sua tela.
+Este material NÃO é o exercício principal da sala. Na sala, o exercício principal é o pipeline real com MCP: Claude Desktop lê um frame de verdade do Figma (Claude Desktop > Figma Console MCP > plugin Desktop Bridge > Figma Desktop), gera o componente, você compara com o Figma e corrige uma falha. Isso está em `prompts/prompts.md` e no kit do QR.
 
-Pra este exercício você não precisa do Figma nem deste repositório. O caminho completo (a IA lendo o arquivo de Figma de verdade via MCP) está no QR do kit, pra rodar em casa.
+O que você tem aqui é o par raso vs especificado rodando SEM MCP, direto no Claude do navegador (claude.ai). Ele existe para dois casos:
+
+- **Fallback coletivo**: se a rede ou o login travar em massa na sala e o pipeline real não subir na hora, a gente roda este par junto, no telão, para ninguém ficar parado.
+- **Treino de casa**: para você praticar sozinho a competência de especificar, sem depender de instalar nada.
+
+## O que este exercício treina (e o que ele não faz)
+
+O pipeline real tem duas metades. A FONTE (o Figma lido via MCP) é o que tira o output da média, e isso a gente prova no palco com o MCP ligado. A outra metade é escrever a especificação boa. Aqui, sem Figma e sem MCP, você treina só essa segunda metade: escrever o contrato à mão e validar o que voltou.
+
+Seja honesto sobre o limite: isto não é "do Figma ao código". Não tem arquivo de Figma nenhum sendo lido. O contexto que no pipeline real vem do frame, aqui você digita na mão dentro do prompt. É um simulador da especificação, não o pipeline.
 
 ## Passo a passo
 
-1. Abra o Claude Desktop e entre com a sua conta (a gratuita serve).
+1. Abra o Claude no navegador (claude.ai) numa janela anônima e entre com a sua conta (a gratuita serve).
 2. Abra uma conversa nova.
 3. Cole o prompt raso abaixo. Rode. Guarde o que saiu.
 4. Cole o prompt especificado. Rode. Compare os dois.
@@ -21,7 +30,7 @@ O que observar: sem contrato, o modelo preenche as lacunas com o default dele. C
 
 ## Prompt especificado
 
-Este traz os tokens inline. No exercício da sala não tem arquivo pra ler, então o contexto vai dentro do próprio prompt.
+Este traz os tokens inline. Como não tem arquivo pra ler, o contexto vai dentro do próprio prompt.
 
 ```
 Gere um componente Card em React + TypeScript, function component.
@@ -47,11 +56,11 @@ Acessibilidade: elemento article, heading pela prop title, foco visível de 2px,
 Devolva só o componente Card, pronto pra renderizar como artifact.
 ```
 
-O que observar: a mesma IA, a mesma tarefa, a mesma conta. A diferença inteira entre o primeiro e o segundo output foi o que você especificou. Especificar não é burocracia. Virou o trabalho.
+O que observar: a mesma IA, a mesma tarefa, a mesma conta. A diferença inteira entre o primeiro e o segundo output foi o que você especificou. Especificar não é burocracia. É o trabalho.
 
 ## Como especificar junto (as rodadas)
 
-Depois do par acima, a sala adiciona uma restrição por vez ao prompt especificado e roda de novo. Sugestões pra ditar:
+Depois do par acima, adiciona uma restrição por vez ao prompt especificado e roda de novo. Sugestões pra ditar:
 
 - framework e linguagem (React, TypeScript)
 - tokens nomeados no lugar de valor cru
@@ -60,6 +69,10 @@ Depois do par acima, a sala adiciona uma restrição por vez ao prompt especific
 - semântica: article, heading, button de verdade
 
 Cada restrição que entra aproxima o output do que passa num code review de verdade.
+
+## Como isto se liga ao pipeline real
+
+No pipeline com MCP você não digita esses tokens na mão: o Claude lê o frame "Tela demo" do Figma e o contrato vem de lá, com os valores reais do arquivo. É por isso que a FONTE importa. Um arquivo bem construído entrega um contexto limpo; um arquivo bagunçado entrega contexto bagunçado. Quando você quiser fazer o caminho completo em casa, abra o QR do kit e siga `prompts/prompts.md`.
 
 ## Sem conta?
 

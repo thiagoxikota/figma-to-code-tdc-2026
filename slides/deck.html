@@ -11,6 +11,7 @@
     --vermilion: #C8352B;   /* vermelho de marca */
     --vermilion-bright: #FF4B3E; /* acento sobre fundo escuro */
     --rule: #4A413B;        /* separador visível */
+    --green: #1E5B3A;       /* rota rápida */
     --font: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, "Roboto Mono", monospace;
   }
@@ -64,22 +65,37 @@
   }
   .brandbar .dot { color: var(--vermilion-bright); padding: 0 14px; }
 
-  /* ---------- Slide 1: cold open ---------- */
-  .s-coldopen { align-items: center; justify-content: center; background: #060504; }
-  .s-coldopen h1 {
-    font-size: 190px;
+  .cmd {
+    font-family: var(--mono);
+    font-size: 34px;
+    font-weight: 700;
+    color: #fff;
+    background: #100C0A;
+    border: 3px solid var(--vermilion);
+    border-radius: 14px;
+    padding: 18px 28px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* ---------- Slide 1: Problema (cold open) ---------- */
+  .s-cold { align-items: center; justify-content: center; flex-direction: column; text-align: center; background: #060504; gap: 60px; }
+  .s-cold h1 {
+    font-size: 176px;
     font-weight: 900;
     line-height: 0.98;
     letter-spacing: -4px;
-    text-align: center;
     color: #FFFFFF;
+    max-width: 1600px;
   }
-  .s-coldopen h1 .p { color: var(--vermilion-bright); }
+  .s-cold h1 .p { color: var(--vermilion-bright); }
+  .s-cold .sub { font-size: 52px; font-weight: 700; color: var(--ink-2); max-width: 1400px; line-height: 1.28; }
 
-  /* ---------- Refrão (slides 2 e 12, idênticos) ---------- */
+  /* ---------- Refrão (slides 2 e 14) ---------- */
   .s-refrao { align-items: center; justify-content: center; text-align: center; flex-direction: column; }
+  .s-refrao .eyebrow { margin-bottom: 44px; }
   .s-refrao .main {
-    font-size: 138px;
+    font-size: 132px;
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -3px;
@@ -90,194 +106,156 @@
     height: 8px;
     background: var(--vermilion);
     border-radius: 4px;
-    margin: 64px 0;
+    margin: 60px 0;
   }
   .s-refrao .sub {
-    font-size: 58px;
+    font-size: 56px;
     font-weight: 700;
     color: var(--ink-2);
-    max-width: 1300px;
+    max-width: 1400px;
+    line-height: 1.28;
   }
 
-  /* ---------- Slide 3: quem está no palco ---------- */
-  .s-stage { flex-direction: column; justify-content: center; gap: 80px; }
-  .s-stage .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; }
-  .person {
-    background: var(--bg-panel);
-    border: 3px solid var(--rule);
-    border-radius: 24px;
-    padding: 64px;
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+  /* ---------- Slide 3: Arquitetura ---------- */
+  .s-arch { flex-direction: column; justify-content: center; gap: 80px; }
+  .archflow { display: flex; align-items: flex-start; justify-content: center; }
+  .archnode { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 296px; }
+  .archbox {
+    width: 100%; min-height: 156px;
+    background: var(--bg-panel); border: 4px solid var(--rule); border-radius: 20px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 40px; font-weight: 900; color: #fff; padding: 24px; line-height: 1.08;
   }
-  .person .avatar {
-    width: 168px; height: 168px; border-radius: 50%;
-    background: var(--vermilion);
-    color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 72px; font-weight: 900;
-  }
-  .person .name { font-size: 64px; font-weight: 900; color: #fff; }
-  .person .line { font-size: 36px; font-weight: 600; line-height: 1.42; color: var(--ink-2); }
+  .archbox.accent { border-color: var(--vermilion); }
+  .archcap { font-size: 26px; font-weight: 600; color: var(--ink-2); text-align: center; }
+  .archconn { width: 44px; height: 12px; background: var(--vermilion); border-radius: 6px; margin-top: 72px; flex: 0 0 auto; }
+  .s-arch .statement { font-size: 52px; font-weight: 800; color: #fff; line-height: 1.18; max-width: 1600px; }
 
-  /* ---------- Slide 4: structural convergence ---------- */
-  .s-conv { align-items: center; gap: 100px; }
-  .s-conv .visual { display: flex; align-items: center; gap: 72px; flex: 0 0 auto; }
-  .grid-same { display: grid; grid-template-columns: repeat(3, 150px); gap: 26px; }
-  .mini {
-    width: 150px; height: 180px;
-    background: var(--bg-panel);
-    border: 2px solid var(--rule);
-    border-radius: 12px;
-    padding: 18px;
-    display: flex; flex-direction: column; gap: 12px;
-  }
-  .mini .bar { background: #6C635B; border-radius: 4px; }
-  .mini .bar.a { height: 46px; }
-  .mini .bar.b { height: 12px; width: 80%; }
-  .mini .bar.c { height: 12px; width: 60%; }
-  .distinct {
-    width: 200px; height: 244px;
-    background: var(--vermilion);
-    border: 4px solid var(--vermilion-bright);
-    border-radius: 16px;
-    padding: 24px;
-    display: flex; flex-direction: column; gap: 16px;
-    box-shadow: 0 0 0 12px rgba(200,53,43,0.18);
-  }
-  .distinct .bar { background: #fff; border-radius: 5px; }
-  .distinct .bar.a { height: 60px; }
-  .distinct .bar.b { height: 16px; width: 85%; }
-  .distinct .bar.c { height: 16px; width: 65%; }
-  .s-conv .copy { display: flex; flex-direction: column; gap: 40px; max-width: 760px; }
-  .s-conv .statement { font-size: 60px; font-weight: 800; line-height: 1.12; color: #fff; }
-  .s-conv .highlight {
-    font-size: 40px; font-weight: 800; color: #fff;
-    background: var(--vermilion); align-self: flex-start;
-    padding: 18px 30px; border-radius: 14px;
-  }
-
-  /* ---------- Slide 5: specification literacy ---------- */
-  .s-spec { flex-direction: column; justify-content: center; gap: 90px; }
-  .s-spec .flow { display: flex; align-items: center; gap: 60px; }
-  .chip-old {
-    font-size: 46px; font-weight: 800; color: var(--ink-2);
-    background: var(--bg-panel); border: 3px solid var(--rule);
-    border-radius: 18px; padding: 40px 52px; white-space: nowrap;
-  }
-  .arrow { flex: 1; display: flex; align-items: center; }
-  .arrow .line { height: 24px; background: var(--vermilion); flex: 1; border-radius: 12px 0 0 12px; }
-  .arrow .head {
-    width: 0; height: 0;
-    border-top: 46px solid transparent;
-    border-bottom: 46px solid transparent;
-    border-left: 64px solid var(--vermilion);
-  }
-  .chip-new {
-    font-size: 58px; font-weight: 900; color: #fff;
-    background: var(--vermilion); border-radius: 18px; padding: 44px 56px;
-    line-height: 1.15; text-align: center;
-  }
-  .s-spec .statement { font-size: 56px; font-weight: 800; color: #fff; line-height: 1.15; max-width: 1500px; }
-
-  /* ---------- Slide 6: anatomia do fluxo ---------- */
-  .s-anat { flex-direction: column; justify-content: center; gap: 90px; }
-  .pipe { display: flex; align-items: center; gap: 0; }
-  .box {
-    font-size: 56px; font-weight: 900; color: #fff;
-    background: var(--bg-panel); border: 4px solid var(--rule);
-    border-radius: 20px; padding: 56px 0; width: 360px; text-align: center;
-  }
-  .box.accent { border-color: var(--vermilion); }
-  .conn { width: 90px; height: 12px; background: var(--vermilion); flex: 0 0 auto; }
-  .gap-wrap { display: flex; flex-direction: column; align-items: center; gap: 22px; }
-  .gap-bracket { width: 100%; border-top: 6px solid var(--vermilion-bright); height: 40px; border-left: 6px solid var(--vermilion-bright); border-right: 6px solid var(--vermilion-bright); border-radius: 0 0 20px 20px; }
-  .s-anat .statement { font-size: 52px; font-weight: 800; color: #fff; line-height: 1.18; max-width: 1560px; }
-
-  /* ---------- Slide 7: dois caminhos ---------- */
-  .s-paths { flex-direction: column; justify-content: center; gap: 56px; }
-  .s-paths .note { font-size: 40px; font-weight: 700; color: var(--ink-2); max-width: 1500px; }
-  .s-paths .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
-  .path { background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 24px; padding: 56px; display: flex; flex-direction: column; gap: 34px; }
-  .path .head { font-size: 50px; font-weight: 900; color: #fff; }
-  .path .head .tag { font-size: 32px; font-weight: 800; margin-left: 16px; padding: 8px 20px; border-radius: 999px; }
-  .path .tag.free { background: #1E5B3A; color: #fff; }
-  .path .tag.paid { background: var(--vermilion); color: #fff; }
-  .path ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-  .path li { font-size: 38px; font-weight: 600; color: var(--ink-2); display: flex; align-items: center; gap: 20px; }
-  .path li::before { content: ""; width: 16px; height: 16px; background: var(--vermilion-bright); border-radius: 50%; flex: 0 0 auto; }
-
-  /* ---------- Slide 8: ao vivo ---------- */
+  /* ---------- Slide 4: Demo (divisor) ---------- */
   .s-live { align-items: center; justify-content: center; background: #060504; }
   .s-live h1 { font-size: 260px; font-weight: 900; letter-spacing: -6px; color: #fff; }
   .s-live h1 .p { color: var(--vermilion-bright); }
 
-  /* ---------- Slide 9: ache a inconsistência ---------- */
-  .s-find { align-items: center; gap: 110px; }
-  .s-find .screen { flex: 0 0 auto; }
-  .democard {
-    width: 560px; background: #fff; border-radius: 20px; overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-  }
-  .democard .img { height: 230px; background: #C9BFB4; }
-  .democard .body { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
-  .democard .t { font-size: 40px; font-weight: 800; color: #1F1C1A; }
-  .democard .d { font-size: 28px; font-weight: 500; color: #4A443E; line-height: 1.4; }
-  .democard .btn { align-self: flex-start; background: #C8352B; color: #fff; font-size: 30px; font-weight: 700; padding: 18px 40px; border-radius: 8px; margin-top: 8px; }
-  .s-find .copy { display: flex; flex-direction: column; gap: 48px; }
-  .s-find .timer { font-size: 300px; font-weight: 900; line-height: 0.9; color: var(--vermilion-bright); }
-  .s-find .timer span { font-size: 120px; }
-  .s-find .q { font-size: 58px; font-weight: 800; color: #fff; max-width: 720px; line-height: 1.12; }
-
-  /* ---------- Slide 10: o que a IA não fez ---------- */
-  .s-didnt { flex-direction: column; justify-content: center; gap: 56px; }
-  .s-didnt .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
-  .didcol { border-radius: 24px; padding: 56px; display: flex; flex-direction: column; gap: 30px; }
-  .didcol.did { background: var(--bg-panel); border: 3px solid var(--rule); }
-  .didcol.didnt { background: var(--vermilion); }
-  .didcol h3 { font-size: 44px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-  .didcol.did h3 { color: var(--ink-2); }
-  .didcol.didnt h3 { color: #fff; }
-  .didcol ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
-  .didcol li { font-size: 40px; font-weight: 700; }
-  .didcol.did li { color: var(--ink-2); }
-  .didcol.didnt li { color: #fff; }
-  .s-didnt .statement { font-size: 48px; font-weight: 800; color: #fff; line-height: 1.2; }
-
-  /* ---------- Slide 11: prompt coletivo ---------- */
-  .s-prompt { flex-direction: column; justify-content: center; gap: 52px; }
-  .s-prompt .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-  .pcard { border-radius: 22px; overflow: hidden; border: 3px solid var(--rule); }
-  .pcard .cap { font-size: 34px; font-weight: 800; padding: 26px 40px; letter-spacing: 1px; }
-  .pcard.generic .cap { background: var(--bg-panel-2); color: var(--ink-2); }
-  .pcard.spec .cap { background: var(--vermilion); color: #fff; }
-  .pcard .code { background: #100C0A; padding: 48px 40px; min-height: 320px; font-family: var(--mono); font-size: 38px; color: #fff; line-height: 1.5; }
-  .pcard.spec .code { display: flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 600; }
-  .cursor { display: inline-block; width: 20px; height: 46px; background: var(--vermilion-bright); }
-  .s-prompt .statement { font-size: 48px; font-weight: 800; color: #fff; line-height: 1.18; max-width: 1600px; }
-
-  /* ---------- Slide 13: kit e QR ---------- */
-  .s-kit { align-items: center; gap: 120px; }
+  /* ---------- QR compartilhado ---------- */
   .qrbox { flex: 0 0 auto; background: #fff; padding: 40px; border-radius: 24px; }
-  .qrbox svg { display: block; width: 460px; height: 460px; }
-  .s-kit .copy { display: flex; flex-direction: column; gap: 48px; max-width: 900px; }
-  .s-kit .lead { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.1; }
-  .prereqs { display: flex; flex-wrap: wrap; gap: 20px; }
-  .prereq { font-size: 34px; font-weight: 800; color: #fff; background: var(--bg-panel); border: 3px solid var(--vermilion); border-radius: 999px; padding: 20px 34px; }
-  .s-kit .sub { font-size: 38px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
+  .qrbox svg { display: block; }
+  .qrbox.lg svg { width: 460px; height: 460px; }
+  .qrbox.sm { padding: 22px; border-radius: 16px; }
+  .qrbox.sm svg { width: 220px; height: 220px; }
 
-  /* ---------- Slide 14: rota final ---------- */
-  .s-end { flex-direction: column; justify-content: center; gap: 64px; }
-  .s-end .routes { display: flex; gap: 48px; }
-  .route { flex: 1; background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 24px; padding: 56px; }
-  .route .k { font-size: 32px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); }
-  .route .v { font-size: 68px; font-weight: 900; color: #fff; margin-top: 16px; }
-  .s-end .bios { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-  .s-end .bio { font-size: 34px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
-  .s-end .bio b { color: #fff; font-weight: 900; display: block; font-size: 40px; margin-bottom: 8px; }
-  .s-end .thanks { font-size: 44px; font-weight: 800; color: #fff; }
-  .s-end .thanks .em { color: var(--vermilion-bright); }
+  /* ---------- Slide 5: QR + URL ---------- */
+  .s-qr { align-items: center; gap: 120px; }
+  .s-qr .copy { display: flex; flex-direction: column; gap: 40px; max-width: 940px; }
+  .s-qr .lead { font-size: 76px; font-weight: 900; color: #fff; line-height: 1.06; }
+  .s-qr .url { font-size: 80px; font-weight: 900; color: var(--vermilion-bright); letter-spacing: -1px; }
+  .s-qr .sub { font-size: 40px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
+
+  /* ---------- Slide 6: Escolha de dispositivo ---------- */
+  .s-device { flex-direction: column; justify-content: center; gap: 64px; }
+  .cols4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .dcard { background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 22px; padding: 44px 36px; display: flex; flex-direction: column; gap: 22px; }
+  .dcard.evt { border-color: var(--vermilion); }
+  .dcard .os { font-size: 27px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--vermilion-bright); }
+  .dcard .h { font-size: 44px; font-weight: 900; color: #fff; line-height: 1.05; }
+  .dcard .p { font-size: 30px; font-weight: 600; color: var(--ink-2); line-height: 1.34; }
+  .dcard .tag { align-self: flex-start; font-size: 26px; font-weight: 800; padding: 10px 22px; border-radius: 999px; }
+  .dcard .tag.fast { background: var(--green); color: #fff; }
+  .dcard .tag.none { background: var(--vermilion); color: #fff; }
+
+  /* ---------- Slide 7: Passo atual do setup ---------- */
+  .s-setup { flex-direction: column; justify-content: center; gap: 64px; }
+  .stepper { display: flex; gap: 20px; }
+  .step { flex: 1; background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 16px; padding: 24px 18px; text-align: center; }
+  .step .num { display: block; font-size: 24px; font-weight: 900; letter-spacing: 2px; color: var(--vermilion-bright); margin-bottom: 10px; }
+  .step .lbl { font-size: 32px; font-weight: 800; color: var(--ink-2); }
+  .step.active { background: var(--vermilion); border-color: var(--vermilion-bright); }
+  .step.active .num, .step.active .lbl { color: #fff; }
+  .setup-main { display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; align-items: center; }
+  .setup-now .k { font-size: 32px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--vermilion-bright); }
+  .setup-now .title { font-size: 96px; font-weight: 900; color: #fff; line-height: 1.02; margin-top: 22px; }
+  .setup-now .do { font-size: 42px; font-weight: 600; color: var(--ink-2); line-height: 1.36; margin-top: 30px; }
+  .setup-side { display: flex; flex-direction: column; gap: 34px; }
+  .setup-side .timer .lbl { font-size: 30px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); }
+  .setup-side .timer .big { font-size: 150px; font-weight: 900; color: var(--vermilion-bright); line-height: 0.86; }
+  .setup-side .urlrow { display: flex; align-items: center; gap: 34px; }
+  .setup-side .url { font-size: 50px; font-weight: 900; color: #fff; }
+  .setup-side .help { font-size: 34px; font-weight: 700; color: var(--ink-2); line-height: 1.34; border-top: 3px solid var(--rule); padding-top: 26px; }
+
+  /* ---------- Slide 8: Checkpoints ---------- */
+  .s-check { flex-direction: column; justify-content: center; gap: 48px; }
+  .ctable { width: 100%; border-collapse: collapse; }
+  .ctable th { text-align: left; font-size: 30px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); padding: 0 32px 24px; }
+  .ctable td { padding: 24px 32px; border-top: 3px solid var(--rule); }
+  .ctable td.min { font-size: 60px; font-weight: 900; color: #fff; width: 220px; }
+  .ctable td.txt { font-size: 38px; font-weight: 600; color: var(--ink-2); }
+  .ctable tr.final td { background: rgba(200,53,43,0.16); }
+  .ctable tr.final td.min { color: var(--vermilion-bright); }
+  .ctable tr.final td.txt { color: #fff; font-weight: 800; }
+  .s-check .note { font-size: 36px; font-weight: 700; color: #fff; }
+  .s-check .note b { color: var(--vermilion-bright); }
+
+  /* ---------- Slides 9 e 10: prompts ---------- */
+  .s-prompt { flex-direction: column; justify-content: center; gap: 52px; }
+  .promptcard { background: #100C0A; border: 3px solid var(--rule); border-radius: 22px; padding: 56px 60px; }
+  .promptcard .code { font-family: var(--mono); color: #fff; line-height: 1.5; }
+  .promptcard.big .code { font-size: 50px; }
+  .promptcard.dense .code { font-size: 34px; line-height: 1.46; }
+  .promptcard .hl { color: var(--vermilion-bright); }
+  .s-prompt .meta { display: flex; flex-direction: column; gap: 16px; }
+  .s-prompt .where { font-size: 36px; font-weight: 800; color: #fff; }
+  .s-prompt .why { font-size: 36px; font-weight: 600; color: var(--ink-2); line-height: 1.34; max-width: 1600px; }
+
+  /* ---------- Slide 11: Comparação ---------- */
+  .s-comp { align-items: center; gap: 110px; }
+  .signup { width: 560px; background: #fff; border-radius: 22px; padding: 48px 44px; display: flex; flex-direction: column; gap: 26px; box-shadow: 0 30px 70px rgba(0,0,0,0.5); }
+  .signup .st { font-size: 46px; font-weight: 800; color: #1F1C1A; }
+  .signup .cap { font-size: 26px; font-weight: 500; color: #a29b93; line-height: 1.35; }
+  .signup .field { font-size: 26px; font-weight: 600; color: #4A443E; }
+  .signup .inp { background: #EFEAE3; border-radius: 8px; height: 66px; display: flex; align-items: center; padding: 0 22px; font-size: 26px; color: #8A8178; margin-top: 8px; }
+  .signup .inp.outline { background: #fff; border: 2px solid #C9BFB4; }
+  .signup .opt { display: flex; align-items: center; gap: 16px; font-size: 24px; color: #4A443E; }
+  .signup .opt .bx { width: 30px; height: 30px; border: 2px solid #4A443E; border-radius: 6px; flex: 0 0 auto; }
+  .signup .btn { background: #C8352B; color: #fff; font-size: 30px; font-weight: 700; padding: 20px; border-radius: 8px; text-align: center; margin-top: 6px; }
+  .s-comp .copy { display: flex; flex-direction: column; gap: 34px; max-width: 900px; }
+  .s-comp .statement { font-size: 58px; font-weight: 900; color: #fff; line-height: 1.1; }
+  .s-comp ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .s-comp li { font-size: 36px; font-weight: 600; color: var(--ink-2); display: flex; align-items: center; gap: 20px; }
+  .s-comp li::before { content: ""; width: 16px; height: 16px; background: var(--vermilion-bright); border-radius: 50%; flex: 0 0 auto; }
+  .s-comp .tip { font-size: 32px; font-weight: 700; color: var(--ink-2); }
+
+  /* ---------- Slide 12: Validação ---------- */
+  .s-valid { flex-direction: column; justify-content: center; gap: 56px; }
+  .s-valid .statement { font-size: 64px; font-weight: 900; color: #fff; line-height: 1.1; max-width: 1600px; }
+  .s-valid .cmds { display: flex; flex-wrap: wrap; gap: 28px; }
+  .s-valid .rows { display: flex; flex-direction: column; gap: 26px; }
+  .s-valid .row { font-size: 38px; font-weight: 600; color: var(--ink-2); line-height: 1.34; }
+  .s-valid .row b { color: #fff; font-weight: 900; }
+  .s-valid .honest { font-size: 40px; font-weight: 800; color: #fff; background: var(--bg-panel); border-left: 10px solid var(--vermilion); border-radius: 0 16px 16px 0; padding: 32px 40px; line-height: 1.3; max-width: 1600px; }
+
+  /* ---------- Slide 13: Limites ---------- */
+  .s-limit { flex-direction: column; justify-content: center; gap: 60px; }
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  .lcard { background: var(--bg-panel); border: 3px solid var(--rule); border-radius: 22px; padding: 52px 44px; display: flex; flex-direction: column; gap: 24px; }
+  .lcard:last-child { border-color: var(--vermilion); }
+  .lcard .n { font-size: 40px; font-weight: 900; color: var(--vermilion-bright); }
+  .lcard .t { font-size: 40px; font-weight: 700; color: #fff; line-height: 1.28; }
+
+  /* ---------- Slide 15: Kit e limpeza ---------- */
+  .s-kit { flex-direction: column; justify-content: center; gap: 60px; }
+  .s-kit .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; }
+  .s-kit .lead { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.06; margin-bottom: 32px; }
+  .s-kit ol { list-style: none; display: flex; flex-direction: column; gap: 22px; counter-reset: step; }
+  .s-kit ol li { font-size: 34px; font-weight: 600; color: var(--ink-2); line-height: 1.34; display: flex; gap: 22px; align-items: baseline; }
+  .s-kit ol li::before { counter-increment: step; content: counter(step); flex: 0 0 auto; width: 48px; height: 48px; background: var(--vermilion); color: #fff; font-size: 28px; font-weight: 900; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+  .s-kit code { font-family: var(--mono); color: #fff; font-weight: 700; }
+  .s-kit .right { display: flex; flex-direction: column; gap: 40px; }
+  .s-kit .kit { font-size: 36px; font-weight: 700; color: var(--ink-2); }
+  .s-kit .kit .url { display: block; font-size: 52px; font-weight: 900; color: var(--vermilion-bright); margin-top: 10px; }
+  .s-kit .bios { display: flex; flex-direction: column; gap: 26px; border-top: 3px solid var(--rule); padding-top: 34px; }
+  .s-kit .bio { font-size: 30px; font-weight: 600; color: var(--ink-2); line-height: 1.34; }
+  .s-kit .bio b { display: block; color: #fff; font-weight: 900; font-size: 36px; margin-bottom: 6px; }
+  .s-kit .thanks { font-size: 42px; font-weight: 800; color: #fff; }
+  .s-kit .thanks .em { color: var(--vermilion-bright); }
 
   /* ---------- print: uma página por slide, 1920x1080 ---------- */
   @media print {
@@ -295,267 +273,311 @@
 
 <div class="deck">
 
-  <!-- 1 · Cold open -->
-  <section class="slide s-coldopen" id="s1" data-n="1">
-    <h1>A execução ficou barata<span class="p">.</span></h1>
+  <!-- 1 · Problema -->
+  <section class="slide s-cold" id="s1" data-n="1">
+    <h1>Todo handoff perde alguma coisa<span class="p">.</span></h1>
+    <div class="sub">Cor que vira outra, espaçamento que some, token que ninguém abriu no caminho do Figma até o código.</div>
   </section>
 
-  <!-- 2 · Refrão (1a vez) -->
+  <!-- 2 · Promessa -->
   <section class="slide s-refrao" id="s2" data-n="2">
-    <div class="main">Ferramentas mudam.<br>Princípios permanecem.</div>
+    <div class="eyebrow">A promessa</div>
+    <div class="main">Você sai daqui com o<br>pipeline rodando na sua máquina.</div>
     <div class="divider"></div>
-    <div class="sub">Saber especificar é a competência da década.</div>
+    <div class="sub">Instalar o MCP, ler um frame real do Figma, gerar um componente a partir dele e corrigir uma falha conferindo o design. Ao vivo, em dupla.</div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
   </section>
 
-  <!-- 3 · Quem está no palco -->
-  <section class="slide s-stage" id="s3" data-n="3">
-    <div class="eyebrow">Quem está no palco</div>
-    <div class="cols">
-      <div class="person">
-        <div class="avatar">TX</div>
-        <div class="name">Thiago Xikota</div>
-        <div class="line">Product designer com background em Ciência da Computação, pesquisador na UFSC, autor de Design na Era da IA (Casa do Código, em produção).</div>
+  <!-- 3 · Arquitetura -->
+  <section class="slide s-arch" id="s3" data-n="3">
+    <div class="eyebrow">Como o fluxo funciona</div>
+    <div class="archflow">
+      <div class="archnode">
+        <div class="archbox">Figma<br>Desktop</div>
+        <div class="archcap">arquivo aberto</div>
       </div>
-      <div class="person">
-        <div class="avatar">BB</div>
-        <div class="name">Bruno Bach</div>
-        <div class="line">Líder do Friends of Figma Florianópolis, voz de engenharia.</div>
+      <div class="archconn"></div>
+      <div class="archnode">
+        <div class="archbox accent">Desktop<br>Bridge</div>
+        <div class="archcap">plugin local</div>
+      </div>
+      <div class="archconn"></div>
+      <div class="archnode">
+        <div class="archbox accent">MCP</div>
+        <div class="archcap">figma-console-mcp</div>
+      </div>
+      <div class="archconn"></div>
+      <div class="archnode">
+        <div class="archbox accent">Claude<br>Desktop</div>
+        <div class="archcap">o cliente na sala</div>
+      </div>
+      <div class="archconn"></div>
+      <div class="archnode">
+        <div class="archbox">código</div>
+        <div class="archcap">React + TypeScript</div>
       </div>
     </div>
+    <div class="statement">Quatro peças e um resultado. A fonte do design conversa direto com quem gera o código.</div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
   </section>
 
-  <!-- 4 · Structural Convergence -->
-  <section class="slide s-conv" id="s4" data-n="4">
-    <div class="visual">
-      <div class="grid-same">
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-        <div class="mini"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-      </div>
-      <div class="distinct"><div class="bar a"></div><div class="bar b"></div><div class="bar c"></div></div>
-    </div>
+  <!-- 4 · Demo (divisor) -->
+  <section class="slide s-live" id="s4" data-n="4">
+    <h1>Demo<span class="p">.</span></h1>
+  </section>
+
+  <!-- 5 · QR + URL curta -->
+  <section class="slide s-qr" id="s5" data-n="5">
+    <div class="qrbox lg"><svg class="qrsvg" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
     <div class="copy">
-      <div class="eyebrow">Structural Convergence</div>
-      <div class="statement">Quando todo mundo aceita o default, todo mundo entrega a mesma coisa.</div>
-      <div class="highlight">Efeito grande. Magnitude em verificação.</div>
+      <div class="eyebrow">Comece por aqui</div>
+      <div class="lead">Tudo do workshop mora nesse link.</div>
+      <div class="url">thiagoxikota.com/tdc</div>
+      <div class="sub">O assistente detecta seu aparelho, te dá a rota certa e guarda o token só no seu navegador.</div>
     </div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>AIMEDIA 2026, IARIA</span></div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Kit do workshop</span></div>
   </section>
 
-  <!-- 5 · Specification Literacy -->
-  <section class="slide s-spec" id="s5" data-n="5">
-    <div class="eyebrow">Specification Literacy</div>
-    <div class="flow">
-      <div class="chip-old">execução manual</div>
-      <div class="arrow"><div class="line"></div><div class="head"></div></div>
-      <div class="chip-new">especificar, validar,<br>integrar, decidir</div>
-    </div>
-    <div class="statement">O trabalho migrou da mão para a cabeça que especifica.</div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
-  </section>
-
-  <!-- 6 · Anatomia do fluxo -->
-  <section class="slide s-anat" id="s6" data-n="6">
-    <div class="eyebrow">Anatomia do fluxo</div>
-    <div class="pipe">
-      <div class="box">Figma</div>
-      <div class="conn"></div>
-      <div class="box accent">MCP</div>
-      <div class="conn"></div>
-      <div class="box accent">IA</div>
-      <div class="conn"></div>
-      <div class="box">código</div>
-    </div>
-    <div class="statement">Quatro peças. E o buraco que sempre existiu entre a primeira e a última.</div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
-  </section>
-
-  <!-- 7 · Dois caminhos de MCP -->
-  <section class="slide s-paths" id="s7" data-n="7">
-    <div class="eyebrow">Dois caminhos de MCP</div>
-    <div class="note">No palco vamos de gratuito. Os dois existem, e cada um serve a um contexto.</div>
-    <div class="cols">
-      <div class="path">
-        <div class="head">Community<span class="tag free">gratuito</span></div>
-        <ul>
-          <li>Figma Console MCP</li>
-          <li>npx</li>
-          <li>Token pessoal</li>
-          <li>Node 18+</li>
-          <li>Figma Desktop</li>
-        </ul>
+  <!-- 6 · Escolha de dispositivo -->
+  <section class="slide s-device" id="s6" data-n="6">
+    <div class="eyebrow">Escolha sua rota</div>
+    <div class="cols4">
+      <div class="dcard evt">
+        <div class="os">Máquina do evento</div>
+        <div class="h">Tudo pronto</div>
+        <div class="p">Figma, Claude, Node e projeto já instalados. Só falta o seu token.</div>
+        <span class="tag fast">mais rápido</span>
       </div>
-      <div class="path">
-        <div class="head">Oficial<span class="tag paid">pago</span></div>
-        <ul>
-          <li>Dev Mode MCP server</li>
-          <li>Plano com Dev seat</li>
-          <li>Roda local</li>
-        </ul>
+      <div class="dcard">
+        <div class="os">Windows próprio</div>
+        <div class="h">Fluxo completo</div>
+        <div class="p">Precisa de permissão para instalar e de Node 18 ou mais novo.</div>
+      </div>
+      <div class="dcard">
+        <div class="os">macOS próprio</div>
+        <div class="h">Mesmo fluxo</div>
+        <div class="p">Os mesmos passos, com os caminhos de arquivo do Mac.</div>
+      </div>
+      <div class="dcard">
+        <div class="os">Linux</div>
+        <div class="h">Não roda aqui</div>
+        <div class="p">O fluxo não sobe no Linux. Vá para uma dupla ou máquina reserva.</div>
+        <span class="tag none">sem setup</span>
       </div>
     </div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Setup guiado</span></div>
   </section>
 
-  <!-- 8 · Divisor de demo -->
-  <section class="slide s-live" id="s8" data-n="8">
-    <h1>Ao vivo<span class="p">.</span></h1>
-  </section>
-
-  <!-- 9 · Ache a inconsistência -->
-  <section class="slide s-find" id="s9" data-n="9">
-    <div class="screen">
-      <div class="democard">
-        <div class="img"></div>
-        <div class="body">
-          <div class="t">Plano Anual</div>
-          <div class="d">Acesso completo à plataforma por doze meses, com suporte prioritário.</div>
-          <div class="btn">Assinar agora</div>
+  <!-- 7 · Passo atual do setup (template) -->
+  <section class="slide s-setup" id="s7" data-n="7">
+    <div class="stepper">
+      <div class="step"><span class="num">1</span><span class="lbl">Acesso</span></div>
+      <div class="step"><span class="num">2</span><span class="lbl">Token</span></div>
+      <div class="step active"><span class="num">3</span><span class="lbl">Config</span></div>
+      <div class="step"><span class="num">4</span><span class="lbl">Bridge</span></div>
+      <div class="step"><span class="num">5</span><span class="lbl">Teste</span></div>
+    </div>
+    <div class="setup-main">
+      <div class="setup-now">
+        <div class="k">Passo 3 de 5</div>
+        <div class="title">Configurar o<br>Claude Desktop</div>
+        <div class="do">Cole o bloco de config, salve o arquivo, feche o Claude por completo e reabra.</div>
+      </div>
+      <div class="setup-side">
+        <div class="timer">
+          <div class="lbl">Tempo restante</div>
+          <div class="big">18 min</div>
         </div>
+        <div class="urlrow">
+          <div class="qrbox sm"><svg class="qrsvg" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
+          <div class="url">thiagoxikota.com/tdc</div>
+        </div>
+        <div class="help">Travou? Mão pra cima. O apoio vai até a sua dupla.</div>
       </div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Setup guiado</span></div>
+  </section>
+
+  <!-- 8 · Checkpoints do setup -->
+  <section class="slide s-check" id="s8" data-n="8">
+    <div class="eyebrow">Checkpoints do setup</div>
+    <table class="ctable">
+      <thead>
+        <tr><th>Minuto</th><th>Onde a sala deve estar</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="min">5</td><td class="txt">Todos escolheram a rota e logaram no Figma e no Claude.</td></tr>
+        <tr><td class="min">10</td><td class="txt">Maioria logada e com o token gerado.</td></tr>
+        <tr><td class="min">15</td><td class="txt">Maioria com o Claude Desktop configurado.</td></tr>
+        <tr><td class="min">19</td><td class="txt">Maioria com o Bridge importado e rodando.</td></tr>
+        <tr><td class="min">22</td><td class="txt">Maioria testou a conexão lendo o frame.</td></tr>
+        <tr class="final"><td class="min">25</td><td class="txt">A prática começa. Quem travou migra para reserva ou dupla.</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Regra dura: aos <b>25 minutos</b> a prática começa, mesmo com gente sem terminar.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Setup guiado</span></div>
+  </section>
+
+  <!-- 9 · Prompt de leitura -->
+  <section class="slide s-prompt" id="s9" data-n="9">
+    <div class="eyebrow">Prompt 1 · ler o frame</div>
+    <div class="promptcard big">
+      <div class="code">Leia o frame "Tela demo" deste arquivo Figma. Devolva a árvore de camadas, os componentes usados e as variáveis (tokens) aplicadas em cada elemento. Não descreva pixels: descreva estrutura e semântica.</div>
+    </div>
+    <div class="meta">
+      <div class="where">No Claude Desktop, conversa nova, com o Bridge aberto no arquivo.</div>
+      <div class="why">Ele pede estrutura e tokens, não pixels. A resposta vira auditável.</div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
+  </section>
+
+  <!-- 10 · Prompt de geração -->
+  <section class="slide s-prompt" id="s10" data-n="10">
+    <div class="eyebrow">Prompt 2 · gerar o componente</div>
+    <div class="promptcard dense">
+      <div class="code">Gere um componente Card em React + TypeScript, function component. Props tipadas: title: string, description: string, imageUrl?: string, onClick?: () =&gt; void. Cubra os estados default, hover, focus-visible e disabled. Acessibilidade: elemento article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs externas.<br><span class="hl">Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá. Não invente valores; puxe do Figma.</span> Devolva só o arquivo Card.tsx.</div>
+    </div>
+    <div class="meta">
+      <div class="why">Mesma spec de sempre, com uma linha a mais: puxe a verdade do Figma. É isso que tira o código da média.</div>
+    </div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
+  </section>
+
+  <!-- 11 · Comparação -->
+  <section class="slide s-comp" id="s11" data-n="11">
+    <div class="signup">
+      <div class="st">Criar sua conta</div>
+      <div class="cap">Preencha os campos abaixo para começar em poucos segundos.</div>
+      <div>
+        <div class="field">E-mail</div>
+        <div class="inp">voce@exemplo.com</div>
+      </div>
+      <div>
+        <div class="field">Nome</div>
+        <div class="inp outline">Seu nome</div>
+      </div>
+      <div class="opt"><span class="bx"></span>Quero receber novidades por e-mail</div>
+      <div class="btn">Continuar</div>
     </div>
     <div class="copy">
-      <div class="eyebrow">Ache a inconsistência</div>
-      <div class="timer">60<span>s</span></div>
-      <div class="q">Quantos erros vocês acham antes da IA?</div>
+      <div class="eyebrow">Comparação</div>
+      <div class="statement">Ponha o preview ao lado do frame.</div>
+      <div class="cmd">npm run workshop:start</div>
+      <ul>
+        <li>Contraste fraco no texto de apoio</li>
+        <li>Um input fora do padrão dos outros</li>
+        <li>Cor crua no botão, sem token</li>
+      </ul>
+      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. O prompt 9 faz a IA comparar como o designer do sistema.</div>
     </div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
 
-  <!-- 10 · O que a IA não fez -->
-  <section class="slide s-didnt" id="s10" data-n="10">
-    <div class="eyebrow">O que a IA não fez</div>
-    <div class="cols">
-      <div class="didcol did">
-        <h3>Fez</h3>
-        <ul>
-          <li>ler</li>
-          <li>exportar</li>
-          <li>gerar</li>
-          <li>auditar</li>
-          <li>comparar</li>
-        </ul>
-      </div>
-      <div class="didcol didnt">
-        <h3>Não fez</h3>
-        <ul>
-          <li>escolher o problema</li>
-          <li>definir a regra</li>
-          <li>aceitar o resultado</li>
-          <li>decidir o que entra no código</li>
-        </ul>
-      </div>
+  <!-- 12 · Validação -->
+  <section class="slide s-valid" id="s12" data-n="12">
+    <div class="eyebrow">Validação e correção</div>
+    <div class="statement">Corrija uma falha. Volte ao frame, pegue o token certo, confira que bateu.</div>
+    <div class="rows">
+      <div class="row"><b>Confira a conexão e o token:</b></div>
+      <div class="cmds"><span class="cmd">npm run workshop:check</span><span class="cmd">npm run workshop:doctor</span></div>
+      <div class="row">Se quiser recomeçar do zero, <span class="cmd" style="font-size:30px;padding:12px 20px;">npm run workshop:reset</span> restaura os componentes sem tocar na sua credencial.</div>
     </div>
-    <div class="statement">Tudo que importou foi decisão humana. A IA só foi rápida no resto.</div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+    <div class="honest">Pronto aqui é o ponto corrigido batendo com o frame. Não o card inteiro pronto para produção.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
 
-  <!-- 11 · Prompt coletivo -->
-  <section class="slide s-prompt" id="s11" data-n="11">
-    <div class="eyebrow">Prompt coletivo</div>
-    <div class="cols">
-      <div class="pcard generic">
-        <div class="cap">Prompt genérico</div>
-        <div class="code">gera esse card em React</div>
+  <!-- 13 · Limites -->
+  <section class="slide s-limit" id="s13" data-n="13">
+    <div class="eyebrow">Os limites, ditos na cara</div>
+    <div class="cols3">
+      <div class="lcard">
+        <div class="n">01</div>
+        <div class="t">Código gerado não é produção. É ponto de partida, e você revisa.</div>
       </div>
-      <div class="pcard spec">
-        <div class="cap">Prompt especificado pela sala</div>
-        <div class="code">preenchido ao vivo<span class="cursor"></span></div>
+      <div class="lcard">
+        <div class="n">02</div>
+        <div class="t">MCP não substitui design system. Arquivo bagunçado gera contexto bagunçado.</div>
+      </div>
+      <div class="lcard">
+        <div class="n">03</div>
+        <div class="t">A IA leu, gerou e comparou. Quem escolheu o problema, definiu a regra e aceitou o resultado foi você.</div>
       </div>
     </div>
-    <div class="statement">A diferença entre esses dois códigos não é a ferramenta. É o quanto vocês especificaram.</div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Validação e limites</span></div>
   </section>
 
-  <!-- 12 · Refrão (2a vez, idêntico ao 2) -->
-  <section class="slide s-refrao" id="s12" data-n="12">
+  <!-- 14 · Síntese (refrão) -->
+  <section class="slide s-refrao" id="s14" data-n="14">
     <div class="main">Ferramentas mudam.<br>Princípios permanecem.</div>
     <div class="divider"></div>
-    <div class="sub">Saber especificar é a competência da década.</div>
+    <div class="sub">O contexto que você dá é o que tira o código da média.</div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
   </section>
 
-  <!-- 13 · Kit e QR -->
-  <section class="slide s-kit" id="s13" data-n="13">
-    <div class="qrbox"><svg id="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR do kit (placeholder)"></svg></div>
-    <div class="copy">
-      <div class="eyebrow">Kit e QR</div>
-      <div class="lead">O setup inteiro está nesse QR, com os riscos mapeados.</div>
-      <div class="prereqs">
-        <span class="prereq">Node 18+</span>
-        <span class="prereq">Figma Desktop</span>
-        <span class="prereq">Token pessoal do Figma</span>
-        <span class="prereq">10 minutos, uma vez só</span>
+  <!-- 15 · Kit e limpeza -->
+  <section class="slide s-kit" id="s15" data-n="15">
+    <div class="eyebrow">Limpeza e kit</div>
+    <div class="top">
+      <div class="left">
+        <div class="lead">Antes de sair da sala.</div>
+        <ol>
+          <li>Revogue o token no Figma, em Settings, Security.</li>
+          <li>Remova o MCP: <code>npm run workshop:setup-mcp -- --remove</code></li>
+          <li>Remova o plugin Bridge, se quiser.</li>
+          <li>Na máquina do evento, limpe o projeto e saia das contas.</li>
+        </ol>
       </div>
-      <div class="sub">Ninguém instala MCP no meio de 100 pessoas com o wifi do evento. Você roda em casa.</div>
-    </div>
-    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>QR do kit (placeholder)</span></div>
-  </section>
-
-  <!-- 14 · Rota final -->
-  <section class="slide s-end" id="s14" data-n="14">
-    <div class="eyebrow">Onde continuar</div>
-    <div class="routes">
-      <div class="route">
-        <div class="k">Newsletter</div>
-        <div class="v">Notas de Produto</div>
-      </div>
-      <div class="route">
-        <div class="k">Site</div>
-        <div class="v">thiagoxikota.com</div>
+      <div class="right">
+        <div class="kit">O kit e o tutorial seguem abertos.<span class="url">thiagoxikota.com/tdc</span></div>
+        <div class="bios">
+          <div class="bio"><b>Thiago Xikota</b>Product designer, pesquisador na UFSC, autor de Design na Era da IA pela Casa do Código, em produção.</div>
+          <div class="bio"><b>Bruno Bach</b>Líder do Friends of Figma Florianópolis, voz de engenharia.</div>
+        </div>
+        <div class="thanks">Obrigado, <span class="em">IxDA Florianópolis</span> e <span class="em">Friends of Figma Florianópolis</span>.</div>
       </div>
     </div>
-    <div class="bios">
-      <div class="bio"><b>Thiago Xikota</b>product designer, pesquisador na UFSC, autor de Design na Era da IA (Casa do Código, em produção).</div>
-      <div class="bio"><b>Bruno Bach</b>líder do Friends of Figma Florianópolis, voz de engenharia.</div>
-    </div>
-    <div class="thanks">Obrigado, <span class="em">IxDA Florianópolis</span> e <span class="em">Friends of Figma Florianópolis</span>.</div>
+    <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Do Figma ao código sem handoff</span></div>
   </section>
 
 </div>
 
 <script>
   // QR placeholder: padrão determinístico com 3 finder patterns (não codifica dado real).
+  // Renderiza em todos os <svg class="qrsvg">. Será trocado pelo QR real.
   (function () {
-    var svg = document.getElementById('qr');
-    if (!svg) return;
+    var svgs = document.querySelectorAll('svg.qrsvg');
+    if (!svgs.length) return;
     var N = 29, NS = 'http://www.w3.org/2000/svg';
-    function rect(x, y, w, h) {
-      var r = document.createElementNS(NS, 'rect');
-      r.setAttribute('x', x); r.setAttribute('y', y);
-      r.setAttribute('width', w); r.setAttribute('height', h);
-      r.setAttribute('fill', '#0E0C0B');
-      svg.appendChild(r);
-    }
-    function finder(ox, oy) {
-      rect(ox, oy, 7, 7);
-      var w = document.createElementNS(NS, 'rect');
-      w.setAttribute('x', ox + 1); w.setAttribute('y', oy + 1);
-      w.setAttribute('width', 5); w.setAttribute('height', 5);
-      w.setAttribute('fill', '#fff'); svg.appendChild(w);
-      rect(ox + 2, oy + 2, 3, 3);
-    }
-    // pseudo-random determinístico
-    var seed = 1337;
-    function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
-    function inFinder(x, y) {
-      return (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
-    }
-    for (var y = 0; y < N; y++) {
-      for (var x = 0; x < N; x++) {
-        if (inFinder(x, y)) continue;
-        if (rnd() > 0.5) rect(x, y, 1, 1);
+    function build(svg) {
+      function rect(x, y, w, h) {
+        var r = document.createElementNS(NS, 'rect');
+        r.setAttribute('x', x); r.setAttribute('y', y);
+        r.setAttribute('width', w); r.setAttribute('height', h);
+        r.setAttribute('fill', '#0E0C0B');
+        svg.appendChild(r);
       }
+      function finder(ox, oy) {
+        rect(ox, oy, 7, 7);
+        var w = document.createElementNS(NS, 'rect');
+        w.setAttribute('x', ox + 1); w.setAttribute('y', oy + 1);
+        w.setAttribute('width', 5); w.setAttribute('height', 5);
+        w.setAttribute('fill', '#fff'); svg.appendChild(w);
+        rect(ox + 2, oy + 2, 3, 3);
+      }
+      var seed = 1337;
+      function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+      function inFinder(x, y) {
+        return (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
+      }
+      for (var y = 0; y < N; y++) {
+        for (var x = 0; x < N; x++) {
+          if (inFinder(x, y)) continue;
+          if (rnd() > 0.5) rect(x, y, 1, 1);
+        }
+      }
+      finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
     }
-    finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
+    svgs.forEach(build);
   })();
 
   // Modo screenshot: ?only=N isola um slide para captura headless.

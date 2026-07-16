@@ -5,3 +5,9 @@ node_modules/
 
 # dist/ é COMMITADO de propósito: é a camada zero-install do kit
 !dist/
+
+# nunca versionar credencial nem config local do Claude
+.env
+.env.*
+claude_desktop_config.json
+*.bak-*

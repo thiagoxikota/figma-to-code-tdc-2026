@@ -1,11 +1,17 @@
 /*
- * Prebaked: output do Take A (prompt 5a, SEM o Figma).
- * Competente na ESTRUTURA (article, heading, button de verdade, estados,
- * aria), generico no DESIGN (hex cru inventado, espacamento fora do grid,
- * tipografia generica), porque o prompt nao deu fonte de design.
- * Espelha src/components/CardRaso.tsx. O `npm run validate:workshop`
- * acusa os hex crus daqui e passa o Take B. Ver 05c-diff-callout.md.
- * Fallback do slot 1 do preview.
+ * Card "Take A" (prompt 5a, SEM o Figma): output competente-mas-generico.
+ *
+ * A ESTRUTURA de codigo e boa: article + heading, button de verdade,
+ * estados (hover/focus/disabled), aria. O prompt 5a pede tudo isso.
+ * O que falta e a FONTE de design: sem o Figma, o modelo inventa a cor
+ * (hex cru fora da marca), o espacamento (fora do grid) e a tipografia.
+ * Por isso o `npm run validate:workshop` acusa os hex crus daqui e passa
+ * o Take B, que usa var(--token). O contraste da demo e DESIGN FIDELITY,
+ * nao "codigo ruim vs bom": ver roteiro (Take A / Take B / Comparacao) e
+ * outputs-prebaked/05c-diff-callout.md.
+ *
+ * No palco, a geracao ao vivo (5a) sobrescreve este arquivo; esta e a
+ * copia known-good de fallback. Restaurar: git checkout -- src/components/
  */
 
 const styles = `

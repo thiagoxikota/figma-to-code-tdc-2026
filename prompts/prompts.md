@@ -1,6 +1,6 @@
 # Os 10 prompts do workshop
 
-Prontos pra copiar. Só o 5a é digitado ao vivo (curto de propósito); os outros são colados.
+Prontos pra copiar. O par 5a/5b é o experimento central da demo: MESMO prompt, muda só se a IA lê o Figma ou não. Isola a variável certa (o contexto do Figma), não "prompt bom vs prompt ruim".
 Cada prompt é um exemplo de especificação: formato de saída definido, escopo travado, critério de verificação embutido.
 
 ## 1. Ler o arquivo Figma
@@ -44,28 +44,36 @@ cosmético). Onde houver texto sobre fundo, avalie o contraste.
 
 Por que funciona: impõe estrutura no achado e uma escala de severidade. A IA acha, o humano prioriza.
 
-## 5a. Gerar, raso (digitado ao vivo)
+## 5a. Gerar, SEM o contexto do Figma (Take A)
 
 ```
-gera esse card em React
-```
-
-Contra-exemplo proposital: sem contrato, a IA preenche as lacunas com o default dela. É a convergência estrutural acontecendo na tela.
-
-## 5b. Gerar, especificado (colado)
-
-```
-Leia src/tokens.css e use somente as variáveis que existem lá.
-Gere o componente Card em React + TypeScript, function component.
+Gere um componente Card em React + TypeScript, function component.
 Props tipadas: title: string, description: string, imageUrl?: string,
-onClick?: () => void. Estilos só pelas variáveis de tokens.css, nunca
-hex cru. Cubra os estados default, hover, focus-visible e disabled.
-Acessibilidade: elemento article, heading por prop, foco visível de
-2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs externas.
-Devolva só o arquivo Card.tsx.
+onClick?: () => void. Cubra os estados default, hover, focus-visible e
+disabled. Acessibilidade: elemento article, heading por prop, foco
+visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs
+externas. Devolva só o arquivo Card.tsx.
 ```
 
-Por que funciona: trava o contrato de props, a fonte de estilo (e manda LER a fonte antes de usar), os estados e a acessibilidade. O par 5a/5b é o argumento: mesmo modelo, mesma tela, resultado oposto.
+É um prompt BOM: pede estados, tipos, acessibilidade. Falta uma coisa só, de onde vem a verdade do design. Sem fonte, a IA inventa a cor e o espaçamento. Esse é o ponto.
+
+## 5b. Gerar, COM o Figma via MCP (Take B)
+
+O MESMO prompt de cima, só acrescentando a fonte:
+
+```
+Gere um componente Card em React + TypeScript, function component.
+Props tipadas: title: string, description: string, imageUrl?: string,
+onClick?: () => void. Cubra os estados default, hover, focus-visible e
+disabled. Acessibilidade: elemento article, heading por prop, foco
+visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs
+externas.
+Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e
+use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá.
+Não invente valores; puxe do Figma. Devolva só o arquivo Card.tsx.
+```
+
+Por que funciona (e por que é o experimento certo): 5a e 5b são o MESMO pedido. A única variável que muda é a IA ler ou não o Figma. Quando o Take B sai fiel e o Take A inventa a cor, a diferença não é "prompt melhor", é a fonte, o contexto estruturado do Figma via MCP. Isso prova o título do workshop, não só que prompt detalhado ganha de prompt vago.
 
 ## 6. Melhorar acessibilidade
 

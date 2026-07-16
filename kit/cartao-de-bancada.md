@@ -13,20 +13,24 @@ TDC Florianópolis 2026
 
 **3 passos pra começar agora:**
 
-1. Abra o **Claude Desktop** e entre com a sua conta (a gratuita serve).
+1. Entre no **Figma Desktop** e no **Claude Desktop** com as suas contas (as duas já estão instaladas nesta máquina).
 
-2. Aponte o celular pro **QR** e abra o link.
+2. Aponte o celular pro **QR** e siga o assistente. Ele te leva passo a passo.
 
-3. Cole o **primeiro prompt** e rode. Depois a gente especifica junto.
+3. Gere o seu **token do Figma** e conecte. O script de configuração já está na área de trabalho, é só rodar.
 
-`[QR grande aqui → URL final do kit com utm_source=tdc e utm_medium=palco]`
+`[QR grande aqui]`
 
-Sem conta? Acompanhe pela dupla do lado, ou abra o QR no navegador do computador.
+**thiagoxikota.com/tdc**
+
+Travou? Fala com o apoio, junta com a dupla do lado, ou pede uma máquina reserva.
 
 ---
 
 ## Notas de produção
 
-- O QR do cartão de bancada e o QR do slide 13 apontam pro MESMO destino (kit), com `utm_medium=palco`. Esse UTM é DIFERENTE do UTM pré-evento (`utm_medium=pre-evento`) que a Thamie manda antes, senão a métrica de scan da sala fica poluída.
-- Testar o QR com o próprio celular antes de imprimir.
-- Alto contraste de verdade: texto quase preto sobre branco, nada de cinza claro. A sala vai ler isso de relance, sentada, antes do café.
+- O QR do cartão de bancada e o QR do slide 13 apontam pro MESMO destino (assistente do kit, `onboarding/index.html`), com `utm_medium=palco`. Esse UTM é DIFERENTE do UTM pré-evento (`utm_medium=pre-evento`) que a Thamie manda antes, senão a métrica de scan da sala fica poluída.
+- URL curta placeholder: `thiagoxikota.com/tdc`. Confirmar o destino final e o encurtador antes de fechar a arte.
+- Testar o QR com o próprio celular antes de imprimir: apontar, abrir o assistente, ver a rota por dispositivo carregar.
+- Alto contraste de verdade: texto quase preto sobre branco, nada de cinza claro. QR grande e nítido, URL legível embaixo em fonte grande. A sala vai ler isso de relance, sentada, antes do café.
+- Este cartão fica na máquina do evento (Windows já preparado: Figma, Claude Desktop, Node, plugin Bridge importado, config sem token, projeto baixado e buildado, atalho e tutorial na área de trabalho). Por isso o passo 1 é entrar nas contas, não instalar nada.
