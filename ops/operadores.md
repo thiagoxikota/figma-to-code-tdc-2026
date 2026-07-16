@@ -64,7 +64,7 @@ Claude Desktop é o cliente na sala. Claude Code só aparece no kit como alterna
 
 ### Dispositivos
 
-- Máquina do evento (Windows): Figma, Claude, Node já instalados, plugin pré-importado, config preparado SEM token, projeto baixado e buildado, atalho na área de trabalho, tutorial aberto, arquivo Figma aberto. Falta só o token.
+- Máquina do evento (Windows): vem CRUA. Só Figma, Claude e Node instalados (confirmado com a TI em 16/07, vale pra todas). Sem plugin importado, sem config, sem projeto, sem git, e não há acesso pra provisionar antes. A dupla monta token, config (caminho manual do JSON) e plugin ao vivo, guiada pela onboarding do QR. A vantagem da máquina do evento é só não precisar instalar app.
 - Windows próprio: fluxo completo. Precisa permissão de instalar e Node 18+.
 - macOS próprio: mesmo fluxo, caminhos do Mac.
 - Linux: não roda. Vai pra dupla ou reserva.

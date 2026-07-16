@@ -1,36 +1,28 @@
-# Cartão de bancada (A5, 1 por máquina)
+# Cartão de bancada: APOSENTADO (16/07)
 
-Impressão: A5, frente única, alto contraste, fonte grande. Tirar ~40 cópias mais reservas. Deixar um em cada máquina da sala antes de o público entrar.
+**Não vai ser impresso.** Decisão do dono em 16/07: nada de gráfica, o conteúdo vive nos slides.
 
-Para gerar o PDF A5 a partir deste conteúdo, o toolchain do repo brand (pandoc + template A5) resolve; ou diagramar direto no Figma e exportar. O conteúdo abaixo é a fonte de verdade do texto.
+Além disso, o texto que estava aqui tinha virado mentira. Ele dizia "o script de configuração já está na área de trabalho" e "as duas já estão instaladas nesta máquina, por isso o passo 1 é entrar nas contas, não instalar nada". Isso valia quando o plano era pré-provisionar as ~40 máquinas. A TI confirmou em 16/07 que elas vêm cruas (só Node, Figma Desktop e Claude Desktop), sem script, sem plugin importado, sem projeto.
 
----
+## Por que ele existia e por que não precisa mais
 
-## Frente do cartão
+O cartão era o jeito de dar instrução por bancada sem roubar tempo de palco: papel na mesa, 1 por máquina. Hoje o trabalho dele está coberto, melhor, por duas superfícies que já existem:
 
-**Do Figma ao código sem handoff**
-TDC Florianópolis 2026
+1. **A onboarding do QR (`thiagoxikota.com/tdc`).** É a instrução por pessoa, na tela dela: roteia por dispositivo, guarda o progresso, traz o JSON com o campo de token que preenche ao vivo e o passo a passo do caminho manual (o que a máquina crua exige). Papel nunca faria isso. Abre no celular e no computador, e roda até offline.
+2. **Os slides.** O slide 5 (QR) e o slide 7 (passo do setup) ficam no telão durante os 25 min: QR, URL, passo atual e o "travou? mão pra cima". É o cartão, projetado, e sempre no passo certo.
 
-**3 passos pra começar agora:**
+Papel seria uma terceira cópia da mesma coisa, com o pior defeito: congela na impressão. Se um passo mudar na véspera, o papel mente. Foi exatamente o que aconteceu com este arquivo.
 
-1. Entre no **Figma Desktop** e no **Claude Desktop** com as suas contas (as duas já estão instaladas nesta máquina).
+## Onde o conteúdo vive agora
 
-2. Aponte o celular pro **QR** e siga o assistente. Ele te leva passo a passo.
+| O que o cartão trazia | Onde está |
+|---|---|
+| QR + URL curta | Slide 5 do deck; slide 7 durante o setup |
+| Os 5 checkpoints | Slide 8 (checkpoints por minuto) + a onboarding, passo a passo |
+| Prompt de teste da conexão | Onboarding, passo "Teste a conexão de verdade" |
+| Comandos npm | Onboarding (passo opcional do preview) e `README.md`. Na sala quase não são usados: o exercício roda no Claude, sem terminal |
+| "Travou? Mão pra cima" | Slide 7 e o botão de ajuda da onboarding (que ainda monta o resumo por mesa) |
 
-3. Gere o seu **token do Figma** e conecte. O script de configuração já está na área de trabalho, é só rodar.
+## Se um dia voltar a imprimir
 
-`[QR grande aqui]`
-
-**thiagoxikota.com/tdc**
-
-Travou? Fala com o apoio, junta com a dupla do lado, ou pede uma máquina reserva.
-
----
-
-## Notas de produção
-
-- O QR do cartão de bancada e o QR do slide 13 apontam pro MESMO destino (assistente do kit, `onboarding/index.html`), com `utm_medium=palco`. Esse UTM é DIFERENTE do UTM pré-evento (`utm_medium=pre-evento`) que a Thamie manda antes, senão a métrica de scan da sala fica poluída.
-- URL curta placeholder: `thiagoxikota.com/tdc`. Confirmar o destino final e o encurtador antes de fechar a arte.
-- Testar o QR com o próprio celular antes de imprimir: apontar, abrir o assistente, ver a rota por dispositivo carregar.
-- Alto contraste de verdade: texto quase preto sobre branco, nada de cinza claro. QR grande e nítido, URL legível embaixo em fonte grande. A sala vai ler isso de relance, sentada, antes do café.
-- Este cartão fica na máquina do evento (Windows já preparado: Figma, Claude Desktop, Node, plugin Bridge importado, config sem token, projeto baixado e buildado, atalho e tutorial na área de trabalho). Por isso o passo 1 é entrar nas contas, não instalar nada.
+O conteúdo canônico é a onboarding. Qualquer cartão futuro é uma redução dela, nunca uma fonte paralela: duas fontes divergem, e a de papel sempre perde.

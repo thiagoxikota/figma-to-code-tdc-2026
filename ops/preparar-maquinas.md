@@ -1,42 +1,41 @@
-# Preparar as máquinas do evento (e as reservas)
+# Preparar as máquinas (as NOSSAS: palco e reservas)
 
 Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07.
 
-Este runbook deixa cada máquina do evento pronta ANTES do dia, de modo que, na sala, o participante faça só o mínimo pessoal: logar (Figma e Claude), colar o token e conectar. Todo o resto (projeto baixado, buildado, config do Claude armado com placeholder, plugin importado, tutorial e Figma abertos, rede testada) já está feito.
+## Leia isto antes de tudo: o escopo mudou em 16/07
 
-Quem executa: Apoio 1 e Apoio 2, com o Bruno validando o resultado. Fazer isso na véspera, nunca na manhã do evento.
+**As ~40 máquinas do evento NÃO são provisionadas por nós.** A TI confirmou em 16/07: elas chegam com Node.js, Figma Desktop e Claude Desktop instalados, e nada além disso. O resto é padrão de máquina (sem plugin importado, sem config de MCP, sem projeto, sem git). Vale pra todas, e não há janela de acesso pra mexer nelas antes.
 
-## Princípios (leia antes de começar)
+Isso não é problema, é o formato: **o setup é o conteúdo.** Na máquina do evento, a dupla monta token, config e plugin ao vivo, guiada pela onboarding do QR (`thiagoxikota.com/tdc`). A rota dela é a mesma do notebook próprio, sem o passo de instalar app. Os 25 min dos 5 checkpoints existem exatamente pra isso.
 
-- **Tudo idempotente.** Todo passo pode ser rodado de novo sem quebrar nada. Se ficou na dúvida se rodou, rode outra vez.
-- **A máquina fica pronta MENOS duas coisas: login pessoal e token pessoal.** Essas duas são do participante e entram na hora. Nunca deixe token real gravado, nunca deixe a conta pessoal de ninguém logada.
-- **O placeholder do token é literal: `figd_SEU_TOKEN_AQUI`.** Ele deixa o JSON completo e válido, com o mesmo prefixo do token real, para que no dia só o valor mude.
-- **Nenhum script imprime token.** Se algum comando pedisse para colar token em texto visível, seria o comando errado.
-- **Alvo primário: máquina do evento é Windows.** Os comandos vêm em PowerShell (Windows) e, quando a reserva for Mac, em zsh/bash (macOS) logo abaixo.
+**Este runbook cobre só o que a gente controla:**
 
-## O que fica pronto x o que NÃO fica
+| Máquina | Quem provisiona | Estado alvo |
+|---|---|---|
+| Máquina de palco (a do Bruno, que roda a demo) | nós, na véspera | tudo pronto, incluindo o projeto e o preview |
+| Reserva 1, 2, 3 (notebooks nossos) | nós, na véspera | tudo pronto menos o token (que é da pessoa que migrar) |
+| ~40 máquinas do evento | ninguém | cruas: só Node, Figma Desktop e Claude Desktop |
 
-| Fica pronto (você faz na véspera) | NÃO fica pronto (é do participante, no dia) |
-|---|---|
-| Projeto clonado, `npm install`, `npm run build` | Login pessoal no Figma |
-| `claude_desktop_config.json` com a entrada `figma-console` e token placeholder | Login pessoal no Claude Desktop |
-| Plugin Bridge importado no Figma Desktop | Token real do Figma (`figd_...`) |
-| Atalho do wrapper de token e atalho do projeto na área de trabalho | |
-| Tutorial (onboarding) aberto no navegador | |
-| Arquivo Figma da demo aberto no navegador e no Figma Desktop | |
-| Cache do `npx` aquecido com a versão fixada, rede testada | |
+Para as reservas, o detalhe de operação e o fluxo de migração estão em `maquinas-reserva.md`. Este arquivo é o passo a passo de provisionamento que as duas usam.
+
+Quem executa: Apoio 1 e Apoio 2, com o Bruno validando. Fazer na véspera, nunca na manhã do evento.
+
+## Princípios
+
+- **Tudo idempotente.** Todo passo pode ser rodado de novo sem quebrar nada. Na dúvida, rode outra vez.
+- **A máquina fica pronta MENOS o token pessoal.** Ele é do participante (ou do Bruno, na de palco) e entra na hora.
+- **O placeholder do token é literal: `figd_SEU_TOKEN_AQUI`.** Deixa o JSON completo e válido, com o mesmo prefixo do real, pra que no dia só o valor mude.
+- **Nenhum script imprime token.**
 
 ---
 
-## Pré-requisitos da máquina
+## Pré-requisitos
 
-- Windows 10/11 (ou macOS numa reserva). Node 18 ou mais novo instalado (`node -v`).
-- Git instalado (para o clone) e permissão de rodar PowerShell.
-- Acesso à internet liberado para: registro npm, github.com e loopback local (127.0.0.1).
-- **O repositório é PRIVADO.** Clone anônimo falha (404). Duas saídas, escolha uma: (a) `gh` (GitHub CLI) instalado e logado uma vez com `gh auth login` na conta thiagoxikota, e usar `gh repo clone`; ou (b) não clonar em cada máquina: gerar a pasta do projeto UMA vez (na máquina do organizador) e copiá-la para as demais por pendrive ou rede. A cópia já vem com `node_modules` e `dist/`, então nas outras máquinas basta rodar o build pra revalidar.
-- Uma conta de staging (não pessoal) do Figma e do Claude para a etapa de importar o plugin e conferir o ambiente. Ela é usada só na preparação e sai no fim (ver "Antes de fechar a máquina").
+- Windows 10/11 ou macOS. Node 18 ou mais novo (`node -v`).
+- O repositório é **público** (aberto em 16/07): `https://github.com/thiagoxikota/figma-to-code-tdc-2026`. Clone anônimo funciona; se a máquina não tiver git, baixe o ZIP (Code > Download ZIP) e extraia.
+- Uma conta de staging (não pessoal) do Figma e do Claude pra importar o plugin e conferir o ambiente. Sai no fim (ver "Antes de fechar a máquina").
 
-Local canônico do projeto (use sempre o mesmo caminho em todas as máquinas):
+Local canônico do projeto (o mesmo em todas):
 
 - Windows: `C:\TDC\figma-to-code-tdc-2026`
 - macOS: `~/TDC/figma-to-code-tdc-2026`
@@ -54,7 +53,7 @@ Windows (PowerShell):
 ```powershell
 mkdir C:\TDC -Force | Out-Null
 cd C:\TDC
-gh repo clone thiagoxikota/figma-to-code-tdc-2026
+git clone https://github.com/thiagoxikota/figma-to-code-tdc-2026.git
 cd figma-to-code-tdc-2026
 npm install
 npm run build
@@ -64,11 +63,13 @@ macOS (zsh/bash):
 
 ```bash
 mkdir -p ~/TDC && cd ~/TDC
-gh repo clone thiagoxikota/figma-to-code-tdc-2026
+git clone https://github.com/thiagoxikota/figma-to-code-tdc-2026.git
 cd figma-to-code-tdc-2026
 npm install
 npm run build
 ```
+
+Sem git na máquina? Baixe o ZIP de `https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/heads/main.zip`, extraia no caminho canônico e rode `npm install && npm run build`.
 
 Re-rodar é seguro: `git clone` num diretório já existente falha sem estragar nada (nesse caso, entre na pasta e rode `git pull`). `npm install` e `npm run build` são idempotentes.
 
@@ -85,24 +86,16 @@ O doctor é read-only e nunca imprime token. Nesta etapa (ainda sem config do Cl
 - OK em Node 18+, npm, npx.
 - OK nos arquivos do projeto e no `dist/index.html`.
 - OK em `node_modules`.
-- Aviso nas portas 5173/4173 só se algo já estiver ocupando (o preview pula pra próxima).
+- Aviso nas portas 5173/4173 só se algo já estiver ocupando.
 - Aviso "config do Claude ainda nao existe": normal, você arma no passo 4.
 
 Se aparecer FALHA em Node, npm ou arquivos do projeto, resolva antes de seguir.
 
 ### 3. Aquecer o npx e materializar o plugin
 
-O MCP roda por `npx`. Rodar a versão fixada uma vez agora faz duas coisas: baixa o pacote pro cache local (no dia não há download) e cria a pasta do plugin Bridge que você vai importar no passo 5.
-
-Windows (PowerShell):
+O MCP roda por `npx`. Rodar a versão fixada uma vez agora faz duas coisas: baixa o pacote pro cache local (no dia não há download) e cria a pasta do plugin Bridge que você importa no passo 5.
 
 ```powershell
-npx -y figma-console-mcp@1.35.0
-```
-
-macOS:
-
-```bash
 npx -y figma-console-mcp@1.35.0
 ```
 
@@ -124,7 +117,7 @@ Windows deve responder `True`; macOS deve listar o arquivo. Se a pasta não apar
 
 ### 4. Armar o config do Claude Desktop SEM token (placeholder)
 
-Use o merge idempotente do próprio kit, passando o placeholder pela variável de ambiente (o script só aceita algo que comece com `figd_`, e o placeholder começa). Ele preserva qualquer outro servidor MCP que exista e faz backup antes de gravar.
+Use o merge idempotente do próprio kit, passando o placeholder pela variável de ambiente (o script só aceita algo que comece com `figd_`, e o placeholder começa). Ele preserva qualquer outro servidor MCP e faz backup antes de gravar.
 
 Windows (PowerShell), a partir da pasta do projeto:
 
@@ -140,7 +133,7 @@ macOS, a partir da pasta do projeto:
 FIGMA_ACCESS_TOKEN='figd_SEU_TOKEN_AQUI' npm run workshop:setup-mcp
 ```
 
-Isso grava, no config do Claude, a entrada `mcpServers.figma-console` com `command` npx, `args` `["-y","figma-console-mcp@1.35.0"]` e env `FIGMA_ACCESS_TOKEN` (placeholder) + `ENABLE_MCP_APPS` `"true"`.
+Isso grava a entrada `mcpServers.figma-console` com `command` npx, `args` `["-y","figma-console-mcp@1.35.0"]` e env `FIGMA_ACCESS_TOKEN` (placeholder) + `ENABLE_MCP_APPS` `"true"`.
 
 Caminho do config, para conferência:
 
@@ -155,9 +148,7 @@ node scripts/mcp-config.mjs --check
 
 Esperado: `figma-console: configurado (-y figma-console-mcp@1.35.0)` e `token: presente`.
 
-Atenção ao caveat: o `--check` (e o doctor) só verifica o PREFIXO `figd_`. Com o placeholder, ele diz "presente", o que aqui significa "a entrada está armada e o JSON é válido", não "há um token real". É exatamente o estado que queremos numa máquina pré-armada. Se quiser ter certeza de que é o placeholder e não um token esquecido, abra o arquivo de config e confirme que o valor é literalmente `figd_SEU_TOKEN_AQUI`.
-
-Não abra o Claude Desktop logado numa conta pessoal aqui. Se precisar abri-lo para conferir que o MCP carrega, use a conta de staging e feche depois.
+Atenção ao caveat: o `--check` (e o doctor) só verifica o PREFIXO `figd_`. Com o placeholder ele diz "presente", o que aqui significa "a entrada está armada e o JSON é válido", não "há um token real". É exatamente o estado que queremos. Pra ter certeza de que é o placeholder e não um token esquecido, abra o config e confirme que o valor é literalmente `figd_SEU_TOKEN_AQUI`.
 
 ### 5. Importar o plugin Bridge no Figma Desktop
 
@@ -169,151 +160,37 @@ Com a conta de staging logada no Figma Desktop:
    - Windows: `%USERPROFILE%\.figma-console-mcp\plugin\manifest.json`
    - macOS: `~/.figma-console-mcp/plugin/manifest.json`
 
-Não é mais baixar ZIP do GitHub. O caminho é sempre importar do manifest auto-empacotado.
+Não é baixar ZIP do GitHub. O caminho é sempre importar do manifest auto-empacotado.
 
-O registro de plugin de desenvolvimento é local da máquina, não da conta. Ele continua disponível em Plugins > Development mesmo quando o participante trocar para a conta dele no dia. Por isso a importação feita agora sobrevive ao logout da conta de staging.
+### 6. Deixar o ambiente montado
 
-Se o item "Import plugin from manifest" não estiver disponível: confirme que a pasta do plugin existe (passo 3) e que você está no Figma Desktop, não no navegador.
+- Arquivo Figma da demo aberto, na página do frame "Tela demo", com o plugin Bridge rodando.
+- Onboarding aberta no navegador: `https://thiagoxikota.com/tdc`.
+- Atalho do projeto na área de trabalho.
+- Na máquina de PALCO (só nela): Vite rodando (`npm run workshop:start`) com o slot 2 vazio, prompts abertos, prebaked em janela de fundo.
 
-### 6. Atalhos na área de trabalho
-
-Dois atalhos, para o participante achar o que precisa sem procurar.
-
-Atalho A, o wrapper de token (é o que o participante roda no dia para colar o token real por cima do placeholder). Aponte o atalho para o script REAL dentro do projeto, não copie o script solto: o `setup-figma-mcp.ps1` procura o `mcp-config.mjs` na mesma pasta, então ele precisa continuar em `scripts/`.
-
-Windows (PowerShell) cria um atalho "Configurar Figma MCP" que chama o wrapper no lugar certo:
-
-```powershell
-$ws = New-Object -ComObject WScript.Shell
-$lnk = $ws.CreateShortcut("$env:USERPROFILE\Desktop\Configurar Figma MCP.lnk")
-$lnk.TargetPath = "powershell.exe"
-$lnk.Arguments = "-ExecutionPolicy Bypass -NoExit -File `"C:\TDC\figma-to-code-tdc-2026\scripts\setup-figma-mcp.ps1`""
-$lnk.WorkingDirectory = "C:\TDC\figma-to-code-tdc-2026\scripts"
-$lnk.Save()
-```
-
-macOS: deixe o `scripts/setup-figma-mcp.command` acessível com duplo clique. Dê permissão de execução e crie um alias na Mesa:
-
-```bash
-chmod +x ~/TDC/figma-to-code-tdc-2026/scripts/setup-figma-mcp.command
-ln -sf ~/TDC/figma-to-code-tdc-2026/scripts/setup-figma-mcp.command ~/Desktop/Configurar\ Figma\ MCP.command
-```
-
-Se em vez do atalho você optar por COPIAR o script para a área de trabalho, copie junto o `mcp-config.mjs`, senão o wrapper não acha o merge. O atalho evita esse risco.
-
-Atalho B, o projeto. Um atalho para a pasta do projeto, para chegar rápido ao `npm run workshop:start` do exercício.
-
-Windows:
-
-```powershell
-$ws = New-Object -ComObject WScript.Shell
-$lnk = $ws.CreateShortcut("$env:USERPROFILE\Desktop\Projeto TDC.lnk")
-$lnk.TargetPath = "C:\TDC\figma-to-code-tdc-2026"
-$lnk.Save()
-```
-
-macOS:
-
-```bash
-ln -sf ~/TDC/figma-to-code-tdc-2026 ~/Desktop/Projeto\ TDC
-```
-
-### 7. Abrir o tutorial (onboarding)
-
-O assistente do QR guia os 5 checkpoints. Deixe aberto no navegador.
-
-- Quando a URL curta estiver publicada: `thiagoxikota.com/tdc`.
-- Enquanto isso, abra o arquivo local direto:
-  - Windows: `start "" "C:\TDC\figma-to-code-tdc-2026\onboarding\index.html"`
-  - macOS: `open ~/TDC/figma-to-code-tdc-2026/onboarding/index.html`
-
-### 8. Abrir o arquivo Figma da demo
-
-Deixe o arquivo público duplicável aberto, pronto para o participante duplicar depois de logar:
-
-`https://www.figma.com/community/file/1659374868260259462`
-
-- Uma aba no navegador com esse link.
-- O Figma Desktop aberto (com a conta de staging por enquanto). O frame de leitura é `Tela demo`.
-
-No dia, o participante loga na conta dele, duplica esse arquivo para os drafts, abre a cópia e roda o plugin Bridge nela.
-
-### 9. Testar a rede
-
-Três checagens que não precisam de token real:
-
-1. Registro npm e npx. Já provado no passo 3 (o `npx` baixou o pacote). Reforço rápido:
-
-   ```powershell
-   npm ping
-   ```
-
-2. GitHub. Já provado no clone do passo 1. Reforço rápido:
-
-   ```powershell
-   git ls-remote https://github.com/southleft/figma-console-mcp HEAD
-   ```
-
-   Responder com um hash = github acessível para o pacote e para o projeto.
-
-3. WebSocket local da Bridge. A Bridge conecta em 127.0.0.1 nas portas 9223 a 9232. Garanta que:
-   - nenhum outro app está segurando essas portas;
-   - o firewall do Windows não bloqueia o Node em loopback (se aparecer o aviso de firewall ao subir o MCP, libere para rede privada).
-
-   A prova de ponta a ponta da Bridge (status conectado e leitura do frame) exige token real e é deliberadamente deixada para o dia, no checkpoint 5. Aqui você valida tudo, menos token e login.
-
----
-
-## Reservas (Reserva 1, 2, 3)
-
-As reservas passam pela MESMA preparação (passos 1 a 9) e, por serem o destino da migração em 2 minutos, ficam um passo à frente:
-
-- Logadas numa conta de staging (não pessoal) no Figma e no Claude Desktop, já aquecidas, para que a migração pule o login.
-- Projeto já buildado e preview testado uma vez.
-- Mantêm a regra de segurança: organizadores não deixam token pessoal gravado. O participante que migrar cola o próprio token pelo atalho "Configurar Figma MCP" e retoma do checkpoint em que estava.
-
-Gatilho de uso (do runbook da sala): pessoa no minuto 20 sem passar do checkpoint 3, erro de permissão de instalação, Node ausente, ou máquina que não deixa importar plugin. Migrar leva cerca de 2 minutos: senta na reserva, o ambiente já está pronto, cola o token, conecta.
-
----
-
-## Validação final: a máquina está pronta?
-
-Rode o doctor uma última vez, com o config já armado:
+### 7. Verificação final
 
 ```powershell
 npm run workshop:doctor
 ```
 
-Agora o esperado inclui, além dos OK do passo 2:
+Esperado: nenhuma FALHA. O token sai como `presente` (é o placeholder; o prefixo `figd_` confere).
 
-- `figma-console no config (-y figma-console-mcp@1.35.0)`.
-- `token presente no config` (lembre: é o placeholder; prefixo `figd_` confere).
-
-Checklist de "pronta" (marque cada item por máquina):
-
-- [ ] `node -v` mostra 18 ou mais novo.
-- [ ] Projeto em `C:\TDC\figma-to-code-tdc-2026` (ou `~/TDC/...`), com `npm install` e `npm run build` feitos, pasta `dist/` presente.
 - [ ] `npm run workshop:doctor` sem nenhuma FALHA.
 - [ ] `node scripts/mcp-config.mjs --check` diz `configurado` e `token: presente` (placeholder).
-- [ ] Pasta `~/.figma-console-mcp/plugin/manifest.json` existe.
-- [ ] Plugin Bridge importado em Figma Desktop > Plugins > Development.
-- [ ] Atalho "Configurar Figma MCP" na área de trabalho apontando para `scripts/setup-figma-mcp.ps1` (ou `.command`).
-- [ ] Atalho "Projeto TDC" na área de trabalho.
-- [ ] Tutorial (onboarding) aberto no navegador.
-- [ ] Arquivo Figma da demo aberto no navegador e no Figma Desktop.
-- [ ] Rede ok: npm ping responde, `git ls-remote` da bridge responde, portas 9223-9232 livres e loopback liberado.
-- [ ] Nenhuma conta pessoal logada, nenhum token real gravado.
-
-Só quando os 12 itens estão marcados a máquina conta como pronta.
+- [ ] Plugin Bridge importado e rodando.
+- [ ] Config tem só o placeholder `figd_SEU_TOKEN_AQUI`, nunca um token real esquecido.
 
 ---
 
-## Antes de fechar a máquina (véspera)
+## Antes de fechar a máquina
 
-- Deslogue a conta de staging do Figma e do Claude Desktop nas máquinas do evento (as reservas ficam logadas na staging de propósito).
-- Confirme que o config tem só o placeholder `figd_SEU_TOKEN_AQUI`, nunca um token real esquecido.
-- Deixe o Figma Desktop e o navegador abertos nos lugares certos (frame `Tela demo` e onboarding), para o participante não caçar nada.
+- Deslogue a conta de staging do Figma e do Claude. Nenhuma conta nossa fica logada numa reserva que um participante vai usar.
+- Confirme que o config tem só o placeholder.
+- Nenhum terminal com segredo na memória; histórico limpo.
 
-## Teardown pós-evento (pointer)
+## O que NÃO fazer
 
-Depois do workshop, em cada máquina: revogar qualquer token que tenha entrado, remover o MCP com `npm run workshop:setup-mcp -- --remove`, remover o plugin se for o caso, restaurar os componentes com `npm run workshop:reset` (não toca em credencial) e sair de todas as contas. O `--remove` preserva outros servidores MCP e faz backup antes.
+- Não tente provisionar as máquinas do evento. Não há janela de acesso, e o plano não depende disso.
+- Não logue conta de palestrante em máquina que um participante vai usar (conta compartilhada = rate limit, e a demo do palco morre junto).

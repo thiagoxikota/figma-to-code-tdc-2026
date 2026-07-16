@@ -128,7 +128,7 @@ Rodar na preparação, antes do dia do workshop. Responsáveis: Apoio 1 (Figma) 
 - [ ] Config do Claude Desktop preparado **SEM token** em cada máquina (campo `FIGMA_ACCESS_TOKEN` vazio ou placeholder, nunca um token real de organizador).
 - [ ] Nenhuma conta Figma pessoal de organizador logada nas máquinas do evento.
 - [ ] Nenhuma conta Claude pessoal de organizador logada com histórico sensível nas máquinas do evento.
-- [ ] Plugin Bridge pré-importado e testado em cada máquina, com um token descartável só pra validar, **revogado logo após o teste**.
+- [ ] Nas máquinas NOSSAS (palco e Reserva 1/2/3): plugin Bridge importado e testado, com um token descartável só pra validar, **revogado logo após o teste**. As ~40 máquinas do evento vêm cruas e não passam por nós (16/07); nelas o token é sempre o do participante, gerado e revogado por ele no dia.
 - [ ] Rodar `npm run workshop:doctor` em cada máquina e confirmar que ele diagnostica sem imprimir segredo.
 - [ ] Rodar `npm run workshop:reset` pra garantir que os componentes estão no estado inicial.
 - [ ] `.bak-*` de testes anteriores apagados das pastas de config.
