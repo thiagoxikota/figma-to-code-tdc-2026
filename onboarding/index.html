@@ -11,7 +11,11 @@
   /* ============================================================
      Do Figma ao código sem handoff · TDC 2026
      Assistente de setup. 100% offline (abre por file://), zero
-     recurso externo, o token NUNCA sai da máquina nem é salvo.
+     recurso externo. O token e digitado aqui e processado SO neste
+     navegador pra montar o JSON: nao e transmitido, nao entra em URL,
+     nao vai pra analytics e nao e persistido (nem localStorage nem
+     sessionStorage). Some ao fechar a aba. Como a pagina nao carrega
+     nenhum recurso externo, nao ha script de terceiro que possa le-lo.
      Sistema visual Xikota: vermilion #DC000C, ground washi claro,
      Ma (respiro), Kanso (uma coisa por tela), alto contraste real.
      ============================================================ */
@@ -370,9 +374,9 @@
   var STORAGE = "tdc-workshop-onboarding-v2";   // nunca guarda token
   var TEST_PROMPT = "Verifique o status da conexão com o Figma";
   var READ_PROMPT = "Leia o frame \"Tela demo\" deste arquivo Figma via MCP. Devolva a árvore de camadas, os componentes e os tokens (variáveis) aplicados. Descreva estrutura e semântica, não pixels.";
-  var GEN_PROMPT = "Gere um componente Card em React + TypeScript, function component. Props tipadas: title, description, imageUrl?, onClick?. Estados default, hover, focus-visible e disabled. Acessibilidade: article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste AA. Sem libs externas.\nAntes de gerar, leia o frame \"Tela demo\" deste arquivo Figma via MCP e use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá. Não invente valores; puxe do Figma. Devolva só o arquivo Card.tsx.";
-  var COMPARE_PROMPT = "Leia de novo o frame \"Tela demo\" via MCP e compare com o Card.tsx que você acabou de gerar. Aja como o designer do sistema: liste onde o código divergiu da intenção (espaçamento, cor, tipografia, hierarquia), citando o token correto. Ignore qualidade de código, foque em fidelidade.";
-  var FIX_PROMPT = "Consulte de novo o frame \"Tela demo\" via MCP. Explique a diferença que escolhemos corrigir e ajuste só ela no Card.tsx, usando o token certo. Preserve o que já está correto. Não reescreva o resto.";
+  var GEN_PROMPT = "Gere um componente Card em React + TypeScript, function component. Props tipadas: title, description, imageUrl?, onClick?. Estados default, hover, focus-visible e disabled. Acessibilidade: article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste AA.\nAntes de gerar, leia o frame \"Tela demo\" deste arquivo Figma via MCP e use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá. Não invente valores; puxe do Figma.\nFORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária. Todo estilo vem de variável CSS com o MESMO nome do token do Figma (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário com o valor que veio do frame (ex: /* #DC000C, do frame */). No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro tamanho do título e pro espaçamento interno. Devolva só o código e essas 3 linhas.";
+  var COMPARE_PROMPT = "Leia de novo o frame \"Tela demo\" via MCP e me devolva SÓ uma tabela com três linhas, uma por propriedade: cor do botão, tamanho do título e espaçamento interno. Para cada uma: o nome do token no Figma e o valor. Não comente o meu código ainda, não diga se está certo. Só a fonte.";
+  var FIX_PROMPT = "Consulte de novo o frame \"Tela demo\" via MCP. Esta propriedade no meu código não bate com o frame: [DIGA QUAL]. Explique a diferença e ajuste SÓ ela, usando o token certo do frame. Preserve o resto. Não reescreva o componente.";
 
   var CONFIG_JSON =
 '{\n' +
@@ -452,7 +456,7 @@
         { type: "diagram", dlabel: "Onde fica no Figma",
           trail: ["Figma", "Settings", "Security", "Personal access tokens", "Generate new token"],
           field: "figd_", foot: "O token aparece uma vez só. Copie na hora." },
-        { type: "note", tone: "warn", text: "Segurança: o token não passa por esta página, nem por link, nem pelos organizadores. Guarde só pra você. Se aparecer projetado, revogue e gere outro." }
+        { type: "note", tone: "warn", text: "Segurança, dita com precisão: se você colar o token no campo do próximo passo, ele é processado <b>aqui no seu navegador</b> só pra montar o JSON. Não é enviado pra servidor nenhum, não entra em link, não vai pra analytics e não é salvo (fecha a aba e some). Esta página não faz nenhuma requisição externa. Ele nunca passa pelos organizadores nem pelo projetor. Se aparecer projetado, revogue e gere outro." }
       ],
       checklist: ["Token gerado", "Começa com figd_", "Copiado num lugar seguro"] };
   }
@@ -535,35 +539,39 @@
       { key: "p-gerar", rail: "Gerar", est: "6 min", title: "2. Gere o componente", why: "Mesmo pedido de sempre, só que agora com a fonte certa: o Figma via MCP.",
         blocks: [{ type: "cmd", label: "no Claude", value: GEN_PROMPT }],
         checklist: ["Gerou o Card.tsx", "As cores vieram de token, não de hex cru"] },
-      { key: "p-comparar", rail: "Comparar", est: "5 min", title: "3. Compare com o Figma", why: "Achar onde divergiu é o trabalho que a IA não faz por você. Ela lê a fonte de novo e você julga.",
+      { key: "p-inspecionar", rail: "Inspecionar", est: "5 min", title: "3. Inspecione 3 propriedades", why: "Se você deixar ela auditar o próprio código, você não validou nada, você aplaudiu. Quem compara é você.",
         blocks: [
+          { type: "note", tone: "neutral", text: "<b>Não é \"ache 3 erros\".</b> Pode não ter nenhum, e tudo bem: o exercício é verificar, não caçar. Não existe arquivo pra abrir, o código está no bloco da própria conversa." },
+          { type: "text", text: "O prompt anterior já obrigou ela a listar os 3 tokens que usou. Agora peça a fonte, sem deixar ela julgar o próprio trabalho:" },
           { type: "cmd", label: "no Claude", value: COMPARE_PROMPT },
-          { type: "note", tone: "neutral", text: "Não precisa de preview nem de terminal: a comparação é entre o código que ela gerou e o frame que ela relê. Ache TRÊS divergências." }
+          { type: "text", text: "Agora role até o bloco de código e confira <b>com o olho</b>, uma por uma:" },
+          { type: "diagram", dlabel: "Preencha para cada propriedade", trail: ["Frame diz", "Código tem", "Bate?"], foot: "Cor do botão, tamanho do título, espaçamento interno. \"Não localizei\" é resposta válida: se você não acha de onde veio o valor, o código não é auditável, e isso já é um achado." }
         ],
-        checklist: ["Achamos pelo menos 3 divergências", "Cada uma tem o token certo citado"] },
-      { key: "p-corrigir", rail: "Corrigir", est: "5 min", title: "4. Corrija uma falha", why: "Consultar a fonte de novo e ajustar só o que escolhemos. Sem reescrever o resto.",
+        checklist: ["Inspecionei as 3 propriedades", "Sei dizer, de cada uma, se veio do token ou de chute"] },
+      { key: "p-corrigir", rail: "Corrigir", est: "5 min", title: "4. Corrija, se houver o que corrigir", why: "Consultar a fonte de novo e ajustar só o que escolhemos. Sem reescrever o resto.",
         blocks: [
+          { type: "text", text: "Achou uma que não bate? Diga qual e mande consertar consultando o frame:" },
           { type: "cmd", label: "no Claude", value: FIX_PROMPT },
-          { type: "note", tone: "ok", text: "Deu certo quando ela cita o token certo do frame, e não um valor que ela escolheu sozinha. Esse é o workshop inteiro em uma tela." }
+          { type: "note", tone: "ok", text: "Deu tudo certo nas três? Ótimo, e não é anticlímax: você <b>verificou</b> em vez de confiar. Faz o teste seguinte: pergunte de onde veio o foco visível e confira no frame. Sempre tem uma quarta propriedade pra auditar." },
+          { type: "note", tone: "neutral", text: "O ponto: repare que o valor que ela devolveu tem procedência, veio do frame, não da cabeça dela. É isso que a gente veio treinar." }
         ],
-        checklist: ["Corrigimos uma falha", "O valor veio do frame, não de chute"] },
-      { key: "p-ver", rail: "Ver rodando", est: "2 min", title: "5. Ver rodando (opcional)", why: "Bônus. O ciclo já fechou no passo 4; isto é só o prazer de ver renderizar.",
+        checklist: ["O valor que entrou veio do frame, não de chute"] },
+      { key: "p-revogar", rail: "Revogar", est: "4 min", title: "5. Revogue seu token", why: "Este passo não é opcional e não tem corte. É o que mantém a máquina do evento limpa depois que você levantar.",
         blocks: [
-          { type: "note", tone: "warn", text: "Só faz sentido se você já baixou o kit. Na máquina do evento, baixar e instalar as dependências agora come o tempo da prática. O Bruno mostra o preview no telão; você roda em casa com calma." },
-          { type: "link", href: "https://github.com/thiagoxikota/figma-to-code-tdc-2026", label: "Baixar o kit (Code > Download ZIP, não precisa de git)" },
-          { type: "text", text: "Com o kit na mão: cole o Card.tsx gerado em src/components/Card.tsx e rode:" },
-          { type: "cmd", label: "terminal, na pasta do projeto", value: "npm install && npm run workshop:start" },
-          { type: "note", tone: "neutral", text: "Abre em localhost:5173. O slot 2 mostra o seu componente. Pra validar de forma objetiva: npm run workshop:check." }
+          { type: "note", tone: "warn", text: "<b>Quem revoga é a pessoa da CONTA que criou o token</b>, não \"a dupla\". O token pertence a uma conta; seu parceiro pode nem saber em qual conta foi criado." },
+          { type: "diagram", dlabel: "No Figma", trail: ["Settings", "Security", "Personal access tokens", "Revoke"], foot: "Revogar é o que de fato mata o acesso, mesmo que a config fique na máquina." },
+          { type: "note", tone: "ok", text: "Deixe a entrada do MCP no config se quiser: sem token vivo, ela é inerte. O que não pode ficar pra trás é o token." },
+          { type: "text", text: "Não conseguiu revogar? Chame um apoio antes de sair. Levantar a mão confirma intenção, não comprova revogação." }
         ],
-        checklist: ["(opcional) Preview abriu", "(opcional) O card renderiza no slot"] },
-      { key: "p-concluir", rail: "Fechou", est: "2 min", title: "6. Feche o ciclo", why: "Você conectou, leu, gerou, comparou e corrigiu. É o pipeline inteiro, na sua mão.",
+        checklist: ["Revoguei o token na conta que o criou", "Saí das minhas contas (máquina do evento)"] },
+      { key: "p-concluir", rail: "Fechou", est: "2 min", title: "6. Feche o ciclo", why: "Você conectou, leu, gerou, inspecionou e corrigiu consultando a fonte. É o pipeline inteiro, na sua mão.",
         blocks: [
-          { type: "note", tone: "ok", text: "Fez o ciclo real: Figma Desktop conectado ao Claude Desktop pelo MCP, leu um frame, gerou a partir dele, comparou e corrigiu consultando a fonte." },
-          { type: "note", tone: "warn", text: "Na máquina do evento, antes de levantar: revogue o seu token no Figma (Settings > Security > Personal access tokens > Revoke) e saia das suas contas. O token é seu e não fica pra trás." },
-          { type: "text", text: "Se você mexeu no config desta máquina e quer tirar o MCP, o caminho manual é o mesmo do passo 4: apague a chave figma-console do claude_desktop_config.json. Com o kit baixado, dá num comando:" },
-          { type: "cmd", label: "terminal (só se baixou o kit)", value: "npm run workshop:setup-mcp -- --remove" }
+          { type: "note", tone: "ok", text: "Fez o ciclo real: Figma Desktop conectado ao Claude Desktop pelo MCP, leu um frame de verdade, gerou a partir dele, verificou a procedência de cada valor e corrigiu consultando a fonte." },
+          { type: "note", tone: "neutral", text: "Sendo exato sobre o que fechou: o ciclo de consultar a fonte, ler o código e verificar de onde veio o valor. Ver rodando e passar no typecheck é o passo seguinte, e ele é em casa, sem o relógio da sala." },
+          { type: "link", href: "https://github.com/thiagoxikota/figma-to-code-tdc-2026", label: "Levar pra casa: o kit inteiro (Code > Download ZIP, não precisa de git)" },
+          { type: "text", text: "Em casa, com o kit: cole o Card.tsx em src/components/Card.tsx e rode <b>npm install && npm run workshop:start</b> pra ver renderizar, e <b>npm run workshop:check</b> pra validar typecheck + token." }
         ],
-        checklist: ["Conectei", "Li", "Gerei", "Comparei", "Corrigi", "Revoguei o token (máquina do evento)"] }
+        checklist: ["Conectei", "Li", "Gerei", "Inspecionei", "Corrigi", "Revoguei o token"] }
     ];
   }
 

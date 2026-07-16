@@ -72,10 +72,22 @@ visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs
 externas.
 Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e
 use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá.
-Não invente valores; puxe do Figma. Devolva só o arquivo Card.tsx.
+Não invente valores; puxe do Figma.
+FORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um
+arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária.
+Todo estilo vem de variável CSS com o MESMO nome do token do Figma
+(ex: var(--color-brand-primary)), e ao lado de cada uma um comentário
+com o valor que veio do frame (ex: /* #DC000C, do frame */).
+No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro
+tamanho do título e pro espaçamento interno.
+Devolva só o código e essas 3 linhas.
 ```
 
-Por que funciona (e por que é o experimento certo): 5a e 5b são o MESMO pedido. A única variável que muda é a IA ler ou não o Figma. Quando o Take B sai fiel e o Take A inventa a cor, a diferença não é "prompt melhor", é a fonte, o contexto estruturado do Figma via MCP. Isso prova o título do workshop, não só que prompt detalhado ganha de prompt vago.
+Por que funciona (e por que é o experimento certo): 5a e 5b são o MESMO pedido. A única variável que muda é a IA ler ou não o Figma. Quando o Take B sai fiel e o Take A inventa a cor, a diferença não é "prompt melhor", é a fonte, o contexto estruturado do Figma via MCP.
+
+**Por que o bloco de FORMATO existe (não é preciosismo):** sem ele o modelo pode devolver `className="gap-4 text-base bg-primary"`, e aí o participante não tem como saber se `text-base` é o 16 que voltou do frame. Um output que ninguém consegue auditar não serve pra um workshop cujo ponto É auditar a procedência do valor. Travar o formato transforma "confia em mim" em "confere você mesmo". As 3 linhas do fim são o que a dupla usa pra inspecionar no exercício, sem precisar ler o arquivo inteiro.
+
+**Honestidade sobre o que o par 5a/5b é:** uma comparação demonstrativa, não um experimento. Duas gerações não provam causalidade (o modelo é estocástico), e a cláusula de leitura muda a instrução, não só a fonte. A evidência forte não é "o card ficou mais bonito", é a rastreabilidade: o valor que voltou da Bridge aparece na linha do código. Rode os dois em conversas NOVAS e separadas, nunca na mesma (na mesma, o modelo carrega o frame já lido e o Take A deixa de ser sem-contexto).
 
 ## 6. Melhorar acessibilidade
 
