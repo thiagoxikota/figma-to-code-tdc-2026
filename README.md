@@ -1,6 +1,6 @@
 # Do Figma ao código sem handoff
 
-Kit do workshop apresentado no The Developer's Conference Florianópolis 2026 (23/07, 10:15 às 11:45), por Thiago Xikota e Bruno Bach, com IxDA Florianópolis e Friends of Figma Florianópolis.
+Kit do workshop apresentado no The Developer's Conference Florianópolis 2026 (23/07, 10:15 às 11:45), por Thiago Xikota e Bruno Bach, com The AI Collective Florianópolis, Friends of Figma Florianópolis e Designers no Boteco.
 
 A tese em uma frase: a IA não lê a sua tela, ela lê o que você conseguiu especificar. O resto ela inventa. O jeito de provar isso não é falar sobre, é ligar o pipeline de verdade e ver o output mudar.
 
