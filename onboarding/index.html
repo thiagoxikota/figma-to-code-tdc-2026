@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Prepare sua máquina · Do Figma ao código sem handoff · TDC 2026</title>
 <meta name="robots" content="noindex" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'" />
+<meta property="og:title" content="Prepare sua máquina · TDC 2026" />
+<meta property="og:description" content="Guia de setup do workshop Do Figma ao código sem handoff. Quatro passos, uns 21 minutos, no seu ritmo." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thiagoxikota.com/tdc/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0,200,807,814'%3E%3Cg fill='%23DC000C'%3E%3Cpath d='M276.803,666.146C308.044,634.905,308.044,584.252,276.803,553.01L85.6611,361.869C32.0116,429.942,0,515.864,0,609.264C0,702.824,32.1229,788.88,85.9395,857.009L276.803,666.146Z'/%3E%3Cpath d='M471.188,736.476C439.947,705.234,389.294,705.234,358.052,736.476L166.911,927.617C234.984,981.267,320.906,1013.28,414.306,1013.28C507.866,1013.28,593.922,981.155,662.051,927.339L471.188,736.476Z'/%3E%3Cpath d='M529.518,547.994C498.276,579.236,498.276,629.889,529.518,661.131L720.659,852.271C774.309,784.198,806.32,698.276,806.32,604.877C806.32,511.317,774.197,425.261,720.381,357.132L529.518,547.994Z'/%3E%3Cpath d='M346.038,477.759C377.28,509,427.933,509,459.175,477.759L650.315,286.617C582.242,232.968,496.32,200.956,402.921,200.956C309.361,200.956,223.304,233.079,155.176,286.896L346.038,477.759Z'/%3E%3C/g%3E%3C/svg%3E" />
 <meta name="theme-color" content="#F4F1EC" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#14110E" media="(prefers-color-scheme: dark)" />
 <style>
@@ -76,6 +82,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     background: var(--bg); color: var(--ink); font-family: var(--font);
@@ -86,7 +93,7 @@
   a { color: var(--brand-deep); text-underline-offset: 3px; }
   button { font-family: inherit; cursor: pointer; color: inherit; }
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
-  ::selection { background: var(--brand); color: #fff; }
+  ::selection { background: var(--brand); color: var(--on-brand); }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
   .hidden { display: none !important; }
 
@@ -109,12 +116,6 @@
   .xlockup path { fill: var(--brand); }
   .lockup .name { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
   .lockup .name .sep { color: var(--brand); padding: 0 6px; }
-  .urlcue {
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  }
-  .urlcue .txt { font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
-  .urlcue .txt b { color: var(--ink); font-weight: 800; }
-  .urlcue .txt .u { color: var(--brand-deep); font-weight: 800; }
   .copybtn {
     background: var(--panel); color: var(--ink); border: 1.5px solid var(--rule-2);
     border-radius: 999px; padding: 7px 15px; font-weight: 700; font-size: 13px; min-height: 44px;
@@ -134,6 +135,7 @@
   .segs { display: flex; gap: 6px; }
   .segs .seg { flex: 1; height: 7px; border-radius: 99px; background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--rule); transition: background .25s; }
   .segs .seg.done { background: var(--brand); box-shadow: none; }
+  .segs .seg.done.open { background: var(--brand-wash); box-shadow: inset 0 0 0 1.5px var(--brand); }
   .segs .seg.cur { background: var(--brand); height: 11px; box-shadow: 0 0 0 2px var(--ink); }
 
   /* ---------- palco ---------- */
@@ -223,7 +225,7 @@
   }
   .fixsteps li::before {
     counter-increment: fix; content: counter(fix); flex: 0 0 auto;
-    width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff;
+    width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: var(--on-brand);
     font-size: 15px; font-weight: 900; display: flex; align-items: center; justify-content: center;
   }
   .collective {
@@ -252,6 +254,7 @@
   pre {
     background: var(--sunk); color: #F7F2EA; border-radius: var(--radius-sm); padding: 18px 16px;
     padding-right: 104px;
+    white-space: pre-wrap; overflow-wrap: anywhere;
     overflow-x: auto; font-family: var(--mono); font-size: 14.5px; line-height: 1.55;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
   }
@@ -266,7 +269,7 @@
 
   /* notas de estado */
   .note { border-radius: var(--radius-sm); padding: 14px 16px 14px 46px; font-size: 15.5px; line-height: 1.5; position: relative; border: 1px solid; }
-  .note::before { position: absolute; left: 15px; top: 14px; font-weight: 900; font-size: 15px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+  .note::before { position: absolute; left: 15px; top: 14px; font-weight: 900; font-size: 15px; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg); }
   .note.neutral { background: var(--bg-2); border-color: var(--rule); color: var(--ink-2); padding-left: 16px; }
   .note.warn { background: var(--warn-wash); border-color: color-mix(in srgb, var(--warn) 40%, transparent); color: var(--ink); }
   .note.warn::before { content: "!"; background: var(--warn); }
@@ -279,7 +282,7 @@
   .diagram .dlabel { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
   .trail { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
   .trail .chip { font-size: 14px; font-weight: 700; color: var(--ink); background: var(--bg-2); border: 1px solid var(--rule-2); border-radius: 8px; padding: 7px 11px; white-space: nowrap; }
-  .trail .chip.end { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .trail .chip.end { background: var(--brand-wash); color: var(--brand-deep); border: 1.5px solid var(--brand); font-weight: 800; }
   .trail .chev { color: var(--ink-3); font-weight: 900; }
   .diagram .dfoot { margin-top: 12px; font-size: 13.5px; color: var(--ink-3); }
   .fakefield { margin-top: 12px; display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px dashed var(--rule-2); border-radius: 8px; padding: 10px 12px; font-family: var(--mono); font-size: 14px; color: var(--ink-2); }
@@ -291,11 +294,11 @@
   .tokenfield .hint b { color: var(--ink); font-weight: 800; }
   .tokenrow { display: flex; gap: 8px; align-items: center; }
   .tokenrow input {
-    flex: 1; min-width: 0; background: var(--bg-2); border: 1.5px solid var(--rule-2); border-radius: 10px;
+    flex: 1; min-width: 0; background: var(--bg-2); border: 1.5px solid var(--ink-3); border-radius: 10px;
     color: var(--ink); font-family: var(--mono); font-size: 15px; padding: 12px; min-height: 48px;
   }
   .tokenrow input::placeholder { color: var(--ink-3); }
-  .tokenrow .eye { background: var(--bg-2); border: 1.5px solid var(--rule-2); border-radius: 10px; color: var(--ink); padding: 0 14px; min-height: 48px; font-weight: 700; font-size: 14px; }
+  .tokenrow .eye { background: var(--bg-2); border: 1.5px solid var(--ink-3); border-radius: 10px; color: var(--ink); padding: 0 14px; min-height: 48px; font-weight: 700; font-size: 14px; }
   .tokenrow .eye:hover { border-color: var(--brand); }
 
   /* checklist de validação */
@@ -344,12 +347,36 @@
   @media (min-width: 620px) { .modal { border-radius: var(--radius); } }
   .modal h3 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
   .modal .sub { color: var(--ink-2); font-size: 15.5px; line-height: 1.5; }
-  .helpbanner { background: var(--brand); color: #fff; border-radius: var(--radius-sm); padding: 15px 16px; font-weight: 800; font-size: 17px; margin: 16px 0; display: flex; align-items: center; gap: 10px; }
-  .helpbanner .hm { width: 12px; height: 12px; border-radius: 50%; background: #fff; flex: 0 0 auto; }
+  .helpbanner { background: var(--brand); color: var(--on-brand); border-radius: var(--radius-sm); padding: 15px 16px; font-weight: 800; font-size: 17px; margin: 16px 0; display: flex; align-items: center; gap: 10px; }
+  .helpbanner .hm { width: 12px; height: 12px; border-radius: 50%; background: var(--on-brand); flex: 0 0 auto; }
   .field { margin: 14px 0; }
   .field label { display: block; font-weight: 800; margin-bottom: 6px; font-size: 15px; }
-  .field input, .field select { width: 100%; background: var(--bg-2); border: 1.5px solid var(--rule-2); border-radius: 10px; color: var(--ink); padding: 12px; font-size: 16px; min-height: 48px; }
+  .field input, .field select { width: 100%; background: var(--bg-2); border: 1.5px solid var(--ink-3); border-radius: 10px; color: var(--ink); padding: 12px; font-size: 16px; min-height: 48px; }
   .helpsummary { font-family: var(--mono); font-size: 13px; color: var(--ink-2); background: var(--bg-2); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; line-height: 1.5; margin: 12px 0 16px; }
+
+  /* ---------- ajustes de contexto ---------- */
+  .stepmeta .est.solo::before { display: none; }
+  .modal .label { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-3); }
+  .modal .troublelist .label { margin: 8px 0 0; }
+  .badge.now { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1.5px var(--rule-2); }
+  .choice.current { border-color: var(--ink-3); }
+  .notecopy { margin-top: 12px; }
+  .escmuted { margin: 18px 0 8px; font-size: 13.5px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; color: var(--ink-3); }
+  .escnote { margin-top: 8px; font-size: 13.5px; color: var(--ink-3); line-height: 1.5; }
+  .skiplink { margin-top: 18px; }
+
+  @media (max-width: 640px) {
+    .topbar .bar { padding: 10px 16px; }
+    .meterbox { padding: 0 16px 10px; }
+    pre { padding: 52px 16px 16px; }
+    .path { padding-right: 84px; }
+  }
+
+  @media print {
+    .topbar, .stepactions, .backrow, .code-copy, .btn { display: none !important; }
+    body { padding-bottom: 0; background: #fff; }
+    pre, .path { background: #fff; color: #000; box-shadow: none; border: 1px solid #888; }
+  }
 
   /* ---------- animação (respeita reduce) ---------- */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -368,16 +395,9 @@
     <div class="bar">
       <div class="lockup">
         <svg class="xmark" viewBox="0 200 807 814" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M276.803 666.146C308.044 634.905 308.044 584.252 276.803 553.01L85.6611 361.869C32.0116 429.942 0 515.864 0 609.264C0 702.824 32.1229 788.88 85.9395 857.009L276.803 666.146Z"></path><path d="M471.188 736.476C439.947 705.234 389.294 705.234 358.052 736.476L166.911 927.617C234.984 981.267 320.906 1013.28 414.306 1013.28C507.866 1013.28 593.922 981.155 662.051 927.339L471.188 736.476Z"></path><path d="M529.518 547.994C498.276 579.236 498.276 629.889 529.518 661.131L720.659 852.271C774.309 784.198 806.32 698.276 806.32 604.877C806.32 511.317 774.197 425.261 720.381 357.132L529.518 547.994Z"></path><path d="M346.038 477.759C377.28 509 427.933 509 459.175 477.759L650.315 286.617C582.242 232.968 496.32 200.956 402.921 200.956C309.361 200.956 223.304 233.079 155.176 286.896L346.038 477.759Z"></path></svg>
-        <span class="name">TDC 2026<span class="sep">·</span>Setup</span>
+        <span class="name">TDC 2026<span class="sep">·</span><span id="phaseName">Setup</span></span>
       </div>
-      <div class="urlcue">
-        <button class="copybtn resetbtn" id="btnReset" type="button">Recomeçar</button>
-        <span class="txt">No computador, abra <b class="u" id="shortUrl">thiagoxikota.com/tdc</b></span>
-        <button class="copybtn" id="copyUrl" type="button" aria-label="Copiar o link do guia">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="2"/></svg>
-          <span class="lbl">Copiar link</span>
-        </button>
-      </div>
+      <button class="copybtn resetbtn" id="btnReset" type="button" hidden>Recomeçar</button>
     </div>
     <div class="meterbox" id="meterbox" hidden>
       <div class="meterhead">
@@ -402,6 +422,9 @@
 
   var SHORT_URL = "thiagoxikota.com/tdc";       // URL curta final (servida em thiagoxikota.com/tdc)
   var STORAGE = "tdc-workshop-onboarding-v2";   // nunca guarda token
+  // 20/07: rodada de UX pos-auditoria: hash routing (back e deep link), reserva
+  // virou view persistida sem reset no clique, socorro agrupado, header enxuto,
+  // prompts com quebra de linha, focus trap completo, dark mode com on-brand.
   var TEST_PROMPT = "Verifique o status da conexão com o Figma";
   var READ_PROMPT = "Leia o frame \"Tela demo\" deste arquivo Figma via MCP. Devolva a árvore de camadas, os componentes e os tokens (variáveis) aplicados. Descreva estrutura e semântica, não pixels.";
   var GEN_PROMPT = "Gere um componente Card em React + TypeScript, function component. Props tipadas: title, description, imageUrl?, onClick?. Estados default, hover, focus-visible e disabled. Acessibilidade: article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste AA.\nAntes de gerar, leia o frame \"Tela demo\" deste arquivo Figma via MCP e use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá. Não invente valores; puxe do Figma.\nFORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária. Todo estilo vem de variável CSS com o MESMO nome do token do Figma (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário com o valor que veio do frame (ex: /* #C8352B, do frame */). No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro tamanho do título e pro espaçamento interno. Devolva só o código e essas 3 linhas.";
@@ -422,7 +445,7 @@
 '  }\n' +
 '}';
 
-  var TOKEN_HELP = "No Figma: clique no seu avatar (canto superior) > Settings > aba Security > Personal access tokens > Generate new token. Marque estes quatro escopos: file content (read), file variables (read), file comments (read) e file comments (write). O token aparece uma vez só, copie na hora. Ele começa com figd_.";
+  var TOKEN_HELP = "A trilha abaixo mostra onde criar, a partir do seu avatar no canto superior do Figma. Marque os quatro escopos listados e copie o token na hora: ele aparece uma vez só e começa com <b>figd_</b>.";
 
   // ---- catalogo de socorro (28 falhas conhecidas, extraidas dos docs canonicos) ----
   var TROUBLE = [{"id":"login-figma-bloqueado","etapa":"login figma","sintoma":"Não consigo entrar no Figma. Ele pede código ou trava a verificação.","passos":["Peça o código de novo pelo botão de reenviar da própria tela do Figma.","Se o código não chegar em 30 segundos, tente entrar com o botão Continue with Google.","Se sua conta é corporativa e a empresa bloqueia, pare aqui e levante a mão.","Enquanto isso, sente do lado de alguém que já está logado e acompanhe a tela dele."],"sucesso":"O arquivo do workshop abre no Figma Desktop com seu nome de usuário no canto.","escalar":"Depois de 1 tentativa de reenvio de código sem sucesso, ou se for 2FA sem o celular em mãos. Não insista.","coletivo":false},{"id":"login-claude-bloqueado","etapa":"login claude","sintoma":"Não consigo entrar no Claude Desktop.","passos":["Feche o Claude por completo. No macOS use Cmd+Q. No Windows saia pelo ícone da bandeja, perto do relógio.","Abra de novo e tente o login uma vez.","Se pedir verificação por e-mail e você não tem acesso ao e-mail agora, pare.","Levante a mão e junte com a dupla do lado."],"sucesso":"Você vê a tela de conversa do Claude com o campo de mensagem disponível.","escalar":"Uma tentativa de login falhou. Login corporativo travado não se resolve na sala.","coletivo":false},{"id":"login-conta-errada","etapa":"login figma","sintoma":"Entrei com a conta errada. Não vejo o arquivo do workshop.","passos":["No Figma Desktop, clique no seu avatar no canto superior.","Clique em Log out.","Entre com a conta pessoal que você usou para duplicar o arquivo da demo.","Abra de novo a sua cópia do arquivo da demo."],"sucesso":"O arquivo da demo aparece na sua lista de arquivos recentes e abre.","escalar":"Se você trocou de conta e o arquivo continua sumido, chame apoio. Pode ser que a duplicação não tenha sido salva.","coletivo":false},{"id":"figma-navegador-em-vez-de-desktop","etapa":"plugin","sintoma":"Estou com o Figma aberto no navegador. Nada conecta.","passos":["Feche a aba do Figma no navegador.","Abra o aplicativo Figma Desktop, o ícone instalado na máquina.","Abra sua cópia do arquivo da demo dentro do aplicativo.","Só então rode o plugin de novo."],"sucesso":"O menu Plugins aparece na barra superior do Figma. No navegador esse caminho não existe do mesmo jeito.","escalar":"Se o Figma Desktop não está instalado na máquina e você não tem permissão para instalar, chame apoio. Esse caso vai para máquina reserva.","coletivo":false},{"id":"token-nao-consigo-criar","etapa":"token","sintoma":"Não acho onde criar o token do Figma.","passos":["No Figma, clique no seu avatar no canto superior e escolha Settings.","Abra a aba Security.","Vá até Personal access tokens e clique em Generate new token.","Marque os escopos file content read, file variables read e file comments read e write. Copie o token na hora."],"sucesso":"Você tem na área de transferência um texto que começa com figd_.","escalar":"Se a opção Personal access tokens não aparece, sua conta é gerenciada pela empresa e bloqueia isso. Levante a mão.","coletivo":false},{"id":"token-perdido","etapa":"token","sintoma":"Perdi o token. Não consigo mais ver ele na tela.","passos":["Não procure. O token aparece uma vez só e não é mostrado de novo.","Vá em Figma, avatar, Settings, Security, Personal access tokens, Generate new token.","Copie o token novo na hora e cole direto no arquivo de configuração.","Feche o Claude por completo e abra de novo."],"sucesso":"O campo FIGMA_ACCESS_TOKEN no arquivo de configuração tem um valor que começa com figd_.","escalar":"Se você gerou token novo duas vezes e ainda não funciona, chame apoio.","coletivo":false},{"id":"token-recusado","etapa":"token","sintoma":"O Claude responde, mas o Figma recusa. O status volta sem o nome do arquivo.","passos":["Confira se o token começa com figd_. Se não começa, você copiou a coisa errada.","Confira se não entrou espaço, quebra de linha ou aspa a mais quando você colou.","Gere um token novo em Figma, Settings, Security, Personal access tokens, Generate new token.","Cole o token novo, salve o arquivo, feche o Claude por completo e abra de novo."],"sucesso":"Você pede Verifique o status da conexão com o Figma e a resposta traz o nome do seu arquivo aberto.","escalar":"Você gerou um token novo uma vez e ainda recusa. Pare e chame apoio.","coletivo":false},{"id":"nao-acho-edit-config","etapa":"config","sintoma":"Não acho onde editar a configuração do Claude.","passos":["No Claude Desktop, abra Settings e depois Developer, e clique em Edit Config.","Se esse botão não existir na sua versão, abra o arquivo direto. No macOS use o Finder, menu Ir, Ir para a pasta, e cole ~/Library/Application Support/Claude/claude_desktop_config.json.","No Windows, abra o Explorador, cole %APPDATA%\\Claude na barra de endereço e abra o arquivo claude_desktop_config.json.","Abra esse arquivo em um editor de texto simples, não no Word."],"sucesso":"Você está vendo um arquivo de texto com chaves e aspas, e consegue digitar nele.","escalar":"Se a pasta Claude não existe, é porque o Claude Desktop nunca abriu nessa máquina. Abra o Claude uma vez e tente de novo. Se ainda assim não existir, chame apoio.","coletivo":false},{"id":"config-json-invalido","etapa":"config","sintoma":"Salvei o arquivo e o Claude reclama do formato, ou nada carrega.","passos":["Procure vírgula sobrando antes de um fecha chaves. Esse é o erro mais comum.","Confira se toda aspa que abre também fecha, e se são aspas retas e não curvas.","Confira que existe a chave mcpServers com figma-console dentro, command igual a npx e args igual a [\"-y\", \"figma-console-mcp@1.35.0\"].","Salve, feche o Claude por completo e abra de novo."],"sucesso":"O Claude abre normal e o figma-console aparece na lista de conectores.","escalar":"Você corrigiu o arquivo uma vez e ainda não sobe. Não fique caçando vírgula. Chame apoio.","coletivo":false},{"id":"config-versao-latest","etapa":"config","sintoma":"Funcionava ontem e hoje quebrou sozinho.","passos":["Abra o arquivo de configuração do Claude.","Procure a linha com figma-console-mcp e veja se está escrito latest.","Troque para exatamente figma-console-mcp@1.35.0.","Salve, feche o Claude por completo e abra de novo."],"sucesso":"Você pede Verifique o status da conexão com o Figma e ele responde com o nome do arquivo aberto.","escalar":"Corrigiu a versão, reiniciou e continua quebrado. Chame apoio.","coletivo":false},{"id":"claude-nao-mostra-mcp","etapa":"config","sintoma":"Salvei o JSON certinho e o Figma não aparece no Claude.","passos":["Confirme que você salvou o arquivo. Um arquivo aberto e não salvo não conta.","Feche o Claude por completo. No macOS é Cmd+Q, não basta fechar a janela. No Windows saia pelo ícone da bandeja.","Abra o Claude de novo e espere ele carregar.","Abra uma conversa nova e escreva: Verifique o status da conexão com o Figma."],"sucesso":"O figma-console aparece na lista de conectores e a conversa nova responde ao pedido de status.","escalar":"Você reiniciou de verdade uma vez e o conector não apareceu. Chame apoio. Se três pessoas perto de você estão no mesmo ponto, avise que é coletivo.","coletivo":false},{"id":"pasta-plugin-nao-existe","etapa":"plugin","sintoma":"A pasta do plugin não existe. Não acho o manifest.json.","passos":["Isso é ordem, não erro. A pasta só nasce quando o Claude sobe pela primeira vez com a configuração salva.","Confirme que o arquivo de configuração está salvo.","Feche o Claude por completo e abra de novo. Espere ele carregar.","Só então volte ao Figma e importe o manifest."],"sucesso":"No macOS o caminho ~/.figma-console-mcp/plugin/manifest.json existe. No Windows é %USERPROFILE%\\.figma-console-mcp\\plugin\\manifest.json.","escalar":"Você reiniciou o Claude e esperou, e a pasta continua sem existir. Chame apoio.","coletivo":false},{"id":"plugin-zip-nao-existe","etapa":"plugin","sintoma":"O tutorial manda baixar um ZIP do GitHub e eu não acho o ZIP.","passos":["Ignore. Não existe mais ZIP nessa versão.","No Figma Desktop vá em Plugins, Development, Import plugin from manifest.","No macOS aponte para ~/.figma-console-mcp/plugin/manifest.json. No Windows aponte para %USERPROFILE%\\.figma-console-mcp\\plugin\\manifest.json.","Rode o plugin e deixe a janela dele aberta."],"sucesso":"O plugin aparece rodando em uma janela dentro do Figma.","escalar":"Se a caixa de seleção de arquivo não mostra a pasta que começa com ponto, chame apoio.","coletivo":false},{"id":"plugin-nao-abre","etapa":"plugin","sintoma":"Importei o plugin mas ele não abre, ou some sozinho.","passos":["Confirme que você está no Figma Desktop e com o arquivo da demo aberto na frente.","Vá em Plugins, Development, e clique no Figma Console Bridge da lista.","Se abrir e fechar sozinho, feche o Figma Desktop por completo e abra de novo, depois rode o plugin.","Deixe a janela do plugin aberta durante todo o workshop. Se fechar, a ponte cai."],"sucesso":"A janela do plugin fica aberta e mostra que está conectada.","escalar":"Você reiniciou o Figma uma vez e o plugin continua não abrindo. Chame apoio.","coletivo":false},{"id":"bridge-nao-conecta","etapa":"teste","sintoma":"O status não conecta. O Claude não enxerga o Figma.","passos":["Confirme os três ao mesmo tempo: Figma Desktop aberto, arquivo da demo aberto, janela do plugin aberta.","Feche a janela do plugin e rode ele de novo. Ele procura a porta sozinho.","Se não subir, feche o Figma Desktop por completo e abra de novo, depois rode o plugin.","No Claude, em conversa nova, escreva: reconecte com o Figma."],"sucesso":"A resposta confirma conexão pela ponte e traz o nome do arquivo aberto.","escalar":"Você reiniciou o plugin uma vez e o Figma uma vez e não conectou. Pare e chame apoio.","coletivo":false},{"id":"falso-positivo-mcp-na-lista","etapa":"teste","sintoma":"Está tudo certo, o MCP aparece na lista, mas nada funciona de verdade.","passos":["Aparecer na lista não é sucesso. Ignore isso como prova.","Em conversa nova escreva: Verifique o status da conexão com o Figma.","Exija na resposta a confirmação de conexão pela ponte e o nome do seu arquivo.","Depois peça para ler o frame Tela demo e confira se voltam dados do seu arquivo, como o título Criar sua conta."],"sucesso":"Ele devolve nomes reais do seu arquivo, não uma resposta genérica.","escalar":"Se ele responde de forma genérica duas vezes seguidas, trate como ponte caída e chame apoio.","coletivo":false},{"id":"nao-le-o-frame","etapa":"ler frame","sintoma":"Peço para ler o frame e ele não devolve nada do meu arquivo.","passos":["No Figma, clique uma vez no frame Tela demo para selecionar.","Confirme que você está na página 03 Tela demo.","No Claude, peça de novo: leia o frame Tela demo do arquivo aberto.","Se voltar vazio, feche e rode o plugin de novo e repita o pedido."],"sucesso":"A resposta cita elementos concretos da tela, como o título, os campos e o botão.","escalar":"Duas tentativas sem dado concreto. Chame apoio.","coletivo":false},{"id":"tokens-voltam-vazios","etapa":"ler frame","sintoma":"Pedi os tokens e voltou vazio. Parece que o arquivo não tem tokens.","passos":["Não conclua que o arquivo está sem tokens. A primeira leitura depois de reconectar pode voltar vazia.","Peça de novo, na mesma conversa: leia as variáveis do arquivo outra vez, atualizando o cache.","Confira o resultado esperado: uma coleção chamada Workshop Tokens com 23 variáveis.","Se vier a coleção, siga em frente."],"sucesso":"Aparece a coleção Workshop Tokens com 23 variáveis, sendo 10 de cor e 13 numéricas.","escalar":"Duas leituras seguidas voltando zero coleções. Chame apoio.","coletivo":false},{"id":"geracao-travou","etapa":"gerar","sintoma":"Pedi para gerar e não volta nada. Está parado.","passos":["Espere até 75 segundos. Geração longa é normal em horário de pico.","Se passar disso, pare a resposta e peça de novo com um pedido mais curto.","Se travar de novo, siga pelo fluxo coletivo do palco em vez de insistir sozinho.","Não fique parado esperando. Acompanhe a tela da dupla."],"sucesso":"O código aparece na resposta citando nomes do seu arquivo.","escalar":"Duas gerações seguidas sem retorno. Avise que travou. Se várias pessoas travarem juntas, é coletivo e o palco assume.","coletivo":true},{"id":"limite-de-uso","etapa":"gerar","sintoma":"O Claude disse que bati o limite de uso.","passos":["Não espere a cota voltar. Ela não volta a tempo.","Junte com a dupla do lado e siga na máquina de quem ainda tem cota.","Use os prompts curtos do kit. Eles gastam menos.","Avise em voz alta que você bateu o limite."],"sucesso":"Você continua o exercício na tela da dupla, sem parar.","escalar":"Avise na hora. Se três pessoas ou mais bateram junto, o palco faz a geração coletiva.","coletivo":true},{"id":"codigo-sem-valores-inspecionaveis","etapa":"inspecionar","sintoma":"O código veio com valores soltos. Não dá para saber de onde saiu cada cor.","passos":["Isso é a lição do workshop, não um erro da ferramenta.","Peça primeiro para ele ler o frame e as variáveis do arquivo.","Peça de novo a geração dizendo: use os nomes das variáveis do arquivo, não valores crus.","Confira se aparecem nomes como color/brand-primary e space/2 no lugar de códigos de cor."],"sucesso":"O código cita nomes de variáveis do Workshop Tokens e você consegue rastrear cada valor até o Figma.","escalar":"Se depois de ler o arquivo ele continua inventando nome de variável que não existe, avise. Vira momento de palco.","coletivo":false},{"id":"variavel-inventada","etapa":"gerar","sintoma":"Ele inventou um nome de variável que não existe no meu arquivo.","passos":["Não corrija na mão ainda.","Peça para ele ler o frame e as variáveis do arquivo de novo.","Peça a geração outra vez, agora com o contexto carregado.","Compare a lista de nomes com a coleção Workshop Tokens."],"sucesso":"Os nomes de variável do código batem com os nomes que aparecem no Figma.","escalar":"Duas gerações seguidas com nome inventado mesmo depois da leitura. Avise o apoio.","coletivo":false},{"id":"node-velho-ou-ausente","etapa":"config","sintoma":"Aparece erro dizendo que o comando não foi encontrado ou que meu Node é antigo.","passos":["Você não vai resolver isso pela página. Precisa de terminal e de permissão.","Se acabou de instalar o Node, feche o Claude Desktop por completo e abra de novo, para ele pegar o caminho novo.","Se isso não resolver, pare. Instalar Node não cabe nos 25 minutos.","Levante a mão e diga que é problema de Node."],"sucesso":"Depois de reabrir o Claude, o figma-console aparece na lista de conectores.","escalar":"Reabriu o Claude uma vez e continua o mesmo erro. Chame apoio na hora. Esse caso tem prioridade para máquina reserva.","coletivo":false},{"id":"npx-demorando","etapa":"config","sintoma":"Reiniciei o Claude e o conector demora muito para aparecer.","passos":["Espere até 60 segundos depois de abrir o Claude. Na primeira vez ele baixa o pacote.","Não reinicie no meio do download. Isso recomeça tudo.","Passou de 60 segundos, feche por completo e abra de novo uma única vez.","Enquanto espera, deixe o Figma Desktop e o arquivo já abertos."],"sucesso":"O figma-console aparece na lista e o pedido de status responde.","escalar":"Se demorar em muita gente ao mesmo tempo, é a rede. Não chame apoio individualmente. Avise em voz alta que está lento para vários.","coletivo":true},{"id":"rede-lenta","etapa":"config","sintoma":"Está tudo lento: login, download, geração.","passos":["Olhe em volta. Se a mesa toda está lenta, é a rede, não a sua máquina.","Avise em voz alta que está lento para vários, não levante a mão como caso individual.","Continue o que é local: a leitura do frame e a inspeção no Figma não dependem de rede.","Acompanhe a demonstração do palco enquanto a rede não volta."],"sucesso":"As ações locais no Figma seguem funcionando e você continua acompanhando o exercício.","escalar":"Não escale individualmente. Rede lenta é decisão de palco.","coletivo":true},{"id":"estou-no-linux","etapa":"login claude","sintoma":"Estou no Linux.","passos":["Pare o setup agora. Esse fluxo não fecha no Linux.","Não gaste tempo tentando adaptar o caminho do arquivo de configuração.","Sente com alguém em macOS ou Windows e siga em dupla.","Avise o apoio que você está no Linux para entrar na fila de máquina reserva."],"sucesso":"Você está acompanhando o exercício em uma tela que funciona, seja a da dupla ou a da reserva.","escalar":"Avise imediatamente, nos primeiros cinco minutos. Linux tem prioridade um na máquina reserva.","coletivo":false},{"id":"revogar-token","etapa":"revogar","sintoma":"Não consigo revogar o token no fim do workshop.","passos":["No Figma, clique no avatar, Settings, aba Security.","Vá em Personal access tokens e ache o token do workshop pelo nome.","Clique no menu de três pontos ao lado dele e escolha Revoke.","Confirme. Se estiver em máquina do evento, apague também a linha do token no arquivo de configuração do Claude."],"sucesso":"O token some da lista de Personal access tokens.","escalar":"Se você não acha o token na lista, chame apoio antes de sair da sala. Não deixe credencial em máquina do evento.","coletivo":false},{"id":"remover-mcp-da-maquina-do-evento","etapa":"revogar","sintoma":"Preciso deixar a máquina do evento limpa e não sei o que apagar.","passos":["Abra o arquivo de configuração do Claude pelo caminho do seu sistema.","Apague o bloco figma-console inteiro de dentro de mcpServers.","Salve e feche o Claude por completo.","Saia da sua conta no Figma e no Claude antes de deixar a máquina."],"sucesso":"O arquivo não tem mais nenhuma linha com figd_ e nenhuma conta sua está logada.","escalar":"Se você não conseguir editar o arquivo, chame apoio antes de sair. Não deixe a máquina com seu token.","coletivo":false}];
@@ -433,17 +456,22 @@
     "ler frame": "p-ler", "gerar": "p-gerar", "inspecionar": "p-inspecionar",
     "revogar": "p-revogar"
   };
+  // passos sem etapa propria herdam as vizinhas mais provaveis
+  var STEP_ALIAS = { "p-corrigir": { "p-gerar": 1, "p-inspecionar": 1 } };
+  var ETAPA_LABEL = { "login figma": "Entrar no Figma", "login claude": "Entrar no Claude", "token": "Token", "config": "Configuração", "plugin": "Plugin no Figma", "teste": "Teste da ponte", "ler frame": "Ler o frame", "gerar": "Gerar", "inspecionar": "Inspecionar", "revogar": "Revogar e limpar" };
   function troubleFor(stepKey) {
+    var alias = STEP_ALIAS[stepKey] || {};
     var mine = [], rest = [];
     for (var i = 0; i < TROUBLE.length; i++) {
       var t = TROUBLE[i];
-      (ETAPA_KEY[t.etapa] === stepKey ? mine : rest).push(t);
+      var k = ETAPA_KEY[t.etapa];
+      (k === stepKey || alias[k] ? mine : rest).push(t);
     }
     return { mine: mine, rest: rest };
   }
 
   // ---- estado (token NUNCA entra aqui nem no localStorage) ----
-  var state = { view: "cover", device: null, os: null, setupIdx: 0, practiceIdx: 0, done: {}, checked: {}, mesa: "" };
+  var state = { view: "cover", device: null, os: null, setupIdx: 0, practiceIdx: 0, checked: {}, mesa: "", osFrom: null, reservaFrom: null };
   var tokenLocal = ""; // só na memória da aba, nunca persistido, nunca enviado
   var tokenRevelado = false; // token fica MASCARADO na tela por padrão (máquina compartilhada)
   var lastFocus = null;
@@ -453,7 +481,8 @@
       localStorage.setItem(STORAGE, JSON.stringify({
         view: state.view, device: state.device, os: state.os,
         setupIdx: state.setupIdx, practiceIdx: state.practiceIdx,
-        done: state.done, checked: state.checked, mesa: state.mesa
+        checked: state.checked, mesa: state.mesa,
+        osFrom: state.osFrom, reservaFrom: state.reservaFrom
       }));
     } catch (e) {}
   }
@@ -465,9 +494,13 @@
   }
 
   function detectOs() {
-    var p = (navigator.platform || navigator.userAgent || "").toLowerCase();
+    // celular e tablet nao contam como maquina do exercicio: quem le no
+    // celular escolhe o sistema do COMPUTADOR na tela "Qual sistema?".
+    var p = (navigator.platform || "").toLowerCase();
+    var ua = (navigator.userAgent || "").toLowerCase();
+    if (ua.indexOf("android") > -1 || ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1 || ua.indexOf("mobile") > -1) return "phone";
     if (p.indexOf("win") > -1) return "windows";
-    if (p.indexOf("linux") > -1 && p.indexOf("android") === -1) return "linux";
+    if (p.indexOf("linux") > -1) return "linux";
     return "mac";
   }
 
@@ -496,7 +529,7 @@
         { type: "text", text: TOKEN_HELP },
         { type: "diagram", dlabel: "Onde fica no Figma",
           trail: ["Figma", "Settings", "Security", "Personal access tokens", "Generate new token"],
-          field: "figd_", foot: "Escopos: file content (read), file variables (read), file comments (read e write). O token aparece uma vez só. Copie na hora." },
+          field: "figd_", foot: "Os 4 escopos: file content (read) · file variables (read) · file comments (read) · file comments (write)." },
         { type: "note", tone: "warn", text: "O token é uma credencial sua. Ele fica só nesta aba, não é salvo, não vai pra servidor nenhum e esta página não faz requisição externa. Não deixe ele aparecer no projetor. Se aparecer, revogue e gere outro." }
       ] };
   }
@@ -507,19 +540,20 @@
       title: "Conecte o Claude ao Figma",
       why: "Você vai colar um bloco de configuração num arquivo do Claude. É a parte mais chata, e é a única que precisa de atenção. Vá com calma.",
       blocks: [
-        { type: "text", text: "<b>Passo 1. Abra o arquivo de configuração.</b> O caminho mais curto é dentro do Claude: <b>Settings > Developer > Edit Config</b>." },
+        { type: "text", text: "<b>1. Abra o arquivo de configuração.</b> O caminho mais curto é dentro do Claude: <b>Settings > Developer > Edit Config</b>." },
         { type: "note", tone: "neutral", text: "<b>Esse botão não existe na sua versão?</b> Abra o arquivo pelo sistema, é o mesmo arquivo:" },
         { type: "diagram", dlabel: osPath("No Windows", "No macOS"),
           trail: osPath(["Win + E", "colar %APPDATA%\\Claude", "Enter"], ["Finder", "menu Ir", "Ir para a pasta", "colar o caminho"]),
           foot: osPath("Abra o claude_desktop_config.json com o Bloco de Notas (botão direito > Abrir com).", "Abra o claude_desktop_config.json com o TextEdit.") },
         { type: "path", value: caminho + osPath("\\claude_desktop_config.json", "/claude_desktop_config.json") },
-        { type: "text", text: "<b>Passo 2. Apague tudo que estiver no arquivo e cole o bloco abaixo no lugar.</b>" },
+        { type: "text", text: "<b>2. Apague tudo que estiver no arquivo e cole o bloco abaixo no lugar.</b>" },
         { type: "json" },
         { type: "details", summary: "Meu arquivo já tem outra coisa dentro. E agora?",
           text: "Se o arquivo já tem outros servidores configurados e você quer manter, não apague. Cole só o trecho <b>\"figma-console\": { ... }</b> dentro do bloco <b>mcpServers</b> que já existe, e ponha uma vírgula separando dele o servidor anterior. Na dúvida, chame o apoio: é mais rápido que consertar depois." },
-        { type: "text", text: "<b>Passo 3. Salve o arquivo. Depois feche o Claude por completo e abra de novo.</b>" },
+        { type: "text", text: "<b>3. Salve o arquivo. Depois feche o Claude por completo e abra de novo.</b>" },
         { type: "note", tone: "ok", text: "Fechar por completo " + osPath("no Windows é sair pelo ícone na bandeja, perto do relógio. Fechar a janela no X não basta.", "no macOS é Cmd+Q. Fechar a janela não basta.") + " A configuração só é lida quando o app abre." }
-      ] };
+      ],
+      checklist: ["Salvei o arquivo já com o meu token no lugar do figd_SEU_TOKEN_AQUI", "Fechei o Claude por completo, reabri e o figma-console aparece na lista de conectores"] };
   }
 
   function stepBridge() {
@@ -528,12 +562,12 @@
       title: "Ligue a ponte e teste de verdade",
       why: "A ponte é um plugin que roda dentro do Figma e conversa com o Claude. O Claude já preparou o arquivo dela quando você reabriu ele.",
       blocks: [
-        { type: "text", text: "<b>Passo 1. Importe o plugin Bridge no Figma Desktop.</b>" },
+        { type: "text", text: "<b>1. Importe o plugin Bridge no Figma Desktop.</b>" },
         { type: "diagram", dlabel: "No Figma Desktop", trail: ["Plugins", "Development", "Import plugin from manifest..."], foot: "Selecione o arquivo manifest.json no caminho abaixo." },
         { type: "path", value: pluginPath },
         { type: "note", tone: "neutral", text: "<b>Essa pasta não existe?</b> É ordem, não erro. Ela só nasce depois que o Claude abriu com a configuração salva. Volte, reabra o Claude, espere alguns segundos e tente de novo." },
-        { type: "text", text: "<b>Passo 2. Rode o plugin Bridge e deixe a janela dele aberta.</b> Se fechar, a conexão cai." },
-        { type: "text", text: "<b>Passo 3. No Claude, abra uma conversa nova e mande:</b>" },
+        { type: "text", text: "<b>2. Rode o plugin Bridge e deixe a janela dele aberta.</b> Se fechar, a conexão cai." },
+        { type: "text", text: "<b>3. No Claude, abra uma conversa nova e mande:</b>" },
         { type: "cmd", label: "no Claude", value: TEST_PROMPT },
         { type: "note", tone: "ok", text: "<b>Deu certo quando a resposta cita o nome do seu arquivo do Figma.</b> Se ela não citar o nome do arquivo, não conectou, mesmo que diga que está tudo bem." },
         { type: "note", tone: "warn", text: "O plugin Bridge aparecer na lista do Claude não é prova de nada. A prova é ele devolver dado do seu arquivo." }
@@ -554,22 +588,22 @@
   // ---------- prática (6 etapas, iguais em qualquer rota) ----------
   function practiceSteps() {
     return [
-      { key: "p-ler", rail: "Ler", est: 3, title: "1. Leia o Figma", why: "A IA descreve estrutura e tokens do frame, não pixels.",
+      { key: "p-ler", rail: "Ler", est: 3, title: "Leia o Figma", why: "A IA descreve estrutura e tokens do frame, não pixels.",
         blocks: [{ type: "cmd", label: "no Claude", value: READ_PROMPT }],
         checklist: ["Voltou árvore de camadas", "Voltou componentes e tokens"] },
-      { key: "p-gerar", rail: "Gerar", est: 6, title: "2. Gere o componente", why: "Mesmo pedido de sempre, só que agora com a fonte certa: o Figma via MCP.",
+      { key: "p-gerar", rail: "Gerar", est: 6, title: "Gere o componente", why: "Mesmo pedido de sempre, só que agora com a fonte certa: o Figma via MCP.",
         blocks: [{ type: "cmd", label: "no Claude", value: GEN_PROMPT }],
         checklist: ["Gerou o Card.tsx", "As cores vieram de token, não de hex cru"] },
-      { key: "p-inspecionar", rail: "Inspecionar", est: 5, title: "3. Inspecione 3 propriedades", why: "Se você deixar ela auditar o próprio código, você não validou nada, você aplaudiu. Quem compara é você.",
+      { key: "p-inspecionar", rail: "Inspecionar", est: 5, title: "Inspecione 3 propriedades", why: "Se você deixar ela auditar o próprio código, você não validou nada, você aplaudiu. Quem compara é você.",
         blocks: [
           { type: "note", tone: "neutral", text: "<b>Não é \"ache 3 erros\".</b> Pode não ter nenhum, e tudo bem: o exercício é verificar, não caçar. Não existe arquivo pra abrir, o código está no bloco da própria conversa." },
           { type: "text", text: "O prompt anterior já obrigou ela a listar os 3 tokens que usou. Agora peça a fonte, sem deixar ela julgar o próprio trabalho:" },
           { type: "cmd", label: "no Claude", value: COMPARE_PROMPT },
           { type: "text", text: "Agora role até o bloco de código e confira <b>com o olho</b>, uma por uma:" },
-          { type: "diagram", dlabel: "Preencha para cada propriedade", trail: ["Frame diz", "Código tem", "Bate?"], foot: "Cor do botão, tamanho do título, espaçamento interno. \"Não localizei\" é resposta válida: se você não acha de onde veio o valor, o código não é auditável, e isso já é um achado." }
+          { type: "diagram", dlabel: "Preencha para cada propriedade", plain: true, trail: ["Frame diz", "Código tem", "Bate?"], foot: "Cor do botão, tamanho do título, espaçamento interno. \"Não localizei\" é resposta válida: se você não acha de onde veio o valor, o código não é auditável, e isso já é um achado." }
         ],
         checklist: ["Inspecionei as 3 propriedades", "Sei dizer, de cada uma, se veio do token ou de chute"] },
-      { key: "p-corrigir", rail: "Corrigir", est: 5, title: "4. Corrija, se houver o que corrigir", why: "Consultar a fonte de novo e ajustar só o que escolhemos. Sem reescrever o resto.",
+      { key: "p-corrigir", rail: "Corrigir", est: 5, title: "Corrija, se houver o que corrigir", why: "Consultar a fonte de novo e ajustar só o que escolhemos. Sem reescrever o resto.",
         blocks: [
           { type: "text", text: "Achou uma que não bate? Diga qual e mande consertar consultando o frame:" },
           { type: "cmd", label: "no Claude", value: FIX_PROMPT },
@@ -577,7 +611,7 @@
           { type: "note", tone: "neutral", text: "O ponto: repare que o valor que ela devolveu tem procedência, veio do frame, não da cabeça dela. É isso que a gente veio treinar." }
         ],
         checklist: ["O valor que entrou veio do frame, não de chute"] },
-      { key: "p-revogar", rail: "Revogar", est: 4, title: "5. Revogue seu token", why: "Este passo não é opcional e não tem corte. É o que mantém a máquina do evento limpa depois que você levantar.",
+      { key: "p-revogar", rail: "Revogar", est: 4, title: "Revogue seu token", why: "Este passo não é opcional e não tem corte. É o que mantém a máquina do evento limpa depois que você levantar.",
         blocks: [
           { type: "note", tone: "warn", text: "<b>Quem revoga é a pessoa da CONTA que criou o token</b>, não \"a dupla\". O token pertence a uma conta; seu parceiro pode nem saber em qual conta foi criado." },
           { type: "diagram", dlabel: "No Figma", trail: ["Settings", "Security", "Personal access tokens", "Revoke"], foot: "Revogar é o que de fato mata o acesso, mesmo que a config fique na máquina." },
@@ -585,7 +619,7 @@
           { type: "text", text: "Não conseguiu revogar? Chame um apoio antes de sair. Levantar a mão confirma intenção, não comprova revogação." }
         ],
         checklist: ["Revoguei o token na conta que o criou", "Saí das minhas contas (máquina do evento)"] },
-      { key: "p-concluir", rail: "Fechou", est: 0, title: "6. Feche o ciclo", why: "Você conectou, leu, gerou, inspecionou e corrigiu consultando a fonte. É o pipeline inteiro, na sua mão.",
+      { key: "p-concluir", rail: "Fechou", est: 0, title: "Feche o ciclo", why: "Você conectou, leu, gerou, inspecionou e corrigiu consultando a fonte. É o pipeline inteiro, na sua mão.",
         blocks: [
           { type: "note", tone: "ok", text: "Fez o ciclo real: Figma Desktop conectado ao Claude Desktop pelo MCP, leu um frame de verdade, gerou a partir dele, verificou a procedência de cada valor e corrigiu consultando a fonte." },
           { type: "note", tone: "neutral", text: "Sendo exato sobre o que fechou: o ciclo de consultar a fonte, ler o código e verificar de onde veio o valor. Ver rodando e passar no typecheck é o passo seguinte, e ele é em casa, sem o relógio da sala." },
@@ -661,7 +695,7 @@
       var tr = el("div", "trail");
       b.trail.forEach(function (c, i) {
         if (i > 0) tr.appendChild(el("span", "chev", "›"));
-        tr.appendChild(el("span", "chip" + (i === b.trail.length - 1 ? " end" : ""), esc(c)));
+        tr.appendChild(el("span", "chip" + (i === b.trail.length - 1 && !b.plain ? " end" : ""), esc(c)));
       });
       d.appendChild(tr);
       if (b.field) {
@@ -698,9 +732,15 @@
   }
 
   // ---------- medidor ----------
+  function checklistDone(kind, step) {
+    if (!step.checklist || !step.checklist.length) return true;
+    return step.checklist.every(function (item, i) { return !!state.checked[kind + ":" + step.key + ":" + i]; });
+  }
   function updateMeter() {
     var box = document.getElementById("meterbox");
     var inFlow = state.view === "setup" || state.view === "practice";
+    var pn = document.getElementById("phaseName");
+    if (pn) pn.textContent = state.view === "practice" ? "Prática" : (state.view === "done" ? "Pronto" : "Setup");
     box.hidden = !inFlow;
     if (!inFlow) return;
     var isSetup = state.view === "setup";
@@ -709,14 +749,19 @@
     idx = Math.min(idx, steps.length - 1);
     document.getElementById("meterPhase").textContent = (isSetup ? "Setup" : "Prática") + " · " + (steps[idx].rail || "");
     var falta = minutosRestantes(steps, idx);
-    document.getElementById("meterCount").textContent = (idx + 1) + " de " + steps.length + " · faltam ~" + falta + " min";
+    document.getElementById("meterCount").textContent =
+      (idx + 1) + " de " + steps.length + (idx + 1 === steps.length ? " · último passo" : " · faltam ~" + falta + " min");
     var segs = document.getElementById("segs");
     segs.innerHTML = "";
+    segs.setAttribute("aria-label", isSetup ? "Progresso do setup" : "Progresso da prática");
+    segs.setAttribute("aria-valuemin", "1");
     segs.setAttribute("aria-valuenow", String(idx + 1));
     segs.setAttribute("aria-valuemax", String(steps.length));
+    segs.setAttribute("aria-valuetext", (isSetup ? "passo " : "prática ") + (idx + 1) + " de " + steps.length + " · " + (steps[idx].rail || ""));
+    var kind = isSetup ? "setup" : "practice";
     for (var i = 0; i < steps.length; i++) {
       var cls = "seg";
-      if (i < idx) cls += " done";
+      if (i < idx) cls += checklistDone(kind, steps[i]) ? " done" : " done open";
       else if (i === idx) cls += " cur";
       segs.appendChild(el("span", cls));
     }
@@ -728,39 +773,78 @@
     var cov = el("div", "cover");
     cov.insertAdjacentHTML("beforeend", '<svg class="xlockup" viewBox="0 169 3908 845" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xikota"><path d="M276.803 666.146C308.044 634.905 308.044 584.252 276.803 553.01L85.6611 361.869C32.0116 429.942 0 515.864 0 609.264C0 702.824 32.1229 788.88 85.9395 857.009L276.803 666.146Z"></path><path d="M471.188 736.476C439.947 705.234 389.294 705.234 358.052 736.476L166.911 927.617C234.984 981.267 320.906 1013.28 414.306 1013.28C507.866 1013.28 593.922 981.155 662.051 927.339L471.188 736.476Z"></path><path d="M529.518 547.994C498.276 579.236 498.276 629.889 529.518 661.131L720.659 852.271C774.309 784.198 806.32 698.276 806.32 604.877C806.32 511.317 774.197 425.261 720.381 357.132L529.518 547.994Z"></path><path d="M346.038 477.759C377.28 509 427.933 509 459.175 477.759L650.315 286.617C582.242 232.968 496.32 200.956 402.921 200.956C309.361 200.956 223.304 233.079 155.176 286.896L346.038 477.759Z"></path><path d="M990.387 857L1134.34 593.828L1130.8 616.789L994.803 369.514H1167.9L1246.49 529.36H1260.62L1334.81 369.514H1497.3L1367.48 621.205L1371.01 601.776L1523.8 857H1350.7L1255.33 686.556H1241.2L1152.88 857H990.387ZM1608.8 857V369.514H1769.53V857H1608.8ZM1546.98 486.086V369.514H1769.53V486.086H1546.98ZM1675.04 330.656C1645.6 330.656 1623.82 323.297 1609.69 308.578C1596.15 293.27 1589.37 273.842 1589.37 250.291C1589.37 226.741 1596.15 207.607 1609.69 192.888C1623.82 177.581 1645.31 169.927 1674.16 169.927C1703.59 169.927 1725.08 177.581 1738.62 192.888C1752.16 207.607 1758.94 226.741 1758.94 250.291C1758.94 273.842 1752.16 293.27 1738.62 308.578C1725.08 323.297 1703.89 330.656 1675.04 330.656ZM2233.88 857L2089.93 629.153H2024.58L2215.33 369.514H2383.13L2202.09 614.14V536.425L2413.15 857H2233.88ZM1887.69 857V212.317H2048.42V857H1887.69ZM2693.72 874.663C2650.74 874.663 2612.47 868.186 2578.91 855.234C2545.35 842.281 2516.8 824.324 2493.25 801.363C2470.29 778.402 2452.63 751.908 2440.26 721.882C2428.49 691.855 2422.6 659.768 2422.6 625.621V604.426C2422.6 569.1 2428.78 536.13 2441.14 505.515C2454.1 474.9 2472.35 448.112 2495.9 425.151C2519.45 402.189 2548 384.232 2581.56 371.28C2615.12 358.327 2652.51 351.851 2693.72 351.851C2735.52 351.851 2772.91 358.327 2805.88 371.28C2839.43 384.232 2867.99 402.189 2891.54 425.151C2915.09 448.112 2933.05 474.9 2945.41 505.515C2958.36 536.13 2964.84 569.1 2964.84 604.426V625.621C2964.84 659.768 2958.66 691.855 2946.29 721.882C2934.52 751.908 2916.86 778.402 2893.31 801.363C2870.34 824.324 2842.08 842.281 2808.53 855.234C2774.97 868.186 2736.7 874.663 2693.72 874.663ZM2693.72 740.427C2718.45 740.427 2738.76 735.128 2754.65 724.531C2771.14 713.933 2783.5 699.215 2791.75 680.375C2799.99 660.946 2804.11 639.162 2804.11 615.023C2804.11 589.707 2799.69 567.629 2790.86 548.789C2782.62 529.36 2770.26 514.052 2753.77 502.866C2737.29 491.68 2717.27 486.086 2693.72 486.086C2670.17 486.086 2650.15 491.68 2633.67 502.866C2617.18 514.052 2604.52 529.36 2595.69 548.789C2587.45 567.629 2583.33 589.707 2583.33 615.023C2583.33 639.162 2587.45 660.946 2595.69 680.375C2603.93 699.215 2616.3 713.933 2632.78 724.531C2649.27 735.128 2669.58 740.427 2693.72 740.427ZM3285.1 864.065C3232.11 864.065 3189.72 857.589 3157.93 844.636C3126.72 831.684 3104.06 810.194 3089.93 780.168C3075.8 750.142 3068.73 709.518 3068.73 658.296L3069.61 242.343H3217.98L3217.1 662.712C3217.1 684.496 3222.69 701.275 3233.88 713.05C3245.65 724.237 3262.43 729.83 3284.21 729.83H3351.33V864.065H3285.1ZM2998.08 486.086V369.514H3351.33V486.086H2998.08ZM3730.72 857V713.933H3704.22V561.152C3704.22 538.78 3698.92 522.295 3688.33 511.697C3678.32 500.511 3661.54 494.918 3637.99 494.918C3626.8 494.918 3610.32 495.212 3588.53 495.801C3566.75 496.39 3543.79 497.273 3519.65 498.45C3495.51 499.628 3473.43 500.805 3453.42 501.983V367.747C3467.55 366.57 3484.32 365.392 3503.75 364.215C3523.18 363.037 3543.2 362.154 3563.81 361.565C3585 360.977 3604.43 360.682 3622.09 360.682C3672.14 360.682 3714.53 368.042 3749.26 382.761C3784.59 397.479 3811.38 419.558 3829.63 448.995C3848.47 478.433 3857.89 515.818 3857.89 561.152V857H3730.72ZM3576.17 869.364C3542.02 869.364 3511.7 863.182 3485.21 850.818C3458.71 838.454 3437.81 820.792 3422.51 797.83C3407.79 774.28 3400.43 746.315 3400.43 713.933C3400.43 677.431 3410.14 647.993 3429.57 625.621C3449 602.659 3475.79 585.88 3509.94 575.282C3544.08 564.685 3583.24 559.386 3627.39 559.386H3721.89V642.4H3627.39C3605.61 642.4 3588.83 647.993 3577.05 659.179C3565.28 669.777 3559.39 684.201 3559.39 702.453C3559.39 720.115 3565.28 734.54 3577.05 745.726C3588.83 756.323 3605.61 761.622 3627.39 761.622C3641.52 761.622 3653.89 759.267 3664.48 754.557C3675.67 749.258 3684.79 740.427 3691.86 728.063C3698.92 715.7 3703.05 698.626 3704.22 676.842L3741.32 712.167C3738.37 745.726 3730.13 774.28 3716.59 797.83C3703.63 820.792 3685.38 838.454 3661.83 850.818C3638.87 863.182 3610.32 869.364 3576.17 869.364Z"></path></svg>');
     cov.appendChild(el("div", "eyebrow", "Do Figma ao código sem handoff · TDC 2026"));
-    cov.appendChild(el("h1", null, "Prepare sua máquina"));
+    var h1c = el("h1", null, "Prepare sua máquina"); h1c.tabIndex = -1;
+    cov.appendChild(h1c);
     cov.appendChild(el("p", "lede", "Quatro passos, cerca de 21 minutos, e o Claude passa a ler o seu Figma de verdade. Depois disso vem a prática. Como você vai participar?"));
     cov.appendChild(el("div", "note warn", "<b>A sala tem relógio.</b> Aos 25 minutos a prática começa, tenha todo mundo terminado ou não. Se você travar, não fique sozinho no problema: senta com a dupla do lado ou pede uma máquina reserva. Isso é esperado e não é problema."));
     var ch = el("div", "choices two");
     ch.appendChild(choiceBtn("Máquina do evento", "Windows com Figma, Claude e Node já instalados. O token, o MCP e o plugin você monta aqui, guiado.", "apps prontos", "fast", function () { state.device = "event"; state.os = "windows"; go("setup"); }));
     ch.appendChild(choiceBtn("Meu próprio computador", "Você traz o notebook. A gente detecta o sistema sozinho.", null, null, function () {
-      state.device = "own"; state.os = detectOs();
-      go(state.os === "linux" ? "linux" : "prereq");
+      state.device = "own";
+      var g = detectOs();
+      if (g === "phone") { state.os = null; state.osFrom = "prereq"; go("os"); return; }
+      state.os = g;
+      go(g === "linux" ? "linux" : "prereq");
     }));
     cov.appendChild(ch);
     cov.appendChild(twoDeviceNote());
+    var skip = el("div", "backrow skiplink");
+    var sk = el("button", "backbtn", "Setup já feito em casa? Ir direto pra prática <span aria-hidden=\"true\">\u2192</span>");
+    sk.type = "button";
+    sk.onclick = function () {
+      if (!state.device) state.device = "own";
+      if (state.os !== "windows" && state.os !== "mac") {
+        var g2 = detectOs();
+        state.os = g2 === "mac" ? "mac" : "windows";
+      }
+      state.practiceIdx = 0;
+      go("practice");
+    };
+    skip.appendChild(sk);
+    cov.appendChild(skip);
     app.appendChild(cov);
   }
 
   function viewOs(app) {
     app.className = "stage";
-    app.appendChild(el("div", "eyebrow", "Seu computador"));
-    app.appendChild(el("h1", null, "Qual sistema?"));
+    app.appendChild(el("div", "eyebrow", "Sistema"));
+    var h1 = el("h1", null, "Qual sistema?"); h1.tabIndex = -1; app.appendChild(h1);
     var guess = detectOs();
-    var label = guess === "windows" ? "Windows" : (guess === "linux" ? "Linux" : "macOS");
-    app.appendChild(el("p", "lede", "Detectamos <b>" + label + "</b> sozinho. Só mexa aqui se estiver errado."));
+    var known = state.os === "windows" || state.os === "mac" || state.os === "linux";
+    var lede;
+    if (known) {
+      lede = "Valendo agora: <b>" + (state.device === "event" ? "Máquina do evento" : "Meu computador") + " · " + osLabel() + "</b>. Só mexa aqui se estiver errado.";
+    } else {
+      lede = "Escolha o sistema do <b>computador</b> que você vai usar no workshop" + (guess === "phone" ? ". Você está lendo pelo celular, e tudo bem: o guia continua daqui" : "") + ".";
+    }
+    app.appendChild(el("p", "lede", lede));
+    function pick(os) {
+      return function () {
+        state.os = os;
+        if (os === "linux") { go("linux"); return; }
+        var f = state.osFrom; state.osFrom = null;
+        go(f === "setup" || f === "practice" || f === "prereq" ? f : (state.device === "event" ? "setup" : "prereq"));
+      };
+    }
     var ch = el("div", "choices");
-    ch.appendChild(choiceBtn("Windows", "Fluxo completo.", null, null, function () { state.os = "windows"; go(state.device === "event" ? "setup" : "prereq"); }));
-    ch.appendChild(choiceBtn("macOS", "Fluxo completo, caminhos do Mac.", null, null, function () { state.os = "mac"; go(state.device === "event" ? "setup" : "prereq"); }));
-    ch.appendChild(choiceBtn("Linux", "Leia antes de começar.", null, null, function () { state.os = "linux"; go("linux"); }));
+    [["windows", "Windows", "Fluxo completo."], ["mac", "macOS", "Fluxo completo, caminhos do Mac."], ["linux", "Linux", "Leia antes de começar."]].forEach(function (d) {
+      var b = choiceBtn(d[1], d[2], state.os === d[0] ? "atual" : null, "now", pick(d[0]));
+      if (state.os === d[0]) b.classList.add("current");
+      ch.appendChild(b);
+    });
     app.appendChild(ch);
-    app.appendChild(backRow(function () { go(state.device === "event" ? "setup" : "prereq"); }));
+    app.appendChild(backRow(function () {
+      var f = state.osFrom; state.osFrom = null;
+      if (!known) { go("cover"); return; }
+      go(f === "setup" || f === "practice" || f === "prereq" ? f : (state.device === "event" ? "setup" : "prereq"));
+    }));
   }
 
   function viewLinux(app) {
     app.className = "stage";
     app.appendChild(el("div", "eyebrow", "Linux"));
-    app.appendChild(el("h1", null, "No Linux, seja em dupla"));
+    var h1l = el("h1", null, "No Linux, seja em dupla"); h1l.tabIndex = -1;
+    app.appendChild(h1l);
     app.appendChild(el("div", "note warn", "Este fluxo depende do Figma Desktop e do plugin Bridge, que não têm suporte real e testado no Linux. Não vale gastar quinze minutos pra descobrir isso no meio do setup."));
     var c = el("div", "card");
     c.appendChild(el("h2", null, "O que fazer agora"));
@@ -771,16 +855,23 @@
     c.appendChild(ul);
     app.appendChild(c);
     app.appendChild(el("p", "muted", "Quer rodar em casa depois? O kit tem o passo a passo e o mesmo arquivo do Figma."));
+    var ver = el("div", "backrow");
+    var vb = el("button", "backbtn", "Ver os passos mesmo assim (Windows ou macOS) <span aria-hidden=\"true\">\u2192</span>");
+    vb.type = "button";
+    vb.onclick = function () { state.osFrom = state.device === "event" ? "setup" : "prereq"; go("os"); };
+    ver.appendChild(vb);
+    app.appendChild(ver);
     app.appendChild(backRow(function () { go("cover"); }));
   }
 
   function viewStep(app, step, idx, total, kind) {
     app.className = "stage";
     app.appendChild(contextoRow());
-    var meta = el("div", "stepmeta");
-    meta.appendChild(el("span", "n", (kind === "practice" ? "PRÁTICA " : "PASSO ") + (idx + 1) + " de " + total));
-    if (step.est) meta.appendChild(el("span", "est", "~" + step.est + " min"));
-    app.appendChild(meta);
+    if (step.est) {
+      var meta = el("div", "stepmeta");
+      meta.appendChild(el("span", "est solo", "~" + step.est + " min neste passo"));
+      app.appendChild(meta);
+    }
     var h1 = el("h1", null, esc(step.title)); h1.tabIndex = -1;
     app.appendChild(h1);
     if (step.why) app.appendChild(el("div", "why", step.why));
@@ -813,35 +904,41 @@
     var next = el("button", "btn primary");
     next.innerHTML = (idx + 1 < total ? "Funcionou, próximo" : (kind === "setup" ? "Setup pronto, ir pra prática" : "Concluir")) + ' <span class="arrow" aria-hidden="true">→</span>';
     next.onclick = function () {
-      state.done[kind + ":" + step.key] = true;
       if (idx + 1 < total) { if (kind === "setup") state.setupIdx = idx + 1; else state.practiceIdx = idx + 1; }
       else { go(kind === "setup" ? "practice" : "done"); return; }
       go(kind === "setup" ? "setup" : "practice");
     };
     var nav = el("div", "navrow");
-    if (idx > 0) {
-      var back = el("button", "btn back", '<span aria-hidden="true">\u2190</span> Voltar');
-      back.type = "button";
-      back.onclick = function () {
+    var back = el("button", "btn back", '<span aria-hidden="true">\u2190</span> Voltar');
+    back.type = "button";
+    back.onclick = function () {
+      if (idx > 0) {
         if (kind === "setup") { state.setupIdx = idx - 1; go("setup"); }
         else { state.practiceIdx = idx - 1; go("practice"); }
-      };
-      nav.appendChild(back);
-    }
+      } else if (kind === "setup") {
+        go(state.device === "own" ? "prereq" : "cover");
+      } else {
+        state.setupIdx = setupSteps().length - 1; go("setup");
+      }
+    };
+    nav.appendChild(back);
     nav.appendChild(next);
     actions.appendChild(nav);
 
-    var trouble = el("button", "btn trouble", "Travou aqui? Ver o que fazer");
-    trouble.type = "button";
-    trouble.onclick = function () { openHelp(step); };
-    actions.appendChild(trouble);
+    if (step.key !== "p-concluir") {
+      var trouble = el("button", "btn trouble", "Travou aqui? Ver o que fazer");
+      trouble.type = "button";
+      trouble.onclick = function () { openHelp(step); };
+      actions.appendChild(trouble);
+    }
     app.appendChild(actions);
   }
 
   function viewDone(app) {
     app.className = "stage center";
     app.appendChild(el("div", "eyebrow", "Pronto"));
-    app.appendChild(el("h1", null, "Você fez o fluxo inteiro"));
+    var h1d = el("h1", null, "Você fez o fluxo inteiro"); h1d.tabIndex = -1;
+    app.appendChild(h1d);
     app.appendChild(el("p", "lede", "Figma Desktop conectado ao Claude Desktop pelo MCP. Leu um frame de verdade, gerou, comparou e corrigiu. Isso é o \"do Figma ao código\" sem handoff."));
     var c = el("div", "card");
     c.appendChild(el("h2", null, "Antes de sair da sala"));
@@ -869,13 +966,13 @@
     var b = el("button", "backbtn"); b.innerHTML = '<span aria-hidden="true">←</span> Voltar'; b.onclick = onclick;
     d.appendChild(b); return d;
   }
-  function osLabel() { return state.os === "windows" ? "Windows" : (state.os === "mac" ? "macOS" : "Linux"); }
+  function osLabel() { return state.os === "mac" ? "macOS" : (state.os === "linux" ? "Linux" : "Windows"); }
 
   function contextoRow() {
     var d = el("div", "ctxrow");
     d.appendChild(el("span", "ctx", (state.device === "event" ? "Máquina do evento" : "Meu computador") + " · " + osLabel()));
     var t = el("button", "ctxlink", "trocar"); t.type = "button";
-    t.onclick = function () { go("os"); };
+    t.onclick = function () { state.osFrom = state.view; go("os"); };
     d.appendChild(t);
     return d;
   }
@@ -913,25 +1010,46 @@
   function twoDeviceNote() {
     var d = el("div", "note neutral");
     d.innerHTML = "Abriu no celular? Perfeito pra ler. As ações são no computador: digite <b>" + esc(SHORT_URL) + "</b> lá pra abrir este mesmo guia. Seu progresso fica salvo em cada aparelho.";
+    var row = el("div", "notecopy");
+    var b = copyBtn("", function () { return "https://" + SHORT_URL; });
+    b.setAttribute("data-lbl", "Copiar o link");
+    setLabel(b, "Copiar o link");
+    row.appendChild(b);
+    d.appendChild(row);
     return d;
   }
 
   // ---------- socorro: sintoma -> conserto guiado -> so entao chamar apoio ----------
   var helpCtx = { step: null, item: null };
 
-  function openHelp(step) {
-    lastFocus = document.activeElement;
-    helpCtx.step = step; helpCtx.item = null;
-    renderHelp("list");
-    document.getElementById("helpOverlay").classList.add("open");
-    var mn = document.querySelector("main"); if (mn) mn.inert = true;
-    document.body.style.overflow = "hidden";
+  var modalPushed = false;
+  function setInert(on) {
+    var mn = document.querySelector("main"); if (mn) mn.inert = on;
+    var tb = document.querySelector(".topbar"); if (tb) tb.inert = on;
   }
-  function closeHelp() {
+  function isOverlayOpen() { return document.getElementById("helpOverlay").classList.contains("open"); }
+  function openOverlay(renderFn) {
+    lastFocus = document.activeElement;
+    renderFn();
+    document.getElementById("helpOverlay").classList.add("open");
+    setInert(true);
+    document.body.style.overflow = "hidden";
+    try { history.pushState(null, "", location.href); modalPushed = true; } catch (e) { modalPushed = false; }
+  }
+  function openHelp(step) {
+    helpCtx.step = step; helpCtx.item = null;
+    openOverlay(function () { renderHelp("list"); });
+  }
+  // viaNav=true quando o fechamento vem de navegacao (popstate, troca de view):
+  // nesses casos o historico fica como esta.
+  function closeHelp(viaNav) {
+    if (!isOverlayOpen()) return;
     document.getElementById("helpOverlay").classList.remove("open");
-    var mn = document.querySelector("main"); if (mn) mn.inert = false;
+    setInert(false);
     document.body.style.overflow = "";
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+    if (viaNav !== true && modalPushed) { modalPushed = false; try { history.back(); } catch (e) {} }
+    modalPushed = false;
   }
 
   function renderHelp(view) {
@@ -949,33 +1067,42 @@
     m.appendChild(el("h3", null, "O que travou?"));
     m.appendChild(el("p", "sub", "Escolha o que está acontecendo. Quase tudo aqui você resolve sozinho em menos de um minuto."));
     var sets = troubleFor(step ? step.key : null);
-    function rows(list) {
-      var box = el("div", "troublelist");
+    function row(t) {
+      var b = el("button", "troublerow", esc(t.sintoma) + '<span class="go" aria-hidden="true">\u2192</span>');
+      b.type = "button";
+      b.onclick = function () { helpCtx.item = t; renderHelp("fix"); };
+      return b;
+    }
+    function grouped(list) {
+      var box = el("div", "troublelist"), last = null;
       list.forEach(function (t) {
-        var b = el("button", "troublerow", esc(t.sintoma) + '<span class="go" aria-hidden="true">\u2192</span>');
-        b.type = "button";
-        b.onclick = function () { helpCtx.item = t; renderHelp("fix"); };
-        box.appendChild(b);
+        if (t.etapa !== last) { box.appendChild(el("div", "label", esc(ETAPA_LABEL[t.etapa] || t.etapa))); last = t.etapa; }
+        box.appendChild(row(t));
       });
       return box;
     }
     if (sets.mine.length) {
       m.appendChild(el("div", "label", "Neste passo"));
-      m.appendChild(rows(sets.mine));
+      var mb = el("div", "troublelist");
+      sets.mine.forEach(function (t) { mb.appendChild(row(t)); });
+      m.appendChild(mb);
+      if (sets.rest.length) {
+        var dt = el("details", "disc");
+        dt.appendChild(el("summary", null, "Outro problema? Ver a lista completa (" + sets.rest.length + ")"));
+        dt.appendChild(grouped(sets.rest));
+        m.appendChild(dt);
+      }
+    } else {
+      m.appendChild(el("div", "label", "Problemas conhecidos"));
+      m.appendChild(grouped(sets.rest));
     }
-    if (sets.rest.length) {
-      var dt = el("details", "disc");
-      dt.appendChild(el("summary", null, "Não é nada disso. Ver os outros " + sets.rest.length + " problemas"));
-      dt.appendChild(rows(sets.rest));
-      m.appendChild(dt);
-    }
-    var other = el("button", "btn trouble", "Não é nada disso, chamar apoio");
+    var other = el("button", "btn trouble", "Não achei o meu problema, chamar apoio");
     other.type = "button";
     other.onclick = function () { helpCtx.item = null; renderHelp("escalate"); };
     m.appendChild(other);
     var close = el("button", "btn back", "Fechar e voltar pro passo");
     close.type = "button"; close.style.width = "100%"; close.style.marginTop = "10px";
-    close.onclick = closeHelp;
+    close.onclick = function () { closeHelp(); };
     m.appendChild(close);
   }
 
@@ -993,7 +1120,7 @@
 
     var ok = el("button", "btn primary", "Resolveu, voltar pro passo");
     ok.type = "button"; ok.style.width = "100%"; ok.style.marginTop = "18px";
-    ok.onclick = closeHelp;
+    ok.onclick = function () { closeHelp(); };
     m.appendChild(ok);
 
     var esc_ = el("button", "btn trouble", "Não resolveu, chamar apoio");
@@ -1032,48 +1159,102 @@
     upd();
     m.appendChild(sum);
 
-    var res = el("button", "btn primary", "Ir para máquina reserva");
+    var back = el("button", "btn back", '<span aria-hidden="true">\u2190</span> Voltar');
+    back.type = "button"; back.style.width = "100%"; back.style.marginTop = "16px";
+    back.onclick = function () { renderHelp(t ? "fix" : "list"); };
+    m.appendChild(back);
+
+    m.appendChild(el("div", "escmuted", "O palco indicou uma máquina reserva?"));
+    var res = el("button", "btn ghost", "Ir para máquina reserva");
     res.type = "button"; res.style.width = "100%";
     res.onclick = goReserva;
     m.appendChild(res);
-
-    var back = el("button", "btn back", '<span aria-hidden="true">\u2190</span> Voltar');
-    back.type = "button"; back.style.width = "100%"; back.style.marginTop = "10px";
-    back.onclick = function () { renderHelp(t ? "fix" : "list"); };
-    m.appendChild(back);
+    m.appendChild(el("div", "escnote", "Nada é apagado agora. A troca só acontece quando você confirmar na tela seguinte."));
   }
 
   function resetTudo(msg) {
     try { localStorage.removeItem(STORAGE); } catch (e) {}
     tokenLocal = ""; tokenRevelado = false;
-    state = { view: "cover", device: null, os: null, setupIdx: 0, practiceIdx: 0, done: {}, checked: {}, mesa: state.mesa || "" };
-    save(); render();
+    state = { view: "cover", device: null, os: null, setupIdx: 0, practiceIdx: 0, checked: {}, mesa: state.mesa || "", osFrom: null, reservaFrom: null };
+    go("cover");
     if (msg) { var a = document.getElementById("app"); var n = el("div", "note ok", msg); a.insertBefore(n, a.firstChild); }
+  }
+  function renderConfirmReset() {
+    var m = document.getElementById("helpModal");
+    m.innerHTML = "";
+    m.appendChild(el("h3", null, "Recomeçar do zero?"));
+    m.appendChild(el("p", "sub", "Apaga o progresso salvo nesta máquina e volta pro início. Use quando a máquina passar pra outra pessoa."));
+    var ok = el("button", "btn trouble", "Apagar tudo e recomeçar");
+    ok.type = "button"; ok.style.width = "100%"; ok.style.marginTop = "18px";
+    ok.onclick = function () { closeHelp(true); resetTudo("Tudo limpo. Comece escolhendo como você vai participar."); };
+    m.appendChild(ok);
+    var back = el("button", "btn back", "Cancelar");
+    back.type = "button"; back.style.width = "100%"; back.style.marginTop = "10px";
+    back.onclick = function () { closeHelp(); };
+    m.appendChild(back);
+    var f = m.querySelector("h3"); if (f) { f.id = "helpTitle"; f.tabIndex = -1; try { f.focus({ preventScroll: true }); } catch (e) {} }
+    m.scrollTop = 0;
   }
 
   function goReserva() {
-    closeHelp();
-    // maquina NOVA: o estado da maquina antiga nao vale mais
-    tokenLocal = ""; tokenRevelado = false;
-    state.device = "event"; state.os = "windows";
-    state.setupIdx = 0; state.practiceIdx = 0; state.checked = {}; state.done = {};
-    save();
-    var app = document.getElementById("app");
-    app.className = "stage"; app.innerHTML = "";
+    closeHelp(true);
+    state.reservaFrom = state.view;
+    go("reserva");
+  }
+
+  function viewReserva(app) {
+    app.className = "stage";
     app.appendChild(el("div", "eyebrow", "Máquina reserva"));
     var h1 = el("h1", null, "Migre em dois minutos"); h1.tabIndex = -1; app.appendChild(h1);
     app.appendChild(el("div", "note neutral", "Pegue uma máquina Reserva (identificada Reserva 1, 2, 3...). Ela já está ligada, com Figma Desktop, Claude Desktop e o plugin Bridge prontos, e a configuração já escrita. <b>Você entra nas suas contas, gera um token novo e troca uma linha do arquivo de configuração, que já vai estar aberto pra você.</b>"));
-    app.appendChild(el("div", "note warn", "Como é outra máquina, os seus passos foram desmarcados. Recomece pelo Token."));
+    app.appendChild(el("div", "note warn", "Nada foi apagado ainda. Ao confirmar abaixo, os passos marcados nesta máquina são desmarcados e o guia recomeça pelo Token, no modo máquina do evento (Windows)."));
     var ir = el("button", "btn primary", "Começar na reserva");
     ir.type = "button"; ir.style.width = "100%";
-    ir.onclick = function () { state.view = "setup"; state.setupIdx = 1; save(); render(); };
+    ir.onclick = function () {
+      tokenLocal = ""; tokenRevelado = false;
+      state.device = "event"; state.os = "windows";
+      state.setupIdx = 1; state.practiceIdx = 0; state.checked = {};
+      state.reservaFrom = null;
+      go("setup");
+    };
     app.appendChild(ir);
-    document.getElementById("meterbox").hidden = true;
-    try { h1.focus({ preventScroll: true }); } catch (e) {}
+    app.appendChild(backRow(function () {
+      var f = state.reservaFrom; state.reservaFrom = null;
+      go(f && f !== "reserva" ? f : "cover");
+    }));
   }
 
-  // ---------- roteamento ----------
-  function go(view) { state.view = view; save(); render(); }
+  // ---------- roteamento (view espelhada no hash: back do navegador e deep link) ----------
+  function go(view) { state.view = view; save(); render(); setHash(currentHash()); }
+
+  var HASH_IN = { capa: "cover", sistema: "os", linux: "linux", antes: "prereq", setup: "setup", pratica: "practice", pronto: "done", reserva: "reserva" };
+  function currentHash() {
+    if (state.view === "setup") return "#setup/" + (state.setupIdx + 1);
+    if (state.view === "practice") return "#pratica/" + (state.practiceIdx + 1);
+    var out = { cover: "capa", os: "sistema", linux: "linux", prereq: "antes", done: "pronto", reserva: "reserva" };
+    return "#" + (out[state.view] || "capa");
+  }
+  function setHash(h) {
+    if (location.hash === h) return;
+    try { history.pushState(null, "", h); } catch (e) {}
+  }
+  function applyHash(raw) {
+    var h = String(raw || "").replace(/^#/, "");
+    if (!h) return false;
+    var parts = h.split("/");
+    var v = HASH_IN[parts[0]];
+    if (!v) return false;
+    var si = state.setupIdx, pi = state.practiceIdx;
+    if (v === "setup") { var i = parseInt(parts[1], 10); si = isNaN(i) ? 0 : Math.min(Math.max(i - 1, 0), setupSteps().length - 1); }
+    if (v === "practice") { var j = parseInt(parts[1], 10); pi = isNaN(j) ? 0 : Math.min(Math.max(j - 1, 0), practiceSteps().length - 1); }
+    if (v === state.view && si === state.setupIdx && pi === state.practiceIdx) return false;
+    state.view = v; state.setupIdx = si; state.practiceIdx = pi;
+    return true;
+  }
+  window.addEventListener("popstate", function () {
+    if (isOverlayOpen()) closeHelp(true);
+    if (applyHash(location.hash)) { save(); render(); }
+  });
 
   function render() {
     var app = document.getElementById("app");
@@ -1082,33 +1263,43 @@
     else if (state.view === "os") viewOs(app);
     else if (state.view === "linux") viewLinux(app);
     else if (state.view === "prereq") viewPrereq(app);
+    else if (state.view === "reserva") viewReserva(app);
     else if (state.view === "setup") {
       var s = setupSteps(); var i = Math.min(state.setupIdx, s.length - 1); state.setupIdx = i;
       viewStep(app, s[i], i, s.length, "setup");
     } else if (state.view === "practice") {
-      var p = practiceSteps(); var j = Math.min(state.practiceIdx, p.length - 1); state.practiceIdx = j;
-      viewStep(app, p[j], j, p.length, "practice");
+      var pr = practiceSteps(); var j = Math.min(state.practiceIdx, pr.length - 1); state.practiceIdx = j;
+      viewStep(app, pr[j], j, pr.length, "practice");
     } else if (state.view === "done") viewDone(app);
     else viewCover(app);
     updateMeter();
+    var rb = document.getElementById("btnReset");
+    if (rb) rb.hidden = state.view === "cover" && !state.device && !Object.keys(state.checked || {}).length;
+    var tt = "Prepare sua máquina";
+    if (state.view === "setup") tt = setupSteps()[state.setupIdx].title;
+    else if (state.view === "practice") tt = practiceSteps()[state.practiceIdx].title;
+    else if (state.view === "done") tt = "Pronto";
+    else if (state.view === "reserva") tt = "Máquina reserva";
+    else if (state.view === "prereq") tt = "Antes de começar";
+    else if (state.view === "os") tt = "Qual sistema?";
+    document.title = tt + " · Do Figma ao código sem handoff · TDC 2026";
+    var de = document.documentElement, prevSB = de.style.scrollBehavior;
+    de.style.scrollBehavior = "auto";
     window.scrollTo(0, 0);
+    de.style.scrollBehavior = prevSB;
     var h = app.querySelector("h1[tabindex]");
     if (h) { try { h.focus({ preventScroll: true }); } catch (e) {} }
   }
 
   // ---------- init ----------
-  document.getElementById("shortUrl").textContent = SHORT_URL;
-  document.getElementById("copyUrl").onclick = function () { copyText("https://" + SHORT_URL, this); };
-  document.getElementById("btnReset").onclick = function () {
-    if (confirm("Recomeçar do zero? Isso apaga o seu progresso nesta máquina e volta pro início. Use quando a máquina for de outra pessoa.")) {
-      resetTudo("Tudo limpo. Comece escolhendo como você vai participar.");
-    }
-  };
+  document.getElementById("btnReset").onclick = function () { openOverlay(renderConfirmReset); };
   document.getElementById("helpOverlay").addEventListener("click", function (e) { if (e.target === this) closeHelp(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeHelp(); });
 
   load();
+  if (applyHash(location.hash)) save();
   render();
+  try { history.replaceState(null, "", currentHash()); } catch (e) {}
 })();
 </script>
 </body>
