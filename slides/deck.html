@@ -250,8 +250,8 @@
   .s-kit .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; }
   .s-kit .lead { font-size: 60px; font-weight: 900; color: #fff; line-height: 1.06; margin-bottom: 32px; }
   .s-kit ol { list-style: none; display: flex; flex-direction: column; gap: 22px; counter-reset: step; }
-  .s-kit ol li { font-size: 34px; font-weight: 600; color: var(--ink-2); line-height: 1.34; display: flex; gap: 22px; align-items: baseline; }
-  .s-kit ol li::before { counter-increment: step; content: counter(step); flex: 0 0 auto; width: 48px; height: 48px; background: var(--vermilion); color: #fff; font-size: 28px; font-weight: 900; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+  .s-kit ol li { font-size: 34px; font-weight: 600; color: var(--ink-2); line-height: 1.34; position: relative; padding-left: 70px; }
+  .s-kit ol li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -4px; width: 48px; height: 48px; background: var(--vermilion); color: #fff; font-size: 28px; font-weight: 900; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
   .s-kit code { font-family: var(--mono); color: #fff; font-weight: 700; }
   .s-kit .right { display: flex; flex-direction: column; gap: 40px; }
   .s-kit .kit { font-size: 36px; font-weight: 700; color: var(--ink-2); }
@@ -445,7 +445,7 @@
       <div class="code">Gere um componente Card em React + TypeScript, function component. Props tipadas: title: string, description: string, imageUrl?: string, onClick?: () =&gt; void. Cubra os estados default, hover, focus-visible e disabled. Acessibilidade: elemento article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs externas.<br><span class="hl">Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá. Não invente valores; puxe do Figma.</span> Devolva só o arquivo Card.tsx.</div>
     </div>
     <div class="meta">
-      <div class="why">Mesma spec de sempre, com uma linha a mais: puxe a verdade do Figma. É isso que tira o código da média.</div>
+      <div class="why">Mesma spec de sempre, com uma linha a mais: puxe a verdade do Figma. É isso que tira o código da média. Prompt completo, com o formato auditável, no kit: thiagoxikota.com/tdc.</div>
     </div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
@@ -470,11 +470,11 @@
       <div class="eyebrow">Comparação</div>
       <div class="statement">Ponha o código gerado ao lado do frame.</div>
       <ul>
-        <li>Contraste fraco no texto de apoio</li>
-        <li>Um input fora do padrão dos outros</li>
-        <li>Cor crua no botão, sem token</li>
+        <li>Cor do botão</li>
+        <li>Tamanho do título</li>
+        <li>Espaçamento interno</li>
       </ul>
-      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. Tudo no Claude: você compara o bloco de código com os valores que ela acabou de reler do frame. Sem terminal, sem projeto.</div>
+      <div class="tip">Inspecione as 3 propriedades e anote a procedência de cada valor. Pode não haver divergência nenhuma, e tá certo assim. Tudo no Claude: você compara o bloco de código com os valores que ela acabou de reler do frame. Sem terminal, sem projeto.</div>
     </div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
@@ -530,7 +530,7 @@
           <li>Revogue o token no Figma, em Settings, Security.</li>
           <li>Apague a entrada <code>figma-console</code> do config do Claude.</li>
           <li>Remova o plugin Bridge, se quiser.</li>
-          <li>Na máquina do evento, limpe o projeto e saia das contas.</li>
+          <li>Na máquina do evento, apague a conversa do Claude e saia das contas.</li>
         </ol>
       </div>
       <div class="right">

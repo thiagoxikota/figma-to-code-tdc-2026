@@ -40,7 +40,7 @@ Claude Desktop é o cliente. Claude Code roda o mesmo MCP e está aqui como alte
 
 Figma > menu do usuário > Settings > Security > Personal access tokens > Generate new token.
 
-Escopos: file content, variables, comments.
+Escopos: `file_content:read`, `file_variables:read`, `file_comments:read`, `file_comments:write` (os mesmos de `docs/pipeline-facts.md`).
 
 **Atenção: o token aparece UMA vez só.** Ele começa com `figd_`. Copie na hora e guarde. Se perder, gere outro. O token é local: nunca passa pelo site do workshop, por URL, por analytics, nem pelos organizadores.
 
@@ -104,14 +104,16 @@ Abra o Figma Desktop no arquivo da demo (duplique o arquivo público, link no RE
 
 ## Nas máquinas do evento
 
-As máquinas do evento e as reservas já vêm com Figma, Claude, Node e o projeto baixado e buildado. Nelas você não faz o setup na mão: use os scripts prontos do repositório.
+As máquinas do evento vêm CRUAS: só Figma Desktop, Claude Desktop e Node. Sem repositório, sem projeto, sem scripts. Nelas o caminho é o guia da sala (thiagoxikota.com/tdc): colar o JSON de config na mão, gerar o próprio token e importar o plugin. Não tente rodar script deste repositório lá; ele não existe na máquina.
+
+Os scripts abaixo valem só pra máquina de palco, pras 3 reservas provisionadas e pra sua máquina de casa (com o repositório clonado):
 
 - macOS: rode `scripts/setup-figma-mcp.command`.
 - Windows: rode `scripts/setup-figma-mcp.ps1`.
 
 Os dois fazem o merge idempotente e seguro do `claude_desktop_config.json` (não sobrescrevem outras entradas de MCP) e deixam o env pronto; você só cola o seu token. Pra remover no fim, `npm run workshop:setup-mcp -- --remove`.
 
-Deu algo errado em qualquer máquina: `npm run workshop:doctor`. Ele diagnostica config, token, Node, plugin e conexão e diz onde travou, sem você ter que caçar no escuro.
+Deu algo errado numa máquina COM o repositório (palco, reserva, casa): `npm run workshop:doctor`. Ele diagnostica config, token, Node, plugin e conexão e diz onde travou, sem você ter que caçar no escuro.
 
 ## Troubleshooting (a parte que ninguém posta)
 

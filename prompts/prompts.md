@@ -77,7 +77,7 @@ FORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um
 arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária.
 Todo estilo vem de variável CSS com o MESMO nome do token do Figma
 (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário
-com o valor que veio do frame (ex: /* #DC000C, do frame */).
+com o valor que veio do frame (ex: /* #C8352B, do frame */).
 No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro
 tamanho do título e pro espaçamento interno.
 Devolva só o código e essas 3 linhas.

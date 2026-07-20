@@ -122,7 +122,7 @@ prompts/prompts.md       Os 10 prompts do pipeline com MCP, prontos pra copiar
 prompts/standalone.md    Fallback sem MCP (par raso vs especificado, Claude no navegador). Não é o exercício da sala
 outputs-prebaked/        Outputs de referência dos ensaios, rede de segurança da demo ao vivo
 kit/setup-10min.md       Setup completo pra rodar em casa, com troubleshooting
-kit/cartao-de-bancada.md Cartão impresso, 1 por máquina na sala
+kit/cartao-de-bancada.md Aposentado (16/07): nada é impresso; o conteúdo vive nos slides e na onboarding
 kit/feedback-form.md     As 3 perguntas de feedback
 src/tokens.css           A fonte de verdade dos tokens do mini design system
 src/components/          Card gerado (Card.tsx, Card.css) e a versão rasa de comparação
