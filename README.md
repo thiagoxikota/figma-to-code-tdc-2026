@@ -44,12 +44,13 @@ Regra de corte dura: aos 25 minutos a prática começa, mesmo com gente sem term
 
 1. **Ler o frame** pelo MCP (3 min).
 2. **Gerar o componente** a partir da estrutura do Figma, não de um print (6 min).
-3. **Abrir o preview** com `npm run workshop:start` (4 min).
-4. **Comparar** Figma vs implementação e achar 3 divergências (4 min).
-5. **Corrigir uma falha** consultando o frame de novo (4 min).
-6. **Concluir** (2 min).
+3. **Inspecionar 3 propriedades** você mesmo, no bloco de código da conversa, contra os valores relidos do frame (5 min).
+4. **Corrigir**, se houver o que corrigir, consultando o frame de novo (5 min).
+5. **Revogar o token** no Figma. Não é opcional e não tem corte (4 min).
 
 O alvo é um card pequeno. Sem backend, sem banco, sem auth, sem API externa.
+
+**Na sala ninguém instala projeto.** O exercício inteiro roda dentro do Claude, sem terminal, porque a máquina do evento vem crua e 40 `npm install` dentro de 23 minutos é bomba-relógio. Ver rodando é o passo seguinte: acontece no telão da máquina de palco, se sobrar tempo, e em casa pelo kit.
 
 ## Como reproduzir em casa
 

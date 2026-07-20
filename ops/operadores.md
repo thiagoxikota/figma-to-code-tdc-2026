@@ -74,7 +74,7 @@ Claude Desktop é o cliente na sala. Claude Code só aparece no kit como alterna
 - O token nunca passa pelo site, analytics, URL, banco, material público, projetor, nem pelos organizadores.
 - Organizadores não usam token pessoal nas máquinas do evento.
 - Os scripts não imprimem token.
-- No fim: revogar o token, remover o MCP (`npm run workshop:setup-mcp -- --remove`), remover o plugin se a pessoa quiser, limpar a máquina do evento e sair das contas.
+- No fim: revogar o token, remover a entrada `figma-console` do `claude_desktop_config.json` na mão, remover o plugin se a pessoa quiser, limpar a máquina do evento e sair das contas.
 
 ---
 
@@ -127,14 +127,14 @@ Opera a demo, resolve o que é coletivo, guarda o relógio e puxa a contingênci
 - Resolver problema técnico coletivo (o que afeta muita gente ao mesmo tempo), não caso a caso.
 - Guardar o relógio: ler os checkpoints e avisar o Thiago quando a marca não bateu.
 - Acionar contingência e fallback.
-- Validar as três coisas que provam que funcionou: conexão, geração, projeto local.
+- Validar as três coisas que provam que funcionou: conexão viva, componente gerado a partir do frame, e a comparação feita contra os valores relidos.
 
 ## O que faz em cada bloco
 
 - 10:15 - 10:22 Problema, promessa e fluxo: deixa a demo carregada e o arquivo Figma aberto, plugin rodando. Confere a Bridge conectada antes de o Thiago chamar.
 - 10:22 - 10:32 Demo compacta: opera. Verifica o status da conexão com o Figma, pede pro Claude ler o frame "Tela demo" e mostra dado específico voltando. Se travar, entra o fallback pré-gerado, dito como fallback.
 - 10:32 - 10:57 Setup guiado: cronometra. Lê os checkpoints de relógio (10:37, 10:42, 10:47, 10:51, 10:54, 10:57) e avisa o Thiago da marca. Coordena os apoios sobre onde estão os gargalos. Decide migrações pra reserva a partir do minuto 20.
-- 10:57 - 11:20 Exercício real: circula validando os 3 sinais em bancadas de amostra. Conexão viva, componente gerado a partir do frame, preview subindo com `npm run workshop:start`.
+- 10:57 - 11:20 Exercício real: circula validando os 3 sinais em bancadas de amostra. Conexão viva, componente gerado a partir do frame, e a dupla comparando o código com os valores relidos. Na sala ninguém instala projeto. O preview roda só na máquina de palco, e só se sobrar tempo.
 - 11:20 - 11:30 Validação, correção e limites: confirma que as duplas acharam as 3 divergências e corrigiram uma consultando o frame de novo.
 - 11:30 - 11:42 Perguntas e encerramento: apoia respostas técnicas, coordena o desligamento (revogar token, remover MCP, limpar máquinas do evento).
 
@@ -194,9 +194,9 @@ Cuida de tudo do lado do Figma. É quem destrava acesso, token, plugin e o arqui
 
 ---
 
-# APOIO 2 (Claude Desktop, config MCP, Node, JSON, reinício, projeto, preview)
+# APOIO 2 (Claude Desktop, config MCP, Node, JSON, reinício)
 
-Cuida de tudo do lado do Claude e da máquina. É quem faz o MCP subir e o preview rodar.
+Cuida de tudo do lado do Claude e da máquina. É quem faz o MCP subir. Não cuida de projeto local nem de preview: na sala ninguém instala projeto.
 
 ## Responsabilidades
 
@@ -204,18 +204,18 @@ Cuida de tudo do lado do Claude e da máquina. É quem faz o MCP subir e o previ
 - Edição segura do `claude_desktop_config.json` (merge, sem quebrar o que já existe).
 - Node 18+ presente e permissões de instalação.
 - Fechar e reabrir o Claude por completo depois de salvar o config.
-- Projeto local baixado, buildado, e o preview subindo (`npm run workshop:start`).
+- Reconhecer que projeto local e preview NÃO fazem parte da bancada do participante. Quem perguntar por terminal, redireciona pro kit de casa.
 
 ## O que faz em cada bloco
 
-- 10:15 - 10:32 Antes e durante a abertura: confere a máquina de demo com Claude Desktop configurado, MCP `figma-console` carregado, projeto buildado.
+- 10:15 - 10:32 Antes e durante a abertura: confere a máquina de demo com Claude Desktop configurado e MCP `figma-console` carregado.
 - 10:32 - 10:57 Setup guiado, foco nos checkpoints 3 e 5:
-  - Checkpoint 3 config: guia o merge no `claude_desktop_config.json` (Windows `%APPDATA%\Claude\`, macOS `~/Library/Application Support/Claude/`). Entrada `mcpServers.figma-console` com `command` npx, `args` `["-y","figma-console-mcp@1.35.0"]`, env `FIGMA_ACCESS_TOKEN` e `ENABLE_MCP_APPS` `"true"`. Versão fixada, sem `@latest`. Prefere o script de merge (`npm run workshop:setup-mcp`) a editar JSON na mão.
+  - Checkpoint 3 config: guia o merge no `claude_desktop_config.json` (Windows `%APPDATA%\Claude\`, macOS `~/Library/Application Support/Claude/`). Entrada `mcpServers.figma-console` com `command` npx, `args` `["-y","figma-console-mcp@1.35.0"]`, env `FIGMA_ACCESS_TOKEN` e `ENABLE_MCP_APPS` `"true"`. Versão fixada, sem `@latest`. A máquina do participante vem crua e não tem o projeto, então o caminho é copiar o bloco pronto da onboarding e colar no JSON. O script de merge só existe pra quem já baixou o kit, em casa.
   - Depois do config: manda fechar o Claude por completo (no Mac Cmd+Q) e reabrir. O MCP só carrega no boot.
   - Checkpoint 5 teste real: no Claude, conversa nova, "Verifique o status da conexão com o Figma". Depois pede pra LER o frame "Tela demo" e conferir dado específico voltando. MCP na lista não é sucesso.
-- 10:57 - 11:20 Exercício real: garante o preview de pé em cada dupla (`npm run workshop:start`), destrava erro de Node, porta ou build.
-- 11:20 - 11:30 Validação: confirma que a correção da falha aparece no preview ao vivo.
-- 11:30 - 11:42 Encerramento: conduz a remoção do MCP (`npm run workshop:setup-mcp -- --remove`) e a limpeza das máquinas do evento.
+- 10:57 - 11:20 Exercício real: garante que cada dupla tem conexão viva e conseguiu gerar. Destrava Claude travado, MCP que caiu e plugin desconectado. Nada de terminal.
+- 11:20 - 11:30 Validação: confirma que a dupla pediu a fonte de cada valor relendo o frame e que a correção bate com o frame.
+- 11:30 - 11:42 Encerramento: conduz a remoção da entrada `figma-console` do config na mão e a limpeza das máquinas do evento.
 
 ## Sinais de acionar contingência
 

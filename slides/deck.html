@@ -187,11 +187,11 @@
   .setup-side .help { font-size: 34px; font-weight: 700; color: var(--ink-2); line-height: 1.34; border-top: 3px solid var(--rule); padding-top: 26px; }
 
   /* ---------- Slide 8: Checkpoints ---------- */
-  .s-check { flex-direction: column; justify-content: center; gap: 48px; }
+  .s-check { flex-direction: column; justify-content: center; gap: 30px; padding-bottom: 210px; }
   .ctable { width: 100%; border-collapse: collapse; }
-  .ctable th { text-align: left; font-size: 30px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); padding: 0 32px 24px; }
-  .ctable td { padding: 24px 32px; border-top: 3px solid var(--rule); }
-  .ctable td.min { font-size: 60px; font-weight: 900; color: #fff; width: 220px; }
+  .ctable th { text-align: left; font-size: 30px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--vermilion-bright); padding: 0 32px 16px; }
+  .ctable td { padding: 15px 32px; border-top: 3px solid var(--rule); }
+  .ctable td.min { font-size: 48px; font-weight: 900; color: #fff; width: 200px; }
   .ctable td.txt { font-size: 38px; font-weight: 600; color: var(--ink-2); }
   .ctable tr.final td { background: rgba(200,53,43,0.16); }
   .ctable tr.final td.min { color: var(--vermilion-bright); }
@@ -468,14 +468,13 @@
     </div>
     <div class="copy">
       <div class="eyebrow">Comparação</div>
-      <div class="statement">Ponha o preview ao lado do frame.</div>
-      <div class="cmd">npm run workshop:start</div>
+      <div class="statement">Ponha o código gerado ao lado do frame.</div>
       <ul>
         <li>Contraste fraco no texto de apoio</li>
         <li>Um input fora do padrão dos outros</li>
         <li>Cor crua no botão, sem token</li>
       </ul>
-      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. O prompt de comparação faz a IA revisar como o designer do sistema.</div>
+      <div class="tip">Ache 3 divergências. O arquivo tem 6 defeitos plantados. Tudo no Claude: você compara o bloco de código com os valores que ela acabou de reler do frame. Sem terminal, sem projeto.</div>
     </div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
   </section>
@@ -485,9 +484,9 @@
     <div class="eyebrow">Validação e correção</div>
     <div class="statement">Corrija uma falha. Volte ao frame, pegue o token certo, confira que bateu.</div>
     <div class="rows">
-      <div class="row"><b>Confira a conexão e o token:</b></div>
-      <div class="cmds"><span class="cmd">npm run workshop:check</span><span class="cmd">npm run workshop:doctor</span></div>
-      <div class="row">Se quiser recomeçar do zero, <span class="cmd" style="font-size:30px;padding:12px 20px;">npm run workshop:reset</span> restaura os componentes sem tocar na sua credencial.</div>
+      <div class="row"><b>Não deixe a IA julgar o próprio trabalho.</b> Peça a fonte de cada valor, relendo o frame.</div>
+      <div class="row">Para cada propriedade: <b>qual valor</b>, <b>de qual camada do frame veio</b>, e <b>bate ou não bate</b>.</div>
+      <div class="row"><b>No telão:</b> Bruno roda <span class="cmd" style="font-size:30px;padding:12px 20px;">npm run workshop:check</span> no espelho dele. Na sua máquina, nada de terminal.</div>
     </div>
     <div class="honest">Pronto aqui é o ponto corrigido batendo com o frame. Não o card inteiro pronto para produção.</div>
     <div class="brandbar"><span>IxDA Florianópolis<span class="dot">·</span>Friends of Figma Florianópolis</span><span>Exercício real</span></div>
@@ -529,7 +528,7 @@
         <div class="lead">Antes de sair da sala.</div>
         <ol>
           <li>Revogue o token no Figma, em Settings, Security.</li>
-          <li>Remova o MCP: <code>npm run workshop:setup-mcp -- --remove</code></li>
+          <li>Apague a entrada <code>figma-console</code> do config do Claude.</li>
           <li>Remova o plugin Bridge, se quiser.</li>
           <li>Na máquina do evento, limpe o projeto e saia das contas.</li>
         </ol>
