@@ -49,7 +49,7 @@ Mesma sequência de B, trocando:
 
 ## E. Artefatos de palco
 
-- [ ] `slides/deck.pdf` abre em tela cheia, 16 páginas, 16:9 (1440x810), sem mojibake (acentos corretos: código, peças, Florianópolis), sem corte de conteúdo no projetor.
+- [ ] Deck canônico (Google Slides, link em `slides/README.md`) abre e apresenta na máquina de palco; `slides/deck.pdf` (export de 22/07, 19 páginas, 16:9) abre em tela cheia como fallback offline, sem mojibake (acentos corretos: código, peças, Florianópolis), sem corte de conteúdo no projetor.
 - [ ] QR (`qr/kit.png` e `kit-dark-on-light.svg`) escaneia no celular, de longe e projetado, e abre `thiagoxikota.com/tdc`.
 - [ ] `onboarding/index.html` copiado pra área de trabalho de cada máquina abre por duplo-clique (file://) e roteia por dispositivo, mesmo sem rede.
 - [ ] Vídeo de emergência (`ops/video-emergencia.md`) abre local (disco + pendrive) e tem os capítulos.

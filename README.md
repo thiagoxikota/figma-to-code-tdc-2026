@@ -127,7 +127,7 @@ kit/feedback-form.md     As 3 perguntas de feedback
 src/tokens.css           A fonte de verdade dos tokens do mini design system
 src/components/          Card gerado (Card.tsx, Card.css) e a versão rasa de comparação
 qr/                      QR do kit (SVG e PNG) apontando pra URL curta do onboarding
-slides/                  deck.html e deck.pdf do palco
+slides/                  Deck do palco: canônico no Google Slides (link em slides/README.md); deck.pdf é o export offline
 video/LINK.md            Vídeo de emergência (plano C, gravação separada)
 dist/                    Build estático do preview: abre sem instalar nada
 ```
