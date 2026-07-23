@@ -193,9 +193,10 @@ for (const forbidden of ['p-concluir', 'Mesa / máquina', 'Chamar apoio']) {
   if (onboarding.includes(forbidden)) fail(`onboarding: conteúdo removido voltou: ${JSON.stringify(forbidden)}`)
 }
 for (const legacy of [
-  'qual token você usou pra cor do botão',
-  'Leia de novo o frame \\"Tela demo\\" via MCP',
-  'Consulte de novo o frame \\"Tela demo\\" via MCP',
+  // decisao do dono 23/07 de manha: o desafio volta pro frame Tela demo; legado proibido agora e a variante Card
+  'qual token você usou pra cor do título',
+  'Leia de novo o componente \\"Card\\" via MCP',
+  'Consulte de novo o componente \\"Card\\" via MCP',
 ]) {
   if (onboarding.includes(legacy)) fail(`onboarding: prompt legado voltou: ${JSON.stringify(legacy)}`)
 }
@@ -223,8 +224,8 @@ if (practiceItems.length !== 5) {
 const promptsDoc = read(promptsPath)
 assertOrderedText(promptsDoc, prompts.filter(Boolean), 'prompts/prompts.md')
 for (const legacy of [
-  'qual token você usou pra cor do botão',
-  'Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP',
+  'qual token você usou pra cor do título',
+  'Antes de gerar, leia o componente "Card" deste arquivo Figma via MCP',
 ]) {
   if (comparable(promptsDoc).includes(comparable(legacy))) {
     fail(`prompts/prompts.md: prompt legado voltou: ${JSON.stringify(legacy)}`)

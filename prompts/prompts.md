@@ -70,15 +70,15 @@ Props tipadas: title, description, imageUrl?, onClick?. Estados
 default, hover, focus-visible e disabled. Acessibilidade: article,
 heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste
 AA.
-Antes de gerar, leia o componente "Card" deste arquivo Figma via MCP e
-use a estrutura e os tokens aplicados nele.
+Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e
+use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá.
 Não invente valores; puxe do Figma.
 FORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um
 arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária.
 Todo estilo vem de variável CSS com o MESMO nome do token do Figma
 (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário
-com o valor que veio do componente (ex: /* #C8352B, do componente */).
-No fim, liste em 3 linhas: qual token você usou pra cor do título, pro
+com o valor que veio do frame (ex: /* #C8352B, do frame */).
+No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro
 tamanho do título e pro espaçamento interno.
 Devolva só o código e essas 3 linhas.
 ```
@@ -92,8 +92,8 @@ Por que funciona (e por que é o experimento certo): 5a e 5b são o MESMO pedido
 ### Comparar contra a fonte
 
 ```
-Leia de novo o componente "Card" via MCP e me devolva SÓ uma tabela
-com três linhas, uma por propriedade: cor do título, tamanho do título
+Leia de novo o frame "Tela demo" via MCP e me devolva SÓ uma tabela
+com três linhas, uma por propriedade: cor do botão, tamanho do título
 e espaçamento interno. Para cada uma: o nome do token no Figma e o
 valor. Não comente o meu código ainda, não diga se está certo. Só a
 fonte.
@@ -102,9 +102,9 @@ fonte.
 ### Corrigir uma divergência
 
 ```
-Consulte de novo o componente "Card" via MCP. Esta propriedade no meu
-código não bate com o componente: [DIGA QUAL]. Explique a diferença e
-ajuste SÓ ela, usando o token certo do Figma. Preserve o resto. Não
+Consulte de novo o frame "Tela demo" via MCP. Esta propriedade no meu
+código não bate com o frame: [DIGA QUAL]. Explique a diferença e
+ajuste SÓ ela, usando o token certo do frame. Preserve o resto. Não
 reescreva o componente.
 ```
 
