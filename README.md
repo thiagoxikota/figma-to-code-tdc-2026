@@ -17,7 +17,7 @@ Claude Desktop
       ↓  (MCP, via npx local)
 Figma Console MCP  (figma-console-mcp)
       ↓  (ponte por WebSocket local)
-Plugin Desktop Bridge  (~/.figma-console-mcp/plugin)
+Plugin Bridge, "Figma Desktop Bridge"  (~/.figma-console-mcp/plugin)
       ↓
 Figma Desktop  (arquivo aberto, plugin rodando)
 ```
@@ -30,13 +30,14 @@ A fonte técnica de tudo (pacote, versão, comandos, caminhos, prompt de teste) 
 
 Duas partes, com o relógio junto.
 
-### Setup guiado (25 min, 5 checkpoints)
+### Setup guiado (25 min, 4 passos: Abrir, Token, Conectar, Ligar e testar)
 
-1. **Acesso e login.** Entrar no Figma e no Claude Desktop, escolher a rota do seu dispositivo na página do QR. Linux não roda esse fluxo, então vai direto para dupla ou máquina reserva, sem perder 15 minutos à toa.
-2. **Token do Figma.** Gerar um token pessoal local (começa com `figd_`). Aparece uma vez só, copie na hora. Ele nunca sai da sua máquina.
-3. **Config do Claude Desktop.** Adicionar o servidor `figma-console` no arquivo de config, salvar, fechar o Claude por completo e reabrir. O MCP só carrega no boot.
-4. **Plugin Desktop Bridge.** Importar o plugin auto-empacotado pelo MCP, rodar e deixar aberto.
-5. **Teste real.** No Claude, pedir o status da conexão e depois pedir para ele ler o frame `Tela demo`. Sucesso é ver dado específico do arquivo voltar, não o MCP aparecer numa lista.
+Mesmos nomes e mesma ordem do tutorial guiado (thiagoxikota.com/tdc), que é quem conduz o participante:
+
+1. **Abrir.** Figma Desktop e Claude Desktop abertos e logados, arquivo da demo duplicado. Linux não roda esse fluxo, então vai direto para dupla ou máquina reserva, sem perder 15 minutos à toa.
+2. **Token.** Gerar um token pessoal local (começa com `figd_`), validade de 1 dia. Aparece uma vez só, copie na hora. Ele nunca sai da sua máquina.
+3. **Conectar.** Adicionar o servidor `figma-console` no arquivo de config do Claude, salvar, fechar o Claude por completo e reabrir. O MCP só carrega no boot.
+4. **Ligar e testar.** Importar o plugin Bridge auto-empacotado pelo MCP, rodar, deixar aberto, e testar de verdade: pedir o status da conexão e a leitura do frame `Tela demo`. Sucesso é ver dado específico do arquivo voltar, não o MCP aparecer numa lista.
 
 Regra de corte dura: aos 25 minutos a prática começa, mesmo com gente sem terminar. A partir do minuto 20 do setup, caso travado migra para dupla ou reserva (migração em 2 minutos), sem investigar problema profundo individual no meio da sala.
 
@@ -80,9 +81,9 @@ Resumo do setup:
    }
    ```
 
-   No macOS e no Windows dá para deixar esse merge no automático com `npm run workshop:setup-mcp` (ele preserva os outros servidores que já existirem). Depois de salvar, **feche o Claude Desktop por completo e reabra**.
+   No macOS e no Windows dá para deixar esse merge no automático pelos wrappers `scripts/setup-figma-mcp.command` (macOS) e `scripts/setup-figma-mcp.ps1` (Windows), que pedem o token num campo escondido. O `npm run workshop:setup-mcp` direto exige `FIGMA_ACCESS_TOKEN` já exportado no ambiente (sem isso ele sai com erro, de propósito, pra nunca receber token por argumento). Os dois preservam os outros servidores que já existirem. Depois de salvar, **feche o Claude Desktop por completo e reabra**.
 
-4. **Plugin Desktop Bridge.** Na 1.35.0 o plugin é auto-empacotado pelo próprio MCP num caminho estável (por isso reabra o Claude antes, senão a pasta pode ainda não existir):
+4. **Plugin Bridge (na lista do Figma: "Figma Desktop Bridge").** Na 1.35.0 o plugin é auto-empacotado pelo próprio MCP num caminho estável (por isso reabra o Claude antes, senão a pasta pode ainda não existir):
 
    - macOS: `~/.figma-console-mcp/plugin/manifest.json`
    - Windows: `%USERPROFILE%\.figma-console-mcp\plugin\manifest.json`
@@ -115,7 +116,7 @@ Os scripts de setup por sistema operacional estão em `scripts/setup-figma-mcp.c
 
 ```
 docs/pipeline-facts.md   Fonte técnica única (pacote, versão, caminhos, prompt de teste). Leia primeiro.
-onboarding/index.html    Assistente do QR: roteia por dispositivo, guia os 5 checkpoints, ajuda e prática
+onboarding/index.html    Assistente do QR: roteia por dispositivo, guia os 4 passos do setup, ajuda e prática
 scripts/                 mcp-config.mjs (merge do config), setup por SO, doctor.mjs, reset.mjs, check-tokens.mjs
 ops/                     Runbook da sala: papéis dos 4 operadores, cronograma minuto a minuto, contingência, teardown
 prompts/prompts.md       Os 10 prompts do pipeline com MCP, prontos pra copiar
@@ -132,7 +133,7 @@ video/LINK.md            Vídeo de emergência (plano C, gravação separada)
 dist/                    Build estático do preview: abre sem instalar nada
 ```
 
-URL curta do onboarding (placeholder até confirmar o host): `thiagoxikota.com/tdc`.
+URL curta do onboarding (no ar, servida pelo site do portfólio): `thiagoxikota.com/tdc`.
 
 ## Arquivo Figma da demo
 
@@ -158,9 +159,9 @@ Os limites reais, ditos sem maquiar:
 
 ## Segurança do token
 
-O token é seu e é local. Ele nunca passa pelo site do workshop, por analytics, por URL, por banco, por material público, pelo projetor nem pelos organizadores. Os scripts não imprimem token, e as máquinas do evento não usam token pessoal de organizador.
+O token é seu e é local. Ele nunca sai da sua máquina: não vai pra analytics, URL, banco, material público, projetor nem organizadores. A página do QR é 100% local (zero requisição externa); o campo opcional de colar o token nela guarda só na memória da aba, nunca é salvo nem enviado. Os scripts não imprimem token, e as máquinas do evento não usam token pessoal de organizador. Gere com validade de 1 dia: mesmo esquecido, ele morre sozinho.
 
-No fim, se quiser deixar a máquina limpa: revogue o token no Figma, rode `npm run workshop:setup-mcp -- --remove` pra tirar o servidor do config, remova o plugin se quiser e saia das contas. Na máquina do evento isso faz parte do teardown.
+No fim, revogue o token no Figma (na máquina do evento isso é obrigatório e faz parte do teardown; na sua, é a higiene recomendada), rode `npm run workshop:setup-mcp -- --remove` pra tirar o servidor do config, remova o plugin se quiser e saia das contas.
 
 ## Licença
 

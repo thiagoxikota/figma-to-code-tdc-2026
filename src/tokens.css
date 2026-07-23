@@ -25,6 +25,8 @@
   --space-4: 32px;
 
   /* tipografia */
+  /* --font-body e DERIVADA do estilo de texto do arquivo (stack de fonte nao
+     vira variavel no Figma); nao conta nas 23 variaveis da colecao. */
   --font-body: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-size-body: 16px;
   --font-size-heading: 20px;

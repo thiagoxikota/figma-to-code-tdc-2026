@@ -9,7 +9,7 @@ Claude Desktop
       ↓  (MCP, stdio local via npx)
 Figma Console MCP  (figma-console-mcp)
       ↓  (WebSocket local, portas 9223-9232)
-Plugin Desktop Bridge  (~/.figma-console-mcp/plugin)
+Plugin Bridge, "Figma Desktop Bridge"  (~/.figma-console-mcp/plugin)
       ↓
 Figma Desktop  (arquivo aberto, plugin rodando)
 ```
@@ -56,7 +56,7 @@ Depois de salvar: **feche o Claude Desktop por completo e reabra** (no macOS é 
 - Prefixo esperado: começa com `figd_`. Aparece **uma vez só**; copie na hora.
 - O token é local. Nunca passa pelo site do workshop, por analytics, por URL, por banco, nem pelos organizadores.
 
-## Plugin Desktop Bridge (fluxo ATUAL, 1.35.0)
+## Plugin Bridge, na lista do Figma "Figma Desktop Bridge" (fluxo ATUAL, 1.35.0)
 
 Mudou em relação ao passo antigo de "baixar ZIP do GitHub". Na 1.35.0 o plugin é **auto-empacotado** pelo próprio MCP num caminho estável:
 

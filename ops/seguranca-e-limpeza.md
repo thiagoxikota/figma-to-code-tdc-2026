@@ -14,9 +14,9 @@ Claude Desktop  ->  Figma Console MCP (npx)  ->  plugin Desktop Bridge  ->  Figm
 
 ## 1. Regras do token (inegociáveis)
 
-O token do Figma **nunca** passa por:
+O token do Figma **nunca sai da máquina do participante**. Ele nunca passa por:
 
-- Site do workshop, página do QR, ou a URL curta `thiagoxikota.com/tdc`.
+- Servidor, formulário ou coleta de qualquer tipo. A página do QR (`thiagoxikota.com/tdc`) tem um campo OPCIONAL de colar o token pra montar o bloco de config: ele roda 100% local (a página não faz nenhuma requisição externa), fica só na memória da aba, mascarado na tela, e some ao fechar. Nada é salvo nem enviado.
 - Analytics, telemetria, ou qualquer coleta.
 - Parâmetro de URL, formulário, link compartilhado.
 - Banco de dados, planilha, ou log de qualquer natureza.
@@ -69,6 +69,8 @@ Ordem recomendada: primeiro corte o acesso na origem (revogar o token), depois l
 Este é o passo mais importante. Se a pessoa só tiver tempo de fazer um, é este.
 
 ### 4.2 Remover a entrada MCP do Claude Desktop
+
+Vale pra máquinas COM o repositório (palco e reserva). Nas bancadas do evento, sem projeto e sem terminal, a limpeza é manual: abrir o `claude_desktop_config.json` e apagar o bloco `figma-console` de `mcpServers`.
 
 Na pasta do projeto do workshop, no terminal:
 

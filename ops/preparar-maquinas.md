@@ -6,7 +6,7 @@ Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07.
 
 **As ~40 máquinas do evento NÃO são provisionadas por nós.** A TI confirmou em 16/07: elas chegam com Node.js, Figma Desktop e Claude Desktop instalados, e nada além disso. O resto é padrão de máquina (sem plugin importado, sem config de MCP, sem projeto, sem git). Vale pra todas, e não há janela de acesso pra mexer nelas antes.
 
-Isso não é problema, é o formato: **o setup é o conteúdo.** Na máquina do evento, a dupla monta token, config e plugin ao vivo, guiada pela onboarding do QR (`thiagoxikota.com/tdc`). A rota dela é a mesma do notebook próprio, sem o passo de instalar app. Os 25 min dos 5 checkpoints existem exatamente pra isso.
+Isso não é problema, é o formato: **o setup é o conteúdo.** Na máquina do evento, a dupla monta token, config e plugin ao vivo, guiada pela onboarding do QR (`thiagoxikota.com/tdc`). A rota dela é a mesma do notebook próprio, sem o passo de instalar app. Os 25 min dos 4 passos do setup existem exatamente pra isso.
 
 **Este runbook cobre só o que a gente controla:**
 

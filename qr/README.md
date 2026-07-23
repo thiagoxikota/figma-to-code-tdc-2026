@@ -7,8 +7,8 @@ URL final (decidida 16/07): `https://thiagoxikota.com/tdc`. Hospedagem documenta
 ## Como regerar se a URL mudar
 
 ```
-npx -y qrcode -t svg -o qr/kit-dark-on-light.svg "https://SUA_URL_FINAL"
-npx -y qrcode -o qr/kit.png -w 1024 -m 2 "https://SUA_URL_FINAL"
+npx -y qrcode -t svg -o qr/kit-dark-on-light.svg "https://thiagoxikota.com/tdc"
+npx -y qrcode -o qr/kit.png -w 1024 -m 2 "https://thiagoxikota.com/tdc"
 ```
 
 ## Uso

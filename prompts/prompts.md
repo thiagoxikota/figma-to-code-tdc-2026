@@ -7,8 +7,8 @@ Cada prompt é um exemplo de especificação: formato de saída definido, escopo
 
 ```
 Leia o frame "Tela demo" deste arquivo Figma via MCP. Devolva a árvore
-de camadas, os componentes usados e as variáveis (tokens) aplicadas em
-cada elemento. Não descreva pixels: descreva estrutura e semântica.
+de camadas, os componentes e os tokens (variáveis) aplicados. Descreva
+estrutura e semântica, não pixels.
 ```
 
 Por que funciona: especifica o formato de saída (árvore, componentes, tokens) e o nível de abstração (semântica, não aparência). A resposta vira auditável.
@@ -51,26 +51,24 @@ Por que funciona: impõe estrutura no achado e uma escala de severidade. A IA ac
 
 ```
 Gere um componente Card em React + TypeScript, function component.
-Props tipadas: title: string, description: string, imageUrl?: string,
-onClick?: () => void. Cubra os estados default, hover, focus-visible e
-disabled. Acessibilidade: elemento article, heading por prop, foco
-visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs
-externas. Devolva só o arquivo Card.tsx.
+Props tipadas: title, description, imageUrl?, onClick?. Estados
+default, hover, focus-visible e disabled. Acessibilidade: article,
+heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste
+AA. Sem libs externas. Devolva só o arquivo Card.tsx.
 ```
 
 É um prompt BOM: pede estados, tipos, acessibilidade. Falta uma coisa só, de onde vem a verdade do design. Sem fonte, a IA inventa a cor e o espaçamento. Esse é o ponto.
 
 ## 5b. Gerar, COM o Figma via MCP (Take B)
 
-O MESMO prompt de cima, só acrescentando a fonte:
+O MESMO pedido, agora com a fonte e o formato auditável:
 
 ```
 Gere um componente Card em React + TypeScript, function component.
-Props tipadas: title: string, description: string, imageUrl?: string,
-onClick?: () => void. Cubra os estados default, hover, focus-visible e
-disabled. Acessibilidade: elemento article, heading por prop, foco
-visível de 2px, alvo mínimo de 44px, contraste mínimo AA. Sem libs
-externas.
+Props tipadas: title, description, imageUrl?, onClick?. Estados
+default, hover, focus-visible e disabled. Acessibilidade: article,
+heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste
+AA.
 Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e
 use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá.
 Não invente valores; puxe do Figma.

@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:tokens": "node scripts/check-tokens.mjs",
-    "validate:workshop": "npm run typecheck && node scripts/check-tokens.mjs src/components/Card.tsx src/components/Card.css",
+    "validate:workshop": "npm run typecheck && node scripts/validate-takes.mjs",
     "workshop:start": "vite",
     "workshop:preview": "vite preview",
     "workshop:check": "npm run validate:workshop",

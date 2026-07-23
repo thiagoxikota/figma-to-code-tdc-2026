@@ -88,10 +88,10 @@ Princípio que sobrepõe tudo: nunca fingir que a geração ao vivo funcionou. S
 **Sintoma.** Login demora, `npx` arrasta baixando o pacote, a geração no Claude fica travada.
 
 **Ação (Bruno + apoios).**
-1. Lembrar a sala: quase tudo é local. O preview (`npm run workshop:start`), a auditoria do frame e o projeto já baixado não dependem da rede.
+1. Lembrar a sala: quase tudo é local. A leitura do frame e a comparação não dependem da rede. Preview e projeto existem SÓ nas máquinas de palco e reserva; nas bancadas do evento não há projeto nem terminal, e está tudo bem: o participante acompanha pelo telão.
 2. Se o `npx` está lento, ele só baixa o pacote uma vez. Nas máquinas do evento e nas reserva o pacote já está em cache.
 3. Se a geração no Claude está lenta, seguir com os outputs prebaked de `outputs-prebaked/` para não travar o ritmo, deixando claro que é material pré-gerado, não ao vivo.
-4. Se a demo do palco engasgar, cair para o vídeo de emergência (ver `ops/video-emergencia.md`).
+4. Se a demo do palco engasgar, cair para os outputs prebaked no telão (o vídeo de emergência NÃO foi gravado; ver `video/LINK.md`).
 
 **Migrar quando.** Não precisa migrar máquina, precisa migrar de modo. A prática continua na parte local (preview, comparação, correção).
 
@@ -102,9 +102,9 @@ Princípio que sobrepõe tudo: nunca fingir que a geração ao vivo funcionou. S
 **Sintoma.** Rede caiu para todo mundo ou para boa parte da sala. Login e geração ao vivo fora do ar.
 
 **Ação (Bruno assume o coletivo, Thiago mantém o palco).**
-1. Demo do palco vai pela **gravada** (`ops/video-emergencia.md`), anunciando que é gravação, não ao vivo.
-2. O onboarding do QR funciona offline via `file://` (abrir o `onboarding/index.html` local). Não depende da URL curta nem da rede.
-3. O projeto roda local: `npm run workshop:start` sobe o preview sem internet.
+1. Demo do palco vai pelos **outputs prebaked** de `outputs-prebaked/`, narrados no telão, anunciando que é material pré-gerado, não ao vivo (vídeo de emergência não foi gravado; ver `video/LINK.md`).
+2. O onboarding do QR funciona offline via `file://` nas máquinas de palco e reserva (abrir o `onboarding/index.html` local; nas bancadas do evento não há repo local, o participante acompanha o telão).
+3. O preview roda local SÓ na máquina de palco: `npm run workshop:start` sobe sem internet.
 4. A auditoria do frame vira coletiva a partir dos outputs prebaked de `outputs-prebaked/`, ditos em voz alta e comparados na tela. Deixar explícito que é material pré-gerado.
 5. O exercício da sala passa a ser: abrir o preview local, comparar com a imagem do frame, achar as divergências e corrigir uma no código. Sem depender de MCP.
 

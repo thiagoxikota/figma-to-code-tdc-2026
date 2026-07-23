@@ -18,7 +18,7 @@ Papel seria uma terceira cópia da mesma coisa, com o pior defeito: congela na i
 | O que o cartão trazia | Onde está |
 |---|---|
 | QR + URL curta | Slide 5 do deck; slide 7 durante o setup |
-| Os 5 checkpoints | Slide 8 (checkpoints por minuto) + a onboarding, passo a passo |
+| Os 4 passos do setup | Slide do setup + a onboarding, passo a passo |
 | Prompt de teste da conexão | Onboarding, passo "Teste a conexão de verdade" |
 | Comandos npm | Onboarding (passo opcional do preview) e `README.md`. Na sala quase não são usados: o exercício roda no Claude, sem terminal |
 | "Travou? Mão pra cima" | Slide 7 e o botão de ajuda da onboarding (que ainda monta o resumo por mesa) |

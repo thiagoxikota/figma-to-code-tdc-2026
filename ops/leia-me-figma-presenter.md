@@ -1,4 +1,4 @@
-# Leia-me do apresentador (ex-página "00 Leia-me" do arquivo Figma)
+# Leia-me do apresentador
 
 Conteúdo migrado do arquivo Figma da demo em 22/07/2026, quando a página do apresentador saiu do arquivo público (participante não precisa dela e o agente auditando o arquivo não deve tropeçar no gabarito). O detalhamento canônico dos defeitos segue em `outputs-prebaked/04-auditoria.md`.
 

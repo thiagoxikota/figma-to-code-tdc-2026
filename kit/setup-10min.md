@@ -22,7 +22,7 @@ Claude Desktop
       ->  (MCP, npx local)
 Figma Console MCP  (figma-console-mcp@1.35.0)
       ->  (WebSocket local, portas 9223-9232)
-Plugin Desktop Bridge  (~/.figma-console-mcp/plugin)
+Plugin Bridge, "Figma Desktop Bridge"  (~/.figma-console-mcp/plugin)
       ->
 Figma Desktop  (arquivo aberto, plugin rodando)
 ```
@@ -38,7 +38,7 @@ Claude Desktop é o cliente. Claude Code roda o mesmo MCP e está aqui como alte
 
 ## Passo 1: gere o token do Figma
 
-Figma > menu do usuário > Settings > Security > Personal access tokens > Generate new token.
+Figma > menu do usuário > Settings > Security > Personal access tokens > Generate new token. Em Expiration, escolha a validade mais curta que cobre o seu uso (pro workshop, 1 dia dá e sobra: mesmo esquecido, o token morre sozinho).
 
 Escopos: `file_content:read`, `file_variables:read`, `file_comments:read`, `file_comments:write` (os mesmos de `docs/pipeline-facts.md`).
 
@@ -113,7 +113,7 @@ Os scripts abaixo valem só pra máquina de palco, pras 3 reservas provisionadas
 
 Os dois fazem o merge idempotente e seguro do `claude_desktop_config.json` (não sobrescrevem outras entradas de MCP) e deixam o env pronto; você só cola o seu token. Pra remover no fim, `npm run workshop:setup-mcp -- --remove`.
 
-Deu algo errado numa máquina COM o repositório (palco, reserva, casa): `npm run workshop:doctor`. Ele diagnostica config, token, Node, plugin e conexão e diz onde travou, sem você ter que caçar no escuro.
+Deu algo errado numa máquina COM o repositório (palco, reserva, casa): `npm run workshop:doctor`. Ele diagnostica Node, npm, a estrutura do projeto, as portas do preview e o config do Claude (sem nunca imprimir o token). Plugin e conexão ele NÃO testa: isso você prova no próprio Claude, com o prompt de status. No fim de tudo, revogue o token no Figma (Settings > Security > Personal access tokens > Revoke): na máquina que não é sua é obrigatório, na sua é a higiene recomendada.
 
 ## Troubleshooting (a parte que ninguém posta)
 

@@ -1,8 +1,8 @@
 # Folha operacional dos 4 papéis
 
-Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07, 10:15 às 11:45 (90 min). Thiago Xikota e Bruno Bach.
+Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07, 10:15 às 11:45 (90 min). Thiago Xikota, Bruno Bach e Lourena de Jesus.
 
-Uma página por papel: Thiago (palco), Bruno (demo, técnico coletivo, relógio, contingência), Apoio 1 (Figma), Apoio 2 (Claude Desktop). Leia a sua página e a barra comum abaixo antes de a sala abrir.
+Uma página por papel: Thiago (palco), Bruno (demo, técnico coletivo, relógio, contingência), Apoio 1 = Lourena (Figma, circulação e dúvidas da sala), Apoio 2 (Claude Desktop) [SEM PESSOA ALOCADA em 22/07: definir na chegada ou Bruno e Lourena absorvem]. Leia a sua página e a barra comum abaixo antes de a sala abrir.
 
 O fluxo da sala é um só, não ofereça bifurcação de cliente ao participante:
 
@@ -30,13 +30,12 @@ Claude Desktop é o cliente na sala. Claude Code só aparece no kit como alterna
 | 11:36 - 11:42 | Síntese e encerramento | 6 |
 | 11:42 - 11:45 | Margem operacional | 3 |
 
-### Setup guiado em 5 checkpoints (10:32 às 10:57)
+### Setup guiado em 4 passos: Abrir, Token, Conectar, Ligar e testar (10:32 às 10:57)
 
-1. Acesso e login (Figma e Claude, escolher rota de dispositivo, Linux vai direto pra dupla ou reserva).
-2. Token do Figma (começa com `figd_`, aparece uma vez).
-3. Config do Claude Desktop (salvar, fechar por completo, reabrir).
-4. Plugin Desktop Bridge (importar do manifest, deixar aberto).
-5. Teste real (Claude lê o frame "Tela demo" e devolve dado específico).
+1. Abrir (Figma e Claude logados, arquivo da demo duplicado; escolher rota de dispositivo, Linux vai direto pra dupla ou reserva).
+2. Token (começa com `figd_`, aparece uma vez, validade de 1 dia).
+3. Conectar (config do Claude: salvar, fechar por completo, reabrir).
+4. Ligar e testar (plugin Bridge importado do manifest e aberto; Claude lê o frame "Tela demo" e devolve dado específico).
 
 ### Checkpoints de relógio do setup (leitura em voz alta é do Bruno)
 
@@ -95,7 +94,7 @@ Conduz. É a voz e o ritmo da sala. Fica no palco do começo ao fim.
 - 10:15 - 10:18 Problema e promessa: abre com a tese. A IA não lê a sua tela, ela lê o que você conseguiu especificar. O resto ela inventa.
 - 10:18 - 10:22 Como o fluxo funciona: explica os 4 elos (Claude Desktop, MCP, Bridge, Figma) sem jargão. Um cliente só na sala.
 - 10:22 - 10:32 Demo compacta: narra enquanto o Bruno opera. Mostra o Claude lendo o frame de verdade e gerando o componente. Não promete resultado antes de rodar.
-- 10:32 - 10:57 Setup guiado: chama os 5 checkpoints em voz alta, um por vez. Aguarda o Bruno confirmar a maioria antes de avançar. Não desce do palco pra debugar máquina.
+- 10:32 - 10:57 Setup guiado: chama os 4 passos do guia (Abrir, Token, Conectar, Ligar e testar) em voz alta, um por vez. Aguarda o Bruno confirmar a maioria antes de avançar. Não desce do palco pra debugar máquina.
 - 10:57 - 11:20 Exercício real: dá o start, lê os 6 passos do exercício em ritmo, marca as viradas (ler, gerar, comparar, corrigir, concluir). O preview não é passo do participante: roda só na máquina de palco, se sobrar tempo.
 - 11:20 - 11:30 Validação, correção e limites: conduz a leitura das divergências e diz os limites reais. Código gerado não é produção, MCP não substitui design system, arquivo bagunçado gera contexto bagunçado.
 - 11:30 - 11:36 Perguntas: modera, corta pergunta que vira consultoria individual.

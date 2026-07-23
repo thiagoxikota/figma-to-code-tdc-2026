@@ -12,6 +12,8 @@ Gravar ate 21/07. Serve pra quando a internet cair de vez ou a bridge morrer dua
 
 ## Roteiro de captura (beat a beat)
 
+NOTA 22/07: o vídeo NÃO foi gravado (ver `video/LINK.md`); o plano C do dia são os prebaked no telão. O roteiro abaixo vale se ainda houver gravação; os beats 5 a 7 usam os 3 pares canônicos de `outputs-prebaked/05c-diff-callout.md` e o comando `npm run validate:workshop`.
+
 1. Abertura (20s). Tela dividida: o card no Figma e o card implementado, o botao denunciando a diferenca (16 no Figma, 14 no codigo). Congela.
 2. Arquitetura (30s). Passa o mouse pelo diagrama: Figma Desktop, Bridge, MCP, Claude Desktop. Congela.
 3. Conexao (40s). No Claude Desktop: "Verifique o status da conexao com o Figma". Mostra a resposta conectado via WebSocket Bridge, com o nome do arquivo. Congela na resposta.

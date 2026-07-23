@@ -14,7 +14,7 @@ Este arquivo é a rede de seguranca do beat: sobrevive a Plano B (sem Figma) e �
 
 ## A prova objetiva (o que o comando mostra)
 
-`npm run validate:workshop` roda `tsc --noEmit` + `check-tokens`. O Take A falha na checagem de token (hex cru); o Take B passa (so var). Determinístico, sem depender de rede.
+`npm run validate:workshop` roda `tsc --noEmit` + a checagem de token dos DOIS takes no mesmo comando: reprova o Take A (`outputs-prebaked/05a-card-raso.tsx`, hex cru) e aprova o Take B (`src/components/Card.tsx` + `Card.css`, so var). Determinístico, sem depender de rede.
 
 ## Fala de cobertura (Bruno, 15s)
 
@@ -22,4 +22,4 @@ Este arquivo é a rede de seguranca do beat: sobrevive a Plano B (sem Figma) e �
 
 ## Fonte
 
-Espelha `src/components/CardRaso.tsx` (Take A) e `src/components/Card.tsx` + `src/components/Card.css` (Take B). Se a geracao ao vivo mudar o codigo, conferir que os 3 pares e o resultado do validate continuam validos antes de projetar.
+Espelha `outputs-prebaked/05a-card-raso.tsx` (Take A do prompt 5a) e `src/components/Card.tsx` + `src/components/Card.css` (Take B integrado; o output bruto do ensaio esta em `05b-card-especificado.tsx`). O `src/components/CardRaso.tsx` e outro artefato (prompt-de-6-palavras do toggle do preview), nao o Take A deste par. Se a geracao ao vivo mudar o codigo, conferir que os 3 pares e o resultado do validate continuam validos antes de projetar.

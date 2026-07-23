@@ -3,8 +3,11 @@
  * Competente na ESTRUTURA (article, heading, button de verdade, estados,
  * aria), generico no DESIGN (hex cru inventado, espacamento fora do grid,
  * tipografia generica), porque o prompt nao deu fonte de design.
- * Espelha src/components/CardRaso.tsx. O `npm run validate:workshop`
- * acusa os hex crus daqui e passa o Take B. Ver 05c-diff-callout.md.
+ * O `npm run validate:workshop` prova o par: reprova os hex crus daqui
+ * e aprova o Take B. Ver 05c-diff-callout.md.
+ * NAO confundir com src/components/CardRaso.tsx: aquele e OUTRO artefato
+ * (o card do prompt-de-6-palavras usado no toggle do preview, Momento
+ * UAU 2; div soup deliberado, decisao do painel de 15/07).
  * Fallback do slot 1 do preview.
  */
 
