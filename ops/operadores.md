@@ -4,6 +4,8 @@ Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07, 10:1
 
 Dois papéis formais: Thiago (palco, e absorve as tarefas de apoio de sala) e Bruno (demo, técnico coletivo, relógio, contingência). SEM papéis de Apoio dedicados (decisão do dono, 22/07: "na hora a gente se vira"); a Lourena ajuda livre na sala. As seções TAREFAS DE APOIO abaixo viram checklist de referência do que precisa ser coberto, não páginas de pessoa. Leia a sua página e a barra comum abaixo antes de a sala abrir.
 
+ATUALIZAÇÃO 22/07 (noite, dono): apresentação SOLO na máquina do Thiago, telão espelhado; sem beats operacionais do Bruno (demo, relógio e contingência são do Thiago, guiados pelos chips do deck). Bruno e Lourena: apresentados no slide 3, ajuda livre na sala. Coreografia de palco e checklist da manhã: `ops/palco-maquina.md`. As páginas de papel abaixo ficam como referência do que precisa ser coberto.
+
 O fluxo da sala é um só, não ofereça bifurcação de cliente ao participante:
 
 ```
