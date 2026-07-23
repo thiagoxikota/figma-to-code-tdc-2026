@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dia do palco · TDC 23/07</title>
+<style>
+  /* Offline por design: zero recurso externo. Checkboxes persistem em localStorage. */
+  :root {
+    --bg: #14110E;
+    --card: #1E1A16;
+    --ink: #FFFFFF;
+    --ink-2: #DCD7D0;
+    --brand: #DC000C;
+    --ok: #2FBF71;
+    --line: #3A342E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 19px;
+    line-height: 1.55;
+    padding: 32px 20px 90px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  header { margin-bottom: 36px; }
+  .kicker {
+    color: var(--brand);
+    font-weight: 800;
+    letter-spacing: .12em;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 { font-size: 34px; line-height: 1.15; font-weight: 800; }
+  .sub { color: var(--ink-2); margin-top: 10px; font-size: 18px; }
+
+  .progress-all {
+    margin-top: 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .progress-all b { font-size: 22px; }
+  .progress-all button {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .bhead {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 3px solid var(--brand);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .bnum {
+    font-family: ui-monospace, Menlo, monospace;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--brand);
+  }
+  .btitle { font-size: 23px; font-weight: 800; }
+  .bmeta { color: var(--ink-2); font-size: 16px; margin-left: auto; font-weight: 700; }
+  .bnote { color: var(--ink-2); font-size: 16px; margin: 10px 2px 6px; }
+
+  label.item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 13px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--line);
+  }
+  label.item:last-child { border-bottom: none; }
+  label.item:hover { background: #262019; }
+  input[type="checkbox"] {
+    appearance: none;
+    min-width: 28px;
+    height: 28px;
+    border: 2.5px solid var(--ink-2);
+    border-radius: 7px;
+    margin-top: 2px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  input[type="checkbox"]:checked { background: var(--ok); border-color: var(--ok); }
+  input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 8px; top: 3px;
+    width: 7px; height: 13px;
+    border: solid #14110E;
+    border-width: 0 3.5px 3.5px 0;
+    transform: rotate(45deg);
+  }
+  .item span { flex: 1; }
+  .item .done-mark { text-decoration: none; }
+  input:checked ~ span { text-decoration: line-through; text-decoration-thickness: 2.5px; color: var(--ink-2); }
+  .done-tag {
+    display: inline-block;
+    background: #2A241D;
+    color: var(--ok);
+    font-weight: 800;
+    font-size: 14.5px;
+    border-radius: 6px;
+    padding: 2px 9px;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
+  b.hot { color: var(--brand); }
+  code {
+    font-family: ui-monospace, Menlo, monospace;
+    background: #0E0B09;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 16.5px;
+    color: #FFD9DB;
+  }
+
+  .rules { display: grid; gap: 14px; margin-top: 10px; }
+  .rule {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: #241E18;
+    border-left: 6px solid var(--brand);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .rule .n {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 26px; font-weight: 800; color: var(--brand);
+  }
+
+  .planb { margin-top: 10px; }
+  .pb {
+    display: grid;
+    grid-template-columns: minmax(150px, 205px) 1fr;
+    gap: 6px 16px;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pb:last-child { border-bottom: none; }
+  .pb .k { color: var(--brand); font-weight: 800; }
+  .pb .v { color: var(--ink); }
+  @media (max-width: 560px) { .pb { grid-template-columns: 1fr; } }
+
+  footer { color: var(--ink-2); font-size: 15px; text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Do Figma ao código sem handoff</div>
+    <h1>Dia do palco · quarta 23/07</h1>
+    <div class="sub">Workshop 10:15 às 11:45 · uma coisa de cada vez · todo item tem um DONE claro</div>
+    <div class="progress-all">
+      <b id="totalprog">0 de 0 feitos</b>
+      <button onclick="if(confirm('Zerar todos os checks?')){localStorage.clear();location.reload()}">Limpar tudo</button>
+    </div>
+  </header>
+
+  <section data-block="b1">
+    <div class="bhead"><span class="bnum">1</span><span class="btitle">Em casa, antes de sair</span><span class="bmeta">15 min · <span class="prog">0/7</span></span></div>
+    <label class="item"><input type="checkbox" id="b1i1"><span>Figma Desktop &gt; arquivo <b>TDC 2026 DEMO</b> &gt; página <b>01 Comece aqui</b></span></label>
+    <label class="item"><input type="checkbox" id="b1i2"><span>Plugins &gt; Development &gt; <b>Figma Desktop Bridge</b> &gt; rodar e <b class="hot">deixar a janela aberta</b></span></label>
+    <label class="item"><input type="checkbox" id="b1i3"><span>Claude, conversa nova: <code>Verifique o status da conexão com o Figma</code><span class="done-tag">DONE = cita o nome do arquivo</span></span></label>
+    <label class="item"><input type="checkbox" id="b1i4"><span>Mesma conversa: pedir pra ler a <b>Tela demo</b><span class="done-tag">DONE = volta "Criar sua conta" + tokens</span></span></label>
+    <label class="item"><input type="checkbox" id="b1i5"><span>Spaces: <b>1</b> = deck.pdf no Preview (tela cheia) · <b>2</b> = Claude e Figma lado a lado</span></label>
+    <label class="item"><input type="checkbox" id="b1i6"><span>Ensaiar 2x: <b>Ctrl + seta direita</b> (demo) / <b>Ctrl + seta esquerda</b> (deck)</span></label>
+    <label class="item"><input type="checkbox" id="b1i7"><span>Mochila: <b class="hot">carregador</b> + adaptador de vídeo + celular carregado</span></label>
+  </section>
+
+  <section data-block="b2">
+    <div class="bhead"><span class="bnum">2</span><span class="btitle">Chegando na sala</span><span class="bmeta">chegar 9:15 · <span class="prog">0/8</span></span></div>
+    <label class="item"><input type="checkbox" id="b2i1"><span>Tomada ligada · tela <b>nunca dormir</b></span></label>
+    <label class="item"><input type="checkbox" id="b2i2"><span>Fechar TUDO: Antigravity, Chrome, Slack, WhatsApp (sobra Preview, Claude, Figma)</span></label>
+    <label class="item"><input type="checkbox" id="b2i3"><span><b class="hot">Foco / Não Perturbe LIGADO</b> (notificação no telão é o pior bug do dia)</span></label>
+    <label class="item"><input type="checkbox" id="b2i4"><span>Plugar o telão &gt; <b>ESPELHAR</b>, não estender</span></label>
+    <label class="item"><input type="checkbox" id="b2i5"><span>deck.pdf no Preview &gt; tela cheia &gt; setas funcionando</span></label>
+    <label class="item"><input type="checkbox" id="b2i6"><span>Ir ao <b>fundo da sala</b>: slide 1 legível no projetor?</span></label>
+    <label class="item"><input type="checkbox" id="b2i7"><span><b class="hot">Refazer o teste de conexão AQUI</b> (rede do evento): status + ler Tela demo</span></label>
+    <label class="item"><input type="checkbox" id="b2i8"><span>Ensaiar Ctrl+setas <b>com o telão ligado</b>, 2x</span></label>
+  </section>
+
+  <section data-block="b3">
+    <div class="bhead"><span class="bnum">3</span><span class="btitle">Teste num PC do evento</span><span class="bmeta">15 min, timebox duro · <span class="prog">0/8</span></span></div>
+    <div class="bnote">Fazer o caminho do participante, guiado SÓ pelo celular (thiagoxikota.com/tdc). Valida a TI, a rede e o guia de uma vez.</div>
+    <label class="item"><input type="checkbox" id="b3i1"><span>Celular: abrir <b>thiagoxikota.com/tdc</b> e seguir só pelo guia</span></label>
+    <label class="item"><input type="checkbox" id="b3i2"><span>Passo 1: Figma e Claude abrem? Logar com sua conta · duplicar o arquivo da comunidade</span></label>
+    <label class="item"><input type="checkbox" id="b3i3"><span>Passo 2: gerar token <code>figd_</code> com <b class="hot">validade de 1 dia</b></span></label>
+    <label class="item"><input type="checkbox" id="b3i4"><span>Passo 3: colar o bloco de config (<code>%APPDATA%\Claude\</code>) &gt; salvar &gt; fechar o Claude <b>por completo</b> (bandeja também) &gt; reabrir</span></label>
+    <label class="item"><input type="checkbox" id="b3i5"><span>Passo 4: importar plugin do manifest (<code>%USERPROFILE%\.figma-console-mcp\plugin\</code>) &gt; rodar &gt; status + ler Tela demo</span></label>
+    <label class="item"><input type="checkbox" id="b3i6"><span><span class="done-tag">DONE = pipeline inteiro rodou num PC do evento</span></span></label>
+    <label class="item"><input type="checkbox" id="b3i7"><span><b class="hot">LIMPAR: revogar token + tirar figma-console do config + sair das contas.</b> Seu token não dorme em PC que não é seu</span></label>
+    <label class="item"><input type="checkbox" id="b3i8"><span>Anotar fricção que o guia não cobriu (vira aviso falado no setup)</span></label>
+  </section>
+
+  <section data-block="b4">
+    <div class="bhead"><span class="bnum">4</span><span class="btitle">Antes de abrir a sala</span><span class="bmeta">5 min · <span class="prog">0/4</span></span></div>
+    <label class="item"><input type="checkbox" id="b4i1"><span>Perguntar à organização: existem máquinas <b>reserva</b> prontas? Se não: rota é dupla</span></label>
+    <label class="item"><input type="checkbox" id="b4i2"><span>Space 1, slide 1 no telão</span></label>
+    <label class="item"><input type="checkbox" id="b4i3"><span>Conversa <b>nova</b> no Claude, limpa pra demo</span></label>
+    <label class="item"><input type="checkbox" id="b4i4"><span>Celular no bolso com o guia aberto</span></label>
+  </section>
+
+  <section>
+    <div class="bhead"><span class="btitle">Durante: só 3 regras</span></div>
+    <div class="rules">
+      <div class="rule"><span class="n">1</span><span><b>Leia o telão.</b> O slide diz o que falar; o chip vermelho diz o modo (FALA · PERGUNTA PRA SALA · DEMO NO CLAUDE · SALA FAZ · ESPERA).</span></div>
+      <div class="rule"><span class="n">2</span><span><b>Demo = 3 idas ao Claude:</b> slides 9, 10 e 11. Ctrl+direita, roda, Ctrl+esquerda.</span></div>
+      <div class="rule"><span class="n">3</span><span><b>10:57 = corte.</b> A prática começa, terminando ou não. Conteúdo fecha 11:42.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="bhead"><span class="btitle">Plano B, 1 linha cada</span></div>
+    <div class="planb">
+      <div class="pb"><span class="k">Demo travou</span><span class="v">"Vou usar o resultado do ensaio pra não gastar o tempo de vocês." Prebaked numa janela de fundo. Nunca fingir que é ao vivo.</span></div>
+      <div class="pb"><span class="k">Rede caiu em massa</span><span class="v">Fallback coletivo: a sala especifica junto no Claude, sem MCP. Pipeline completo fica pra casa com o kit.</span></div>
+      <div class="pb"><span class="k">Fila de travados</span><span class="v">Dupla ou reserva a partir do minuto 20. A sala não espera ninguém.</span></div>
+      <div class="pb"><span class="k">Tokens vazios</span><span class="v">Cache frio: pede de novo na MESMA conversa.</span></div>
+      <div class="pb"><span class="k">QR não escaneia</span><span class="v">Fala devagar: thiagoxikota ponto com barra tdc. No fim: o forms.gle está escrito no telão.</span></div>
+      <div class="pb"><span class="k">Outro MCP de Figma</span><span class="v">Pede pra desativar durante o workshop (o Claude pode rotear pro servidor errado).</span></div>
+      <div class="pb"><span class="k">Wi-Fi do palco morreu</span><span class="v">Deck é PDF local, não muda nada. Demo vira prebaked.</span></div>
+    </div>
+  </section>
+
+  <section data-block="b5">
+    <div class="bhead"><span class="btitle">Fim, 11:42 a 11:45</span><span class="bmeta"><span class="prog">0/2</span></span></div>
+    <label class="item"><input type="checkbox" id="b5i1"><span>QR da mentoria no telão · revelar a surpresa <b class="hot">só depois</b> da maioria responder</span></label>
+    <label class="item"><input type="checkbox" id="b5i2"><span>Desligamento: sala revoga tokens · PCs do evento limpos (logout de tudo)</span></label>
+  </section>
+
+  <footer>Detalhe fino em ops/palco-maquina.md · roteiro completo nas notes do deck</footer>
+</div>
+<script>
+  const boxes = document.querySelectorAll('input[type="checkbox"]');
+  function refresh() {
+    let total = 0, done = 0;
+    document.querySelectorAll('section[data-block]').forEach(sec => {
+      const bs = sec.querySelectorAll('input[type="checkbox"]');
+      const d = [...bs].filter(b => b.checked).length;
+      const p = sec.querySelector('.prog');
+      if (p) p.textContent = d + '/' + bs.length;
+      total += bs.length; done += d;
+    });
+    document.getElementById('totalprog').textContent = done + ' de ' + total + ' feitos';
+  }
+  boxes.forEach(b => {
+    b.checked = localStorage.getItem('palco_' + b.id) === '1';
+    b.addEventListener('change', () => {
+      localStorage.setItem('palco_' + b.id, b.checked ? '1' : '0');
+      refresh();
+    });
+  });
+  refresh();
+</script>
+</body>
+</html>
