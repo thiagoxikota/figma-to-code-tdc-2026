@@ -44,11 +44,12 @@ Regra de corte dura: aos 25 minutos a prática começa, mesmo com gente sem term
 ### Exercício real (23 min)
 
 1. **Ler o frame** pelo MCP (3 min).
-2. **Auditar a Tela demo** contra o design system: 6 defeitos plantados, a IA acha e você prioriza (4 min).
-3. **Gerar o componente** a partir da estrutura do Figma, não de um print (5 min).
-4. **Inspecionar 3 propriedades** você mesmo, no bloco de código da conversa, contra os valores relidos do frame (4 min).
-5. **Corrigir**, se houver o que corrigir, consultando o frame de novo (4 min).
-6. **Revogar o token** no Figma. Não é opcional e não tem corte (3 min).
+2. **Tokens: conhecer a coleção** Workshop Tokens, 23 variáveis, e apontar valores crus na tela (3 min).
+3. **Auditar a Tela demo** contra o design system: 6 defeitos plantados, a IA acha e você prioriza (3 min).
+4. **Gerar o componente** a partir da estrutura do Figma, não de um print (5 min).
+5. **Inspecionar 3 propriedades** você mesmo, no bloco de código da conversa, contra os valores relidos do frame (3 min).
+6. **Corrigir**, se houver o que corrigir, consultando o frame de novo (3 min).
+7. **Revogar o token** no Figma. Não é opcional e não tem corte (3 min).
 
 O alvo é um card pequeno. Sem backend, sem banco, sem auth, sem API externa.
 
