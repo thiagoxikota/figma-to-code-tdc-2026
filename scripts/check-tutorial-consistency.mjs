@@ -135,8 +135,8 @@ const practice = canonical?.journey?.practice
 if (!Array.isArray(setup) || setup.length !== 4) {
   fail('canonical: a jornada precisa ter exatamente 4 passos de setup')
 }
-if (!Array.isArray(practice) || practice.length !== 5) {
-  fail('canonical: a jornada precisa ter exatamente 5 passos de prática')
+if (!Array.isArray(practice) || practice.length !== 6) {
+  fail('canonical: a jornada precisa ter exatamente 6 passos de prática')
 }
 
 const allSteps = [...(setup || []), ...(practice || [])]
@@ -208,8 +208,8 @@ if (!comparable(readme).includes(comparable(setupSummary))) {
 }
 
 const practiceItems = parseNumberedSection(readme, '### Exercício real (23 min)', '## Como reproduzir em casa')
-if (practiceItems.length !== 5) {
-  fail(`README: exercício real precisa listar 5 passos; encontrado ${practiceItems.length}`)
+if (practiceItems.length !== 6) {
+  fail(`README: exercício real precisa listar 6 passos; encontrado ${practiceItems.length}`)
 } else {
   practice.forEach((step, index) => {
     if (!practiceItems[index].label.startsWith(step.rail)) {
@@ -248,4 +248,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log('OK: tutorial consistente com docs/tutorial-canonical.json (4 setup + 5 prática, prompts e deck de 30 páginas).')
+console.log('OK: tutorial consistente com docs/tutorial-canonical.json (4 setup + 6 prática, prompts e deck de 31 páginas).')
