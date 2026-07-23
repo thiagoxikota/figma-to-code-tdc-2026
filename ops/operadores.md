@@ -1,8 +1,8 @@
-# Folha operacional dos 4 papéis
+# Folha operacional (Thiago e Bruno)
 
 Workshop "Do Figma ao código sem handoff". TDC Florianópolis 2026, 23/07, 10:15 às 11:45 (90 min). Thiago Xikota, Bruno Bach e Lourena de Jesus.
 
-Uma página por papel: Thiago (palco), Bruno (demo, técnico coletivo, relógio, contingência), Apoio 1 = Lourena (Figma, circulação e dúvidas da sala), Apoio 2 (Claude Desktop) [SEM PESSOA ALOCADA em 22/07: definir na chegada ou Bruno e Lourena absorvem]. Leia a sua página e a barra comum abaixo antes de a sala abrir.
+Dois papéis formais: Thiago (palco, e absorve as tarefas de apoio de sala) e Bruno (demo, técnico coletivo, relógio, contingência). SEM papéis de Apoio dedicados (decisão do dono, 22/07: "na hora a gente se vira"); a Lourena ajuda livre na sala. As seções TAREFAS DE APOIO abaixo viram checklist de referência do que precisa ser coberto, não páginas de pessoa. Leia a sua página e a barra comum abaixo antes de a sala abrir.
 
 O fluxo da sala é um só, não ofereça bifurcação de cliente ao participante:
 
@@ -14,7 +14,7 @@ Claude Desktop é o cliente na sala. Claude Code só aparece no kit como alterna
 
 ---
 
-## Barra comum (vale pros 4)
+## Barra comum (vale pra todo mundo na operação)
 
 ### Cronograma oficial (conteúdo fecha 11:42, últimos 3 min são margem)
 
@@ -68,7 +68,7 @@ Claude Desktop é o cliente na sala. Claude Code só aparece no kit como alterna
 - macOS próprio: mesmo fluxo, caminhos do Mac.
 - Linux: não roda. Vai pra dupla ou reserva.
 
-### Segurança do token (inviolável, os 4 zelam)
+### Segurança do token (inviolável, todos zelam)
 
 - O token nunca passa pelo site, analytics, URL, banco, material público, projetor, nem pelos organizadores.
 - Organizadores não usam token pessoal nas máquinas do evento.
@@ -154,7 +154,7 @@ Opera a demo, resolve o que é coletivo, guarda o relógio e puxa a contingênci
 
 ---
 
-# APOIO 1 (Figma, token, arquivo, permissões, plugin, frame)
+# TAREFAS DE APOIO · FIGMA (token, arquivo, permissões, plugin, frame). Sem pessoa dedicada: Thiago absorve, Lourena ajuda livre
 
 Cuida de tudo do lado do Figma. É quem destrava acesso, token, plugin e o arquivo.
 
@@ -193,7 +193,7 @@ Cuida de tudo do lado do Figma. É quem destrava acesso, token, plugin e o arqui
 
 ---
 
-# APOIO 2 (Claude Desktop, config MCP, Node, JSON, reinício)
+# TAREFAS DE APOIO · CLAUDE DESKTOP (config MCP, Node, JSON, reinício). Sem pessoa dedicada: Thiago absorve, Bruno cobre o técnico
 
 Cuida de tudo do lado do Claude e da máquina. É quem faz o MCP subir. Não cuida de projeto local nem de preview: na sala ninguém instala projeto.
 

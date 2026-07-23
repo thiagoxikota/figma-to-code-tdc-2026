@@ -1,6 +1,6 @@
 # Formulário de feedback (3 perguntas)
 
-Curto de propósito. Vive no formulário FINAL do workshop (o QR do último slide), o mesmo que registra quem quer a mentoria: quem responde ao NPS entra pra mentoria, e é isso que segura a sala até o fim. Um form simples (Google Forms) com estas 3 perguntas abertas + o campo de contato da mentoria resolve.
+Curto de propósito. Vive no formulário FINAL do workshop (o QR do último slide), o mesmo da mentoria. Publicamente é "concorra a uma mentoria"; no encerramento o Thiago revela que todo mundo que respondeu ganha (decisão do dono 22/07: a surpresa torna mais especial). Um form simples (Google Forms) com estas 3 perguntas abertas + o campo de contato resolve.
 
 ## As 3 perguntas
 

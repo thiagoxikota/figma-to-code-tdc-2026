@@ -118,7 +118,7 @@ Os scripts de setup por sistema operacional estão em `scripts/setup-figma-mcp.c
 docs/pipeline-facts.md   Fonte técnica única (pacote, versão, caminhos, prompt de teste). Leia primeiro.
 onboarding/index.html    Assistente do QR: roteia por dispositivo, guia os 4 passos do setup, ajuda e prática
 scripts/                 mcp-config.mjs (merge do config), setup por SO, doctor.mjs, reset.mjs, check-tokens.mjs
-ops/                     Runbook da sala: papéis dos 4 operadores, cronograma minuto a minuto, contingência, teardown
+ops/                     Runbook da sala: papéis de Thiago e Bruno + checklists de apoio, cronograma minuto a minuto, contingência, teardown
 prompts/prompts.md       Os 10 prompts do pipeline com MCP, prontos pra copiar
 prompts/standalone.md    Fallback sem MCP (par raso vs especificado, Claude no navegador). Não é o exercício da sala
 outputs-prebaked/        Outputs de referência dos ensaios, rede de segurança da demo ao vivo
