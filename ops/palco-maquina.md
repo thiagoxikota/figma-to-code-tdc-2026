@@ -10,22 +10,22 @@ Decisão: o workshop inteiro roda na máquina do Thiago (MacBook Air M1, 8 GB), 
 
 Telão espelhado, não estendido: o que você vê é o que a sala vê. O deck É o teleprompter; as speaker notes são material de ensaio, não de palco.
 
-## Coreografia linear (28 slides, uma pessoa)
+## Coreografia linear (30 slides, uma pessoa)
 
 | Relógio | Slides | Telão | Você faz |
 |---|---|---|---|
-| 10:15-10:22 | 1-7 | Deck | fala e perguntas pra sala |
-| 10:23-10:29 | 8, 9, 10 | Deck -> demo -> deck, por beat | lê o slide do beat, Ctrl+direita, roda no Claude (conexão / leitura / geração), Ctrl+esquerda no slide seguinte |
-| 10:29-10:32 | 11-12 | Deck | revela os pares Take A vs B e a frase da prova |
-| 10:32 | 13 | Deck | sala pega o celular, abre thiagoxikota.com/tdc (o tutorial NUNCA vai pro telão; é celular-first) |
-| 10:32-10:57 | 14-17 | Deck | chama um passo por vez; linha "Até HH:MM" no slide dá o pacing pra sala |
-| 10:54-10:57 | 18 | Deck | espera no palco; às 10:57 corta e fala "Deu 10:57. A prática começa agora." |
-| 10:57-11:16 | 19-23 | Deck | um passo da prática por slide; sala copia prompts do guia no celular |
-| ~11:12 | durante 21 | demo (opcional, 2 min) | mostra a SUA verificação das 3 propriedades e volta |
-| 11:20-11:24 | 24 | Deck (demo opcional se sala tímida) | leitura das divergências; preview de palco só se sobrar tempo |
-| 11:24-11:42 | 25-28 | Deck até o fim | limites, perguntas, síntese, formulário + surpresa |
+| 10:15-10:22 | 1-8 | Deck | abertura, fluxo, slide da ponte, intro da demo |
+| 10:23-10:29 | 9, 10, 11 | Deck -> demo -> deck, por beat | lê o slide do beat, Ctrl+direita, roda no Claude (conexão / leitura / geração), Ctrl+esquerda no slide seguinte |
+| 10:29-10:32 | 12-13 | Deck | revela os pares Take A vs B e a frase da prova |
+| 10:32 | 14 | Deck | sala pega o celular, abre thiagoxikota.com/tdc (o tutorial NUNCA vai pro telão; é celular-first) |
+| 10:32-10:57 | 15-18 | Deck | chama um passo por vez; linha "Até HH:MM" no slide dá o pacing pra sala |
+| 10:54-10:57 | 19 | Deck | espera no palco; às 10:57 corta e fala "Deu 10:57. A prática começa agora." |
+| 10:57-11:16 | 20-24 | Deck | um passo da prática por slide; sala copia prompts do guia no celular |
+| ~11:12 | durante 22 | demo (opcional, 2 min) | mostra a SUA verificação das 3 propriedades e volta |
+| 11:20-11:24 | 25 | Deck (demo opcional se sala tímida) | leitura das divergências; preview de palco só se sobrar tempo |
+| 11:24-11:42 | 26-30 | Deck até o fim | limites, boas práticas, perguntas, síntese, formulário + surpresa |
 
-Total de idas ao Space da demo: 3 obrigatórias (slides 8, 9, 10) + 2 opcionais (21, 24).
+Total de idas ao Space da demo: 3 obrigatórias (slides 9, 10, 11) + 2 opcionais (22, 25).
 
 ## Checklist da manhã (na sala, antes de abrir)
 
