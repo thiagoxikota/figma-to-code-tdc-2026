@@ -10,7 +10,7 @@ Decisão: o workshop inteiro roda na máquina do Thiago (MacBook Air M1, 8 GB), 
 
 Telão espelhado, não estendido: o que você vê é o que a sala vê. O deck É o teleprompter; as speaker notes são material de ensaio, não de palco.
 
-## Coreografia linear (30 slides, uma pessoa)
+## Coreografia linear (31 slides, uma pessoa)
 
 | Relógio | Slides | Telão | Você faz |
 |---|---|---|---|
@@ -20,12 +20,12 @@ Telão espelhado, não estendido: o que você vê é o que a sala vê. O deck É
 | 10:32 | 14 | Deck | sala pega o celular, abre thiagoxikota.com/tdc (o tutorial NUNCA vai pro telão; é celular-first) |
 | 10:32-10:57 | 15-18 | Deck | chama um passo por vez; linha "Até HH:MM" no slide dá o pacing pra sala |
 | 10:54-10:57 | 19 | Deck | espera no palco; às 10:57 corta e fala "Deu 10:57. A prática começa agora." |
-| 10:57-11:16 | 20-24 | Deck | um passo da prática por slide; sala copia prompts do guia no celular |
-| ~11:12 | durante 22 | demo (opcional, 2 min) | mostra a SUA verificação das 3 propriedades e volta |
-| 11:20-11:24 | 25 | Deck (demo opcional se sala tímida) | leitura das divergências; preview de palco só se sobrar tempo |
-| 11:24-11:42 | 26-30 | Deck até o fim | limites, boas práticas, perguntas, síntese, formulário + surpresa |
+| 10:57-11:20 | 20-25 | Deck | um passo da prática por slide (Ler, Auditar o uau, Gerar, Inspecionar, Corrigir, Revogar); sala copia prompts do guia |
+| ~11:12 | durante 23 | demo (opcional, 2 min) | mostra a SUA verificação das 3 propriedades e volta |
+| 11:20-11:24 | 26 | Deck (demo opcional se sala tímida) | leitura das divergências; preview de palco só se sobrar tempo |
+| 11:24-11:42 | 27-31 | Deck até o fim | limites, boas práticas, perguntas, síntese, formulário + surpresa |
 
-Total de idas ao Space da demo: 3 obrigatórias (slides 9, 10, 11) + 2 opcionais (22, 25).
+Total de idas ao Space da demo: 3 obrigatórias (slides 9, 10, 11) + 2 opcionais (23, 26).
 
 ## Checklist da manhã (na sala, antes de abrir)
 
