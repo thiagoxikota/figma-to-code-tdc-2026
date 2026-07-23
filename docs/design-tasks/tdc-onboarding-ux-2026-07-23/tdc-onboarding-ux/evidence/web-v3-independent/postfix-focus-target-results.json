@@ -1,0 +1,208 @@
+{
+  "generatedAt": "2026-07-23T04:57:26.932Z",
+  "sourceMtime": "2026-07-23T01:56:33-03:00",
+  "focus": {
+    "initial": {
+      "tag": "H3",
+      "id": "helpTitle",
+      "text": "O que aconteceu?",
+      "inside": true,
+      "overlayOpen": true,
+      "inertMain": true,
+      "inertTop": true
+    },
+    "end": {
+      "overlayOpen": false,
+      "activeText": "Preciso destravar este passo",
+      "inertMain": false,
+      "inertTop": false,
+      "bodyOverflow": ""
+    },
+    "focusables": [
+      {
+        "tag": "BUTTON",
+        "text": "Fechar"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Não acho onde editar a configuração do Claude.\n›"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Salvei o arquivo e o Claude reclama do formato, ou nada carrega.\n›"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Funcionava ontem e hoje quebrou sozinho.\n›"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Salvei o JSON certinho e o Figma não aparece no Claude.\n›"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ver todos os problemas"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Meu problema não está na lista"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Voltar ao tutorial"
+      }
+    ],
+    "sequence": [
+      {
+        "tag": "BUTTON",
+        "text": "Não acho onde editar a configuração do Claude.\n›",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Salvei o arquivo e o Claude reclama do formato, ou nada carrega.\n›",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Funcionava ontem e hoje quebrou sozinho.\n›",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Salvei o JSON certinho e o Figma não aparece no Claude.\n›",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ver todos os problemas",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Meu problema não está na lista",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Voltar ao tutorial",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Fechar",
+        "inside": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Não acho onde editar a configuração do Claude.\n›",
+        "inside": true
+      }
+    ],
+    "forwardWrap": false,
+    "reverseWrap": false,
+    "initialPass": true,
+    "returnPass": true,
+    "explicitWrap": {
+      "count": 8,
+      "first": "Fechar",
+      "last": "Voltar ao tutorial",
+      "afterForward": {
+        "text": "Fechar",
+        "inside": true
+      },
+      "afterReverse": {
+        "text": "Voltar ao tutorial",
+        "inside": true
+      },
+      "forwardPass": true,
+      "reversePass": true
+    }
+  },
+  "targets": [
+    {
+      "name": "capa",
+      "hash": "#capa",
+      "small": []
+    },
+    {
+      "name": "sistema",
+      "hash": "#sistema",
+      "small": []
+    },
+    {
+      "name": "antes",
+      "hash": "#antes",
+      "small": []
+    },
+    {
+      "name": "linux",
+      "hash": "#linux",
+      "small": []
+    },
+    {
+      "name": "reserva",
+      "hash": "#reserva",
+      "small": []
+    },
+    {
+      "name": "setup-1",
+      "hash": "#setup/1",
+      "small": []
+    },
+    {
+      "name": "setup-2",
+      "hash": "#setup/2",
+      "small": []
+    },
+    {
+      "name": "setup-3",
+      "hash": "#setup/3",
+      "small": []
+    },
+    {
+      "name": "setup-4",
+      "hash": "#setup/4",
+      "small": []
+    },
+    {
+      "name": "pratica-1",
+      "hash": "#pratica/1",
+      "small": []
+    },
+    {
+      "name": "pratica-2",
+      "hash": "#pratica/2",
+      "small": []
+    },
+    {
+      "name": "pratica-3",
+      "hash": "#pratica/3",
+      "small": []
+    },
+    {
+      "name": "pratica-4",
+      "hash": "#pratica/4",
+      "small": []
+    },
+    {
+      "name": "pratica-5",
+      "hash": "#pratica/5",
+      "small": []
+    },
+    {
+      "name": "help-list",
+      "hash": "#setup/3",
+      "small": []
+    }
+  ],
+  "summary": {
+    "focusInitial": true,
+    "focusForwardWrap": true,
+    "focusReverseWrap": true,
+    "focusReturn": true,
+    "statesChecked": 15,
+    "statesWithSmallTargets": [],
+    "smallTargetsTotal": 0
+  }
+}

@@ -6,7 +6,7 @@ Itens VÁLIDOS das revisões externas da véspera que NÃO entraram antes do pal
 
 1. **Redesenhar o A/B como comparação limpa**: mesmo prompt e mesmo formato de saída nos dois takes; a ÚNICA linha que muda é o acesso à fonte ("não consulte o Figma, marque valores sem fonte como inferido" vs "consulte o componente e a coleção; informe token e node de origem"). Fixar cliente, modelo, data e conversa limpa. Hoje o par 5a/5b é honesto como demonstração (documentado em prompts.md), mas não resiste a leitura científica.
 2. **Separar o gabarito num arquivo próprio** (participante sem gabarito; facilitador com gabarito + versão corrigida + rubrica). No arquivo único, "não leia a página de gabarito" é pedido, não isolamento: o agente PODE ler.
-3. **Alinhar objeto do exercício**: ou o Take B lê o componente Card (node 1:34) em vez da Tela demo, ou o exercício gera o formulário. Hoje a semântica do componente vem do prompt e a estrutura de outra tela; a defesa falada existe (note do slide 20), mas o material deveria resolver, não defender.
+3. **RESOLVIDO NO CONTRATO LOCAL: alinhar objeto do exercício.** O prompt canônico de geração agora lê o componente `Card` e usa a estrutura e os tokens dele. Os prompts de comparação e correção também voltam ao mesmo componente. `docs/tutorial-canonical.json` registra o contrato e `npm run check:tutorial` bloqueia a regressão. Este status descreve os arquivos locais; não afirma publicação ou deploy.
 4. **Renomear "versão corrigida"** para "versão conforme aos seis critérios do exercício" e declarar no canvas que a auditoria cobre 6 desvios plantados, com seção separada para achados extras (labels, opt-in sem semântica, foco, estados de erro).
 
 ## P1 do design system didático

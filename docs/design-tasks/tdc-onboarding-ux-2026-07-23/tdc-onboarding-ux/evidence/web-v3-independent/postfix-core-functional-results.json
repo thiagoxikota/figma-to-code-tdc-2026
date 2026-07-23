@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-07-23T05:02:12.374Z",
+  "checks": {
+    "setup3Gating": {
+      "initial": true,
+      "one": true,
+      "all": true
+    },
+    "osSwitch": {
+      "hash": "#setup/3",
+      "checks": [
+        false,
+        false
+      ],
+      "disabled": true
+    },
+    "setup4Gating": {
+      "initial": true,
+      "all": true
+    },
+    "practice3": {
+      "rows": 3,
+      "interactiveInsideCompare": 0,
+      "labels": [
+        "Cor do título | Figma → código → bate?",
+        "Tamanho do título | Figma → código → bate?",
+        "Espaçamento interno | Figma → código → bate?"
+      ]
+    },
+    "practice5Gating": {
+      "initial": true,
+      "one": true,
+      "all": true
+    },
+    "fallback": {
+      "inputs": 0,
+      "mesa": false,
+      "chamarApoioButton": false,
+      "choices": [
+        "Continuar em dupla | Acompanhe e valide na tela de quem está ao seu lado.",
+        "Usar máquina reserva | Recomece no passo do token em uma máquina preparada."
+      ]
+    },
+    "final": {
+      "hash": "#pronto",
+      "href": "https://github.com/thiagoxikota/figma-to-code-tdc-2026",
+      "visible": true,
+      "target": "_blank"
+    }
+  },
+  "measurements": {
+    "cover": {
+      "choices": [
+        {
+          "bottom": 527.046875,
+          "textAlign": "center",
+          "justifyContent": "center"
+        },
+        {
+          "bottom": 527.046875,
+          "textAlign": "center",
+          "justifyContent": "center"
+        }
+      ],
+      "allAboveFold": true,
+      "overflowX": false
+    }
+  }
+}

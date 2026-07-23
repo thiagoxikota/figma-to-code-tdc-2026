@@ -1,0 +1,312 @@
+{
+  "generatedAt": "2026-07-23T04:59:45.104Z",
+  "reason": "axe marcou color-contrast como incomplete porque o body usa radial-gradient; pares reais de tokens foram verificados manualmente, incluindo o ponto mais carregado do gradiente (58% brand-wash sobre bg).",
+  "themes": [
+    {
+      "theme": "light",
+      "tokens": {
+        "bg": "#F7F7F5",
+        "bg2": "#EFEFED",
+        "panel": "#FFFFFF",
+        "ink": "#171715",
+        "ink2": "#52524E",
+        "ink3": "#70706B",
+        "brand": "#D0000C",
+        "brandDeep": "#A50009",
+        "brandWash": "#FFF0F1",
+        "onBrand": "#FFFFFF",
+        "ok": "#19713D",
+        "okWash": "#EDF8F1",
+        "warn": "#865000",
+        "warnWash": "#FFF7E8",
+        "bodyBackground": "radial-gradient(circle at 50% -20%, color(srgb 1 0.941176 0.945098 / 0.58), rgba(0, 0, 0, 0) 608px), none"
+      },
+      "gradientHotspot": "#fcf3f3",
+      "pairs": [
+        {
+          "name": "ink/bg",
+          "foreground": "#171715",
+          "background": "#F7F7F5",
+          "ratio": 16.74,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/bg",
+          "foreground": "#52524E",
+          "background": "#F7F7F5",
+          "ratio": 7.32,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/bg",
+          "foreground": "#70706B",
+          "background": "#F7F7F5",
+          "ratio": 4.64,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/bg",
+          "foreground": "#A50009",
+          "background": "#F7F7F5",
+          "ratio": 7.52,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink/body-gradient-hotspot",
+          "foreground": "#171715",
+          "background": "#fcf3f3",
+          "ratio": 16.46,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/body-gradient-hotspot",
+          "foreground": "#52524E",
+          "background": "#fcf3f3",
+          "ratio": 7.2,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/body-gradient-hotspot",
+          "foreground": "#70706B",
+          "background": "#fcf3f3",
+          "ratio": 4.56,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/body-gradient-hotspot",
+          "foreground": "#A50009",
+          "background": "#fcf3f3",
+          "ratio": 7.39,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink/panel",
+          "foreground": "#171715",
+          "background": "#FFFFFF",
+          "ratio": 17.95,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/panel",
+          "foreground": "#52524E",
+          "background": "#FFFFFF",
+          "ratio": 7.85,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/panel",
+          "foreground": "#70706B",
+          "background": "#FFFFFF",
+          "ratio": 4.98,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "onBrand/brand",
+          "foreground": "#FFFFFF",
+          "background": "#D0000C",
+          "ratio": 5.7,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ok/okWash",
+          "foreground": "#19713D",
+          "background": "#EDF8F1",
+          "ratio": 5.56,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "warn/warnWash",
+          "foreground": "#865000",
+          "background": "#FFF7E8",
+          "ratio": 6.24,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/brandWash",
+          "foreground": "#A50009",
+          "background": "#FFF0F1",
+          "ratio": 7.29,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/bg2",
+          "foreground": "#52524E",
+          "background": "#EFEFED",
+          "ratio": 6.82,
+          "threshold": 4.5,
+          "pass": true
+        }
+      ],
+      "minRatio": 4.56,
+      "allPass": true
+    },
+    {
+      "theme": "dark",
+      "tokens": {
+        "bg": "#10100F",
+        "bg2": "#1B1B19",
+        "panel": "#181817",
+        "ink": "#F5F5F2",
+        "ink2": "#C4C4BE",
+        "ink3": "#9A9A94",
+        "brand": "#FF474F",
+        "brandDeep": "#FF7076",
+        "brandWash": "#2D1719",
+        "onBrand": "#10100F",
+        "ok": "#65D591",
+        "okWash": "#14251A",
+        "warn": "#F0B85B",
+        "warnWash": "#2B2112",
+        "bodyBackground": "radial-gradient(circle at 50% -20%, color(srgb 0.176471 0.0901961 0.0980392 / 0.58), rgba(0, 0, 0, 0) 608px), none"
+      },
+      "gradientHotspot": "#211415",
+      "pairs": [
+        {
+          "name": "ink/bg",
+          "foreground": "#F5F5F2",
+          "background": "#10100F",
+          "ratio": 17.43,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/bg",
+          "foreground": "#C4C4BE",
+          "background": "#10100F",
+          "ratio": 10.87,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/bg",
+          "foreground": "#9A9A94",
+          "background": "#10100F",
+          "ratio": 6.73,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/bg",
+          "foreground": "#FF7076",
+          "background": "#10100F",
+          "ratio": 7.1,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink/body-gradient-hotspot",
+          "foreground": "#F5F5F2",
+          "background": "#211415",
+          "ratio": 16.35,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/body-gradient-hotspot",
+          "foreground": "#C4C4BE",
+          "background": "#211415",
+          "ratio": 10.2,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/body-gradient-hotspot",
+          "foreground": "#9A9A94",
+          "background": "#211415",
+          "ratio": 6.32,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/body-gradient-hotspot",
+          "foreground": "#FF7076",
+          "background": "#211415",
+          "ratio": 6.66,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink/panel",
+          "foreground": "#F5F5F2",
+          "background": "#181817",
+          "ratio": 16.27,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/panel",
+          "foreground": "#C4C4BE",
+          "background": "#181817",
+          "ratio": 10.14,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink3/panel",
+          "foreground": "#9A9A94",
+          "background": "#181817",
+          "ratio": 6.28,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "onBrand/brand",
+          "foreground": "#10100F",
+          "background": "#FF474F",
+          "ratio": 5.68,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ok/okWash",
+          "foreground": "#65D591",
+          "background": "#14251A",
+          "ratio": 8.77,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "warn/warnWash",
+          "foreground": "#F0B85B",
+          "background": "#2B2112",
+          "ratio": 8.81,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "brandDeep/brandWash",
+          "foreground": "#FF7076",
+          "background": "#2D1719",
+          "ratio": 6.27,
+          "threshold": 4.5,
+          "pass": true
+        },
+        {
+          "name": "ink2/bg2",
+          "foreground": "#C4C4BE",
+          "background": "#1B1B19",
+          "ratio": 9.85,
+          "threshold": 4.5,
+          "pass": true
+        }
+      ],
+      "minRatio": 5.68,
+      "allPass": true
+    }
+  ]
+}

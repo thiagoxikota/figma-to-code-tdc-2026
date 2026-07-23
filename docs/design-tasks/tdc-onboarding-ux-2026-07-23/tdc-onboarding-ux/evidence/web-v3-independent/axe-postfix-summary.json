@@ -1,0 +1,58 @@
+[
+  {
+    "theme": "light",
+    "preset": "desktop",
+    "width": 1440,
+    "height": 900,
+    "states": 17,
+    "violationStates": 0,
+    "violationCount": 0,
+    "incompleteStates": 17,
+    "incompleteRules": [
+      "color-contrast"
+    ],
+    "overflowStates": []
+  },
+  {
+    "theme": "light",
+    "preset": "mobile",
+    "width": 375,
+    "height": 667,
+    "states": 17,
+    "violationStates": 0,
+    "violationCount": 0,
+    "incompleteStates": 16,
+    "incompleteRules": [
+      "color-contrast"
+    ],
+    "overflowStates": []
+  },
+  {
+    "theme": "dark",
+    "preset": "desktop",
+    "width": 1440,
+    "height": 900,
+    "states": 17,
+    "violationStates": 0,
+    "violationCount": 0,
+    "incompleteStates": 17,
+    "incompleteRules": [
+      "color-contrast"
+    ],
+    "overflowStates": []
+  },
+  {
+    "theme": "dark",
+    "preset": "mobile",
+    "width": 375,
+    "height": 667,
+    "states": 17,
+    "violationStates": 0,
+    "violationCount": 0,
+    "incompleteStates": 16,
+    "incompleteRules": [
+      "color-contrast"
+    ],
+    "overflowStates": []
+  }
+]

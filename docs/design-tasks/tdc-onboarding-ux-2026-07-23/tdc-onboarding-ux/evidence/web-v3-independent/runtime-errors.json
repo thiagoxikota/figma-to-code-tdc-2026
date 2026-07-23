@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-07-23T05:02:44.924Z",
+  "states": 16,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "requestOrigins": [
+    "http://127.0.0.1:4173"
+  ],
+  "requestCount": 15
+}

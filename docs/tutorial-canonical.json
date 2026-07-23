@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "journey": {
+    "setup": [
+      {
+        "key": "abrir",
+        "rail": "Abrir",
+        "title": "Abra os dois apps e entre",
+        "durationMinutes": 4
+      },
+      {
+        "key": "token",
+        "rail": "Token",
+        "title": "Gere seu token do Figma",
+        "durationMinutes": 3
+      },
+      {
+        "key": "mcp",
+        "rail": "Conectar",
+        "title": "Conecte o Claude ao Figma",
+        "durationMinutes": 8
+      },
+      {
+        "key": "bridge",
+        "rail": "Ligar e testar",
+        "title": "Ligue a ponte e teste de verdade",
+        "durationMinutes": 6
+      }
+    ],
+    "practice": [
+      {
+        "key": "p-ler",
+        "rail": "Ler",
+        "title": "Leia o Figma",
+        "durationMinutes": 3
+      },
+      {
+        "key": "p-gerar",
+        "rail": "Gerar",
+        "title": "Gere o componente",
+        "durationMinutes": 6
+      },
+      {
+        "key": "p-inspecionar",
+        "rail": "Inspecionar",
+        "title": "Inspecione 3 propriedades",
+        "durationMinutes": 5
+      },
+      {
+        "key": "p-corrigir",
+        "rail": "Corrigir",
+        "title": "Corrija, se houver o que corrigir",
+        "durationMinutes": 5
+      },
+      {
+        "key": "p-revogar",
+        "rail": "Revogar",
+        "title": "Revogue seu token",
+        "durationMinutes": 4
+      }
+    ]
+  },
+  "uiCopy": {
+    "timing": "A prática começa aos 25 minutos.",
+    "fallback": "Pare de mudar a configuração. Para continuar sem perder o ritmo, siga em dupla ou migre para uma máquina já preparada.",
+    "pair": "Continuar em dupla",
+    "reserve": "Usar máquina reserva",
+    "setupHelp": "Travou? Pare de repetir. Siga em dupla ou use uma máquina reserva."
+  },
+  "fallbackPhrases": {
+    "prebakedDisclosure": "Vou usar o resultado do ensaio pra não gastar o tempo de vocês.",
+    "collective": "A sala especifica junto no Claude, exercício sem MCP, e o pipeline completo fica pra casa com o kit.",
+    "migration": "Dupla ou reserva, sem investigar caso individual no palco.",
+    "integrity": "Nunca fingir que o pré-gerado é ao vivo."
+  },
+  "prompts": {
+    "read": "Leia o frame \"Tela demo\" deste arquivo Figma via MCP. Devolva a árvore de camadas, os componentes e os tokens (variáveis) aplicados. Descreva estrutura e semântica, não pixels.",
+    "generate": "Gere um componente Card em React + TypeScript, function component. Props tipadas: title, description, imageUrl?, onClick?. Estados default, hover, focus-visible e disabled. Acessibilidade: article, heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste AA.\nAntes de gerar, leia o componente \"Card\" deste arquivo Figma via MCP e use a estrutura e os tokens aplicados nele. Não invente valores; puxe do Figma.\nFORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária. Todo estilo vem de variável CSS com o MESMO nome do token do Figma (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário com o valor que veio do componente (ex: /* #C8352B, do componente */). No fim, liste em 3 linhas: qual token você usou pra cor do título, pro tamanho do título e pro espaçamento interno. Devolva só o código e essas 3 linhas.",
+    "compare": "Leia de novo o componente \"Card\" via MCP e me devolva SÓ uma tabela com três linhas, uma por propriedade: cor do título, tamanho do título e espaçamento interno. Para cada uma: o nome do token no Figma e o valor. Não comente o meu código ainda, não diga se está certo. Só a fonte.",
+    "fix": "Consulte de novo o componente \"Card\" via MCP. Esta propriedade no meu código não bate com o componente: [DIGA QUAL]. Explique a diferença e ajuste SÓ ela, usando o token certo do Figma. Preserve o resto. Não reescreva o componente."
+  }
+}

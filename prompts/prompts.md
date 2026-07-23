@@ -2,6 +2,7 @@
 
 Prontos pra copiar. O par 5a/5b é o experimento central da demo: MESMO prompt, muda só se a IA lê o Figma ou não. Isola a variável certa (o contexto do Figma), não "prompt bom vs prompt ruim".
 Cada prompt é um exemplo de especificação: formato de saída definido, escopo travado, critério de verificação embutido.
+A lista numerada continua com 10 prompts. Comparar e corrigir são dois comandos auxiliares do tutorial guiado e não alteram a numeração.
 
 ## 1. Ler o arquivo Figma
 
@@ -69,15 +70,15 @@ Props tipadas: title, description, imageUrl?, onClick?. Estados
 default, hover, focus-visible e disabled. Acessibilidade: article,
 heading por prop, foco visível de 2px, alvo mínimo de 44px, contraste
 AA.
-Antes de gerar, leia o frame "Tela demo" deste arquivo Figma via MCP e
-use os tokens (cor, espaçamento, tipografia, raio) e a estrutura de lá.
+Antes de gerar, leia o componente "Card" deste arquivo Figma via MCP e
+use a estrutura e os tokens aplicados nele.
 Não invente valores; puxe do Figma.
 FORMATO OBRIGATÓRIO (pra eu conseguir auditar o que você fez): um
 arquivo só, sem libs externas, SEM Tailwind e sem classe utilitária.
 Todo estilo vem de variável CSS com o MESMO nome do token do Figma
 (ex: var(--color-brand-primary)), e ao lado de cada uma um comentário
-com o valor que veio do frame (ex: /* #C8352B, do frame */).
-No fim, liste em 3 linhas: qual token você usou pra cor do botão, pro
+com o valor que veio do componente (ex: /* #C8352B, do componente */).
+No fim, liste em 3 linhas: qual token você usou pra cor do título, pro
 tamanho do título e pro espaçamento interno.
 Devolva só o código e essas 3 linhas.
 ```
@@ -87,6 +88,25 @@ Por que funciona (e por que é o experimento certo): 5a e 5b são o MESMO pedido
 **Por que o bloco de FORMATO existe (não é preciosismo):** sem ele o modelo pode devolver `className="gap-4 text-base bg-primary"`, e aí o participante não tem como saber se `text-base` é o 16 que voltou do frame. Um output que ninguém consegue auditar não serve pra um workshop cujo ponto É auditar a procedência do valor. Travar o formato transforma "confia em mim" em "confere você mesmo". As 3 linhas do fim são o que a dupla usa pra inspecionar no exercício, sem precisar ler o arquivo inteiro.
 
 **Honestidade sobre o que o par 5a/5b é:** uma comparação demonstrativa, não um experimento. Duas gerações não provam causalidade (o modelo é estocástico), e a cláusula de leitura muda a instrução, não só a fonte. A evidência forte não é "o card ficou mais bonito", é a rastreabilidade: o valor que voltou da Bridge aparece na linha do código. Rode os dois em conversas NOVAS e separadas, nunca na mesma (na mesma, o modelo carrega o frame já lido e o Take A deixa de ser sem-contexto).
+
+### Comparar contra a fonte
+
+```
+Leia de novo o componente "Card" via MCP e me devolva SÓ uma tabela
+com três linhas, uma por propriedade: cor do título, tamanho do título
+e espaçamento interno. Para cada uma: o nome do token no Figma e o
+valor. Não comente o meu código ainda, não diga se está certo. Só a
+fonte.
+```
+
+### Corrigir uma divergência
+
+```
+Consulte de novo o componente "Card" via MCP. Esta propriedade no meu
+código não bate com o componente: [DIGA QUAL]. Explique a diferença e
+ajuste SÓ ela, usando o token certo do Figma. Preserve o resto. Não
+reescreva o componente.
+```
 
 ## 6. Melhorar acessibilidade
 
