@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-07-23T05:02:31.362Z",
+  "source": "/Users/thiagoxikota/xikota-os/_worktrees/figma-to-code-tdc-ux",
+  "isolatedCopy": "/tmp/tdc-v3-audit.FIO9Pr",
+  "commands": [
+    {
+      "command": "npm run check:tutorial",
+      "exitCode": 0,
+      "result": "OK: 4 setup + 5 pratica, prompts e deck de 30 paginas consistentes"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "result": "pass"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "result": "vite 6.4.3, 31 modules, build completed"
+    }
+  ],
+  "sourceSha256": "d2b5687eed5f4d90f56f59ee24b1bc8d776594150553220ecda4477124edda51",
+  "gitDiffCheck": "pass"
+}

@@ -104,7 +104,8 @@ claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_... -e ENABLE_MC
 npm run workshop:start       Sobe o preview (Vite) pra ver o componente gerado
 npm run workshop:setup-mcp   Merge idempotente do servidor no config do Claude Desktop
 npm run workshop:setup-mcp -- --remove   Remove o servidor do config
-npm run workshop:check       Typecheck + checagem de token/tokens
+npm run check:tutorial       Confere jornada, prompts e docs contra o contrato canônico
+npm run workshop:check       Consistência do tutorial + typecheck + checagem de tokens
 npm run workshop:doctor      Diagnóstico do ambiente (Node, config, ponte)
 npm run workshop:reset       Restaura os componentes do exercício (não toca credencial)
 npm run validate:workshop    Validação usada no CI do kit
@@ -116,10 +117,11 @@ Os scripts de setup por sistema operacional estão em `scripts/setup-figma-mcp.c
 
 ```
 docs/pipeline-facts.md   Fonte técnica única (pacote, versão, caminhos, prompt de teste). Leia primeiro.
-onboarding/index.html    Assistente do QR: roteia por dispositivo, guia os 4 passos do setup, ajuda e prática
-scripts/                 mcp-config.mjs (merge do config), setup por SO, doctor.mjs, reset.mjs, check-tokens.mjs
+docs/tutorial-canonical.json Contrato da jornada 4+5, prompts e frases de fallback.
+onboarding/index.html    Assistente do QR: roteia por dispositivo e guia 4 passos de setup + 5 de prática
+scripts/                 Setup, diagnóstico, reset e gates determinísticos do workshop
 ops/                     Runbook da sala: papéis de Thiago e Bruno + checklists de apoio, cronograma minuto a minuto, contingência, teardown
-prompts/prompts.md       Os 10 prompts do pipeline com MCP, prontos pra copiar
+prompts/prompts.md       Os 10 prompts do pipeline e os 2 comandos guiados de verificação
 prompts/standalone.md    Fallback sem MCP (par raso vs especificado, Claude no navegador). Não é o exercício da sala
 outputs-prebaked/        Outputs de referência dos ensaios, rede de segurança da demo ao vivo
 kit/setup-10min.md       Setup completo pra rodar em casa, com troubleshooting
