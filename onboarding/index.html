@@ -530,6 +530,7 @@
         { type: "diagram", dlabel: "Onde fica no Figma",
           trail: ["Figma", "Settings", "Security", "Personal access tokens", "Generate new token"],
           field: "figd_", foot: "Os 4 escopos: file content (read) · file variables (read) · file comments (read) · file comments (write)." },
+        { type: "note", tone: "ok", text: "<b>Em Expiration, escolha a validade mais curta: 1 dia dá e sobra.</b> Numa máquina que não é sua isso não é capricho: mesmo que você esqueça de revogar no fim, o token morre sozinho amanhã." },
         { type: "note", tone: "warn", text: "O token é uma credencial sua. Ele fica só nesta aba, não é salvo, não vai pra servidor nenhum e esta página não faz requisição externa. Não deixe ele aparecer no projetor. Se aparecer, revogue e gere outro." }
       ] };
   }
