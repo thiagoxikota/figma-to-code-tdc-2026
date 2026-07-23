@@ -46,7 +46,7 @@ Rode este checklist em CADA reserva (1, 2 e 3), na vespera, e confira de novo na
 ### 1.5 Figma
 
 - [ ] Figma Desktop aberto e logado numa conta que serve so para esta maquina no dia (nao uma conta pessoal de organizador; ver secao 4).
-- [ ] Uma copia do arquivo publico duplicavel aberta (figma.com/community/file/1659374868260259462), na pagina com o frame "Tela demo". Uma copia compartilhada serve para qualquer participante, porque o exercicio LE o frame e edita o codigo, nao o Figma.
+- [ ] Uma copia do arquivo publico duplicavel aberta (figma.com/community/file/1659374868260259462), na pagina "01 Comece aqui" (o frame "Tela demo" fica dentro do passo 4). Uma copia compartilhada serve para qualquer participante, porque o exercicio LE o frame e edita o codigo, nao o Figma.
 - [ ] Plugin Desktop Bridge JA importado em Plugins > Development (ver secao 2 para como isso foi gerado) e RODANDO, deixado ativo.
 - [ ] Frame "Tela demo" visivel, sem seleçao travada em outro lugar.
 

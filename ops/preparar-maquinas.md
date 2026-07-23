@@ -164,7 +164,7 @@ Não é baixar ZIP do GitHub. O caminho é sempre importar do manifest auto-empa
 
 ### 6. Deixar o ambiente montado
 
-- Arquivo Figma da demo aberto, na página do frame "Tela demo", com o plugin Bridge rodando.
+- Arquivo Figma da demo aberto, na página "01 Comece aqui" (role até o passo 4, onde vive o frame "Tela demo"), com o plugin Bridge rodando.
 - Onboarding aberta no navegador: `https://thiagoxikota.com/tdc`.
 - Atalho do projeto na área de trabalho.
 - Na máquina de PALCO (só nela): Vite rodando (`npm run workshop:start`) com o slot 2 vazio, prompts abertos, prebaked em janela de fundo.

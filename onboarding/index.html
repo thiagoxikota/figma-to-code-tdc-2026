@@ -565,6 +565,7 @@
         { type: "text", text: "<b>1. Importe o plugin Bridge no Figma Desktop.</b>" },
         { type: "diagram", dlabel: "No Figma Desktop", trail: ["Plugins", "Development", "Import plugin from manifest..."], foot: "Selecione o arquivo manifest.json no caminho abaixo." },
         { type: "path", value: pluginPath },
+        { type: "note", tone: "ok", text: "<b>Macete pra achar a pasta oculta:</b> " + osPath("na janela de importar, cole o caminho acima direto no campo <b>Nome do arquivo</b> e aperte Enter. O Windows expande o %USERPROFILE% sozinho e abre direto o manifest, sem caçar pasta.", "na janela de importar, aperte <b>Cmd+Shift+G</b>, cole o caminho acima e aperte Enter. Se precisar enxergar pastas ocultas, <b>Cmd+Shift+.</b> mostra e esconde.") },
         { type: "note", tone: "neutral", text: "<b>Essa pasta não existe?</b> É ordem, não erro. Ela só nasce depois que o Claude abriu com a configuração salva. Volte, reabra o Claude, espere alguns segundos e tente de novo." },
         { type: "text", text: "<b>2. Rode o plugin Bridge e deixe a janela dele aberta.</b> Se fechar, a conexão cai." },
         { type: "text", text: "<b>3. No Claude, abra uma conversa nova e mande:</b>" },

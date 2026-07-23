@@ -96,7 +96,7 @@ Conduz. É a voz e o ritmo da sala. Fica no palco do começo ao fim.
 - 10:18 - 10:22 Como o fluxo funciona: explica os 4 elos (Claude Desktop, MCP, Bridge, Figma) sem jargão. Um cliente só na sala.
 - 10:22 - 10:32 Demo compacta: narra enquanto o Bruno opera. Mostra o Claude lendo o frame de verdade e gerando o componente. Não promete resultado antes de rodar.
 - 10:32 - 10:57 Setup guiado: chama os 5 checkpoints em voz alta, um por vez. Aguarda o Bruno confirmar a maioria antes de avançar. Não desce do palco pra debugar máquina.
-- 10:57 - 11:20 Exercício real: dá o start, lê os 6 passos do exercício em ritmo, marca as viradas (ler, gerar, preview, comparar, corrigir, concluir).
+- 10:57 - 11:20 Exercício real: dá o start, lê os 6 passos do exercício em ritmo, marca as viradas (ler, gerar, comparar, corrigir, concluir). O preview não é passo do participante: roda só na máquina de palco, se sobrar tempo.
 - 11:20 - 11:30 Validação, correção e limites: conduz a leitura das divergências e diz os limites reais. Código gerado não é produção, MCP não substitui design system, arquivo bagunçado gera contexto bagunçado.
 - 11:30 - 11:36 Perguntas: modera, corta pergunta que vira consultoria individual.
 - 11:36 - 11:42 Síntese e encerramento: fecha a tese, aponta o kit pra casa, agradece.
@@ -135,7 +135,7 @@ Opera a demo, resolve o que é coletivo, guarda o relógio e puxa a contingênci
 - 10:22 - 10:32 Demo compacta: opera. Verifica o status da conexão com o Figma, pede pro Claude ler o frame "Tela demo" e mostra dado específico voltando. Se travar, entra o fallback pré-gerado, dito como fallback.
 - 10:32 - 10:57 Setup guiado: cronometra. Lê os checkpoints de relógio (10:37, 10:42, 10:47, 10:51, 10:54, 10:57) e avisa o Thiago da marca. Coordena os apoios sobre onde estão os gargalos. Decide migrações pra reserva a partir do minuto 20.
 - 10:57 - 11:20 Exercício real: circula validando os 3 sinais em bancadas de amostra. Conexão viva, componente gerado a partir do frame, e a dupla comparando o código com os valores relidos. Na sala ninguém instala projeto. O preview roda só na máquina de palco, e só se sobrar tempo.
-- 11:20 - 11:30 Validação, correção e limites: confirma que as duplas acharam as 3 divergências e corrigiram uma consultando o frame de novo.
+- 11:20 - 11:30 Validação, correção e limites: confirma que as duplas inspecionaram as 3 propriedades e corrigiram as que divergiam consultando o frame de novo (pode não haver divergência nenhuma, e tá certo assim).
 - 11:30 - 11:42 Perguntas e encerramento: apoia respostas técnicas, coordena o desligamento (revogar token, remover MCP, limpar máquinas do evento).
 
 ## Sinais de acionar contingência

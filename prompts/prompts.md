@@ -6,8 +6,8 @@ Cada prompt é um exemplo de especificação: formato de saída definido, escopo
 ## 1. Ler o arquivo Figma
 
 ```
-Leia o frame "Tela demo" deste arquivo Figma. Devolva a árvore de
-camadas, os componentes usados e as variáveis (tokens) aplicadas em
+Leia o frame "Tela demo" deste arquivo Figma via MCP. Devolva a árvore
+de camadas, os componentes usados e as variáveis (tokens) aplicadas em
 cada elemento. Não descreva pixels: descreva estrutura e semântica.
 ```
 
@@ -38,10 +38,11 @@ Nota de palco: o arquivo tem 1 coleção (`Workshop Tokens`, 23 variáveis). Se 
 ## 4. Auditar inconsistências
 
 ```
-Audite a tela demo contra o design system deste arquivo. Para cada
-inconsistência: o elemento, o que está errado, qual token ou regra foi
-violada, e severidade (bloqueia acessibilidade / quebra consistência /
-cosmético). Onde houver texto sobre fundo, avalie o contraste.
+Audite a tela demo contra o design system deste arquivo. Considere
+SOMENTE a página "01 Comece aqui"; não leia a página de gabarito. Para
+cada inconsistência: o elemento, o que está errado, qual token ou regra
+foi violada, e severidade (bloqueia acessibilidade / quebra consistência
+/ cosmético). Onde houver texto sobre fundo, avalie o contraste.
 ```
 
 Por que funciona: impõe estrutura no achado e uma escala de severidade. A IA acha, o humano prioriza.
