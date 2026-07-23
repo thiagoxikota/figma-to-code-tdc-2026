@@ -37,7 +37,6 @@ Total de idas ao Space da demo: 3 obrigatórias (slides 8, 9, 10) + 2 opcionais 
 6. Preview: abrir `slides/deck.pdf`, tela cheia, testar setas (e o clicker, se houver).
 7. Montar o Split View do Space 2 (Claude | Figma) e ensaiar Ctrl+direita / Ctrl+esquerda duas vezes.
 8. Espelhar o telão (não estender). Conferir que a fonte do slide 1 está legível do fundo da sala.
-9. `npm run validate:workshop` uma vez no terminal (prova do slide 12, se pedirem ao vivo).
 
 ## Fallbacks
 

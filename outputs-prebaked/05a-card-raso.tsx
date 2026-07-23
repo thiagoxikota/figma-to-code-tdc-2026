@@ -3,8 +3,8 @@
  * Competente na ESTRUTURA (article, heading, button de verdade, estados,
  * aria), generico no DESIGN (hex cru inventado, espacamento fora do grid,
  * tipografia generica), porque o prompt nao deu fonte de design.
- * O `npm run validate:workshop` prova o par: reprova os hex crus daqui
- * e aprova o Take B. Ver 05c-diff-callout.md.
+ * Os hex crus daqui sao o contraste com o Take B, que so usa var() com
+ * nome de token do Figma. Ver 05c-diff-callout.md.
  * NAO confundir com src/components/CardRaso.tsx: aquele e OUTRO artefato
  * (o card do prompt-de-6-palavras usado no toggle do preview, Momento
  * UAU 2; div soup deliberado, decisao do painel de 15/07).
