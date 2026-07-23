@@ -11,7 +11,8 @@ One-pager do Thiago (solo, tudo na máquina dele, telão espelhado). Detalhe fin
 - [ ] 4. Na mesma conversa: pedir pra ler o frame Tela demo. DONE = volta "Criar sua conta", campos, tokens
 - [ ] 5. Montar os 2 Spaces: 1 = deck.pdf no Preview (tela cheia) · 2 = Claude e Figma lado a lado
 - [ ] 6. Ensaiar 2x: Ctrl+seta direita (demo) / Ctrl+seta esquerda (deck)
-- [ ] 7. Mochila: CARREGADOR + adaptador de video + celular carregado
+- [ ] 7. Mochila: CARREGADOR + adaptador de video + celular carregado + PENDRIVE com o deck.pdf
+- [ ] 8. Colar a descrição nova no community file (Share > Community page > Edit), 2 min
 
 ## BLOCO 2 · CHEGANDO NA SALA (chegar 9:15, 20 min de palco)
 
@@ -21,8 +22,11 @@ One-pager do Thiago (solo, tudo na máquina dele, telão espelhado). Detalhe fin
 - [ ] 4. Plugar o telão > ESPELHAR (não estender)
 - [ ] 5. deck.pdf no Preview > tela cheia > testar as setas
 - [ ] 6. Ir até o FUNDO da sala: slide 1 legível? Contraste ok no projetor?
-- [ ] 7. REFAZER o teste de conexão AQUI (rede do evento muda tudo): status + ler Tela demo
-- [ ] 8. Ensaiar Ctrl+setas COM o telão ligado, 2x
+- [ ] 7. Testar o MICROFONE da sala (90 min de fala)
+- [ ] 8. CONECTAR o Mac na rede do evento (pegar a senha com a organização)
+- [ ] 9. Deixar o HOTSPOT do celular pronto como rede reserva
+- [ ] 10. REFAZER o teste de conexão AQUI (na rede do evento): status + ler Tela demo
+- [ ] 11. Ensaiar Ctrl+setas COM o telão ligado, 2x
 
 ## BLOCO 3 · TESTE NUM PC DO EVENTO (15 min, TIMEBOX DURO)
 
@@ -40,9 +44,11 @@ Fazer o caminho do participante, seguindo o GUIA NO CELULAR (thiagoxikota.com/td
 ## BLOCO 4 · ANTES DE ABRIR A SALA (5 min)
 
 - [ ] 1. Confirmar com a organização: existem máquinas RESERVA prontas? Se não: rota é dupla
-- [ ] 2. Space 1, slide 1 no telão
-- [ ] 3. Conversa NOVA no Claude (limpa, pronta pra demo)
-- [ ] 4. Celular no bolso com o guia aberto
+- [ ] 2. ABRIR OS PREBAKED (01-leitura, 05c-diff-callout) numa janela atrás do Claude, no Space 2
+- [ ] 3. Ponte ainda viva: janela do Bridge aberta + status rápido no Claude. DONE = nome do arquivo de novo
+- [ ] 4. Space 1, slide 1 no telão
+- [ ] 5. Conversa NOVA no Claude (limpa, pronta pra demo)
+- [ ] 6. Celular no bolso com o guia aberto
 
 ## DURANTE · 3 REGRAS
 
@@ -58,7 +64,8 @@ Fazer o caminho do participante, seguindo o GUIA NO CELULAR (thiagoxikota.com/td
 - Tokens vazios: cache frio, pede de novo NA MESMA conversa
 - QR não escaneia: fala devagar thiagoxikota ponto com barra tdc (kit) / forms.gle no telão (fim)
 - Outro MCP de Figma configurado: pede pra desativar durante o workshop (roteia errado)
-- Wi-Fi do palco morreu: deck é PDF local, não muda NADA; demo vira prebaked
+- Wi-Fi do evento ruim: HOTSPOT do celular vira a rede do Mac; a demo segue ao vivo
+- Nem hotspot salvou: deck é PDF local, não muda NADA; demo vira prebaked (já abertos no Space 2)
 
 ## FIM (11:42-11:45)
 
