@@ -171,4 +171,4 @@ No fim, revogue o token no Figma (na máquina do evento isso é obrigatório e f
 
 MIT. Use, adapte, ensine.
 
-O método por trás do workshop vem da pesquisa sobre convergência estrutural e letramento de especificação (AIMEDIA 2026, IARIA). A conversa continua na newsletter Notas de Produto e em [thiagoxikota.com](https://thiagoxikota.com). Levo esse método pra times de produto. Se fizer sentido pro seu, fala comigo por lá.
+O método por trás do workshop vem da pesquisa sobre convergência estrutural e letramento de especificação (AIMEDIA 2026, IARIA). A conversa continua na newsletter AI Product Club e em [thiagoxikota.com](https://thiagoxikota.com). Levo esse método pra times de produto. Se fizer sentido pro seu, fala comigo por lá.

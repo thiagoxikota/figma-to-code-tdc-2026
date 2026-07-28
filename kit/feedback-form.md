@@ -16,5 +16,5 @@ Curto de propósito. Vive no formulário FINAL do workshop (o QR do último slid
 ## Regras
 
 - Nada de nota de 1 a 5. As três perguntas são abertas de propósito: a resposta qualitativa é o sinal.
-- Sem pedir e-mail obrigatório. Quem quiser a newsletter Notas de Produto entra pelo opt-in do checklist, separado.
+- Sem pedir e-mail obrigatório. Quem quiser a newsletter AI Product Club entra pelo opt-in do checklist, separado.
 - Link do form com UTM próprio, pra não confundir com o scan do QR de palco.
