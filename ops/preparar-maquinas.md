@@ -122,7 +122,7 @@ Use o merge idempotente do próprio kit, passando o placeholder pela variável d
 Windows (PowerShell), a partir da pasta do projeto:
 
 ```powershell
-$env:FIGMA_ACCESS_TOKEN='figd_SEU_TOKEN_AQUI'
+$env:FIGMA_ACCESS_TOKEN='YOUR_FIGMA_ACCESS_TOKEN'
 npm run workshop:setup-mcp
 $env:FIGMA_ACCESS_TOKEN=$null
 ```
@@ -130,7 +130,7 @@ $env:FIGMA_ACCESS_TOKEN=$null
 macOS, a partir da pasta do projeto:
 
 ```bash
-FIGMA_ACCESS_TOKEN='figd_SEU_TOKEN_AQUI' npm run workshop:setup-mcp
+FIGMA_ACCESS_TOKEN='YOUR_FIGMA_ACCESS_TOKEN' npm run workshop:setup-mcp
 ```
 
 Isso grava a entrada `mcpServers.figma-console` com `command` npx, `args` `["-y","figma-console-mcp@1.35.0"]` e env `FIGMA_ACCESS_TOKEN` (placeholder) + `ENABLE_MCP_APPS` `"true"`.

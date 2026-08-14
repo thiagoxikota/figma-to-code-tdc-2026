@@ -75,7 +75,7 @@ Resumo do setup:
          "command": "npx",
          "args": ["-y", "figma-console-mcp@1.35.0"],
          "env": {
-           "FIGMA_ACCESS_TOKEN": "figd_SEU_TOKEN_AQUI",
+           "FIGMA_ACCESS_TOKEN": "YOUR_FIGMA_ACCESS_TOKEN",
            "ENABLE_MCP_APPS": "true"
          }
        }
@@ -97,7 +97,7 @@ Resumo do setup:
 Prefere Claude Code? O mesmo MCP roda lá:
 
 ```
-claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_... -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0
+claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=YOUR_FIGMA_ACCESS_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0
 ```
 
 ## Comandos do kit
