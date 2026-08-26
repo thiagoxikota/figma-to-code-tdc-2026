@@ -39,7 +39,7 @@ Entrada a inserir em `mcpServers` (preservando qualquer outra que já exista):
       "command": "npx",
       "args": ["-y", "figma-console-mcp@1.35.0"],
       "env": {
-        "FIGMA_ACCESS_TOKEN": "figd_SEU_TOKEN_AQUI",
+        "FIGMA_ACCESS_TOKEN": "YOUR_FIGMA_ACCESS_TOKEN",
         "ENABLE_MCP_APPS": "true"
       }
     }
@@ -84,4 +84,4 @@ Não aceitar "o MCP aparece na lista" como sucesso. O teste real: pedir para o C
 
 ## Claude Desktop x Claude Code
 
-O workshop inteiro roda em **Claude Desktop**. Claude Code funciona com o mesmo MCP (`claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_... -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0`) e fica no kit/tutorial como alternativa para casa, mas **não é oferecido como bifurcação na sala**. Um caminho só reduz erro coletivo.
+O workshop inteiro roda em **Claude Desktop**. Claude Code funciona com o mesmo MCP (`claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=YOUR_FIGMA_ACCESS_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0`) e fica no kit/tutorial como alternativa para casa, mas **não é oferecido como bifurcação na sala**. Um caminho só reduz erro coletivo.

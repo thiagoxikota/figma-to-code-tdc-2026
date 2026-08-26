@@ -60,7 +60,7 @@ Adicione a entrada em `mcpServers` (preservando o que já existir lá):
       "command": "npx",
       "args": ["-y", "figma-console-mcp@1.35.0"],
       "env": {
-        "FIGMA_ACCESS_TOKEN": "figd_seuTokenAqui",
+        "FIGMA_ACCESS_TOKEN": "YOUR_FIGMA_ACCESS_TOKEN",
         "ENABLE_MCP_APPS": "true"
       }
     }
@@ -131,7 +131,7 @@ Deu algo errado numa máquina COM o repositório (palco, reserva, casa): `npm ru
 Se você usa Claude Code em vez do Claude Desktop, o mesmo MCP funciona. Na pasta do projeto:
 
 ```
-claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_seuTokenAqui -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0
+claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=YOUR_FIGMA_ACCESS_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0
 ```
 
 O resto (token, plugin bridge, teste, arco) é igual. Na sala a gente não oferece essa bifurcação de propósito: um caminho só reduz erro coletivo. Em casa, escolha o que já é seu.
