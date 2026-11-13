@@ -3,7 +3,8 @@
  * Instalador de um comando só do workshop (Mac e Windows, Node 18+).
  *
  *   npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/heads/main.tar.gz
- *   (Windows: npx.cmd no lugar de npx. Plano B: baixar o ZIP do repo e rodar node scripts/instalar.mjs)
+ *   (Windows: npx.cmd no lugar de npx. Plano B: baixar o ZIP do repo e rodar node scripts/instalar.mjs.
+ *   O plano B dispensa baixar o instalador, mas o passo 4 ainda baixa a ligação pelo npm.)
  *
  * O que faz, em ordem:
  *   1. Confere Node, Figma Desktop e Claude Desktop (avisa e dá o link do que faltar).
@@ -11,7 +12,11 @@
  *   3. Grava o Figma Console MCP no config do Claude Desktop, preservando outros MCP,
  *      com backup do arquivo anterior.
  *   4. Liga o MCP uma vez para ele criar o plugin Desktop Bridge e mostra o
- *      manifest.json no Finder/Explorer, com o caminho copiado.
+ *      manifest.json no Finder/Explorer, com o caminho copiado. Se o plugin não
+ *      ficar pronto, diz que a instalação NÃO terminou e sai com código 3.
+ *
+ * O instalador nunca declara a conexão pronta: o teste é o Claude dizer o nome
+ * do arquivo aberto no Figma.
  *
  * SEGURANÇA: o token nunca é impresso, nunca vai para argumento de processo e
  * só é gravado no config local do Claude Desktop. A cópia de segurança do config
@@ -156,9 +161,11 @@ function writeConfig(token) {
   // JSON quebrado: o backup acima guarda o original e o config recomeça limpo.
   const cfg = state.invalid ? {} : state.cfg
   cfg.mcpServers = cfg.mcpServers || {}
+  // Windows: o Claude Desktop não inicia `npx` direto (é um script .cmd), então
+  // o comando passa pelo cmd. Padrão ainda não ensaiado numa máquina Windows real.
   cfg.mcpServers[SERVER_KEY] = {
-    command: 'npx',
-    args: ['-y', PINNED],
+    command: IS_WIN ? 'cmd' : 'npx',
+    args: IS_WIN ? ['/c', 'npx', '-y', PINNED] : ['-y', PINNED],
     env: { FIGMA_ACCESS_TOKEN: token, ENABLE_MCP_APPS: 'true' },
   }
   const out = `${JSON.stringify(cfg, null, 2)}\n`
@@ -243,25 +250,34 @@ async function main() {
   else missing.push(['Claude Desktop', 'https://claude.com/download'])
   for (const [name, url] of missing) warn(`Não achei o ${name}. Baixe aqui: ${url} (dá para continuar e instalar depois)`)
 
-  step(2, 'Token do Figma')
+  step(2, 'Chave do Figma (personal access token)')
   let token = process.env.FIGMA_ACCESS_TOKEN || ''
+  // Segunda rodada: a chave aparece uma vez só no Figma, então a que já está
+  // gravada no config pode ser reaproveitada sem a pessoa criar outra.
+  const saved = readConfig(configPath()).cfg?.mcpServers?.[SERVER_KEY]?.env?.FIGMA_ACCESS_TOKEN || ''
+  if (!token && saved.startsWith('figd_')) {
+    console.log('  Já existe uma chave do workshop gravada nesta máquina.')
+    const answer = await askHidden('  Aperte Enter para usar a mesma, ou cole uma chave nova: ')
+    token = answer === '' ? saved : answer
+  }
   if (!token) {
     console.log('  Vou abrir as configurações do Figma no navegador.')
     console.log('  Lá: aba Security > Personal access tokens > Generate new token.')
     console.log('  Validade: 7 dias (cobre até o workshop; você revoga no fim). Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
-    console.log('  O token começa com figd_ e aparece uma vez só: copie na hora.')
+    console.log('  Use a sua conta pessoal do Figma: a chave lê qualquer arquivo que a conta abre, não só o do exercício.')
+    console.log('  A chave começa com figd_ e aparece uma vez só: copie na hora.')
     await askEnter('  Aperte Enter para abrir o Figma...')
     openUrl(TOKEN_PAGE)
     for (let attempt = 0; attempt < 3 && !token.startsWith('figd_'); attempt += 1) {
-      token = await askHidden('  Cole o token aqui (não aparece na tela) e aperte Enter: ')
-      if (!token.startsWith('figd_')) warn('Esse não parece o token: ele começa com figd_. Tente de novo.')
+      token = await askHidden('  Cole a chave aqui (não aparece na tela) e aperte Enter: ')
+      if (!token.startsWith('figd_')) warn('Essa não parece a chave: ela começa com figd_. Tente de novo.')
     }
   }
   if (!token.startsWith('figd_')) {
-    warn('Sem token válido. Rode o comando de novo quando tiver o token.')
+    warn('Sem chave válida. Rode o comando de novo quando tiver a chave do Figma.')
     process.exit(2)
   }
-  ok('token recebido (não aparece na tela; vai só para o config do Claude Desktop)')
+  ok('chave recebida (não aparece na tela; vai só para o config do Claude Desktop)')
 
   step(3, 'Ligando o Figma no Claude Desktop')
   const result = writeConfig(token)
@@ -274,22 +290,28 @@ async function main() {
   const manifest = pluginManifestPath()
   const warm = args.has('--sem-plugin') ? { ok: existsSync(manifest) } : await warmPlugin(token)
   const pluginReady = warm.ok
-  if (pluginReady) ok(`plugin pronto em ${manifest}`)
-  else {
-    if (warm.reason) warn(`Não deu para preparar o plugin agora: ${warm.reason}.`)
-    warn('Ele também é criado quando o Claude Desktop abre com internet. Siga os passos abaixo; se o arquivo não existir no passo B, chame um voluntário.')
+  if (!pluginReady) {
+    warn(`O plugin NÃO ficou pronto${warm.reason ? `: ${warm.reason}` : ''}.`)
+    console.log('\nA instalação NÃO terminou. O Claude Desktop já está configurado, mas falta o plugin do Figma.\n')
+    console.log('  1. Confira a internet. Este passo baixa a ligação pelo npm, mesmo quando você roda pelo ZIP.')
+    console.log(`  2. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}), abra de novo e espere 2 minutos.`)
+    console.log('  3. Rode este mesmo comando outra vez. A chave do Figma é a mesma: não precisa criar outra.')
+    console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B em dupla.\n')
+    process.exit(3)
   }
+  ok(`plugin pronto em ${manifest}`)
 
   console.log('\nFalta pouco, faça nesta ordem:\n')
   console.log(`  A. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}) e abra de novo.`)
   console.log('  B. No Figma Desktop: menu Plugins > Development > Import plugin from manifest...')
   console.log(`     Escolha este arquivo: ${manifest}`)
-  if (copyToClipboard(manifest)) console.log('     (o caminho já está copiado: cole com Cmd+Shift+G no Mac ou na barra do Explorer no Windows)')
+  if (copyToClipboard(manifest)) console.log(`     (o caminho já está copiado: na janela que o Figma abre, ${IS_MAC ? 'aperte Cmd+Shift+G e cole' : 'cole no campo "Nome do arquivo" e clique em Abrir'})`)
   console.log('  C. Abra o arquivo do workshop no Figma e rode o plugin Figma Desktop Bridge. Deixe ele aberto.')
   console.log('  D. No Claude Desktop, numa conversa nova: "Verifique o status da conexão com o Figma".')
-  console.log('     Deu certo quando o Claude disser o NOME do arquivo que está aberto no Figma.\n')
-  if (pluginReady) revealFile(manifest)
-  console.log('Travou? Chame um voluntário. Ninguém fica para trás.\n')
+  console.log('     Deu certo quando o Claude disser o NOME do arquivo que está aberto no Figma.')
+  console.log('     Só isso prova a conexão. O "ok" deste instalador não prova.\n')
+  revealFile(manifest)
+  console.log('Travou em casa? Sem problema: no dia você faz a Parte A inteira e a Parte B em dupla.\n')
 }
 
 main().catch((error) => {

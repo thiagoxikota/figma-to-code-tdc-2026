@@ -4,10 +4,10 @@ Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o se
 
 **O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício. São duas entregas:
 
-- **Parte A, todo mundo.** A Tela demo vira PNG, o Claude revisa, a pessoa escolhe quais pontos aceita e sai com um protótipo HTML navegável. Esse protótipo fica na conversa do Claude, não vira arquivo e **não é base para o seu workshop**: as cores e medidas dele são estimadas da imagem.
-- **Parte B.** O Claude lê a mesma Tela demo no arquivo (pelo `figma-console-mcp@1.35.0`, gratuito), audita, gera um Card em HTML e CSS com os tokens e exporta os tokens em JSON. Só faz sozinho quem instalou a ligação em casa; o resto faz em dupla. É daqui que sai a pasta abaixo.
+- **Parte A, todo mundo.** A Tela demo vira PNG, o Claude revisa, a pessoa escolhe quais pontos aceita e sai com um protótipo navegável do formulário. Esse protótipo fica na conversa do Claude, não vira arquivo e **não é base para o seu workshop**: as cores e medidas dele são estimadas da imagem.
+- **Parte B.** O Claude lê a mesma Tela demo no arquivo (pelo `figma-console-mcp@1.35.0`, gratuito). A pessoa escolhe uma divergência, corrige esse ponto no protótipo com o valor lido, gera um Card em HTML e CSS com os tokens e exporta os tokens em JSON. Só faz sozinho quem instalou a ligação em casa; o resto faz em dupla. É daqui que sai a pasta abaixo.
 
-Na sala eu digo com estas palavras: "O Card não é o protótipo da Parte A. É o ponto de partida do Mateus às 20h."
+Na sala eu digo com estas palavras: "O Mateus continua os tokens e o Card, não o formulário." O Card é um exercício de passagem técnica, pensado para ser o seu ponto de partida. O botão dele ("Ver detalhes") não faz nada no HTML estático, e ninguém na sala ouviu o contrário.
 
 
 ## A pasta tem uma de duas origens
@@ -16,10 +16,17 @@ Ninguém chega com a mesma coisa. A sala sai com uma destas:
 
 | Origem | Nome da pasta | O que tem | Tokens |
 |---|---|---|---|
-| **Gerada** na sala | `fora-do-frame` | `tokens.json`, `Card.html`, `Card.css`, colados da conversa | 23, sem `font.body` |
-| **Exemplo** do repositório | `handoff` | `tokens.json`, `tokens.css`, `Card.html`, `Card.css`, prontos e testados | 24, com `font.body` |
+| **Gerada** na sala | `fora-do-frame` | `tokens.json`, `Card.html`, `Card.css`, colados da conversa, mais o `config.json` que já vem na pasta | 23, sem `font.body` |
+| **Exemplo** do repositório | `handoff` | `tokens.json`, `tokens.css`, `Card.html`, `Card.css` e `config.json`, prontos e testados | 24, com `font.body` |
 
-E um caso misto: quem perdeu só um arquivo copia esse do `handoff/` para a `fora-do-frame` e deixa um `veio-do-exemplo.txt` dizendo qual. O corte para isso é às 19h20, então espere uma parte grande da sala com `handoff`.
+As duas origens trazem o mesmo `config.json` do Style Dictionary (mostrado abaixo). Ninguém precisa criar esse arquivo às 20h.
+
+Dois casos a mais:
+
+- **Misto:** quem perdeu só um arquivo copia esse do `handoff/` para a `fora-do-frame` e deixa um `veio-do-exemplo.txt` dizendo qual. Quem não conseguiu validar o JSON por falta de rede deixa um `nao-validado.txt`.
+- **Dupla:** quem conduziu sai com a `fora-do-frame`; quem acompanhou sai com a própria `handoff`. Todo mundo baixa o ZIP antes de quarta, e os voluntários têm a pasta em pendrive para quem chegar sem ela.
+
+O corte é às 19h25, então espere uma parte grande da sala com `handoff`.
 
 Como eu ainda não ensaiei a sala na conta gratuita, não sei a proporção. Eu te conto no coffee quantos saíram com cada uma.
 
@@ -28,6 +35,10 @@ Como eu ainda não ensaiei a sala na conta gratuita, não sei a proporção. Eu 
 Confira em `handoff/tokens.json`. A coleção **Workshop Tokens** do Figma tem 23 variáveis: 10 cores (`color/*`) e 13 numéricas (`space/1..4`, `radius/md`, `border/width`, `focus/ring-width`, `tap-target/min`, `size/icon`, `font-size/body`, `font-size/heading`, `font-weight/heading`, `line-height/body`).
 
 O `handoff/` tem um token a mais: `font.body`, com `$type` `fontFamily` e a pilha `-apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif`. Ele não é variável no Figma: família de fonte vive no estilo de texto, e o próprio token traz um `$description` dizendo isso. O prompt da sala pede só as variáveis da coleção, então o JSON gerado chega sem ele.
+
+### Como tratar 23 e 24 às 20h
+
+Não precisa tratar: as duas contagens passam no mesmo build, com o mesmo `config.json`. A única diferença visível é a fonte, descrita abaixo. Se você quiser todo mundo igual, o caminho curto é pedir a quem tem 23 que acrescente o bloco `font` mostrado a seguir.
 
 ### O que muda para você em cada origem
 
@@ -100,9 +111,11 @@ Testei o `handoff/tokens.json` em 13/11/2026, num diretório temporário, com `n
 - Style Dictionary **4.4.0** (Node 18 ou maior): build ok.
 - Nos dois, as 24 variáveis de `build/tokens.css` batem uma a uma com `src/tokens.css` do repositório (só a caixa do hex muda: o SD devolve minúsculo).
 
-A saída da sala (pasta gerada) ainda não foi convertida: depende do meu ensaio na conta gratuita, que está pendente.
+Em 13/11 rodei de novo, agora com o `config.json` que vai dentro das pastas: `npx style-dictionary@4 build --config config.json` sobre o `handoff/tokens.json` gerou um `tokens.css` com as mesmas 24 variáveis do `handoff/tokens.css`.
 
-Configuração usada (`config.json`, ao lado do `tokens.json`). Com `buildPath` na própria pasta, o `tokens.css` cai onde o `Card.html` espera:
+**Pendente:** a saída da sala (pasta gerada, 23 tokens) ainda não foi convertida. Depende do meu ensaio na conta gratuita. Eu te aviso do resultado antes de quarta.
+
+O `config.json` que já está nas duas pastas (`handoff/` e `fora-do-frame`, que nasce de `fortaleza/pasta-modelo`). Com `buildPath` na própria pasta, o `tokens.css` cai onde o `Card.html` espera:
 
 ```json
 {
@@ -132,13 +145,20 @@ O mesmo Card do repositório, gerado direto em HTML e CSS:
 - Estados: hover, foco visível (anel de 2px em `--color-focus`), desabilitado (`card--disabled` mais `disabled` no botão).
 - Alvo mínimo de 44px no botão (`--tap-target-min`).
 - O prompt fixa as classes, então o HTML da sala e o do `handoff/` têm a mesma forma.
-- O `Card.css` da sala traz, ao lado de cada `var(--token)`, um comentário com o valor do Figma. É o que a pessoa usou para conferir três valores no painel de variáveis (`color/brand-primary`, `font-size/heading`, `space/3`). Não atrapalha o build.
+- O `Card.css` da sala traz, ao lado de cada `var(--token)`, um comentário com o valor do Figma. A pessoa conferiu três linhas desse CSS contra as variáveis do Figma (`color/brand-primary`, `font-size/heading`, `space/3`) e depois os mesmos três valores dentro do `tokens.json`. Não atrapalha o build.
+- Nem tudo é token: no `handoff/`, a largura máxima do card (`360px`), o peso do texto do botão (`600`) e a opacidade do desabilitado (`0.7`) são valores fixos. O prompt da sala permite valor fixo só na largura e na opacidade.
 
 Pontos que a sua auditoria de acessibilidade pode levantar:
 
 - O nível do título é fixo em `h3`.
 - No `handoff/`, o estado desabilitado usa `opacity: 0.7` no card inteiro, além das cores de desabilitado no botão. O da sala pode variar, porque o Claude escreve o CSS.
 - A ação é um `button` sem destino. No HTML estático ele não faz nada.
+
+
+## O que eu ainda te devo
+
+- O resultado do ensaio na conta gratuita: se a pasta gerada converte sem ajuste.
+- A proporção de `fora-do-frame` e `handoff` na sala, que eu te conto no coffee.
 
 
 ## Se quiser combinar algo

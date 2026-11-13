@@ -1,4 +1,6 @@
-# Os 10 prompts do workshop
+# Os 10 prompts do workshop (TDC Florianópolis, histórico)
+
+> **Está em Fortaleza, no Fora do Frame?** Estes não são os seus prompts. Use os do [guia do participante](../fortaleza/guia-participante.md), que são outros e não pedem código de dev. Este arquivo fica como registro do TDC.
 
 Prontos pra copiar. O par 5a/5b é o experimento central da demo: MESMO prompt, muda só se a IA lê o Figma ou não. Isola a variável certa (o contexto do Figma), não "prompt bom vs prompt ruim".
 Cada prompt é um exemplo de especificação: formato de saída definido, escopo travado, critério de verificação embutido.
