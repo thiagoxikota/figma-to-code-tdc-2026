@@ -37,7 +37,7 @@ Nada da Parte A nem da Parte B nova foi rodado ainda no Claude gratuito contra o
 
 ## Terça, 17/11
 
-1. Não gere o token do palco ainda: a validade de 1 dia não cobre de terça para quarta.
+1. Token do palco já gerado com validade de 7 dias (o mesmo que a sala usa); revogar no B6 ao vivo.
 2. Baixar no Mac `fortaleza/deck-fortaleza.pdf`, o ZIP do repositório (com `handoff/`) e a saída do seu ensaio da Parte A e da B, para o caso de a rede cair.
 3. Uma cópia de `handoff/` num pendrive para quem chegar sem o ZIP [VERIFICAR com a Gi se faz sentido na sala].
 4. Carregar o Mac e separar o adaptador do projetor [VERIFICAR com a Gi a entrada].
@@ -47,7 +47,7 @@ Nada da Parte A nem da Parte B nova foi rodado ainda no Claude gratuito contra o
 
 ### De manhã
 
-1. Rodar o comando de novo e colar o token do palco (1 dia), como a sala vai fazer. Fechar o Claude por completo e reabrir.
+1. Abrir Figma Desktop com o arquivo do exercício, rodar o plugin Bridge e abrir o Claude Desktop.
 2. "Verifique o status da conexão com o Figma": o Claude diz o nome do arquivo. Rodar o B1: voltam as 3 propriedades.
 3. Exportar o PNG da Tela demo e deixar na área de trabalho, para a Parte A no telão.
 

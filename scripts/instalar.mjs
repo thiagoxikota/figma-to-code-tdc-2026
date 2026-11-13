@@ -248,7 +248,7 @@ async function main() {
   if (!token) {
     console.log('  Vou abrir as configurações do Figma no navegador.')
     console.log('  Lá: aba Security > Personal access tokens > Generate new token.')
-    console.log('  Validade: 1 dia basta. Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
+    console.log('  Validade: 7 dias (cobre até o workshop; você revoga no fim). Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
     console.log('  O token começa com figd_ e aparece uma vez só: copie na hora.')
     await askEnter('  Aperte Enter para abrir o Figma...')
     openUrl(TOKEN_PAGE)

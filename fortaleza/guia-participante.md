@@ -79,7 +79,7 @@ npx.cmd -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/h
 O instalador faz isto, nesta ordem:
 
 1. confere se o Node, o Figma Desktop e o Claude Desktop estão aí e dá o link do que faltar;
-2. abre as configurações do Figma para você criar o token (a chave temporária que deixa o Claude ler o seu arquivo): aba **Security > Personal access tokens > Generate new token**. Validade de 1 dia. Em permissões, marque **só leitura em File content**. Nada mais é necessário;
+2. abre as configurações do Figma para você criar o token (a chave temporária que deixa o Claude ler o seu arquivo): aba **Security > Personal access tokens > Generate new token**. Validade de **7 dias** (cobre de casa até quarta; você revoga no fim do workshop). Em permissões, marque **só leitura em File content**. Nada mais é necessário;
 3. pede o token num campo escondido: cole e aperte Enter (aparecem só asteriscos);
 4. liga o Figma no Claude Desktop sem apagar nada que já esteja lá;
 5. prepara o plugin do Figma, mostrando o progresso enquanto isso, e avisa se falhar. No fim, mostra o caminho do arquivo do plugin e já deixa esse caminho copiado.
@@ -106,10 +106,6 @@ Verifique o status da conexão com o Figma
 ```
 
 Deu certo quando: **o Claude disse o nome do arquivo** que está aberto no Figma. Aparecer numa lista ou o instalador dizer "ok" não conta como teste.
-
-**Passo 5. Na quarta, troque o token.**
-
-O token de casa vence em 1 dia. Na quarta, antes de sair de casa, rode o mesmo comando de novo e cole um token novo. Feche e abra o Claude e repita o teste do Passo 4.
 
 Não conseguiu até quarta? Tudo bem. Você faz a Parte A inteira e a Parte B em dupla.
 
@@ -216,8 +212,6 @@ Verifique o status da conexão com o Figma
 ```
 
 Deu certo quando: o Claude disse o nome do arquivo. Não conectou em uma tentativa? Chame um voluntário uma vez. Não resolveu: dupla.
-
-Token vencido (você não trocou na quarta)? Rode o comando de novo só se a rede da sala permitir, com o voluntário. Se não, dupla.
 
 **Não instalou?** Forme dupla agora com alguém que conectou. Abra a Tela demo no seu Figma (o do navegador serve). Você lê os prompts, confere os valores no seu Figma e ajuda a decidir.
 
