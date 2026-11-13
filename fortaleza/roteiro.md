@@ -21,7 +21,7 @@ Prova com a **mesma** Tela demo nas duas partes e três propriedades verificáve
 2. **Texto "Leva menos de um minuto":** `#A29B93` sobre `#FFFFFF`, contraste de cerca de 2,75 para 1 (AA pede 4,5 para 1). A imagem deixa estimar; o arquivo dá o valor exato.
 3. **Campo "nome":** estilo com borda onde o padrão do sistema é preenchido (`color/surface-alt`). Na imagem parece escolha; o arquivo mostra que saiu do padrão.
 
-Nunca dizer que o vermelho do botão é uma cor errada: o valor está certo, o vínculo é que falta. E `var(--token)` sozinho não prova leitura do Figma. A prova é a cadeia, e ela vai para o telão com imagem (slides 12 a 14): a variável no Figma, o token, o valor e o resultado gerado.
+Nunca dizer que o vermelho do botão é uma cor errada: o valor está certo, o vínculo é que falta. E `var(--token)` sozinho não prova leitura do Figma. A prova é a cadeia, e ela vai para o telão com imagem (slides 11 a 13): a variável no Figma, o valor, a linha do CSS e o resultado na tela.
 
 É um exercício controlado, e isso é dito na abertura: a tela tem seis problemas colocados de propósito.
 
@@ -103,13 +103,13 @@ Se a geração do A4 falhar no telão: mostrar a saída do ensaio, dita como ens
 
 ### 18h35 a 18h41. A ponte
 
-Slide 11, a tese. Depois, no Figma, na mesma Tela demo, selecionar uma a uma (os slides 12 e 13 trazem os recortes reais da tela, para o caso de o telão do Figma falhar):
+Slide 10, a tese. Depois, no Figma, na mesma Tela demo, selecionar uma a uma (os slides 11 e 12 trazem os recortes reais da tela, para o caso de o telão do Figma falhar):
 
 1. O botão "Continuar": mostrar o fill `#C8352B` sem a pílula de variável e a camada fora do componente Button. Abrir as variáveis e mostrar `color/brand-primary` com o mesmo valor. "O valor é igual. O vínculo não existe. Se a marca mudar, esse botão fica para trás. A imagem não tem como mostrar isso."
 2. O texto "Leva menos de um minuto": `#A29B93` sobre `#FFFFFF`, cerca de 2,75 para 1 contra 4,5 do AA.
 3. O campo "nome" ao lado do campo de e-mail: borda contra preenchido (`color/surface-alt`).
 
-Slide 14, a cadeia: a variável no componente Button, o token `color/brand-primary`, o valor `#C8352B` e o resultado gerado, com a linha do `Card.css` e o botão do Card renderizado. "Isso é ler o arquivo: dá para seguir o valor de ponta a ponta. O botão da Tela demo tem o mesmo vermelho e está fora dessa cadeia."
+Slide 13, a cadeia: a variável `color/brand-primary` no Figma, o valor `#C8352B` e o resultado gerado, com a linha do `Card.css` e o botão do Card renderizado. "Isso é ler o arquivo: dá para seguir o valor de ponta a ponta. O botão da Tela demo tem o mesmo vermelho e está fora dessa cadeia."
 
 Gancho para a B: "Agora vocês vão ler essas três coisas no próprio arquivo, decidir uma correção e conferir com o olho de vocês."
 
@@ -147,7 +147,7 @@ Fala de abertura: "Até aqui tudo ficou dentro da conversa. Agora vocês levam a
 | 19h19 | Confere: nomes, `Card.html` aberto, JSON validado e os três valores dentro do JSON |
 | 19h25 | **Corte** |
 
-No telão: a pasta final com os nomes certos, o `Card.html` aberto no navegador (dois cards sem cor, esperado; o slide 20 mostra essa imagem), o `tokens.json` validado no jsonlint e os três valores achados dentro dele. "JSON válido não quer dizer JSON certo: procurem `#C8352B`, `20px` e `24px`."
+No telão: a pasta final com os nomes certos, o `Card.html` aberto no navegador (dois cards sem cor, esperado; o slide 19 mostra essa imagem), o `tokens.json` validado no jsonlint e os três valores achados dentro dele. "JSON válido não quer dizer JSON certo: procurem `#C8352B`, `20px` e `24px`."
 
 **19h25, corte.** "Quem não terminou: a pasta `handoff` que vocês baixaram em casa vai para a área de trabalho, com esse nome. É o exemplo, e o Mateus sabe disso. Chegou sem ela? Levanta a mão, o voluntário copia do pendrive." Quem só perdeu um arquivo copia esse e anota em `veio-do-exemplo.txt`. Em dupla, quem acompanhou usa a própria `handoff`.
 
@@ -157,11 +157,11 @@ No telão: Settings > Security > Personal access tokens > Revoke, a confirmaçã
 
 ### 19h33 a 19h40. Fecho
 
-Uma pergunta para a sala (slide 23), duas ou três respostas curtas: "Qual ponto vocês recusaram, ou qual correção escolheram, e por quê?" Funciona para quem fez só a A.
+Uma pergunta para a sala (slide 22), duas ou três respostas curtas: "Qual ponto vocês recusaram, ou qual correção escolheram, e por quê?" Funciona para quem fez só a A.
 
-Limites, curtos (slide 24): o protótipo não é produto pronto; código gerado é ponto de partida; a ligação lê o design system que existe, não cria um.
+Limites, curtos (slide 23): o protótipo não é produto pronto; código gerado é ponto de partida; a ligação lê o design system que existe, não cria um.
 
-Passagem (slide 25, o último): "Às 20h o Mateus parte da pasta de vocês: os tokens e o Card, não o formulário. Ela tem uma de duas origens: `fora-do-frame`, gerada por vocês, ou `handoff`, o exemplo. As duas servem e as duas já trazem o `config.json`. Quem gerou vê o próprio card acender quando o Style Dictionary criar o `tokens.css`." Detalhes em `para-o-mateus.md`.
+Passagem (slide 24, o último): "Às 20h o Mateus parte da pasta de vocês: os tokens e o Card, não o formulário. Ela tem uma de duas origens: `fora-do-frame`, gerada por vocês, ou `handoff`, o exemplo. As duas servem e as duas já trazem o `config.json`. Quem gerou vê o próprio card acender quando o Style Dictionary criar o `tokens.css`." Detalhes em `para-o-mateus.md`.
 
 Pergunta que vira consultoria individual: "me procura no coffee". Fecha no horário.
 

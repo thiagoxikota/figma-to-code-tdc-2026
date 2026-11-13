@@ -235,7 +235,7 @@ O seu protótipo pode ter acertado a cor do botão. O ponto não é a cor: é qu
 
 | 1. No Figma | 2. Token de design | 3. Valor | 4. No resultado gerado |
 |---|---|---|---|
-| A variável aplicada no componente Button | `color/brand-primary` | `#C8352B` | `background: var(--color-brand-primary);` no `Card.css`, e o botão vermelho do Card |
+| A variável `color/brand-primary`, na coleção Workshop Tokens | `color/brand-primary` | `#C8352B` | `background: var(--color-brand-primary);` no `Card.css`, e o botão vermelho do Card |
 
 O botão da Tela demo tem o mesmo valor, mas está fora dessa cadeia. É isso que a Parte B deixa você ver e conferir.
 

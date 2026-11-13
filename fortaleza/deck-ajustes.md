@@ -1,84 +1,80 @@
-# Deck de Fortaleza: a nova sequência, slide a slide
+# Deck de Fortaleza: o que está no PDF, slide a slide
 
-Registro do deck para designers, conforme `.critica/spec-v2.md` (local, fora do Git). O deck do TDC original **não é tocado**; tudo acontece na cópia Fortaleza:
+Este arquivo descreve o deck **como ele está** em `fortaleza/deck-fortaleza.pdf`, exportado em 13/11 da cópia Fortaleza no Google Slides. São 24 slides. O deck do TDC original não foi tocado.
 
 **Cópia Fortaleza:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
 
-**Estado em 13/11:** a aplicação desta sequência no Google Slides está sendo feita por outra sessão, em paralelo. Este arquivo descreve a sequência pela spec, não o que foi conferido no Slides. Antes de usar: exportar o PDF para `fortaleza/deck-fortaleza.pdf` e ler o PDF inteiro contra as regras abaixo (`checklist-thiago.md`, Até segunda, item 2).
+Mudou algo no Slides? Exporte o PDF de novo para `fortaleza/deck-fortaleza.pdf` e atualize a tabela abaixo no mesmo commit.
 
 
 ## Regras de todo slide
 
-- Cada slide de tarefa tem: **verbo de tarefa**, **"deu certo quando..."** e uma **imagem** do resultado esperado.
-- Prompt inteiro só no guia. No slide, no máximo a primeira linha do prompt, em fonte grande.
-- Corpo de no mínimo 24 pt no PDF de 960 x 540. Rótulo nunca abaixo de 18 pt. Contraste AA (4,5 para 1), inclusive na barra de etapas.
-- Sem chips de palco (FALA, ESPERA, DEMO NO CLAUDE, SALA FAZ) no slide: vão para as notas do orador.
-- A barra de etapas destaca a etapa atual. Parte A: Exportar · Revisar · Decidir · Prototipar · Testar. Parte B: Ler · Auditar · Gerar · Conferir · Salvar · Revogar.
-- Nada de React, TypeScript, WebSocket ou servidor. MCP aparece uma vez (slide 4), como "a ligação local entre o Claude e o Figma".
-- Nunca chamar `#C8352B` de "cor errada" ou de valor que a IA criou. O valor é igual ao token; o que falta é o vínculo.
-- Rodapé: "Fora do Frame · uma experiência UXFor · Fortaleza". Sem "Xikota.ai, em construção".
-- Horários só nas notas do orador, na grade nova.
+- Slide de tarefa tem **verbo de tarefa** e **"Deu certo quando..."**. A imagem do resultado entra onde existe uma imagem real (ver "Capturas que faltam").
+- Prompt inteiro só no guia. No slide, no máximo a primeira linha.
+- Corpo de 24 pt ou mais no PDF de 960 x 540. Rótulo e barra de etapas em 18 pt. Contraste AA.
+- Sem chips de palco no slide. FALA, SALA FAZ, DEMO e ESPERA ficam nas notas do orador, junto com os horários.
+- A barra de etapas destaca a etapa atual. Parte A: A1 Exportar · A2 Revisar · A3 Decidir · A4 Protótipo · A5 Testar. Parte B: B1 Ler · B2 Decidir · B3 Gerar · B4 Conferir · B5 Salvar · B6 Revogar.
+- Nada de React, TypeScript, WebSocket ou servidor. MCP aparece uma vez (slide 14), como "a ligação local entre o Claude e o Figma".
+- "Chave do Figma" é o personal access token. "Tokens de design" são os valores com nome. As duas coisas nunca aparecem só como "token".
+- Nunca chamar `#C8352B` de cor errada. O valor é igual ao do token; o que falta é o vínculo.
 
 
 ## A sequência
 
-| # | Bloco | Slide | Na tela | Deu certo quando / nota |
+| # | Horário | Slide | Na tela | Imagem |
 |---|---|---|---|---|
-| 1 | Abertura, 18h00 | Capa | "Seu Figma vira produto" e "Design com IA, do arquivo ao protótipo que funciona". Data e local | Sem MCP na capa |
-| 2 | Abertura | Quem fala com vocês hoje | Só o Thiago, foto e uma linha | Bruno e Lourena saem do slide e das notas |
-| 3 | Abertura | O que você leva | Parte A: protótipo navegável da Tela demo, a partir da imagem. Parte B: a mesma Tela demo lida do arquivo, o Card e os tokens para o Mateus. Não terminou: a pasta de exemplo | Nota: "O Card não é o protótipo da A. É o ponto de partida do Mateus às 20h" |
-| 4 | Abertura | As rotas | Parte A: todo mundo, conta e navegador. Parte B sozinho: quem instalou em casa. Parte B em dupla: quem não instalou. "Ninguém instala nada aqui." Uma linha: a Parte B usa a ligação local entre o Claude e o Figma | Única menção ao MCP |
-| 5 | Abertura | Guia | QR para `fortaleza/guia-participante.md` no GitHub, URL visível igual à do QR | Testar o QR do fundo da sala |
-| 6 | Parte A, 18h08 | Exporte a Tela demo | Print do frame selecionado e do painel Export, PNG 2x | Você tem o PNG do formulário inteiro |
-| 7 | Parte A, 18h12 | Peça a revisão de dev | Primeira linha do prompt A2, grande. Print de uma lista de exemplo | Lista numerada, cada ponto "visto" ou "suposto" |
-| 8 | Parte A, 18h19 | Você decide quais pontos aceita | "A IA aponta. Quem decide é você." Exemplo: "Aceito 1, 3 e 4. Recuso o 2 porque..." | Números anotados, antes de gerar |
-| 9 | Parte A, 18h22 | Gere o protótipo | Primeira linha do prompt A4. Print do protótipo na conversa | O protótipo aparece na conversa, com só os pontos aceitos |
-| 10 | Parte A, 18h31 | Teste e anote uma diferença | Print do erro com campo vazio e da tela "Conta criada" | Erro e sucesso testados, uma diferença anotada |
-| 11 | Ponte, 18h33 | A tese | "A imagem mostra como a tela parece. O arquivo mostra do que ela é feita." | |
-| 12 | Ponte | Botão "Continuar" | Lado a lado: o vermelho na imagem; no Figma, `#C8352B` sem variável e fora do componente Button; o token `color/brand-primary` com o mesmo valor | "O valor é igual. O vínculo não existe. Se a marca mudar, o botão fica para trás" |
-| 13 | Ponte | Texto "Leva menos de um minuto" | `#A29B93` sobre `#FFFFFF`, cerca de 2,75 para 1, contra 4,5 do AA | A imagem deixa estimar; o arquivo dá o valor |
-| 14 | Ponte | Campo "nome" | Campo nome com borda ao lado do campo e-mail preenchido (`color/surface-alt`) | Parece escolha; o arquivo mostra que saiu do padrão |
-| 15 | Ponte | A cadeia | Propriedade no Figma, token, valor, código gerado | `var(--token)` sozinho não prova leitura |
-| 16 | Conexão, 18h38 | Confira a conexão | Print da resposta do Claude com o nome do arquivo. "Não instalou? Forme dupla agora" | O Claude disse o nome do arquivo |
-| 17 | Parte B, 18h48 | Leia as três propriedades | Primeira linha do prompt B1. Print da resposta | `#C8352B` sem variável, `#A29B93`, campo nome com borda. Vazio: confira arquivo e plugin antes de repetir |
-| 18 | Parte B, 18h53 | Audite | Primeira linha do prompt B2. Print da Tela demo ao lado de um achado | Cada achado com nome de token ou regra |
-| 19 | Parte B, 18h58 | Gere o Card | Primeira linha do prompt B3. Print do Card | Dois blocos e 3 linhas no fim. "Não é o protótipo: é o ponto de partida do Mateus" |
-| 20 | Parte B, 19h05 | Confira três valores no Figma | Tabela: `color/brand-primary` `#C8352B`, `font-size/heading` 20, `space/3` 24. Print do painel de variáveis | Os três batem no painel |
-| 21 | Salvar, 19h10 | Salve os três arquivos | Print da pasta final com `tokens.json`, `Card.html`, `Card.css`; do Card aberto no navegador sem cor; do jsonlint dizendo válido | Três arquivos com o nome certo, abertos |
-| 22 | Salvar, 19h20 | Corte | "Não terminou? Copie a pasta `handoff` do ZIP. É o exemplo, e o Mateus sabe" | Pasta de exemplo copiada e identificada |
-| 23 | Revogar, 19h22 | Revogue o token | Print de Settings > Security > Personal access tokens, o Revoke e a confirmação | O token sumiu da lista. Revogue também o de casa |
-| 24 | Fecho, 19h26 | Limites | Protótipo da imagem é aproximação. Código gerado é ponto de partida. A ligação lê o sistema que existe | Um slide só |
-| 25 | Fecho | Uma pergunta | "Qual ponto da revisão você recusou, e por quê?" | Funciona para quem fez só a A |
-| 26 | Fecho | Às 20h, o Mateus | Duas origens da pasta: `fora-do-frame` (gerada por você) ou `handoff` (o exemplo). As duas servem | Último slide. Sem formulário, sem mentoria |
+| 1 | 18h00 | Capa | Título, "Design com IA, do arquivo ao protótipo que funciona", nome e cargo do Thiago | sem imagem |
+| 2 | 18h00 | Duas saídas, e as duas valem | 1. O protótipo: nasce da imagem, fica com você. 2. A pasta, com Card e tokens: nasce do arquivo, segue com o Mateus. Definição de tokens de design e a pasta de exemplo | real: `tela-demo.png` e `card-gerado.png` |
+| 3 | 18h00 | Duas rotas, a mesma Tela demo | Parte A todo mundo; Parte B sozinho; Parte B em dupla, com papel para quem acompanha | sem imagem |
+| 4 | 18h00 | Abra o guia na sua máquina | Endereço do guia em três linhas e o QR | QR |
+| 5 | 18h05 | A1. Exporte a Tela demo | Clicar no nome do frame; Export, +, PNG, 2x | real: a Tela demo exportada. Falta a captura do painel Export |
+| 6 | 18h10 | A2. Peça a revisão de dev | Primeira linha do prompt; visto e suposto | falta a captura da lista |
+| 7 | 18h17 | A3. Você decide quais pontos aceita | Exemplo de decisão; anotar números e uma frase por recusa | sem imagem (é papel) |
+| 8 | 18h21 | A4. Gere o protótipo | Primeira linha do prompt; o que fazer se vier só código | falta a captura do protótipo na conversa |
+| 9 | 18h30 | A5. Teste e anote uma diferença | Erro, sucesso e uma diferença guardada | falta a captura dos dois estados |
+| 10 | 18h35 | A tese | "A imagem mostra como a tela parece. O arquivo mostra do que ela é feita." | real: `tela-demo.png` |
+| 11 | 18h35 | Botão Continuar: valor igual, vínculo nenhum | Na imagem, um vermelho. No arquivo, `#C8352B` digitado direto, sem variável e fora do componente Button | real: `figma-botao.png`. Falta a captura do painel do Figma |
+| 12 | 18h35 | O que a imagem deixa estimar, o arquivo diz | Texto de apoio: 2,75:1 contra 4,5:1. Campo nome: com borda, fora do padrão `color/surface-alt` | real: `figma-texto-apoio.png` e `figma-campos.png` |
+| 13 | 18h35 | A prova é a cadeia, do Figma ao resultado | Variável no Figma, valor lido, linha do `Card.css`, botão na tela | real: `card-gerado-botao.png` |
+| 14 | 18h41 | Confira a conexão | Só quem instalou em casa; uma tentativa e depois dupla | falta a captura da resposta com o nome do arquivo |
+| 15 | 18h48 | B1. Leia a Tela demo pelo arquivo | As três perguntas da ponte; o que fazer se voltar vazio | falta a captura da resposta |
+| 16 | 18h53 | B2. Decida uma correção e leve ao protótipo | Exemplo de correção escrita; prompt B2 na conversa da Parte A | falta a captura (depende do ensaio) |
+| 17 | 18h58 | B3. Gere o Card com os tokens | "É a passagem para o Mateus. Não substitui o seu protótipo." | real: `card-gerado.png`, marcado como exemplo |
+| 18 | 19h06 | B4. Confira três linhas do CSS no Figma | Três linhas do `Card.css` e os três valores | falta a captura das variáveis no Figma |
+| 19 | 19h10 | B5. Salve os três arquivos | Colar, salvar como texto puro, achar os três valores no JSON | real: `card-sem-tokens.png`. Falta a captura da pasta |
+| 20 | 19h25 | 19h25: corte. Use a pasta de exemplo | Sem arquivo ou em dupla; faltou um; chegou sem o ZIP | sem imagem |
+| 21 | 19h28 | B6. Revogue a chave do Figma | Caminho, confirmação e "é uma chave só" | falta a captura da lista, sem a chave visível |
+| 22 | 19h33 | Qual ponto você recusou, e por quê? | A pergunta do fecho | sem imagem |
+| 23 | 19h33 | Os limites | Três limites | sem imagem |
+| 24 | 19h33 | Às 20h, o Mateus continua a sua pasta | "Os tokens e o Card, não o formulário." As duas origens | sem imagem |
+
+O slide de apresentação pessoal saiu: o nome e o cargo do Thiago estão na capa. Decisão reversível.
 
 
-## De onde vem cada slide da cópia antiga (34 slides)
+## Capturas que faltam
 
-| Antigo | Destino |
-|---|---|
-| 1 | Novo 1, capa reescrita |
-| 2, "quem é de código?" | Sai |
-| 3, três pessoas | Novo 2, só o Thiago, título "Quem fala com vocês hoje" |
-| 4, promessa técnica | Novo 3, reescrito com as duas entregas |
-| 5, "surpresa" | Sai (sem mentoria) |
-| 6 e 7, arquitetura | Saem. A ligação vira uma linha no novo 4 |
-| 8 a 11, demo de abertura | Saem |
-| 12 e 13, Take A e Take B | Saem. A ponte nova (11 a 15) usa a mesma Tela demo e as 3 propriedades |
-| 14, QR | Novo 5 |
-| 15 a 19, instalação na sala | Saem. A instalação é tarefa de casa e vive só no guia |
-| 20 a 27, passos | Substituídos pelos novos 16 a 23, sem prompt inteiro |
-| 28 a 30, validação e limites | Novo 24, um slide |
-| 31, pergunta genérica | Novo 25, pergunta sobre a decisão |
-| 32, fechamento abstrato | Sai |
-| 33, passagem | Novo 26, com as duas origens |
-| 34, formulário e mentoria | Sai, com o rodapé "Xikota.ai, em construção" |
+As imagens marcadas como "real" vêm de `fortaleza/telao/` e mostram o que existe: a Tela demo exportada, recortes dela e o Card de `handoff/` aberto no navegador. Tela do Figma com painel aberto e resposta do Claude não foram simuladas. Elas saem do ensaio do Thiago na conta gratuita (`checklist-thiago.md`), e cada uma entra no slide abaixo:
 
+| Slide | Captura | Onde colocar |
+|---|---|---|
+| 5 | Figma com o frame Tela demo selecionado e o painel Export aberto | no lugar da imagem atual, ou ao lado dela |
+| 6 | A lista da revisão, com visto e suposto | à direita do corpo |
+| 8 | O protótipo aberto na conversa do Claude | à direita do corpo |
+| 9 | Os dois estados: erro e "Conta criada" | à direita do corpo |
+| 11 | O botão "Continuar" selecionado, com o fill sem variável | coluna "No arquivo" |
+| 14 | A resposta do Claude com o nome do arquivo e a janela do Bridge | à direita do corpo |
+| 15 | A resposta do B1 | à direita do corpo |
+| 16 | A resposta do B2 e o protótipo corrigido | à direita do corpo |
+| 18 | As variáveis do Figma com os três valores | à direita da caixa |
+| 19 | A pasta final com os três arquivos e o jsonlint dizendo válido | ao lado da imagem atual |
+| 21 | A lista de Personal access tokens antes e depois do Revoke, sem a chave visível | à direita do corpo |
 
-## Notas do orador
-
-Cada slide leva na nota o horário da grade nova (`roteiro.md`), a fala sugerida e as instruções de palco que saíram do slide (o que antes era FALA, ESPERA, DEMO NO CLAUDE, SALA FAZ).
+Se o ensaio mostrar que o B2 não funciona como o guia descreve, os slides 16 e 2, o guia e o roteiro mudam juntos: o B2 fica só com a decisão escrita.
 
 
-## Já aplicado antes desta versão
+## Conferência feita em 13/11
 
-Continuam valendo: rodapé de Fortaleza no lugar das comunidades de Florianópolis; acento corrigido no slide do QR; QR apontando para o guia no GitHub, lido de volta com `zbarimg`. Falta o teste do QR com o celular, de longe, no projetor.
+- PDF com 24 páginas de 960 x 540.
+- `pdftotext` sem React, TypeScript, WebSocket, "cor inventada", Bruno, Lourena ou Concorra.
+- Nenhum texto abaixo de 18 pt; 18 pt só em rótulo e barra de etapas.
+- Todas as páginas olhadas uma a uma, renderizadas com `pdftoppm -r 50`.
