@@ -6,139 +6,151 @@ Fora do Frame, uma experiência UXFor, 3º dia (workshops presenciais). Quarta, 
 
 Janela do Thiago: 18h00 às 19h40 (100 min). Às 19h40 entra o coffee; às 20h, o workshop do Mateus Villain (tokens e componente para código, Style Dictionary).
 
-**Público: designers.** O formato do TDC parecia aula de dev. Aqui a promessa é o resultado na mão do designer, e a parte técnica fica no miolo, para quem quiser.
+**Público: designers.** Nada de linguagem de dev no palco. A ligação técnica (MCP) aparece uma vez, como "a ligação local entre o Claude e o Figma".
 
-**Promessa:** você sai com a revisão da sua tela do jeito que um dev olharia, um protótipo navegável dela e, se conectar o Figma, os tokens reais do arquivo prontos para o código do Mateus.
-
-Tudo gratuito: conta gratuita do Figma e do Claude. O MCP oficial do Figma fica de fora (o plano Starter dá de 6 a 20 chamadas por mês). A conexão é o `figma-console-mcp@1.35.0` com token e plugin Desktop Bridge, instalada pelo comando único `scripts/instalar.mjs`. Fonte técnica: `docs/pipeline-facts.md`.
+Fonte única das decisões: `.critica/spec-v2.md` (local, fora do Git). Fonte técnica: `docs/pipeline-facts.md`. Prompts palavra por palavra: `guia-participante.md`.
 
 
-## Estrutura em duas partes
+## A tese
 
-- **Parte A, todo mundo, sem instalar nada (25 min).** Exportar a própria tela (ou a "Tela demo") como PNG, colar no Claude gratuito, pedir a revisão de dev e o protótipo HTML navegável, que aparece no próprio Claude.
-- **Parte B, Figma conectado (28 min).** Ler o frame real, tokens, auditar, gerar o Card em HTML e CSS com os tokens, conferir a fonte, exportar os tokens em JSON para a pasta do Mateus, revogar. Quem não instalou segue em dupla ou com voluntário.
-- **A ponte entre as duas (5 min)** é a tese do workshop: imagem é aproximação; o arquivo conectado traz os valores reais (tokens, nomes), e é isso que o dev precisa.
+"A imagem mostra como a tela parece. O arquivo mostra do que ela é feita."
 
-O setup cai para 15 min porque o comando faz quase tudo. Quem termina o setup cedo, ou não vai instalar, já começa a Parte A; quem ainda instala termina durante a Parte A com voluntário.
+Prova com a **mesma** Tela demo nas duas partes e três propriedades verificáveis (`outputs-prebaked/04-auditoria.md`, defeitos 1, 3 e 4):
+
+1. **Botão "Continuar":** na imagem, um vermelho. No arquivo, `#C8352B` cru, desacoplado do componente Button. O valor é igual ao token `color/brand-primary`, mas não está ligado a ele: se a marca mudar, esse botão não muda.
+2. **Texto "Leva menos de um minuto":** `#A29B93` sobre `#FFFFFF`, contraste de cerca de 2,75 para 1 (AA pede 4,5 para 1). A imagem deixa estimar; o arquivo dá o valor exato.
+3. **Campo "nome":** estilo com borda onde o padrão do sistema é preenchido (`color/surface-alt`). Na imagem parece escolha; o arquivo mostra que saiu do padrão.
+
+Nunca dizer que o vermelho do botão é uma cor errada ou inventada: o valor está certo, o vínculo é que falta. E `var(--token)` sozinho não prova leitura do Figma. A prova é a cadeia: propriedade no Figma, token, valor, código gerado.
 
 
-## O que muda em relação ao TDC
+## As duas entregas (dizer no palco, com estas palavras)
 
-- Título, promessa e público: designer, não dev. "MCP" sai do título e aparece só no miolo.
-- Entra a Parte A, que não depende de instalação nenhuma. Ninguém sai sem resultado.
-- O setup manual de 30 min vira o comando de 15 min. O caminho manual fica como plano B no guia.
-- A demo de abertura encolhe: o par Take A e Take B do TDC vira o bloco da ponte entre as partes.
-- O Card passa a ser gerado direto em HTML e CSS, sem React. Um prompt a menos na conta gratuita, e é o formato que o Mateus usa.
-- O exercício do TDC (7 passos) vira a Parte B com 7 passos: Ler, Tokens, Auditar, Gerar, Conferir, Exportar, Revogar.
-- Não há máquina do evento nem máquina reserva. Cada pessoa usa o próprio notebook [VERIFICAR com a Gi]. A saída para quem trava é a dupla.
+1. **Parte A:** um protótipo navegável da Tela demo, feito a partir da imagem.
+2. **Parte B:** a mesma Tela demo lida do arquivo, mais o componente Card e os tokens em arquivo para o Mateus.
+
+"O Card não é o protótipo da Parte A. É o ponto de partida do Mateus às 20h."
+
+Quem não termina a B sai com a pasta de exemplo (`handoff/`), identificada como exemplo.
+
+
+## As rotas
+
+- **Parte A:** todo mundo. Conta e navegador.
+- **Parte B sozinho:** só quem instalou em casa, antes de quarta, com o teste "o Claude disse o nome do arquivo". Na sala só se confere a conexão.
+- **Parte B em dupla:** quem não instalou. Ninguém depura máquina no palco.
 
 
 ## Grade
 
 | Horário | Bloco | Min |
 |---|---|---|
-| 18h00 a 18h05 | Abertura: problema e promessa | 5 |
-| 18h05 a 18h10 | Como vai ser: duas partes e o que cada um leva | 5 |
-| 18h10 a 18h25 | Setup com o comando único (quem não instala já começa a Parte A) | 15 |
-| 18h25 a 18h50 | Parte A: tela no Claude, revisão de dev e protótipo | 25 |
-| 18h50 a 18h55 | A ponte: imagem é aproximação, arquivo é a fonte | 5 |
-| 18h55 a 19h23 | Parte B: Figma conectado, do frame à pasta do Mateus | 28 |
-| 19h23 a 19h27 | O que divergiu e limites | 4 |
-| 19h27 a 19h32 | Perguntas | 5 |
-| 19h32 a 19h36 | Síntese e passagem para o Mateus | 4 |
-| 19h36 a 19h40 | Margem | 4 |
+| 18h00 a 18h08 | Abertura: título, o que cada um leva (A, B, pasta de exemplo), as duas rotas, QR do guia | 8 |
+| 18h08 a 18h33 | Parte A com a Tela demo: A1 exportar (4), A2 revisão de dev (7), A3 você decide quais pontos aceita (3), A4 protótipo (9), A5 testar e anotar 1 diferença (2) | 25 |
+| 18h33 a 18h38 | A ponte: as 3 propriedades no Figma, na mesma tela | 5 |
+| 18h38 a 18h48 | Conferir a conexão (só quem instalou em casa); os outros formam duplas | 10 |
+| 18h48 a 19h10 | Parte B: B1 ler as 3 propriedades (5), B2 auditar (5), B3 gerar o Card (7), B4 conferir 3 valores no Figma (5) | 22 |
+| 19h10 a 19h22 | B5 salvar: tokens em JSON e os 3 arquivos na pasta. Às 19h20, corte: quem não terminou copia `handoff/` e sabe que é exemplo | 12 |
+| 19h22 a 19h26 | B6 revogar o token, com a confirmação no telão | 4 |
+| 19h26 a 19h34 | Limites e passagem para o Mateus (duas origens da pasta) | 8 |
+| 19h34 a 19h40 | Margem e perguntas rápidas | 6 |
 
-Soma: 96 min de conteúdo e 4 de margem, 100 no total. Os slides de cada bloco estão em `deck-ajustes.md`.
+Soma: 100 min. Os tempos são estimativa até o ensaio cronometrado (`checklist-thiago.md`, item 1). O corte das 19h20 e a pasta de exemplo são parte normal da condução, não exceção.
 
 
 ## Bloco a bloco
 
-### 18h00 a 18h05. Abertura
+### 18h00 a 18h08. Abertura
 
-Tese: a IA não lê a sua tela, ela lê o que você conseguiu especificar. O resto ela inventa.
+1. Título e as duas entregas, com as palavras acima.
+2. As rotas: "Quem instalou em casa faz a B sozinho. Quem não instalou faz a B em dupla. Ninguém instala nada aqui."
+3. QR do guia. "Siga pelo guia na sua máquina. O telão mostra a ação e quando deu certo; o texto para copiar está no guia."
 
-Promessa, em linguagem de designer: "Hoje vocês saem com a tela revisada como um dev revisaria, com um protótipo que funciona e, quem conectar o Figma, com os tokens reais prontos para o código. Tudo na conta gratuita."
+Sem pergunta de abertura para a sala: come tempo e não muda nada.
 
-### 18h05 a 18h10. Como vai ser
+### 18h08 a 18h33. Parte A
 
-Um slide com as duas partes, lado a lado. Parte A: imagem, sem instalar. Parte B: arquivo conectado, com um comando. Dizer quem faz o quê: todo mundo faz a A; quem conseguir instalar faz a B; quem não conseguir faz a B em dupla.
+| Relógio | Passo | Min | Deu certo quando |
+|---|---|---|---|
+| 18h08 | A1. Exportar a Tela demo, PNG 2x | 4 | PNG do formulário inteiro salvo |
+| 18h12 | A2. Revisão de dev | 7 | Lista numerada, cada ponto "visto" ou "suposto" |
+| 18h19 | A3. Você decide quais pontos aceita | 3 | Números anotados, com o porquê das recusas |
+| 18h22 | A4. Protótipo com só os pontos aceitos | 9 | Protótipo aparece na conversa |
+| 18h31 | A5. Testar e anotar 1 diferença | 2 | Erro e "Conta criada" testados; uma diferença anotada |
 
-Mostrar o QR do guia (slide 14) e já pedir: "quem vai fazer a Parte B, abre o Terminal agora".
+O Thiago faz junto no telão, com a Tela demo. No A1, projetar a seleção do frame pelo nome e o painel de Export, não só falar "exporte".
 
-### 18h10 a 18h25. Setup com o comando
+No A2, se alguém perguntar como o Claude mediu contraste numa imagem: "Ele estimou. Por isso o prompt pede para separar o que viu do que supôs. Na Parte B a gente lê o valor."
 
-No telão, o Thiago roda o comando do guia (seção 2, Passo 2) e mostra cada pausa dele: o link do token, o campo escondido, a mensagem de fim. Depois mostra a importação do plugin e o teste de status.
+No A3, a fala: "A IA aponta. Quem decide é você. Anotem quais pontos aceitam antes de pedir o protótipo." É o único momento sem prompt, e é o mais importante da A.
 
-| Relógio | Min | Marca esperada |
-|---|---|---|
-| 18h13 | 3 | Comando colado e rodando |
-| 18h17 | 7 | Maioria com token colado e Claude reaberto |
-| 18h21 | 11 | Maioria com o plugin Bridge importado e rodando |
-| 18h23 | 13 | **Corte:** quem está travado vai para a Parte A e faz a B em dupla |
-| 18h25 | 15 | **A Parte A começa para todo mundo**, com gente ainda terminando o setup com voluntário |
+Se a geração do A4 falhar no telão: mostrar a saída do ensaio, dita como ensaio.
 
-Quem não vai instalar já faz o A1 (exportar a tela) durante o setup. O Thiago não desce do palco para depurar máquina; quem vai até a pessoa é o voluntário. Fila crescendo no mesmo ponto: o Thiago resolve no telão para todos. Se o comando falhar para muita gente, o Thiago mostra o caminho manual (guia, Passo 3) no telão uma vez.
+### 18h33 a 18h38. A ponte
 
-### 18h25 a 18h50. Parte A
+No Figma, na mesma Tela demo, selecionar uma a uma:
 
-| Relógio | Passo | Min |
-|---|---|---|
-| 18h25 | A1. Exportar a tela como PNG 2x | 5 |
-| 18h30 | A2. Prompt da revisão de dev | 8 |
-| 18h38 | A3. Prompt do protótipo navegável | 10 |
-| 18h48 | A4. Olhar com olho de designer | 2 |
+1. O botão "Continuar": mostrar o fill `#C8352B` sem a pílula de variável e a camada fora do componente Button. Abrir o painel de variáveis e mostrar `color/brand-primary` com o mesmo valor. "O valor é igual. O vínculo não existe. Se a marca mudar, esse botão fica para trás. A imagem não tem como mostrar isso."
+2. O texto "Leva menos de um minuto": `#A29B93` sobre `#FFFFFF`, cerca de 2,75 para 1 contra 4,5 do AA.
+3. O campo "nome" ao lado do campo de e-mail: borda contra preenchido (`color/surface-alt`).
 
-Prompts, palavra por palavra, no `guia-participante.md`, seção 3. O Thiago faz junto no telão, com a "Tela demo".
+Frase-âncora: "A imagem mostra como a tela parece. O arquivo mostra do que ela é feita."
 
-Durante o A3, pedir para a sala testar o protótipo de verdade: clicar, digitar, enviar vazio. Se alguém topar, dois minutos no telão com a tela de um participante (só com a pessoa autorizando e sem dado sensível).
+Gancho para a B: "Agora vocês vão ler essas três coisas no próprio arquivo, e conferir com o olho de vocês."
 
-Fala de fechamento do bloco (sugestão): "Isso já muda a conversa com o dev. Mas olhem a cor do botão no protótipo e a do Figma. Parecida não é igual."
+### 18h38 a 18h48. Conferir a conexão
 
-### 18h50 a 18h55. A ponte
+Só para quem instalou em casa. No telão: Figma Desktop com o arquivo, plugin Figma Desktop Bridge rodando, e a resposta do Claude com o nome do arquivo. "Deu certo quando o Claude disse o nome do arquivo."
 
-No telão, lado a lado: o protótipo da Parte A e o resultado do arquivo conectado (slides 12 e 13 do TDC, reaproveitados). A imagem dá a forma; o arquivo dá o nome e o valor (`color/brand-primary`, `space/3`). É isso que o dev precisa, e é isso que o Mateus usa às 20h.
+Quem não instalou forma dupla nesse mesmo momento, com voluntário apontando. Uma tentativa de ajuda por pessoa; não resolveu, dupla. O Thiago não desce do palco para depurar. Fila no mesmo ponto: o Thiago resolve no telão uma vez.
 
-Frase-âncora: "Imagem é aproximação. O arquivo é a fonte."
+### 18h48 a 19h10. Parte B
 
-### 18h55 a 19h23. Parte B
+| Relógio | Passo | Min | Deu certo quando |
+|---|---|---|---|
+| 18h48 | B1. Ler a Tela demo e as 3 propriedades | 5 | `#C8352B` sem variável, `#A29B93` com cerca de 2,75 para 1, campo nome com borda |
+| 18h53 | B2. Auditar | 5 | Cada achado com nome de token ou regra |
+| 18h58 | B3. Gerar o Card com os tokens | 7 | Dois blocos e as 3 linhas do fim |
+| 19h05 | B4. Conferir 3 valores no Figma | 5 | `color/brand-primary` `#C8352B`, `font-size/heading` 20, `space/3` 24 batem no painel de variáveis |
 
-| Relógio | Passo | Min |
-|---|---|---|
-| 18h55 | B1. Ler o frame real | 3 |
-| 18h58 | B2. Tokens | 3 |
-| 19h01 | B3. Auditar (comparar com a revisão da Parte A) | 4 |
-| 19h05 | B4. Gerar o Card em HTML e CSS com os tokens | 6 |
-| 19h11 | B5. Conferir a fonte e corrigir, se houver o que corrigir | 3 |
-| 19h14 | B6. Exportar os tokens em JSON e salvar os três arquivos | 7 |
-| 19h21 | B7. Revogar o token | 2 |
+No B1, se voltar vazio: não é para repetir no escuro. Primeiro perguntar qual arquivo o Claude está lendo, depois conferir se o plugin está rodando. Só então repetir.
 
-Prompts no `guia-participante.md`, seção 5. Quem não conectou acompanha em dupla. No B3, o gancho é comparar com a lista da Parte A: os mesmos problemas, agora com o nome do token violado.
+No B2, o gancho é a lista da Parte A: os mesmos problemas, agora com o nome do token.
 
-Fala de abertura do B6 (sugestão): "Até aqui tudo ficou dentro da conversa. Agora vocês levam pro código. Às 20h o Mateus parte exatamente desses três arquivos."
+No B3, dizer de novo: "O Card é outro objeto. É o componente que o Mateus continua às 20h, montado com os tokens desta tela."
 
-Às 19h21 quem não terminou pega a pasta `handoff/` do repositório. Ninguém fica sem arquivo. O B7 não tem corte: voluntários conferem bancada por bancada.
+No B4, o Thiago mostra no telão o painel de variáveis e um valor comparado de verdade. Pode não haver divergência, e está certo.
 
-### 19h23 a 19h27. O que divergiu e limites
+### 19h10 a 19h22. Salvar
 
-O que divergiu entre o protótipo da imagem e o Card do arquivo? Pode não ter divergido nada no B5, e está certo. Limites: protótipo da imagem é aproximação; código gerado por IA é ponto de partida; a conexão lê o design system que existe, não cria um.
+Fala de abertura: "Até aqui tudo ficou dentro da conversa. Agora vocês levam três arquivos."
 
-### 19h27 a 19h32. Perguntas
+No telão: o estado final da pasta com os três nomes certos, o `Card.html` aberto no navegador (dois cards sem cor, esperado) e o `tokens.json` validado no jsonlint. "Deu certo quando os três arquivos abrem com o nome certo." Contar tokens não valida o JSON; abrir e validar, sim.
 
-Corta pergunta que vira consultoria individual: "me procura no coffee".
+**19h20, corte.** "Quem não terminou: copie a pasta `handoff/` do ZIP para a área de trabalho, com o nome `handoff`. É o exemplo, e o Mateus sabe disso." Quem só perdeu um arquivo copia esse e anota em `veio-do-exemplo.txt`.
 
-### 19h32 a 19h36. Síntese e passagem
+### 19h22 a 19h26. Revogar
 
-Ferramentas mudam, princípios permanecem: especifique a fonte, confira o valor, decida você. Depois o slide de passagem: o que cada um tem na pasta, e que o Mateus começa às 20h com Style Dictionary a partir daí. Se o slide do formulário ficar (decisão do Thiago, ver `deck-ajustes.md`), ele fecha.
+No telão: Settings > Security > Personal access tokens > Revoke, a confirmação e o token sumindo da lista. "Deu certo quando o token sumiu da lista." Revogar também o de casa. Sem corte. Voluntários passam pelas fileiras perguntando.
 
-### 19h36 a 19h40. Margem
+### 19h26 a 19h34. Limites e passagem
 
-Fecha no horário. O coffee é das 19h40 às 20h.
+Limites, curtos: o protótipo da imagem é aproximação; código gerado é ponto de partida; a ligação lê o design system que existe, não cria um.
+
+Pergunta para a sala, uma só: "Qual ponto da revisão vocês recusaram, e por quê?" Funciona para quem fez só a A.
+
+Passagem: "Às 20h o Mateus parte da pasta de vocês. Ela tem uma de duas origens: `fora-do-frame`, gerada por vocês, ou `handoff`, o exemplo. As duas servem. Quem gerou vê o próprio card acender quando o Style Dictionary criar o `tokens.css`." Detalhes em `para-o-mateus.md`.
+
+### 19h34 a 19h40. Margem e perguntas rápidas
+
+Pergunta que vira consultoria individual: "me procura no coffee". Fecha no horário.
 
 
 ## Contingências de sala
 
-- **Rede cai para muita gente:** a Parte A segue (a imagem já está no notebook; o Claude precisa de internet, então quem ficar sem rede acompanha no telão). A Parte B vira demonstração no telão, e todo mundo usa `handoff/` para o Mateus.
-- **Comando falha em massa:** o Thiago mostra o caminho manual no telão uma vez. Quem não resolver até 18h23 faz a B em dupla.
+- **Rede cai para muita gente:** a Parte A depende do Claude e para; o Thiago mostra no telão a saída do ensaio, dita como ensaio. A Parte B vira demonstração no telão, e todo mundo usa a `handoff/` do ZIP baixado em casa.
+- **Conexão falha para muita gente às 18h38:** dupla. Não há instalação na sala.
 - **Limite da conta gratuita em massa:** dupla com quem ainda tem uso; na Parte B, `handoff/`.
-- **Demo do palco trava:** resultado do ensaio, de `outputs-prebaked/`, dito como ensaio. Nunca vender pré-gerado como ao vivo.
-- **Atraso acumulado:** o início da Parte B às 18h55 não se move. Se a B atrasar, o B6 encurta para "pegue o `handoff/`" e o B7 continua inteiro.
+- **Demo do palco trava:** saída do ensaio, dita como ensaio. Nunca vender pré-gerado como ao vivo.
+- **Atraso acumulado:** o corte das 19h20 não se move. O B6 (revogar) nunca é cortado.
+- **Máquinas, rede, tomadas, projetor:** [VERIFICAR com a Gi] (`perguntas-gi.md`).

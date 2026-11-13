@@ -1,6 +1,6 @@
 # handoff: rede de segurança da edição Fortaleza
 
-Para quem fez só a Parte A, não terminou a Parte B (passo B6, Exportar) do workshop, bateu no limite da conta gratuita ou quer conferir o próprio resultado. Copie os arquivos desta pasta para a sua `fora-do-frame`.
+Para quem fez só a Parte A, não terminou a Parte B até o corte das 19h20 (passo B5, Salvar), bateu no limite da conta gratuita ou quer conferir o próprio resultado. Copie esta pasta inteira para a área de trabalho com o nome `handoff`, para você e o Mateus saberem que é o exemplo. Se faltou só um arquivo, copie só ele para a sua `fora-do-frame` e anote o nome num `veio-do-exemplo.txt`.
 
 | Arquivo | O que é |
 |---|---|

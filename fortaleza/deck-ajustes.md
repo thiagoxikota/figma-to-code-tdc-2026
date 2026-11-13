@@ -1,142 +1,84 @@
-# Ajustes do deck para Fortaleza
+# Deck de Fortaleza: a nova sequência, slide a slide
 
-O deck do TDC (Google Slides, link em `slides/README.md`) **não foi tocado**: a data de modificação dele continua 23/07/2026, 13h11 UTC, conferida depois das edições.
-
-Foi feita uma cópia, e as mudanças sem decisão pendente já estão aplicadas nela:
+Registro do deck para designers, conforme `.critica/spec-v2.md` (local, fora do Git). O deck do TDC original **não é tocado**; tudo acontece na cópia Fortaleza:
 
 **Cópia Fortaleza:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
-Nome: "Fora do Frame Fortaleza 18/11 - Figma MCP (cópia do deck TDC)", na mesma pasta do Drive do original. 34 slides.
 
-Os slides 14, 15, 26, 27 e 33 foram renderizados e conferidos depois da edição: texto inteiro, sem corte, mesma fonte e hierarquia do deck.
-
-
-## Nova versão para designers: o que mudar (ainda não aplicado)
-
-O workshop mudou de público e de formato (ver `roteiro.md`): título novo, Parte A sem instalação, ponte imagem x arquivo e Parte B com o Figma conectado. Esta lista é só o que mudar na cópia Fortaleza. **Nada disso foi aplicado no Google Slides.** Os números são os da cópia atual (34 slides).
-
-### Slides alterados
-
-| Slide (cópia) | Hoje | Mudar para |
-|---|---|---|
-| 1 e 2 (capa) | Título do TDC | "Seu Figma vira produto" e, abaixo, "Design com IA, do arquivo ao protótipo que funciona". Sem "MCP" na capa |
-| 4 (promessa) | Promessa do TDC (pipeline rodando, arquivos na mão) | "Você sai com a sua tela revisada como um dev revisaria, um protótipo que funciona e, se conectar o Figma, os tokens reais prontos para o código. Tudo na conta gratuita." |
-| 6 e 7 (como funciona) | Quatro peças e "Código: React + TypeScript" | Vira o slide novo "Duas partes" (abaixo). Se o 6 ficar, trocar "React + TypeScript" por "HTML e CSS" |
-| 8 a 11 (demo de status, leitura e geração) | Demo de 10 min na abertura | Pular (ocultar). O setup é mostrado ao vivo com o comando, e a comparação vai para a ponte |
-| 12 e 13 (Take A e Take B, frase da prova) | Abertura | Movidos para a ponte, às 18h50, depois da Parte A. Título do 12: "Imagem é aproximação. O arquivo é a fonte." |
-| 14 (QR do guia) | Abre o setup | Fica igual. Entra no bloco "Como vai ser", às 18h05 |
-| 15 a 18 (Abrir, Token, Conectar, Ligar e testar) | Quatro slides do setup manual | Um slide "Instale com um comando" (o comando do guia, Passo 2, e as cinco coisas que ele faz) e o slide 18, "Ligar e testar", mantido. Ocultar 16 e 17 (o manual fica só no guia). Rodapé: "Travou? Chame um voluntário e siga a Parte A." |
-| 19 (espera do setup) | Espera da reta final | Ocultar, ou trocar o texto por "Conectou? Já comece a Parte A." |
-| 20 a 27 (passos) | Barra "1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Inspecionar · 6 Corrigir · 7 Exportar · 8 Revogar" | "Parte B: 1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Conferir · 6 Exportar · 7 Revogar" e "Passo N de 7". Juntar Inspecionar e Corrigir (24 e 25) em "5. Conferir a fonte" |
-| 23 (Gerar) | Card em React + TypeScript | "4. Gere o Card em HTML e CSS, com os tokens do Figma" |
-| 26 (Leve pro código) | Prompts 7a e 7b | "6. Exporte para a pasta": só o JSON dos tokens (o Card já sai em HTML e CSS no passo 4) e o copiar e colar dos três arquivos |
-| 27 (Revogar) | "8. Revogue seu token", "Passo 8 de 8" | "7. Revogue seu token", "Passo 7 de 7" |
-| 28 a 30 (validação e limites) | Três slides, 8 min | Um slide, 4 min: "O que divergiu?" e os limites do guia (seção 8), incluindo "protótipo da imagem é aproximação" |
-| 33 (passagem) | "tokens.json, Card.html e Card.css" | Manter e acrescentar: "Fez só a Parte A? A pasta handoff/ tem os mesmos três arquivos." |
-| Notas do orador | Horários da grade antiga (18h22 a 19h40) | Horários da grade nova do `roteiro.md` |
-
-### Slides novos
-
-| Onde | Título | Conteúdo |
-|---|---|---|
-| Depois do 5 | Duas partes | Parte A: sua tela como imagem, sem instalar, revisão de dev e protótipo. Parte B: o Figma conectado com um comando, os valores reais e a pasta para o Mateus. "Não instalou? A B é em dupla." |
-| Antes do 20 | Parte A, 1: exporte a tela | Selecionar o frame, Export, PNG 2x. "Pode ser a Tela demo ou uma tela sua." |
-| Antes do 20 | Parte A, 2: a revisão de dev | "Cole a imagem no Claude e peça a revisão. O prompt está no guia." Os quatro eixos: estados, espaçamento, texto, acessibilidade |
-| Antes do 20 | Parte A, 3: o protótipo | "Na mesma conversa, peça o protótipo. Ele aparece no próprio Claude. Clique, digite, envie vazio." |
-
-Os prompts não vão inteiros no slide: estão no guia, para copiar.
+**Estado em 13/11:** a aplicação desta sequência no Google Slides está sendo feita por outra sessão, em paralelo. Este arquivo descreve a sequência pela spec, não o que foi conferido no Slides. Antes de usar: exportar o PDF para `fortaleza/deck-fortaleza.pdf` e ler o PDF inteiro contra as regras abaixo (`checklist-thiago.md`, Até segunda, item 2).
 
 
-## Já aplicado na cópia (versão anterior, para devs)
+## Regras de todo slide
 
-As mudanças abaixo foram feitas para a versão anterior e continuam na cópia. A barra de 8 passos e o texto do slide 26 são substituídos pela lista acima.
-
-| Slide (cópia) | Antes | Depois |
-|---|---|---|
-| Todos | Rodapé "The AI Collective Florianópolis · Friends of Figma Florianópolis · Designers no Boteco" | "Fora do Frame · uma experiência UXFor · Fortaleza" |
-| 14 | Título "Acessem o guia em suas màquinas." | Acento corrigido: "máquinas" |
-| 14 | QR para `thiagoxikota.com/tdc` | QR para o guia do participante no GitHub |
-| 14 | "Tudo do workshop mora nesse link..." e URL `thiagoxikota.com/tdc` | "Pasta fortaleza, arquivo guia-participante. Siga pelo guia na sua máquina, não pelo telão." e URL `github.com/thiagoxikota/figma-to-code-tdc-2026`, em 26 pt para caber |
-| 15 a 18 | "Travou? Pare de repetir. Siga em dupla ou use uma máquina reserva." | "Travou? Pare de repetir. Chame um voluntário ou siga em dupla." |
-| 20 a 25 e 27 | Barra de passos com 7 e "Passo N de 7" | "1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Inspecionar · 6 Corrigir · 7 Exportar · 8 Revogar" e "Passo N de 8" |
-| 26 (novo) | | "7. Leve pro código", duplicado do slide de Corrigir. Texto abaixo |
-| 27 | "7. Revogue seu token", "Passo 7 de 7" | "8. Revogue seu token", "Passo 8 de 8" |
-| 33 (novo) | | Passagem para o Mateus, duplicado do slide "Ferramentas mudam". Texto abaixo |
-| Notas, 14 a 20 | Horários da manhã (10:37 a 10:57), "25 minutos", "máquina reserva", explicação da página `/tdc` | 18h22, 18h27, 18h33, 18h43, corte às 18h47, "30 minutos", sem reserva. Nota do 14 reescrita para o guia do GitHub |
-| Notas, 30 a 34 | 11:30, 11:36, 11:42, 11:45 | 19h28, 19h33, 19h38, 19h40 |
-
-Texto do slide 26:
-
-```
-7. Leve pro código
-
-Antes de revogar: o 7a ainda lê o Figma. Os prompts 7a e 7b estão no guia.
-Cada bloco vai para a pasta fora-do-frame: tokens.json, Card.html, Card.css.
-
-7a  tokens em JSON (formato DTCG), lidos do Figma via MCP
-7b  o Card corrigido, em HTML e CSS puros
-7c  copie e cole: o Claude gratuito não grava arquivo
-
-Não terminou ou bateu no limite? Pegue a pasta handoff/ do repositório. Às 20h o Mateus parte desses arquivos.
-```
-
-Texto do slide 33:
-
-```
-Às 20h, o Mateus
-parte da sua pasta.
-
-tokens.json, Card.html e Card.css:
-o ponto de partida do próximo workshop.
-```
-
-Os dois têm nota do orador nova.
-
-**Linhas "Até HH:MM".** Não existem mais no deck: foram tiradas em 23/07 (commit `c382e39`, "zero horário no telão"). Os horários vivem só nas notas, e lá já estão em horário de Fortaleza.
+- Cada slide de tarefa tem: **verbo de tarefa**, **"deu certo quando..."** e uma **imagem** do resultado esperado.
+- Prompt inteiro só no guia. No slide, no máximo a primeira linha do prompt, em fonte grande.
+- Corpo de no mínimo 24 pt no PDF de 960 x 540. Rótulo nunca abaixo de 18 pt. Contraste AA (4,5 para 1), inclusive na barra de etapas.
+- Sem chips de palco (FALA, ESPERA, DEMO NO CLAUDE, SALA FAZ) no slide: vão para as notas do orador.
+- A barra de etapas destaca a etapa atual. Parte A: Exportar · Revisar · Decidir · Prototipar · Testar. Parte B: Ler · Auditar · Gerar · Conferir · Salvar · Revogar.
+- Nada de React, TypeScript, WebSocket ou servidor. MCP aparece uma vez (slide 4), como "a ligação local entre o Claude e o Figma".
+- Nunca chamar `#C8352B` de "cor errada" ou de valor que a IA criou. O valor é igual ao token; o que falta é o vínculo.
+- Rodapé: "Fora do Frame · uma experiência UXFor · Fortaleza". Sem "Xikota.ai, em construção".
+- Horários só nas notas do orador, na grade nova.
 
 
-## Falta decidir (só você)
+## A sequência
 
-Além de aprovar e aplicar a lista "Nova versão para designers":
+| # | Bloco | Slide | Na tela | Deu certo quando / nota |
+|---|---|---|---|---|
+| 1 | Abertura, 18h00 | Capa | "Seu Figma vira produto" e "Design com IA, do arquivo ao protótipo que funciona". Data e local | Sem MCP na capa |
+| 2 | Abertura | Quem fala com vocês hoje | Só o Thiago, foto e uma linha | Bruno e Lourena saem do slide e das notas |
+| 3 | Abertura | O que você leva | Parte A: protótipo navegável da Tela demo, a partir da imagem. Parte B: a mesma Tela demo lida do arquivo, o Card e os tokens para o Mateus. Não terminou: a pasta de exemplo | Nota: "O Card não é o protótipo da A. É o ponto de partida do Mateus às 20h" |
+| 4 | Abertura | As rotas | Parte A: todo mundo, conta e navegador. Parte B sozinho: quem instalou em casa. Parte B em dupla: quem não instalou. "Ninguém instala nada aqui." Uma linha: a Parte B usa a ligação local entre o Claude e o Figma | Única menção ao MCP |
+| 5 | Abertura | Guia | QR para `fortaleza/guia-participante.md` no GitHub, URL visível igual à do QR | Testar o QR do fundo da sala |
+| 6 | Parte A, 18h08 | Exporte a Tela demo | Print do frame selecionado e do painel Export, PNG 2x | Você tem o PNG do formulário inteiro |
+| 7 | Parte A, 18h12 | Peça a revisão de dev | Primeira linha do prompt A2, grande. Print de uma lista de exemplo | Lista numerada, cada ponto "visto" ou "suposto" |
+| 8 | Parte A, 18h19 | Você decide quais pontos aceita | "A IA aponta. Quem decide é você." Exemplo: "Aceito 1, 3 e 4. Recuso o 2 porque..." | Números anotados, antes de gerar |
+| 9 | Parte A, 18h22 | Gere o protótipo | Primeira linha do prompt A4. Print do protótipo na conversa | O protótipo aparece na conversa, com só os pontos aceitos |
+| 10 | Parte A, 18h31 | Teste e anote uma diferença | Print do erro com campo vazio e da tela "Conta criada" | Erro e sucesso testados, uma diferença anotada |
+| 11 | Ponte, 18h33 | A tese | "A imagem mostra como a tela parece. O arquivo mostra do que ela é feita." | |
+| 12 | Ponte | Botão "Continuar" | Lado a lado: o vermelho na imagem; no Figma, `#C8352B` sem variável e fora do componente Button; o token `color/brand-primary` com o mesmo valor | "O valor é igual. O vínculo não existe. Se a marca mudar, o botão fica para trás" |
+| 13 | Ponte | Texto "Leva menos de um minuto" | `#A29B93` sobre `#FFFFFF`, cerca de 2,75 para 1, contra 4,5 do AA | A imagem deixa estimar; o arquivo dá o valor |
+| 14 | Ponte | Campo "nome" | Campo nome com borda ao lado do campo e-mail preenchido (`color/surface-alt`) | Parece escolha; o arquivo mostra que saiu do padrão |
+| 15 | Ponte | A cadeia | Propriedade no Figma, token, valor, código gerado | `var(--token)` sozinho não prova leitura |
+| 16 | Conexão, 18h38 | Confira a conexão | Print da resposta do Claude com o nome do arquivo. "Não instalou? Forme dupla agora" | O Claude disse o nome do arquivo |
+| 17 | Parte B, 18h48 | Leia as três propriedades | Primeira linha do prompt B1. Print da resposta | `#C8352B` sem variável, `#A29B93`, campo nome com borda. Vazio: confira arquivo e plugin antes de repetir |
+| 18 | Parte B, 18h53 | Audite | Primeira linha do prompt B2. Print da Tela demo ao lado de um achado | Cada achado com nome de token ou regra |
+| 19 | Parte B, 18h58 | Gere o Card | Primeira linha do prompt B3. Print do Card | Dois blocos e 3 linhas no fim. "Não é o protótipo: é o ponto de partida do Mateus" |
+| 20 | Parte B, 19h05 | Confira três valores no Figma | Tabela: `color/brand-primary` `#C8352B`, `font-size/heading` 20, `space/3` 24. Print do painel de variáveis | Os três batem no painel |
+| 21 | Salvar, 19h10 | Salve os três arquivos | Print da pasta final com `tokens.json`, `Card.html`, `Card.css`; do Card aberto no navegador sem cor; do jsonlint dizendo válido | Três arquivos com o nome certo, abertos |
+| 22 | Salvar, 19h20 | Corte | "Não terminou? Copie a pasta `handoff` do ZIP. É o exemplo, e o Mateus sabe" | Pasta de exemplo copiada e identificada |
+| 23 | Revogar, 19h22 | Revogue o token | Print de Settings > Security > Personal access tokens, o Revoke e a confirmação | O token sumiu da lista. Revogue também o de casa |
+| 24 | Fecho, 19h26 | Limites | Protótipo da imagem é aproximação. Código gerado é ponto de partida. A ligação lê o sistema que existe | Um slide só |
+| 25 | Fecho | Uma pergunta | "Qual ponto da revisão você recusou, e por quê?" | Funciona para quem fez só a A |
+| 26 | Fecho | Às 20h, o Mateus | Duas origens da pasta: `fora-do-frame` (gerada por você) ou `handoff` (o exemplo). As duas servem | Último slide. Sem formulário, sem mentoria |
 
-### Slide 3, "Quem está com vocês hoje"
 
-Hoje: três colunas, Thiago Xikota ("Líder do The AI Collective Florianópolis"), Bruno Bach ("Líder do Friends of Figma Florianópolis.") e Lourena ("Anfitriã Designers no Boteco Florianópolis."), com fotos. A nota do slide 2 e a do 3 também citam os dois.
+## De onde vem cada slide da cópia antiga (34 slides)
 
-Bruno e Lourena não estarão em Fortaleza. Duas saídas:
+| Antigo | Destino |
+|---|---|
+| 1 | Novo 1, capa reescrita |
+| 2, "quem é de código?" | Sai |
+| 3, três pessoas | Novo 2, só o Thiago, título "Quem fala com vocês hoje" |
+| 4, promessa técnica | Novo 3, reescrito com as duas entregas |
+| 5, "surpresa" | Sai (sem mentoria) |
+| 6 e 7, arquitetura | Saem. A ligação vira uma linha no novo 4 |
+| 8 a 11, demo de abertura | Saem |
+| 12 e 13, Take A e Take B | Saem. A ponte nova (11 a 15) usa a mesma Tela demo e as 3 propriedades |
+| 14, QR | Novo 5 |
+| 15 a 19, instalação na sala | Saem. A instalação é tarefa de casa e vive só no guia |
+| 20 a 27, passos | Substituídos pelos novos 16 a 23, sem prompt inteiro |
+| 28 a 30, validação e limites | Novo 24, um slide |
+| 31, pergunta genérica | Novo 25, pergunta sobre a decisão |
+| 32, fechamento abstrato | Sai |
+| 33, passagem | Novo 26, com as duas origens |
+| 34, formulário e mentoria | Sai, com o rodapé "Xikota.ai, em construção" |
 
-- **Mais simples:** apagar as colunas de Bruno e Lourena e deixar só a sua, com o título "Quem está com vocês hoje" trocado por "Quem fala com vocês hoje". Nota: "Eu sou o Thiago Xikota, Senior Product Designer, pesquisador na UFSC e líder do The AI Collective Florianópolis. Hoje tem voluntários do Fora do Frame na sala: levantem a mão se travar."
-- **Com a equipe da sala:** trocar Bruno e Lourena pelos voluntários ou pela Gi. Depende dos nomes [VERIFICAR com a Gi].
 
-### Slide 14, QR
+## Notas do orador
 
-Já trocado na cópia. O QR novo (`fortaleza/qr-guia.png`) aponta para `https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/main/fortaleza/guia-participante.md`; a miniatura do slide renderizada foi lida de volta com `zbarimg` e devolve essa URL. Falta só o teste com o celular, de longe, no projetor.
+Cada slide leva na nota o horário da grade nova (`roteiro.md`), a fala sugerida e as instruções de palco que saíram do slide (o que antes era FALA, ESPERA, DEMO NO CLAUDE, SALA FAZ).
 
-Alternativa melhor, se der tempo: uma URL curta `thiagoxikota.com/fortaleza` redirecionando para o guia. Exige deploy no portfólio, que eu não fiz.
 
-A página `thiagoxikota.com/tdc` continua no ar e ensina o mesmo setup (Claude Desktop, mesmo MCP), mas oferece a rota de máquina reserva, não tem a Parte A nem o passo de exportação. Por isso o guia da sala é o do GitHub.
+## Já aplicado antes desta versão
 
-### Slide 5, "Fique até o final para uma surpresa!", e slide 34, formulário e mentoria
-
-Hoje o 34 diz "Concorra a uma mentoria de 1 hora com Thiago Xikota", QR e `forms.gle/Ba7rRF3TUVSdJrT19`, e o canto direito do rodapé diz "Xikota.ai, em construção". A surpresa do TDC (todo mundo que responde ganha a mentoria) está na nota do slide 5 e do 34.
-
-Opções:
-
-- **Repetir a mentoria.** Criar um formulário novo para Fortaleza (o do TDC mistura as respostas) e trocar URL e QR do slide 34. Manter o slide 5.
-- **Sem mentoria.** Apagar o slide 5 e o 34. O fechamento vira o slide 33, de passagem para o Mateus, que já encerra bem às 19h36.
-
-Proposta de texto, se repetir:
-
-```
-Concorra a uma mentoria de 1 hora
-com Thiago Xikota
-Acesse o QR Code e preencha o formulário
-[URL DO FORMULÁRIO NOVO]
-```
-
-### Rodapé direito do slide 34, "Xikota.ai, em construção"
-
-Se o slide ficar, decidir se esse rótulo continua. Proposta neutra: "Fechamento".
-
-### Depois de fechar o deck
-
-Exportar a cópia em PDF para `fortaleza/deck-fortaleza.pdf` (fallback offline do palco, como o `slides/deck.pdf` no TDC) e testar o QR com o celular, de longe, no projetor.
+Continuam valendo: rodapé de Fortaleza no lugar das comunidades de Florianópolis; acento corrigido no slide do QR; QR apontando para o guia no GitHub, lido de volta com `zbarimg`. Falta o teste do QR com o celular, de longe, no projetor.

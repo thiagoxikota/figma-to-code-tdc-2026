@@ -3,76 +3,88 @@
 Workshop de quarta, 18/11/2026, 18h00 às 19h40, Digital College Aldeota. Título: "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Público: designers.
 
 
+## Pendente e só seu: os ensaios na conta gratuita
+
+Nada da Parte A nem da Parte B nova foi rodado ainda no Claude gratuito contra o arquivo real. O que está testado é o `handoff/` e a conversão com Style Dictionary. Sem estes ensaios, a grade é estimativa.
+
+1. **Ensaio da Parte A, conta gratuita, com cronômetro.** Exportar a Tela demo em PNG 2x e seguir A1 a A5 do `guia-participante.md`. Cronometrar:
+   - A1 exportar (meta 4 min), A2 revisão (7), A3 decidir (3), A4 protótipo (9), A5 testar (2);
+   - quantas mensagens a A gasta e quanto limite sobra para a B;
+   - se o protótipo aparece na conversa sem pedir de novo, no navegador e no app;
+   - se o protótipo faz erro com campo vazio e "Conta criada" com os dois preenchidos.
+   Guardar a revisão e o protótipo: é a saída de ensaio para mostrar se a geração falhar no palco.
+2. **Ensaio da Parte B, conta gratuita, no Mac, com cronômetro.** Instalação pelo comando, token só com leitura em File content, arquivo da Community duplicado. Cronometrar:
+   - a instalação inteira em casa (o guia promete 30 min);
+   - rodar o comando pela segunda vez para trocar o token (o guia manda fazer isso na quarta): quanto tempo leva e se troca mesmo;
+   - conferir a conexão (meta 10 min para a sala);
+   - B1 (5), B2 (5), B3 (7), B4 (5) e B5 salvar e conferir (10 até o corte);
+   - B6 revogar (4).
+   Confirmar: o B1 devolve as 3 propriedades (`#C8352B` sem variável, `#A29B93`, campo nome com borda); o B3 devolve os dois blocos com as classes; o B5 devolve JSON válido no jsonlint, com 23 tokens e `px` nas medidas.
+3. **Converter a sua saída do B5** com `npx style-dictionary build` (configuração em `para-o-mateus.md`) e abrir o `Card.html` do B3. Tem que ficar parecido com o `handoff/Card.html`.
+4. **Ensaio no Windows,** se conseguir uma máquina: `npx.cmd`, o plano B `node scripts/instalar.mjs` e o salvamento no Bloco de Notas sem virar `.txt`.
+5. **Ajustar a grade** com os tempos medidos e, se mudar, atualizar roteiro, guia, voluntários e este checklist juntos.
+6. Revogar os tokens do ensaio.
+
+
 ## Até segunda, 16/11 (antes de a mensagem sair)
 
-1. **Ensaio da Parte A numa conta gratuita do Claude.** Exportar a "Tela demo" em PNG 2x, colar e mandar os prompts A2 e A3 do `guia-participante.md`. Confirmar três coisas que o material assume sem teste:
-   - o protótipo do A3 aparece funcionando na conversa, na conta gratuita, sem pedir de novo;
-   - os dois prompts cabem no limite da conta gratuita com folga (anotar quantas mensagens sobram);
-   - o A3 funciona igual no Claude do navegador e no app.
-   Se o protótipo não aparecer na conversa, ajustar o A3 e a frase "aparece no próprio Claude" no guia, no roteiro e no deck.
-2. **Ensaio da Parte B, ao vivo, no seu Mac.** Claude Desktop com conta gratuita, instalação pelo comando único, arquivo da Community duplicado. Rodar B1 a B7 de ponta a ponta. O B4 (Card direto em HTML e CSS) e o B6 nunca foram rodados: confirmar que o B4 devolve os dois blocos com as classes pedidas e que o B6 devolve 23 tokens com `px` nas medidas.
-3. **Converter a sua saída do B6** com `npx style-dictionary build` (configuração em `para-o-mateus.md`) e abrir o `Card.html` do B4 no navegador. Tem que ficar parecido com o `handoff/Card.html`.
-4. **Cronometrar as duas partes** na conta gratuita. Parte A tem 25 min e Parte B tem 28. Se a B passar, o B6 vira "pegue o `handoff/`" ao vivo.
-5. **Rodar o comando de instalação numa máquina limpa,** se conseguir uma emprestada, e medir. A grade conta com 15 min de setup.
-6. **Deck:** aprovar e aplicar a lista "Nova versão para designers" em `deck-ajustes.md`, decidir os itens de "Falta decidir" (slide 3, mentoria e formulário, rótulo Xikota.ai) e exportar o PDF para `fortaleza/deck-fortaleza.pdf`.
-7. **Mandar as perguntas para a Gi** (`perguntas-gi.md`).
-8. **Mandar `para-o-mateus.md` ao Mateus**, para ele saber que o público agora é de designers e que boa parte da sala deve chegar com o `handoff/`. Se ele pedir mudança, ajustar os prompts B4 ou B6 e o `handoff/`.
-9. **Se quiser, testar no Windows.** O caminho Claude Desktop em Windows foi testado no TDC, mas não com o comando único nem com o B6.
-10. Revogar o token do ensaio.
+1. Os ensaios acima.
+2. **Deck:** conferir a cópia Fortaleza aplicada (`deck-ajustes.md`), exportar o PDF para `fortaleza/deck-fortaleza.pdf` e ler o PDF inteiro: corpo de no mínimo 24 pt, rótulo nunca abaixo de 18, contraste AA, nenhum prompt inteiro no slide, nada de chips de palco.
+3. **Mandar as perguntas para a Gi** (`perguntas-gi.md`).
+4. **Mandar `para-o-mateus.md` ao Mateus.** Se ele pedir mudança, ajustar os prompts B3 ou B5 e o `handoff/`.
+5. **Revisar e mandar a mensagem do grupo** (`_inbox/secretario-2026-11-13/preparo/workshop-fortaleza-mensagem.md`). Ela pede a instalação em casa, então precisa sair cedo.
 
 
 ## Terça, 17/11
 
-1. Não gere o token do palco ainda: validade de 1 dia não cobre de terça para quarta. Ele sai na quarta de manhã.
-2. Baixar `fortaleza/deck-fortaleza.pdf` e a pasta `outputs-prebaked/` no Mac, para o caso de a rede cair. Guardar também a saída do seu ensaio da Parte A (o protótipo e a revisão), para mostrar como ensaio se a rede cair.
-3. Carregar o Mac e separar o adaptador do projetor [VERIFICAR com a Gi a entrada].
+1. Não gere o token do palco ainda: a validade de 1 dia não cobre de terça para quarta.
+2. Baixar no Mac `fortaleza/deck-fortaleza.pdf`, o ZIP do repositório (com `handoff/`) e a saída do seu ensaio da Parte A e da B, para o caso de a rede cair.
+3. Uma cópia de `handoff/` num pendrive para quem chegar sem o ZIP [VERIFICAR com a Gi se faz sentido na sala].
+4. Carregar o Mac e separar o adaptador do projetor [VERIFICAR com a Gi a entrada].
 
 
 ## Quarta, 18/11
 
 ### De manhã
 
-1. Gerar o token do palco (1 dia) pelo comando único, como a sala vai fazer. Fechar o Claude por completo e reabrir.
-2. "Verifique o status da conexão com o Figma" e leitura da Tela demo. Tem que voltar "Criar sua conta".
+1. Rodar o comando de novo e colar o token do palco (1 dia), como a sala vai fazer. Fechar o Claude por completo e reabrir.
+2. "Verifique o status da conexão com o Figma": o Claude diz o nome do arquivo. Rodar o B1: voltam as 3 propriedades.
 3. Exportar o PNG da Tela demo e deixar na área de trabalho, para a Parte A no telão.
 
 ### Na sala, antes das 18h00 [VERIFICAR com a Gi o horário de chegada]
 
 1. Carregador ligado. Ajustes > Tela > nunca dormir, ou `caffeinate -dis` num terminal escondido.
-2. Fechar tudo que não é palco. 8 GB de RAM: só o PDF do deck, Claude Desktop, Figma Desktop e o Terminal.
+2. Fechar tudo que não é palco. 8 GB de RAM: só o PDF do deck, Claude Desktop, Figma Desktop e o navegador.
 3. Não Perturbe ligado.
-4. Figma Desktop no arquivo da demo, página "01 Comece aqui", plugin Bridge rodando com a janela aberta.
-5. Teste de conexão e de leitura da Tela demo na rede da sala.
-6. Deck em tela cheia, telão espelhado (não estendido). Space 1 deck, Space 2 Claude e Figma lado a lado, Ctrl+seta para trocar.
-7. Escanear o QR do slide 14 do fundo da sala.
-8. Com os voluntários: cinco minutos sobre `guia-voluntarios.md`. Quem cobre a instalação, quem cobre a Parte A, quem guarda o relógio.
+4. Figma Desktop no arquivo da demo, página "01 Comece aqui", plugin Figma Desktop Bridge rodando.
+5. Teste de conexão e B1 na rede da sala.
+6. Deck em tela cheia, telão espelhado. Space 1 deck, Space 2 Claude e Figma lado a lado.
+7. Escanear o QR do guia do fundo da sala.
+8. Cinco minutos com os voluntários sobre `guia-voluntarios.md`: quem cobre a conexão, quem cobre a Parte A e as duplas, quem guarda o relógio, onde está o `handoff/`.
 
 ### Durante
 
 | Relógio | Você |
 |---|---|
-| 18h00 | Tese e promessa |
-| 18h05 | Duas partes, QR do guia, "quem vai fazer a B, abre o Terminal" |
-| 18h10 | Comando no telão, pausa por pausa |
-| 18h23 | Corte: travado vai para a Parte A e faz a B em dupla |
-| 18h25 | Parte A no telão com a Tela demo |
-| 18h50 | A ponte: "Imagem é aproximação. O arquivo é a fonte." |
-| 18h55 | Parte B |
-| 19h14 | B6: "Agora vocês levam pro código" |
-| 19h21 | Revogar |
-| 19h23 | O que divergiu e limites |
-| 19h27 | Perguntas |
-| 19h32 | Síntese e passagem para o Mateus |
-| 19h36 | Encerrar (margem até 19h40) |
+| 18h00 | Título, as duas entregas, as rotas, QR. "Ninguém instala nada aqui" |
+| 18h08 | Parte A no telão com a Tela demo: A1 exportar |
+| 18h12 | A2 revisão |
+| 18h19 | A3: "A IA aponta, quem decide é você" |
+| 18h22 | A4 protótipo, só com os pontos aceitos |
+| 18h31 | A5 testar e anotar uma diferença |
+| 18h33 | A ponte: botão, texto de apoio, campo nome, no Figma |
+| 18h38 | Conferir a conexão; duplas para quem não instalou |
+| 18h48 | B1 ler as 3 propriedades |
+| 18h53 | B2 auditar |
+| 18h58 | B3 gerar o Card: "não é o protótipo, é o ponto de partida do Mateus" |
+| 19h05 | B4 conferir 3 valores no painel de variáveis |
+| 19h10 | B5 salvar: mostrar a pasta final, o Card aberto e o JSON validado |
+| 19h20 | Corte: "quem não terminou, copia a `handoff`" |
+| 19h22 | B6 revogar, com a confirmação no telão |
+| 19h26 | Limites e passagem: as duas origens da pasta |
+| 19h34 | Margem e perguntas rápidas, fim às 19h40 |
 
 ### No fim
 
 1. Revogar o seu token do palco.
-2. Cinco minutos com o Mateus no coffee: como a sala saiu (quantos fizeram a Parte B com arquivo próprio, quantos usam o `handoff/`, se o JSON veio com algum desvio).
-
-
-## O que só você pode fazer
-
-- Os dois ensaios (itens 1 e 2 de segunda). Nenhum prompt da Parte A nem o B4 e o B6 foram rodados no Claude contra o arquivo real; o que está testado é o `handoff/` e a conversão com Style Dictionary.
-- As decisões e a edição do deck.
-- Mandar as perguntas à Gi e o documento ao Mateus.
+2. Cinco minutos com o Mateus no coffee: quantos saíram com `fora-do-frame` gerada, quantos com `handoff`, e se algum JSON veio sem `px`.
