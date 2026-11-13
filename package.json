@@ -16,7 +16,8 @@
     "workshop:check": "npm run validate:workshop",
     "workshop:reset": "node scripts/reset.mjs",
     "workshop:doctor": "node scripts/doctor.mjs",
-    "workshop:setup-mcp": "node scripts/mcp-config.mjs"
+    "workshop:setup-mcp": "node scripts/mcp-config.mjs",
+    "handoff:tokens": "node scripts/tokens-css-to-json.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

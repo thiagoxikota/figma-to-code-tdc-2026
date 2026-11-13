@@ -1,0 +1,30 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-brand-primary: #c8352b;
+  --color-brand-primary-hover: #a82a22;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f3f0;
+  --color-text: #1f1c1a;
+  --color-text-muted: #6c665f;
+  --color-border: #e2ddd6;
+  --color-focus: #1d4ed8;
+  --color-disabled-bg: #edeae5;
+  --color-disabled-text: #a29b93;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --font-body: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /** Derivado do estilo de texto do arquivo. Stack de fonte não vira variável no Figma; não conta nas 23 variáveis da coleção Workshop Tokens. */
+  --font-size-body: 16px;
+  --font-size-heading: 20px;
+  --font-weight-heading: 700;
+  --line-height-body: 1.5;
+  --radius-md: 8px;
+  --border-width: 1px;
+  --focus-ring-width: 2px;
+  --tap-target-min: 44px;
+  --size-icon: 24px;
+}
