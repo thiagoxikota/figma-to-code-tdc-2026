@@ -3,6 +3,7 @@
  * Instalador de um comando só do workshop (Mac e Windows, Node 18+).
  *
  *   npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/heads/main.tar.gz
+ *   (Windows: npx.cmd no lugar de npx. Plano B: baixar o ZIP do repo e rodar node scripts/instalar.mjs)
  *
  * O que faz, em ordem:
  *   1. Confere Node, Figma Desktop e Claude Desktop (avisa e dá o link do que faltar).
@@ -13,11 +14,12 @@
  *      manifest.json no Finder/Explorer, com o caminho copiado.
  *
  * SEGURANÇA: o token nunca é impresso, nunca vai para argumento de processo e
- * só é gravado no config local do Claude Desktop.
+ * só é gravado no config local do Claude Desktop. A cópia de segurança do config
+ * antigo pode conter tokens anteriores, então fica só legível pelo usuário.
  * Teste sem tocar na máquina: MCP_CONFIG_PATH=/tmp/x.json FIGMA_ACCESS_TOKEN=figd_teste node scripts/instalar.mjs --sem-plugin
  */
 import { spawn, spawnSync } from 'node:child_process'
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir, platform } from 'node:os'
 import { dirname, join } from 'node:path'
 import readline from 'node:readline'
@@ -139,9 +141,17 @@ function readConfig(p) {
 function writeConfig(token) {
   const path = configPath()
   const state = readConfig(path)
+  let backupPath = ''
   if (state.existed) {
     const stamp = new Date().toISOString().replace(/[:.]/g, '-')
-    copyFileSync(path, `${path}.bak-${stamp}`)
+    const backup = `${path}.bak-${stamp}`
+    copyFileSync(path, backup)
+    try {
+      chmodSync(backup, 0o600)
+    } catch {
+      /* Windows ignora o modo; o arquivo já fica na pasta do usuário */
+    }
+    backupPath = backup
   }
   // JSON quebrado: o backup acima guarda o original e o config recomeça limpo.
   const cfg = state.invalid ? {} : state.cfg
@@ -156,7 +166,7 @@ function writeConfig(token) {
   mkdirSync(dirname(path), { recursive: true })
   writeFileSync(path, out)
   const others = Object.keys(cfg.mcpServers).filter((k) => k !== SERVER_KEY)
-  return { path, others, wasInvalid: !!state.invalid }
+  return { path, others, wasInvalid: !!state.invalid, backupPath }
 }
 
 // Encerra o MCP de aquecimento e os filhos dele: um processo esquecido seguraria
@@ -176,26 +186,42 @@ function stopTree(child) {
 }
 
 // Liga o MCP uma vez: no primeiro boot ele cria o plugin em ~/.figma-console-mcp/plugin.
+// Mostra progresso a cada 10 s e desiste cedo se o processo morrer.
 function warmPlugin(token) {
   const manifest = pluginManifestPath()
-  if (existsSync(manifest)) return Promise.resolve(true)
+  if (existsSync(manifest)) return Promise.resolve({ ok: true })
   return new Promise((resolve) => {
+    let errText = ''
     const child = spawn(IS_WIN ? 'npx.cmd' : 'npx', ['-y', PINNED], {
       env: { ...process.env, FIGMA_ACCESS_TOKEN: token, ENABLE_MCP_APPS: 'true' },
-      stdio: ['pipe', 'ignore', 'ignore'],
+      stdio: ['pipe', 'ignore', 'pipe'],
       shell: IS_WIN,
     })
+    child.stderr.on('data', (chunk) => {
+      errText = (errText + chunk.toString()).slice(-2000)
+    })
     const started = Date.now()
-    const timer = setInterval(() => {
-      if (existsSync(manifest) || Date.now() - started > 180000) {
-        clearInterval(timer)
-        stopTree(child)
-        resolve(existsSync(manifest))
-      }
-    }, 1000)
-    child.on('error', () => {
+    let done = false
+    const finish = (result) => {
+      if (done) return
+      done = true
       clearInterval(timer)
-      resolve(false)
+      stopTree(child)
+      resolve(result)
+    }
+    const timer = setInterval(() => {
+      const secs = Math.round((Date.now() - started) / 1000)
+      if (existsSync(manifest)) return finish({ ok: true })
+      if (secs >= 180) return finish({ ok: false, reason: 'demorou mais de 3 minutos (rede lenta ou bloqueada?)' })
+      if (secs % 10 === 0) console.log(`     baixando e preparando o plugin... ${secs} s (pode levar até 2 min na primeira vez)`)
+    }, 1000)
+    child.on('error', (error) => finish({ ok: false, reason: `não consegui rodar o npx (${error.code || error.message})` }))
+    child.on('exit', (code) => {
+      if (existsSync(manifest)) return finish({ ok: true })
+      const lastLine = errText.trim().split('\n').filter(Boolean).pop() || ''
+      // Sem token na mensagem: o stderr do npx não recebe o token, mas cortamos qualquer figd_ por garantia.
+      const safe = lastLine.replace(/figd_[A-Za-z0-9_-]+/g, 'figd_***').slice(0, 160)
+      finish({ ok: false, reason: `o processo parou (código ${code})${safe ? `: ${safe}` : ''}` })
     })
   })
 }
@@ -222,7 +248,7 @@ async function main() {
   if (!token) {
     console.log('  Vou abrir as configurações do Figma no navegador.')
     console.log('  Lá: aba Security > Personal access tokens > Generate new token.')
-    console.log('  Validade: 1 dia basta. Marque leitura em File content, Variables e Comments.')
+    console.log('  Validade: 1 dia basta. Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
     console.log('  O token começa com figd_ e aparece uma vez só: copie na hora.')
     await askEnter('  Aperte Enter para abrir o Figma...')
     openUrl(TOKEN_PAGE)
@@ -235,19 +261,24 @@ async function main() {
     warn('Sem token válido. Rode o comando de novo quando tiver o token.')
     process.exit(2)
   }
-  ok('token recebido (não foi mostrado nem salvo fora do Claude)')
+  ok('token recebido (não aparece na tela; vai só para o config do Claude Desktop)')
 
   step(3, 'Ligando o Figma no Claude Desktop')
   const result = writeConfig(token)
   if (result.wasInvalid) warn('O config antigo estava quebrado: guardei uma cópia .bak e criei um novo.')
   ok(`configurado em ${result.path}`)
+  if (result.backupPath) ok(`cópia do config anterior: ${result.backupPath}`)
   if (result.others.length) ok(`outros conectores preservados: ${result.others.join(', ')}`)
 
   step(4, 'Preparando o plugin do Figma')
   const manifest = pluginManifestPath()
-  const pluginReady = args.has('--sem-plugin') ? existsSync(manifest) : await warmPlugin(token)
+  const warm = args.has('--sem-plugin') ? { ok: existsSync(manifest) } : await warmPlugin(token)
+  const pluginReady = warm.ok
   if (pluginReady) ok(`plugin pronto em ${manifest}`)
-  else warn('O plugin ainda não apareceu. Ele é criado quando você abrir o Claude Desktop; depois importe pelo caminho abaixo.')
+  else {
+    if (warm.reason) warn(`Não deu para preparar o plugin agora: ${warm.reason}.`)
+    warn('Ele também é criado quando o Claude Desktop abre com internet. Siga os passos abaixo; se o arquivo não existir no passo B, chame um voluntário.')
+  }
 
   console.log('\nFalta pouco, faça nesta ordem:\n')
   console.log(`  A. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}) e abra de novo.`)
@@ -255,7 +286,8 @@ async function main() {
   console.log(`     Escolha este arquivo: ${manifest}`)
   if (copyToClipboard(manifest)) console.log('     (o caminho já está copiado: cole com Cmd+Shift+G no Mac ou na barra do Explorer no Windows)')
   console.log('  C. Abra o arquivo do workshop no Figma e rode o plugin Figma Desktop Bridge. Deixe ele aberto.')
-  console.log('  D. No Claude Desktop, numa conversa nova: "Verifique o status da conexão com o Figma".\n')
+  console.log('  D. No Claude Desktop, numa conversa nova: "Verifique o status da conexão com o Figma".')
+  console.log('     Deu certo quando o Claude disser o NOME do arquivo que está aberto no Figma.\n')
   if (pluginReady) revealFile(manifest)
   console.log('Travou? Chame um voluntário. Ninguém fica para trás.\n')
 }
