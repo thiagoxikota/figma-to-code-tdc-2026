@@ -16,6 +16,7 @@ Os slides 14, 15, 26, 27 e 33 foram renderizados e conferidos depois da edição
 |---|---|---|
 | Todos | Rodapé "The AI Collective Florianópolis · Friends of Figma Florianópolis · Designers no Boteco" | "Fora do Frame · uma experiência UXFor · Fortaleza" |
 | 14 | Título "Acessem o guia em suas màquinas." | Acento corrigido: "máquinas" |
+| 14 | QR para `thiagoxikota.com/tdc` | QR para o guia do participante no GitHub |
 | 14 | "Tudo do workshop mora nesse link..." e URL `thiagoxikota.com/tdc` | "Pasta fortaleza, arquivo guia-participante. Siga pelo guia na sua máquina, não pelo telão." e URL `github.com/thiagoxikota/figma-to-code-tdc-2026`, em 26 pt para caber |
 | 15 a 18 | "Travou? Pare de repetir. Siga em dupla ou use uma máquina reserva." | "Travou? Pare de repetir. Chame um voluntário ou siga em dupla." |
 | 20 a 25 e 27 | Barra de passos com 7 e "Passo N de 7" | "1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Inspecionar · 6 Corrigir · 7 Exportar · 8 Revogar" e "Passo N de 8" |
@@ -68,7 +69,7 @@ Bruno e Lourena não estarão em Fortaleza. Duas saídas:
 
 ### Slide 14, QR
 
-A URL já foi trocada. O QR ainda aponta para `thiagoxikota.com/tdc`. O QR novo, já gerado e lido de volta com `zbarimg`, está em `fortaleza/qr-guia.svg` e `fortaleza/qr-guia.png` e aponta para `https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/main/fortaleza/guia-participante.md`. Ver no fim deste arquivo se ele já foi aplicado na cópia.
+Já trocado na cópia. O QR novo (`fortaleza/qr-guia.png`) aponta para `https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/main/fortaleza/guia-participante.md`; a miniatura do slide renderizada foi lida de volta com `zbarimg` e devolve essa URL. Falta só o teste com o celular, de longe, no projetor.
 
 Alternativa melhor, se der tempo: uma URL curta `thiagoxikota.com/fortaleza` redirecionando para o guia. Exige deploy no portfólio, que eu não fiz.
 
@@ -103,8 +104,3 @@ Continua certo para o passo 4. Se quiser antecipar a ponte, trocar por "React, d
 ### Depois de fechar o deck
 
 Exportar a cópia em PDF para `fortaleza/deck-fortaleza.pdf` (fallback offline do palco, como o `slides/deck.pdf` no TDC) e testar o QR com o celular, de longe, no projetor.
-
-
-## Estado do QR na cópia
-
-Aplicado depois do push: ver o relatório do commit. Se o slide 14 ainda mostrar o QR antigo, trocar a imagem pelo `fortaleza/qr-guia.png` (Inserir > Imagem > Substituir imagem).
