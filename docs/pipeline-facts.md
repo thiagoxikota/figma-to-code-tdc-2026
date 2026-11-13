@@ -52,7 +52,7 @@ Depois de salvar: **feche o Claude Desktop por completo e reabra** (no macOS é 
 ## Token do Figma
 
 - Figma > menu do usuário > Settings > Security > Personal access tokens > Generate new token.
-- Escopos mínimos: `file_content:read`, `file_variables:read`, `file_comments:read`, `file_comments:write`.
+- Escopo: **só leitura em File content** (`file_content:read`). Nada mais é necessário para esta rota: o plugin Desktop Bridge lê as variáveis, e o escopo de variáveis pela API é restrito ao plano Enterprise. Nenhuma permissão de escrita, nem em comentários. Validade na edição Fortaleza: 7 dias, com revogação no fim do workshop.
 - Prefixo esperado: começa com `figd_`. Aparece **uma vez só**; copie na hora.
 - O token é local. Nunca passa pelo site do workshop, por analytics, por URL, por banco, nem pelos organizadores.
 

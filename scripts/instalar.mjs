@@ -2,7 +2,7 @@
 /*
  * Instalador de um comando só do workshop (Mac e Windows, Node 18+).
  *
- *   npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/heads/main.tar.gz
+ *   npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza.tar.gz
  *   (Windows: npx.cmd no lugar de npx. Plano B: baixar o ZIP do repo e rodar node scripts/instalar.mjs.
  *   O plano B dispensa baixar o instalador, mas o passo 4 ainda baixa a ligação pelo npm.)
  *
@@ -10,7 +10,9 @@
  *   1. Confere Node, Figma Desktop e Claude Desktop (avisa e dá o link do que faltar).
  *   2. Abre a página do token do Figma e pede o token num campo escondido.
  *   3. Grava o Figma Console MCP no config do Claude Desktop, preservando outros MCP,
- *      com backup do arquivo anterior.
+ *      com backup do arquivo anterior. Se o config estiver inválido, ou já tiver uma
+ *      entrada figma-console diferente, diz o que seria substituído e só continua
+ *      com um "sim" digitado (ou com --substituir). Sem confirmação, sai com código 4.
  *   4. Liga o MCP uma vez para ele criar o plugin Desktop Bridge e mostra o
  *      manifest.json no Finder/Explorer, com o caminho copiado. Se o plugin não
  *      ficar pronto, diz que a instalação NÃO terminou e sai com código 3.
@@ -21,7 +23,8 @@
  * SEGURANÇA: o token nunca é impresso, nunca vai para argumento de processo e
  * só é gravado no config local do Claude Desktop. A cópia de segurança do config
  * antigo pode conter tokens anteriores, então fica só legível pelo usuário.
- * Teste sem tocar na máquina: MCP_CONFIG_PATH=/tmp/x.json FIGMA_ACCESS_TOKEN=figd_teste node scripts/instalar.mjs --sem-plugin
+ * Teste sem tocar na máquina, com ambiente limpo e chave falsa:
+ *   env -i PATH="$PATH" HOME=/tmp/casa-teste MCP_CONFIG_PATH=/tmp/casa-teste/x.json FIGMA_ACCESS_TOKEN=figd_TESTE node scripts/instalar.mjs --sem-plugin
  */
 import { spawn, spawnSync } from 'node:child_process'
 import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -132,6 +135,81 @@ function askEnter(question) {
   })
 }
 
+function askLine(question) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+    let answered = false
+    rl.question(question, (answer) => {
+      answered = true
+      rl.close()
+      resolve(answer.trim())
+    })
+    // Entrada fechada (sem terminal): conta como resposta vazia, nunca como "sim".
+    rl.on('close', () => {
+      if (!answered) resolve('')
+    })
+  })
+}
+
+// O que o instalador grava. Serve também para saber se a entrada que já existe é a nossa.
+function ourEntry(token) {
+  // Windows: o Claude Desktop não inicia `npx` direto (é um script .cmd), então
+  // o comando passa pelo cmd. Padrão ainda não ensaiado numa máquina Windows real.
+  return {
+    command: IS_WIN ? 'cmd' : 'npx',
+    args: IS_WIN ? ['/c', 'npx', '-y', PINNED] : ['-y', PINNED],
+    env: { FIGMA_ACCESS_TOKEN: token, ENABLE_MCP_APPS: 'true' },
+  }
+}
+
+// Descreve uma entrada existente sem nunca mostrar o env (onde ficam as chaves).
+function describeEntry(entry) {
+  const cmd = typeof entry?.command === 'string' ? entry.command : '(sem comando)'
+  const list = Array.isArray(entry?.args) ? entry.args.map(String) : []
+  const text = [cmd, ...list].join(' ').replace(/figd_[A-Za-z0-9_-]+/g, 'figd_***')
+  return text.length > 140 ? `${text.slice(0, 140)}...` : text
+}
+
+// Conflito = algo que este instalador apagaria ou trocaria sem a pessoa pedir.
+function findConflict(path) {
+  const state = readConfig(path)
+  if (state.invalid) return { kind: 'invalido' }
+  const current = state.cfg?.mcpServers?.[SERVER_KEY]
+  if (!current) return null
+  const mine = ourEntry('')
+  const same = current.command === mine.command && JSON.stringify(current.args || []) === JSON.stringify(mine.args)
+  return same ? null : { kind: 'entrada', atual: describeEntry(current) }
+}
+
+async function confirmConflict(path) {
+  const conflict = findConflict(path)
+  if (!conflict) return
+  const mine = ourEntry('')
+  console.log('')
+  if (conflict.kind === 'invalido') {
+    warn('O arquivo de configuração do Claude Desktop não é um JSON válido:')
+    console.log(`       ${path}`)
+    console.log('  Se eu continuar: guardo uma cópia dele ao lado (.bak) e crio um arquivo novo SÓ com a ligação do Figma.')
+    console.log('  As outras conexões que estavam nesse arquivo param de funcionar até alguém consertar a cópia.')
+  } else {
+    warn(`Já existe uma ligação "${SERVER_KEY}" diferente no seu Claude Desktop:`)
+    console.log(`       hoje:   ${conflict.atual}`)
+    console.log(`       depois: ${[mine.command, ...mine.args].join(' ')}`)
+    console.log('  Se eu continuar: troco SÓ essa entrada (comando e chave). As outras conexões ficam como estão.')
+    console.log('  A configuração de hoje fica guardada numa cópia ao lado (.bak), mas deixa de valer.')
+  }
+  if (args.has('--substituir')) {
+    ok('substituição confirmada pela opção --substituir')
+    return
+  }
+  const answer = await askLine('  Digite sim para substituir, ou só Enter para parar sem mexer em nada: ')
+  if (answer.toLowerCase() !== 'sim') {
+    console.log('\nParei sem mexer em nada. A sua configuração continua como estava.')
+    console.log('No dia você faz a Parte A inteira e a Parte B em grupo. Se quiser ajuda, mostre esta tela a um voluntário.\n')
+    process.exit(4)
+  }
+}
+
 function readConfig(p) {
   if (!existsSync(p)) return { existed: false, cfg: {} }
   const raw = readFileSync(p, 'utf8').trim()
@@ -158,16 +236,10 @@ function writeConfig(token) {
     }
     backupPath = backup
   }
-  // JSON quebrado: o backup acima guarda o original e o config recomeça limpo.
+  // JSON quebrado: só chega aqui depois do "sim" de confirmConflict. O backup guarda o original.
   const cfg = state.invalid ? {} : state.cfg
   cfg.mcpServers = cfg.mcpServers || {}
-  // Windows: o Claude Desktop não inicia `npx` direto (é um script .cmd), então
-  // o comando passa pelo cmd. Padrão ainda não ensaiado numa máquina Windows real.
-  cfg.mcpServers[SERVER_KEY] = {
-    command: IS_WIN ? 'cmd' : 'npx',
-    args: IS_WIN ? ['/c', 'npx', '-y', PINNED] : ['-y', PINNED],
-    env: { FIGMA_ACCESS_TOKEN: token, ENABLE_MCP_APPS: 'true' },
-  }
+  cfg.mcpServers[SERVER_KEY] = ourEntry(token)
   const out = `${JSON.stringify(cfg, null, 2)}\n`
   JSON.parse(out)
   mkdirSync(dirname(path), { recursive: true })
@@ -222,13 +294,16 @@ function warmPlugin(token) {
       if (secs >= 180) return finish({ ok: false, reason: 'demorou mais de 3 minutos (rede lenta ou bloqueada?)' })
       if (secs % 10 === 0) console.log(`     baixando e preparando o plugin... ${secs} s (pode levar até 2 min na primeira vez)`)
     }, 1000)
-    child.on('error', (error) => finish({ ok: false, reason: `não consegui rodar o npx (${error.code || error.message})` }))
+    child.on('error', (error) =>
+      finish({ ok: false, npx: true, reason: `não consegui rodar o npx (${error.code || error.message})` }),
+    )
     child.on('exit', (code) => {
       if (existsSync(manifest)) return finish({ ok: true })
       const lastLine = errText.trim().split('\n').filter(Boolean).pop() || ''
       // Sem token na mensagem: o stderr do npx não recebe o token, mas cortamos qualquer figd_ por garantia.
       const safe = lastLine.replace(/figd_[A-Za-z0-9_-]+/g, 'figd_***').slice(0, 160)
-      finish({ ok: false, reason: `o processo parou (código ${code})${safe ? `: ${safe}` : ''}` })
+      const notFound = code === 127 || code === 9009 || /not recognized|não é reconhecido|command not found|ENOENT/i.test(errText)
+      finish({ ok: false, npx: notFound, reason: `o processo parou (código ${code})${safe ? `: ${safe}` : ''}` })
     })
   })
 }
@@ -250,6 +325,9 @@ async function main() {
   else missing.push(['Claude Desktop', 'https://claude.com/download'])
   for (const [name, url] of missing) warn(`Não achei o ${name}. Baixe aqui: ${url} (dá para continuar e instalar depois)`)
 
+  // Antes de pedir a chave: se a configuração tem algo que seria trocado, avisa e para.
+  await confirmConflict(configPath())
+
   step(2, 'Chave do Figma (personal access token)')
   let token = process.env.FIGMA_ACCESS_TOKEN || ''
   // Segunda rodada: a chave aparece uma vez só no Figma, então a que já está
@@ -268,6 +346,7 @@ async function main() {
     console.log('  A chave começa com figd_ e aparece uma vez só: copie na hora.')
     await askEnter('  Aperte Enter para abrir o Figma...')
     openUrl(TOKEN_PAGE)
+    console.log(`  O navegador não abriu? Copie e abra este endereço: ${TOKEN_PAGE}`)
     for (let attempt = 0; attempt < 3 && !token.startsWith('figd_'); attempt += 1) {
       token = await askHidden('  Cole a chave aqui (não aparece na tela) e aperte Enter: ')
       if (!token.startsWith('figd_')) warn('Essa não parece a chave: ela começa com figd_. Tente de novo.')
@@ -281,7 +360,7 @@ async function main() {
 
   step(3, 'Ligando o Figma no Claude Desktop')
   const result = writeConfig(token)
-  if (result.wasInvalid) warn('O config antigo estava quebrado: guardei uma cópia .bak e criei um novo.')
+  if (result.wasInvalid) warn('O arquivo antigo era inválido: guardei a cópia .bak e criei um novo, só com a ligação do Figma.')
   ok(`configurado em ${result.path}`)
   if (result.backupPath) ok(`cópia do config anterior: ${result.backupPath}`)
   if (result.others.length) ok(`outros conectores preservados: ${result.others.join(', ')}`)
@@ -293,10 +372,16 @@ async function main() {
   if (!pluginReady) {
     warn(`O plugin NÃO ficou pronto${warm.reason ? `: ${warm.reason}` : ''}.`)
     console.log('\nA instalação NÃO terminou. O Claude Desktop já está configurado, mas falta o plugin do Figma.\n')
+    if (warm.npx) {
+      console.log('  O comando npx não rodou. Ele vem junto com o Node, então confira três coisas:')
+      console.log('     a. Node instalado: digite node -v. Tem que aparecer v18 ou maior.')
+      console.log('     b. npm instalado: digite npm -v. Não apareceu número? Reinstale o Node pelo site, versão LTS.')
+      console.log('     c. PATH: instalou agora? Feche e abra o Terminal (ou o PowerShell) para ele achar o comando.')
+    }
     console.log('  1. Confira a internet. Este passo baixa a ligação pelo npm, mesmo quando você roda pelo ZIP.')
     console.log(`  2. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}), abra de novo e espere 2 minutos.`)
     console.log('  3. Rode este mesmo comando outra vez. A chave do Figma é a mesma: não precisa criar outra.')
-    console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B em dupla.\n')
+    console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B em grupo.\n')
     process.exit(3)
   }
   ok(`plugin pronto em ${manifest}`)
@@ -311,7 +396,7 @@ async function main() {
   console.log('     Deu certo quando o Claude disser o NOME do arquivo que está aberto no Figma.')
   console.log('     Só isso prova a conexão. O "ok" deste instalador não prova.\n')
   revealFile(manifest)
-  console.log('Travou em casa? Sem problema: no dia você faz a Parte A inteira e a Parte B em dupla.\n')
+  console.log('Travou em casa? Sem problema: no dia você faz a Parte A inteira e a Parte B em grupo.\n')
 }
 
 main().catch((error) => {
