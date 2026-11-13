@@ -2,12 +2,14 @@
 
 Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o seu (20h). Nada aqui muda o seu plano; é só para você saber exatamente de onde a galera parte.
 
-**O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício. Cada pessoa sai com duas coisas:
+**O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício. O que a sala leva:
 
-- **O próprio formulário, corrigido.** Na Parte A, a Tela demo vira PNG, o Claude revisa, a pessoa escolhe quais pontos aceita e gera um protótipo do formulário. Na Parte B, ela aplica nele uma correção com um valor conferido no Figma. Esse protótipo fica na conversa do Claude e **não entra no seu workshop**.
-- **A pasta `handoff`, conferida.** É a pasta de exemplo do repositório, que todo mundo baixa no ZIP antes de quarta. Na sala, das 19h12 às 19h23, cada pessoa confere três coisas: o `Card.html` abre com cor; `#C8352B`, `20px` e `24px` estão no `tokens.json`; e os mesmos três valores estão nas variáveis do Figma. Enquanto isso eu gero um Card no telão a partir do arquivo, pelo `figma-console-mcp@1.35.0`, para a sala ver de onde a pasta veio.
+- **A pasta `handoff`, aberta e conferida. É o que chega a você, e é garantido para todo mundo.** É a pasta de exemplo do repositório, que todo mundo baixa no ZIP antes de quarta e copia para a Área de Trabalho. Na sala, das 19h21 às 19h30, cada pessoa abre o `Card.html` (dois cards com cor) e acha três valores de amostra no `tokens.json`: `#C8352B`, `20px` e `24px`. Quem tem rede compara os mesmos três com as variáveis do Figma; quem não tem fica com essa comparação pendente e sabe dizer isso. Quem chegar sem a pasta recebe por pendrive nesse mesmo bloco.
+- **Uma decisão de design escrita e, para a maioria, o próprio formulário corrigido.** Na Parte A, a Tela demo vira PNG, o Claude revisa, a pessoa decide o que aceita e gera um protótipo do formulário. Na Parte B, ela aplica nele uma correção com um valor conferido no Figma. O protótipo depende do Claude gratuito de cada um, fica na conversa do Claude e **não entra no seu workshop**.
 
-Na sala eu digo com estas palavras: "O Card não é a continuação do formulário de vocês. É o material da próxima sessão. Às 20h, levem a pasta `handoff` aberta: o Mateus abre o `tokens.json` e o `Card.html` dela." O botão do Card ("Ver detalhes") não faz nada no HTML estático, e ninguém na sala ouviu o contrário.
+Eu não gero Card no telão. O Card aparece na minha sessão só dentro da `handoff`, como o objeto da sua.
+
+Na sala eu digo com estas palavras: "O Card não é a continuação do formulário de vocês. É o material da próxima sessão. Às 20h, levem a pasta `handoff` aberta: é dela que o Mateus parte." O botão do Card ("Ver detalhes") não faz nada no HTML estático, e ninguém na sala ouviu o contrário.
 
 **Mudou em relação ao que eu tinha te falado:** gerar o próprio Card e o próprio `tokens.json` saiu do percurso da sala. Não cabia em 100 minutos para quem nunca salvou um arquivo de código. Virou extensão, para quem terminar antes.
 
@@ -16,8 +18,8 @@ Na sala eu digo com estas palavras: "O Card não é a continuação do formulár
 
 | Origem | Nome da pasta | Quem tem | O que tem | Tokens |
 |---|---|---|---|---|
-| **Exemplo** do repositório, conferido na sala | `handoff` | Todo mundo. Quem chegar sem o ZIP recebe por pendrive às 19h23 | `tokens.json`, `tokens.css`, `Card.html`, `Card.css` e `config.json`, prontos e testados | 24, com `font.body` |
-| **Gerada** na extensão | `fora-do-frame` | Poucas pessoas: só quem terminou antes e está com a ligação funcionando | `tokens.json`, `Card.html`, `Card.css`, colados da conversa, mais o `config.json` que já vem na pasta | 23, sem `font.body` |
+| **Exemplo** do repositório, conferido na sala | `handoff` | Todo mundo. Quem chegar sem o ZIP recebe por pendrive às 19h21 | `tokens.json`, `tokens.css`, `Card.html`, `Card.css` e `config.json`, prontos e testados | 24, com `font.body` |
+| **Gerada** na extensão | `fora-do-frame` | Poucas pessoas: só quem terminou antes e está com a conexão funcionando | `tokens.json`, `Card.html`, `Card.css`, colados da conversa, mais o `config.json` que já vem na pasta | 23, sem `font.body` |
 
 Planeje para a `handoff`. Quem tiver a `fora-do-frame` leva as duas e te diz. Essa pessoa foi orientada a conferir a própria pasta com `node scripts/conferir-pasta.mjs` (nomes dos arquivos, JSON válido e as 23 variáveis com nome, tipo e valor) ou, sem isso, a deixar um `nao-conferida.txt` dentro dela.
 
@@ -37,7 +39,8 @@ Não precisa tratar: as duas contagens passam no mesmo build, com o mesmo `confi
 
 ### O que muda para você em cada origem
 
-- **`handoff`:** já tem `tokens.css`. O card aparece com cor no navegador antes do build, e a sala já viu isso. Rodar o Style Dictionary gera o mesmo `tokens.css` de novo (testado, abaixo). Se você quiser o momento em que o card "acende", peça para apagarem o `tokens.css` antes do primeiro build: o `Card.html` fica sem cor e sem espaçamento e volta depois do comando.
+- **`handoff`:** já tem `tokens.css`. O card aparece com cor no navegador antes do build, e a sala já viu isso. Rodar o Style Dictionary gera o mesmo `tokens.css` de novo (testado, abaixo). **Ninguém da sala apaga arquivo da própria pasta:** ela acabou de ser conferida, e eu disse isso no palco.
+- **Se você quiser o momento em que o card "acende":** use `fortaleza/demo-card-sem-cor/`, no repositório e no ZIP. É uma cópia de demonstração da `handoff` sem o `tokens.css`: o `Card.html` abre sem cor e sem espaçamento e ganha cor depois de `npx style-dictionary build --config config.json` dentro dela. Dá para fazer no telão, ou pedir que a sala copie essa pasta, sem tocar na `handoff`.
 - **`fora-do-frame`:** não tem `tokens.css`. O `Card.html` abre sem cor e sem espaçamento até o primeiro build.
 - **A fonte na `fora-do-frame`:** o prompt do Card pede `font-family: var(--font-body, system-ui, sans-serif)`. Sem o token, cai em `system-ui`, sem quebrar. Se quiser igualar ao `handoff`, é acrescentar ao `tokens.json`:
 
@@ -129,7 +132,7 @@ O `config.json` que já está nas duas pastas (`handoff/` e `fora-do-frame`, que
 npx style-dictionary build --config config.json
 ```
 
-Atenção ao Node: quem não instalou a ligação em casa pode chegar **sem Node nenhum**, porque a rota em grupo não pede. Quem instalou tem 18 ou maior. Recomendei 22 ou maior para quem vai no seu workshop, mas alguém pode chegar com 18 ou 20. Nesse caso, `npx style-dictionary@4` resolve.
+Atenção ao Node: quem não instalou a conexão em casa pode chegar **sem Node nenhum**, porque a rota em grupo não pede. Quem instalou tem 18 ou maior. Recomendei 22 ou maior para quem vai no seu workshop, mas alguém pode chegar com 18 ou 20. Nesse caso, `npx style-dictionary@4` resolve.
 
 
 ## O componente
@@ -153,6 +156,7 @@ Pontos que a sua auditoria de acessibilidade pode levantar:
 ## O que eu ainda te devo
 
 - O resultado do ensaio na conta gratuita: se a pasta gerada na extensão converte sem ajuste.
+- A sua confirmação de que parte da `handoff` já colorida, ou de que prefere a `demo-card-sem-cor` para o começo.
 - Quantas pastas `fora-do-frame` apareceram, que eu te conto no coffee.
 
 

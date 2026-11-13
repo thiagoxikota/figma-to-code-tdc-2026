@@ -4,7 +4,7 @@
  *
  *   npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza.tar.gz
  *   (Windows: npx.cmd no lugar de npx. Plano B: baixar o ZIP do repo e rodar node scripts/instalar.mjs.
- *   O plano B dispensa baixar o instalador, mas o passo 4 ainda baixa a ligação pelo npm.)
+ *   O plano B dispensa baixar o instalador, mas o passo 4 ainda baixa a conexão pelo npm.)
  *
  * O que faz, em ordem:
  *   1. Confere Node, Figma Desktop e Claude Desktop (avisa e dá o link do que faltar).
@@ -189,10 +189,10 @@ async function confirmConflict(path) {
   if (conflict.kind === 'invalido') {
     warn('O arquivo de configuração do Claude Desktop não é um JSON válido:')
     console.log(`       ${path}`)
-    console.log('  Se eu continuar: guardo uma cópia dele ao lado (.bak) e crio um arquivo novo SÓ com a ligação do Figma.')
+    console.log('  Se eu continuar: guardo uma cópia dele ao lado (.bak) e crio um arquivo novo SÓ com a conexão do Figma.')
     console.log('  As outras conexões que estavam nesse arquivo param de funcionar até alguém consertar a cópia.')
   } else {
-    warn(`Já existe uma ligação "${SERVER_KEY}" diferente no seu Claude Desktop:`)
+    warn(`Já existe uma conexão "${SERVER_KEY}" diferente no seu Claude Desktop:`)
     console.log(`       hoje:   ${conflict.atual}`)
     console.log(`       depois: ${[mine.command, ...mine.args].join(' ')}`)
     console.log('  Se eu continuar: troco SÓ essa entrada (comando e chave). As outras conexões ficam como estão.')
@@ -360,7 +360,7 @@ async function main() {
 
   step(3, 'Ligando o Figma no Claude Desktop')
   const result = writeConfig(token)
-  if (result.wasInvalid) warn('O arquivo antigo era inválido: guardei a cópia .bak e criei um novo, só com a ligação do Figma.')
+  if (result.wasInvalid) warn('O arquivo antigo era inválido: guardei a cópia .bak e criei um novo, só com a conexão do Figma.')
   ok(`configurado em ${result.path}`)
   if (result.backupPath) ok(`cópia do config anterior: ${result.backupPath}`)
   if (result.others.length) ok(`outros conectores preservados: ${result.others.join(', ')}`)
@@ -378,7 +378,7 @@ async function main() {
       console.log('     b. npm instalado: digite npm -v. Não apareceu número? Reinstale o Node pelo site, versão LTS.')
       console.log('     c. PATH: instalou agora? Feche e abra o Terminal (ou o PowerShell) para ele achar o comando.')
     }
-    console.log('  1. Confira a internet. Este passo baixa a ligação pelo npm, mesmo quando você roda pelo ZIP.')
+    console.log('  1. Confira a internet. Este passo baixa a conexão pelo npm, mesmo quando você roda pelo ZIP.')
     console.log(`  2. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}), abra de novo e espere 2 minutos.`)
     console.log('  3. Rode este mesmo comando outra vez. A chave do Figma é a mesma: não precisa criar outra.')
     console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B em grupo.\n')

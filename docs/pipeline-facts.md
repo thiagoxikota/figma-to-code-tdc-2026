@@ -1,8 +1,10 @@
-# Fatos verificados do pipeline (fonte técnica única)
+# Fatos verificados da conexão entre o Claude Desktop e o Figma
 
-Verificado ao vivo em 16/07/2026 contra o npm, o repositório `southleft/figma-console-mcp` e a bridge conectada de verdade (probe 23ms, arquivo "TDC 2026 - Do Figma ao codigo - DEMO"). Tudo abaixo é o que os materiais do workshop devem usar. Nada aqui é inventado; se um material divergir, ele está errado, não este arquivo.
+Verificado ao vivo em 16/07/2026 contra o npm, o repositório `southleft/figma-console-mcp` e a bridge conectada de verdade (probe 23ms, arquivo "TDC 2026 - Do Figma ao codigo - DEMO"). Nada aqui é inventado.
 
-## Arquitetura (a única do workshop)
+**Alcance deste arquivo.** Ele descreve só a conexão local usada na Parte B do workshop de Fortaleza (e no TDC): pacote, versão, configuração e chave. Para esses fatos, se um material divergir, vale este arquivo. Ele não é a fonte do percurso da sala: a Parte A de Fortaleza roda no Claude do navegador ou do app, com a Tela demo exportada como imagem, e isso está em `fortaleza/guia-participante.md` e `fortaleza/roteiro.md`.
+
+## Arquitetura da conexão (Parte B)
 
 ```
 Claude Desktop
@@ -14,7 +16,7 @@ Plugin Bridge, "Figma Desktop Bridge"  (~/.figma-console-mcp/plugin)
 Figma Desktop  (arquivo aberto, plugin rodando)
 ```
 
-Sem MCP remoto oficial, sem Dev Mode MCP, sem Claude no navegador, sem claude.ai, sem screenshot. A decisão está tomada.
+Para a leitura do arquivo na Parte B: sem MCP remoto oficial e sem Dev Mode MCP, e o Claude do navegador não faz essa conexão (ela precisa do Claude Desktop). A Parte A é outra coisa: usa imagem, e funciona no navegador.
 
 ## Pacote e versão
 
@@ -84,4 +86,4 @@ Não aceitar "o MCP aparece na lista" como sucesso. O teste real: pedir para o C
 
 ## Claude Desktop x Claude Code
 
-O workshop inteiro roda em **Claude Desktop**. Claude Code funciona com o mesmo MCP (`claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=YOUR_FIGMA_ACCESS_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0`) e fica no kit/tutorial como alternativa para casa, mas **não é oferecido como bifurcação na sala**. Um caminho só reduz erro coletivo.
+A leitura do arquivo pela conexão roda inteira em **Claude Desktop**. Claude Code funciona com o mesmo MCP (`claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=YOUR_FIGMA_ACCESS_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@1.35.0`) e fica no kit/tutorial como alternativa para casa, mas **não é oferecido como bifurcação na sala**. Um caminho só reduz erro coletivo.
