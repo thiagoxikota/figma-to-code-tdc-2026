@@ -5,7 +5,7 @@ Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o se
 **O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício. O que a sala leva:
 
 - **A pasta `handoff`, aberta e conferida. É o que chega a você, e é garantido para todo mundo.** É a pasta de exemplo do repositório, que todo mundo baixa no ZIP antes de quarta e copia para a Área de Trabalho. Na sala, das 19h21 às 19h30, cada pessoa abre o `Card.html` (dois cards com cor) e acha três valores de amostra no `tokens.json`: `#C8352B`, `20px` e `24px`. Quem tem rede compara os mesmos três com as variáveis do Figma; quem não tem fica com essa comparação pendente e sabe dizer isso. Quem chegar sem a pasta recebe por pendrive nesse mesmo bloco.
-- **Uma decisão de design escrita e, para a maioria, o próprio formulário corrigido.** Na Parte A, a Tela demo vira PNG, o Claude revisa, a pessoa decide o que aceita e gera um protótipo do formulário. Na Parte B, ela aplica nele uma correção com um valor conferido no Figma. O protótipo depende do Claude gratuito de cada um, fica na conversa do Claude e **não entra no seu workshop**.
+- **Uma decisão de design escrita e, para quem conseguir gerar, o próprio formulário corrigido.** Na Parte A, a Tela demo vira PNG, o Claude revisa, a pessoa decide o que aceita e gera um protótipo do formulário. Na Parte B, ela aplica nele uma correção com um valor conferido no Figma. O protótipo depende do Claude gratuito de cada um, fica na conversa do Claude e **não entra no seu workshop**.
 
 Eu não gero Card no telão. O Card aparece na minha sessão só dentro da `handoff`, como o objeto da sua.
 
@@ -132,7 +132,7 @@ O `config.json` que já está nas duas pastas (`handoff/` e `fora-do-frame`, que
 npx style-dictionary build --config config.json
 ```
 
-Atenção ao Node: quem não instalou a conexão em casa pode chegar **sem Node nenhum**, porque a rota em grupo não pede. Quem instalou tem 18 ou maior. Recomendei 22 ou maior para quem vai no seu workshop, mas alguém pode chegar com 18 ou 20. Nesse caso, `npx style-dictionary@4` resolve.
+Atenção ao Node: quem não instalou a conexão em casa pode chegar **sem Node nenhum**, porque a rota pelo telão não pede. Quem instalou tem 18 ou maior. Recomendei 22 ou maior para quem vai no seu workshop, mas alguém pode chegar com 18 ou 20. Nesse caso, `npx style-dictionary@4` resolve.
 
 
 ## O componente

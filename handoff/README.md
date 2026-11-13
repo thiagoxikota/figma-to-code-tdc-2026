@@ -12,4 +12,4 @@
 
 Abra o `Card.html` no navegador para ver o card. Para conferir os nomes dos arquivos e as 23 variáveis do `tokens.json` sem internet, rode `node scripts/conferir-pasta.mjs` seguido do caminho da pasta que você vai levar (a cópia da Área de Trabalho, não esta). O comando não olha o conteúdo do `Card.html`, do `Card.css` nem do `config.json`. Ninguém precisa apagar arquivo desta pasta às 20h: a cópia sem `tokens.css`, para demonstração, é `fortaleza/demo-card-sem-cor/`. Para converter os tokens você mesmo, rode `npx style-dictionary build --config config.json` dentro da pasta (detalhes em `fortaleza/para-o-mateus.md`).
 
-Quem faz a extensão do guia (seção 8) gera a própria pasta, `fora-do-frame`, e leva as duas.
+Quem faz a extensão do guia (apêndice no fim) gera a própria pasta, `fora-do-frame`, e leva as duas.

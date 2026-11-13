@@ -9,7 +9,7 @@ O resto do repositório é o TDC Florianópolis, mantido como histórico. Os pro
 | Arquivo | Para quem | O que é |
 |---|---|---|
 | `guia-participante.md` | Participantes | Preparação em casa (para todos e para a Parte B conectada), Parte A, ponte, Parte B com os prompts, conferência da pasta, revogação e a extensão, cada etapa com "deu certo quando" |
-| `guia-voluntarios.md` | Voluntários | Papel na sala, marcas de relógio com o critério de cada etapa, como montar os grupos, o pendrive com responsável, contingências |
+| `guia-voluntarios.md` | Voluntários | Papel na sala, marcas de relógio com o critério de cada etapa, o B1 no telão e a contagem das máquinas, o pendrive com responsável, contingências |
 | `roteiro.md` | Thiago | Tese, grade de 18h00 a 19h40, o que tem prioridade quando atrasar e o que dizer em cada bloco |
 | `checklist-thiago.md` | Thiago | Ensaios pendentes na conta gratuita, capturas que entram no deck, o que fazer até segunda, na terça e no dia |
 | `para-o-mateus.md` | Mateus Villain | O que a sala leva às 20h (a `handoff` conferida), a pasta gerada na extensão, os tokens (24 ou 23), o `config.json` e a conversão testada |

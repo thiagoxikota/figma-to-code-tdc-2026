@@ -11,12 +11,12 @@ Todo mundo trabalha na mesma tela: a **Tela demo**, um formulário "Criar sua co
 
 **Garantido, para todo mundo:**
 
-1. **A sua decisão de design, escrita.** Qual ponto da tela você corrige, com qual valor e por quê. O valor você confere no Figma.
+1. **A sua decisão de design, escrita.** Qual ponto da tela você corrige, com qual valor e por quê. Ao lado do valor você escreve de onde ele veio, com uma destas três frases: **"conferido no meu Figma"**, **"visto no Figma do telão"** ou **"comparação pendente"** (sem rede, ou para quem entrou pela imagem pronta e ainda não tem o arquivo). As três valem. O que não vale é escrever "conferido" sem ter conferido.
 2. **A pasta `handoff/`, conferida.** Um componente Card e os tokens de design, em arquivo. Vem do ZIP que você baixa antes de quarta, e na sala você abre e confere. É o material da próxima sessão: o Mateus Villain parte dela às 20h.
 
 **Depende do Claude gratuito:**
 
-3. **O seu formulário, corrigido.** O protótipo de "Criar sua conta", funcionando, com a correção que você decidiu. Ele é gerado na sua conta gratuita do Claude, que tem limite de uso e varia com o dia. A maioria da sala sai com ele. Se a sua conta chegar ao limite ou a geração falhar, você sai com a decisão escrita, acompanha o teste de quem está do lado e aplica a correção em casa, com o prompt deste guia.
+3. **O seu formulário, corrigido.** O protótipo de "Criar sua conta", funcionando, com a correção que você decidiu. Ele é gerado na sua conta gratuita do Claude, que tem limite de uso e varia com o dia. Quem conseguir gerar sai com ele. Se a sua conta chegar ao limite ou a geração falhar, você sai com a decisão escrita, acompanha o teste de quem está do lado e aplica a correção em casa, com o prompt deste guia.
 
 **O Card não é a continuação do seu formulário.** É outro componente, feito com os mesmos tokens de design. O Mateus trabalha os tokens e o Card; o formulário continua com você, na conversa do Claude.
 
@@ -31,19 +31,19 @@ Ninguém paga nada: a conta gratuita do Figma e a do Claude servem.
 ## As rotas
 
 - **Parte A, todo mundo.** Precisa só de conta e navegador.
-- **Parte B conectado:** quem preparou a máquina em casa, antes de quarta (seção 1). O Claude Desktop lê o arquivo do Figma nessa máquina. Na sala a gente só confere a conexão: ninguém instala nada durante o workshop.
-- **Parte B em grupo:** quem não preparou senta com alguém conectado, em grupo de até quatro. A leitura do arquivo acontece na máquina conectada. Depois **cada pessoa confere o valor no próprio Figma e corrige o próprio protótipo**, no próprio notebook.
+- **Parte B, todo mundo, pelo telão.** O Thiago faz a leitura do arquivo no telão. Você acompanha do seu lugar, **confere o valor no seu Figma e corrige o seu protótipo**, no seu notebook. É a rota padrão: ninguém muda de lugar.
+- **Parte B conectado:** quem preparou a máquina em casa, antes de quarta (seção 1), repete a mesma leitura na própria máquina, em paralelo com o telão, e lê a resposta para quem está do lado. Na sala a gente só confere a conexão: ninguém instala nada durante o workshop.
 
-**A regra dos grupos.** Precisa de uma máquina conectada para cada quatro pessoas. Às 18h51 os voluntários contam. Se não houver máquinas suficientes, a leitura do B1 acontece no telão, para a sala inteira, e cada pessoa confere no próprio Figma. O resto da Parte B não muda.
+Sua conexão não subiu, ou caiu no meio? Você segue pelo telão, sem perder nada.
 
 A Parte B usa uma conexão local entre o Claude Desktop e o Figma. É ela que deixa o Claude ler o arquivo, em vez de olhar uma imagem.
 
-Notebook da empresa que não deixa instalar programa? Nem tente: você faz a Parte A inteira e a Parte B em grupo.
+Notebook da empresa que não deixa instalar programa? Nem tente: você faz a Parte A inteira e a Parte B pelo telão.
 
 
 ## 1. Antes de quarta
 
-### Para todo mundo (reserve meia hora)
+### Para todo mundo (reserve de 30 a 60 minutos)
 
 1. **Conta gratuita do Figma:** https://www.figma.com/signup. Prefira a sua conta pessoal, não a do trabalho.
 2. **Conta gratuita do Claude:** https://claude.ai
@@ -103,7 +103,7 @@ O instalador faz isto, nesta ordem:
 1. confere se o Node, o Figma Desktop e o Claude Desktop estão aí e dá o link do que faltar;
 2. abre as configurações do Figma para você criar a **chave do Figma**: aba **Security > Personal access tokens > Generate new token**. Validade de **7 dias**: é uma chave só, criada em casa e usada na quarta, e você revoga no fim do workshop. Em permissões, marque **só leitura em File content**. Nada mais é necessário;
 3. pede a chave num campo escondido: cole e aperte Enter (aparecem só asteriscos). Se o navegador não abrir sozinho, o endereço da página aparece escrito para você copiar;
-4. conecta o Figma ao Claude Desktop e mantém as outras conexões que já estão lá. Se você já tem uma conexão chamada `figma-console` diferente, ou se o arquivo de configuração do Claude estiver com defeito, ele **para, mostra o que seria substituído e só continua se você digitar `sim`**. Na dúvida, aperte Enter: nada é alterado e você faz a Parte B em grupo;
+4. conecta o Figma ao Claude Desktop e mantém as outras conexões que já estão lá. Se você já tem uma conexão chamada `figma-console` diferente, ou se o arquivo de configuração do Claude estiver com defeito, ele **para, mostra o que seria substituído e só continua se você digitar `sim`**. Na dúvida, aperte Enter: nada é alterado e você faz a Parte B pelo telão;
 5. prepara o plugin do Figma, mostrando o progresso enquanto isso. Se o plugin não ficar pronto, ele diz que **a instalação não terminou** e o que fazer. Se ficar, mostra o caminho do arquivo do plugin e já deixa esse caminho copiado.
 
 **Sobre a chave do Figma.** O Figma chama essa chave de "personal access token". Aqui ela é "a chave", para não confundir com os tokens de design. Ela começa com `figd_` e **aparece uma vez só**: copie na hora. Ela é sua: não mande para ninguém nem deixe outra pessoa digitar por você. E ela lê qualquer arquivo que a sua conta abre, não só o do exercício. Por isso a conta pessoal e a revogação no fim.
@@ -114,7 +114,7 @@ O instalador faz isto, nesta ordem:
 node scripts/instalar.mjs
 ```
 
-Faz a mesma coisa sem precisar baixar o instalador. Ainda precisa de internet: o último passo baixa a conexão com o Figma. Sem internet nenhuma, ou com a rede bloqueando esse download, não tem como instalar: você faz a Parte B em grupo.
+Faz a mesma coisa sem precisar baixar o instalador. Ainda precisa de internet: o último passo baixa a conexão com o Figma. Sem internet nenhuma, ou com a rede bloqueando esse download, não tem como instalar: você faz a Parte B pelo telão.
 
 **Passo 3. Ligue o plugin e teste.**
 
@@ -131,11 +131,11 @@ Verifique o status da conexão com o Figma
 
 Deu certo quando: **o Claude disse o nome do arquivo** que está aberto no Figma. Aparecer numa lista ou o instalador dizer "ok" não conta como teste.
 
-Não conseguiu até quarta? Tudo bem. Você faz a Parte A inteira e a Parte B em grupo.
+Não conseguiu até quarta? Tudo bem. Você faz a Parte A inteira e a Parte B pelo telão.
 
 ### Leve no dia
 
-- Notebook com macOS ou Windows. Linux faz a Parte A normalmente e a Parte B em grupo.
+- Notebook com macOS ou Windows. Linux faz a Parte A normalmente e a Parte B pelo telão.
 - A pasta `handoff` na Área de Trabalho.
 - Carregador.
 - Celular.
@@ -149,10 +149,11 @@ Não conseguiu até quarta? Tudo bem. Você faz a Parte A inteira e a Parte B em
 | 18h05 | A1: exportar a Tela demo | 18h11 |
 | 18h11 | A2: a revisão da tela, no máximo três sugestões | 18h18 |
 | 18h18 | A3: você decide o que aceita | 18h22 |
-| 18h22 | A4 e A5: gerar o protótipo e testar | 18h40 |
+| 18h22 | A4: gerar o protótipo | 18h34 |
+| 18h34 | A5: testar e olhar dois pontos | 18h40 |
 | 18h40 | A ponte: o que a imagem não mostra, com uma leitura do arquivo ao vivo | 18h51 |
-| 18h51 | Conferir a conexão, contar as máquinas e formar os grupos | 18h59 |
-| 18h59 | B1: ler a Tela demo pelo arquivo e escolher uma correção | 19h08 |
+| 18h51 | Conferir a conexão, para quem preparou em casa | 18h59 |
+| 18h59 | B1: a leitura da Tela demo pelo arquivo, no telão, e a escolha de uma correção | 19h08 |
 | 19h08 | B2: cada pessoa aplica e testa a correção no próprio formulário | 19h21 |
 | 19h21 | B3: abrir a pasta `handoff/`; quem ficou sem recebe a cópia | 19h30 |
 | 19h30 | B4: revogar as chaves do Figma | 19h36 |
@@ -219,7 +220,7 @@ Sem tempo de ler tudo? Decida pelo menos uma: uma que você aceita ou uma que vo
 
 Deu certo quando: você tem os números anotados, com o motivo de cada recusa. Ainda não mande nada.
 
-### A4. O protótipo (18h22, com o A5 até 18h40)
+### A4. O protótipo (18h22, até 18h34)
 
 Na mesma conversa, troque os números pelos seus e mande:
 
@@ -244,13 +245,13 @@ Continuou só código? Não insista, para não gastar o limite. Faça nesta orde
 
 Deu certo quando: o formulário aparece na conversa e dá para digitar nos campos.
 
-### A5. Testar e anotar uma diferença (até 18h40)
+### A5. Testar e olhar dois pontos (18h34, até 18h40)
 
 1. Clique em Continuar com tudo vazio. Tem que aparecer erro.
 2. Preencha e-mail e nome e clique de novo. Tem que aparecer "Conta criada".
-3. Olhe o protótipo ao lado da Tela demo no Figma e anote **uma** diferença: uma cor, um espaçamento ou um tamanho de texto que ficou parecido, mas não igual.
+3. Olhe dois pontos do protótipo, ao lado da Tela demo: **o texto de apoio** "Leva menos de um minuto" e **o campo nome**. Anote o que o protótipo fez com cada um: ficou igual à imagem, mudou (por causa de uma sugestão que você aceitou) ou não dá para dizer.
 
-Deu certo quando: o protótipo foi testado (erro e sucesso) e você anotou uma diferença. Guarde a anotação: na Parte B você confere o valor exato.
+Deu certo quando: o protótipo foi testado (erro e sucesso) e você tem uma linha anotada para cada um dos dois pontos. Guarde a anotação: é sobre esses dois pontos que a Parte B faz as perguntas ao arquivo.
 
 Às 18h40 a sala segue para a ponte. Ainda gerando? Pare de olhar a tela e acompanhe: o seu protótipo continua na conversa e você testa depois.
 
@@ -268,7 +269,7 @@ O Thiago abre a mesma Tela demo no Figma e mostra duas coisas.
 As outras propriedades da tela quem lê é você, no B1.
 
 
-## 4. Conferir a conexão e formar os grupos (18h51 às 18h59)
+## 4. Conferir a conexão (18h51 às 18h59)
 
 **Instalou em casa?** Figma Desktop com a sua cópia do arquivo aberta, plugin Figma Desktop Bridge rodando, **Claude Desktop** aberto (o app, não o navegador). Conversa nova:
 
@@ -276,19 +277,21 @@ As outras propriedades da tela quem lê é você, no B1.
 Verifique o status da conexão com o Figma
 ```
 
-Deu certo quando: o Claude disse o nome do arquivo. Não conectou em uma tentativa? Chame um voluntário uma vez. Não resolveu: grupo.
+Deu certo quando: o Claude disse o nome do arquivo. Não conectou em uma tentativa? Chame um voluntário uma vez. Não resolveu: você segue pelo telão.
 
-**Conectou? Levante a mão.** Os voluntários contam as máquinas conectadas. A conta é simples: uma para cada quatro pessoas da sala.
+**Conectou? Levante a mão.** Os voluntários contam, só para saber onde estão as máquinas conectadas. Ninguém muda de lugar.
 
-- **Tem máquinas suficientes:** quem não conectou se junta a alguém que conectou, em grupo de até quatro. Leve o seu notebook: você vai usar o seu Figma (o do navegador serve) e a conversa do seu protótipo. Quem está conectado manda o prompt do B1 e lê as respostas em voz alta; os outros conferem cada valor no próprio Figma e anotam.
-- **Não tem:** ninguém muda de lugar. O Thiago faz a leitura do B1 no telão, e cada pessoa confere no próprio Figma.
+- **Todo mundo:** a leitura do B1 acontece no telão. Você acompanha, confere no seu Figma (o do navegador serve) e anota.
+- **Quem conectou:** manda o mesmo prompt na própria máquina, em paralelo, e lê a resposta para quem está do lado.
+
+**Não preparou a conexão?** Não há nada para fazer neste passo. Deixe aberto o seu Figma e a conversa do seu protótipo.
 
 
 ## 5. Parte B: a mesma Tela demo, lida do arquivo (18h59 às 19h36)
 
 ### B1. Ler e escolher uma correção (18h59, até 19h08)
 
-**Na máquina conectada** (ou no telão, se o B1 for coletivo), na conversa em que a conexão foi testada:
+O Thiago manda este prompt no telão. **Quem está conectado** manda o mesmo, em paralelo, na conversa em que a conexão foi testada, e lê a resposta para quem está do lado:
 
 ```
 Leia no Figma conectado o frame "Tela demo" da página "01 Comece aqui". Responda só estas três perguntas, uma linha cada, com o valor exato que está no arquivo:
@@ -297,18 +300,31 @@ Leia no Figma conectado o frame "Tela demo" da página "01 Comece aqui". Respond
 3. Na coleção Workshop Tokens, qual é o valor de color/text-muted e de color/surface-alt?
 ```
 
-Espere a resposta e leia em voz alta para o grupo. **Só depois** abra a conferência abaixo.
+Espere a resposta chegar, no telão ou na sua máquina. As perguntas são sobre os dois pontos que você anotou no A5.
 
-**Voltou vazio ou sem nenhum valor?** Não repita ainda. Confira duas coisas:
+**Na sua máquina voltou vazio ou sem nenhum valor?** Não repita ainda. Confira duas coisas:
 
 1. Mande `Qual arquivo do Figma você está lendo?`. Tem que ser a cópia do arquivo do exercício.
 2. Olhe o Figma Desktop: o plugin Figma Desktop Bridge está aberto e rodando? Ele fecha se o Figma dormir ou se você trocar de arquivo.
 
-Arquivo certo e plugin rodando: aí sim mande o B1 de novo.
+Arquivo certo e plugin rodando: aí sim mande o B1 de novo. A conexão caiu de vez? Siga pelo telão.
 
 **Cada pessoa, no próprio Figma,** confere o valor da pergunta 3. Clique em **Variables**, na barra de navegação da esquerda: a vista das variáveis ocupa a janela inteira. Abra a coleção Workshop Tokens e ache `color/text-muted` e `color/surface-alt`. Não achou essa entrada? Em versões anteriores do Figma o caminho é outro: clique numa área vazia do canvas e procure **Local variables** no painel da direita. Ou abra a busca de ações (Cmd+K no Mac, Ctrl+K no Windows) e digite `variables`.
 
-#### Confira, depois da leitura
+**Escolha uma correção e escreva a decisão.** São duas correções possíveis, as que mudam à vista no formulário: o texto de apoio ou o campo nome. Escreva do seu jeito, neste modelo:
+
+> Vou corrigir [ponto] porque [evidência]. Valor: [valor], [de onde veio].
+
+Em "de onde veio", uma destas três: **conferido no meu Figma**, **visto no Figma do telão** ou **comparação pendente** (sem rede, ou sem o arquivo duplicado). Essa decisão escrita é o que você leva de qualquer jeito.
+
+Deu certo quando: as três respostas chegaram e a sua decisão está escrita, com o valor e de onde ele veio.
+
+#### Confira depois da resposta
+
+Este bloco tem as respostas. Abra só depois de a resposta chegar, no telão ou na sua máquina.
+
+<details>
+<summary>Abrir a conferência do B1</summary>
 
 | Pergunta | O que o arquivo diz |
 |---|---|
@@ -318,20 +334,20 @@ Arquivo certo e plugin rodando: aí sim mande o B1 de novo.
 
 Na imagem, o cinza do texto dava para desconfiar e o campo nome parecia escolha de design. O arquivo dá o número e mostra que o campo saiu do padrão.
 
-**Agora escolha uma correção.** São duas, as que mudam à vista no formulário:
+As duas correções:
 
-| Se você escolher | O que muda | Token | Valor conferido |
+| Se você escolher | O que muda | Token | Valor |
 |---|---|---|---|
 | O texto "Leva menos de um minuto" | Fica mais escuro: passa de 2,75 para cerca de 5,7 para 1 | `color/text-muted` | `#6C665F` |
 | O campo "nome" | Deixa de ser só contorno e fica igual ao de e-mail, preenchido | `color/surface-alt` | `#F5F3F0` |
 
-**Escreva a decisão, do seu jeito.** Ela é uma das duas coisas garantidas que você leva. Exemplo: "Texto de apoio: trocar `#A29B93` por `#6C665F`, de `color/text-muted`, porque 2,75 para 1 reprova no AA."
+Um exemplo de decisão escrita: "Vou corrigir o texto de apoio porque 2,75 para 1 reprova no AA. Valor: `#6C665F`, de `color/text-muted`, conferido no meu Figma."
 
-Deu certo quando: você viu as três respostas, conferiu no seu Figma o valor do token que escolheu e a sua decisão está escrita. Olhe também a diferença que você anotou no A5: se ela é uma dessas, agora você tem o valor exato.
+</details>
 
 ### B2. Aplicar e testar a correção no seu formulário (19h08, até 19h21)
 
-Cada pessoa faz no próprio notebook, **na conversa do próprio protótipo** (a da Parte A). Vale para quem está conectado e para quem está em grupo: este prompt não precisa da conexão com o Figma, porque o valor você já conferiu.
+Cada pessoa faz no próprio notebook, **na conversa do próprio protótipo** (a da Parte A). Vale para quem está conectado e para quem acompanhou pelo telão: este prompt não precisa da conexão com o Figma, porque o valor você já conferiu.
 
 Se escolheu o texto de apoio:
 
@@ -355,21 +371,23 @@ Depois teste, olhando o protótipo:
 
 Deu certo quando: as três coisas acontecem. Mudou mais do que você pediu? Mande uma vez: `Desfaça o resto. Só a mudança que eu pedi.`
 
+**O protótipo já estava com o valor do arquivo?** Acontece, por exemplo, se você aceitou essa sugestão no A3. O B2 vale do mesmo jeito, e não precisa mudar nada. Pergunte na conversa do protótipo, trocando o trecho entre colchetes: `Qual é o valor atual de [a cor do texto de apoio / o fundo do campo nome] no protótipo?` Compare com o valor do arquivo. Aí o deu certo é: **"confirmei que já estava com o valor do arquivo"**. Escreva isso na sua decisão.
+
 **O que essa correção é, e o que não é.** É um valor copiado do Figma naquele momento. O protótipo não ficou ligado à variável: se ela mudar no Figma depois, ele não muda sozinho.
 
 **Guarde o seu formulário.** Ele fica na conversa, no histórico do Claude, e dá para abrir de novo depois. Quer o arquivo? No painel do protótipo, procure a opção de baixar ou de copiar o código e salve como `formulario.html`.
 
-**Não tem protótipo,** porque o A4 não gerou ou o limite da conta acabou? Você continua com o que é garantido: a decisão escrita, com o valor conferido. Acompanhe o teste de quem está do lado e aplique em casa, quando o limite voltar, com os prompts A4 e B2 deste guia.
+**Não tem protótipo,** porque o A4 não gerou ou o limite da conta acabou? Você continua com o que é garantido: a decisão escrita, com o valor e de onde ele veio. Acompanhe o teste de quem está do lado e aplique em casa, quando o limite voltar, com os prompts A4 e B2 deste guia.
 
 ### B3. Abrir a pasta `handoff/` (19h21, até 19h30)
 
 A pasta é a `handoff` da **Área de Trabalho**, a cópia que você fez do ZIP. Não precisa do Claude nem de internet. O Card dela é material da sessão do Mateus, não a continuação do seu formulário.
 
-**Sem a pasta no notebook, ou ela não abre?** Levante a mão agora: um voluntário copia a `handoff` do pendrive.
+**Sem a pasta no notebook, ou ela não abre?** Levante a mão agora: um voluntário copia a `handoff` do pendrive. O pendrive leva também a imagem da Tela demo e este guia em arquivo.
 
 | O quê | Como | Deu certo quando |
 |---|---|---|
-| 1. O Card | Dois cliques em `Card.html`: ele abre no navegador | Aparecem dois cards **com cor**: um normal, com o botão vermelho "Ver detalhes", e um desabilitado |
+| 1. O Card | Dois cliques em `Card.html`: ele abre no navegador | Aparecem dois cards **com cor**: um normal, com o botão vermelho "Ver detalhes", e um desabilitado. É uma amostra estática: o botão não faz nada ao clicar |
 | 2. Três valores, como amostra | Abra `tokens.json` como texto: botão direito > Abrir com > TextEdit (Mac) ou Bloco de Notas (Windows). Só leia, não salve | Você acha `"brand-primary"` com `"#C8352B"`, `"heading"` (dentro de `"font-size"`) com `"20px"` e `"3"` (dentro de `"space"`) com `"24px"` |
 
 **Estado 1, que todo mundo alcança na sala: pasta aberta e valores locais vistos.** O Card abre com cor e os três valores estão no arquivo. Os três valores são uma amostra, não a pasta inteira: o arquivo tem 24 tokens.
@@ -388,7 +406,7 @@ node scripts/conferir-pasta.mjs
 
 A última linha tem que dizer **Pasta conferida**. O comando confere os nomes dos arquivos e as 23 variáveis do `tokens.json` (nome, tipo e valor). Ele não olha o conteúdo do `Card.html`, do `Card.css` nem do `config.json`: para esses, o teste é o Card abrir com cor.
 
-Só quem fez a extensão (seção 8) tem também a pasta `fora-do-frame`, gerada na própria máquina. Diga isso ao Mateus.
+Só quem fez a extensão (o apêndice no fim deste guia) tem também a pasta `fora-do-frame`, gerada na própria máquina. Diga isso ao Mateus.
 
 ### B4. Revogar as chaves do Figma (19h30, até 19h36)
 
@@ -423,9 +441,44 @@ Se alguém perguntar, a frase é esta: "Esta pasta tem o Card e os tokens; o meu
 - Se o Thiago mostrar no telão um resultado pré-gerado dos ensaios, ele avisa na hora.
 
 
-## 8. Extensão: gerar a sua própria pasta
+## 8. Quando dá errado
 
-Para quem terminou o B2 antes do tempo e está conectado, ou para fazer em casa. **Não faz parte do percurso da sala:** quem não fizer não perde nada do que foi prometido.
+| Sintoma | O que fazer |
+|---|---|
+| Não dupliquei o arquivo do exercício | Use a imagem pronta: `fortaleza/telao/tela-demo.png`, no ZIP. Você faz a Parte A com ela e confere no Figma depois |
+| Não acho o Export no Figma | Selecione o frame clicando no nome dele, em cima da tela. O Export fica no fim do painel da direita |
+| O Claude não aceita a imagem | Confira se é PNG. Arraste o arquivo para a caixa de mensagem |
+| O protótipo veio só como código | Mande uma vez: `Mostre o protótipo funcionando aqui na conversa.` Continuou: confira em Settings > Capabilities a opção Cloud code execution and file creation (ou Create and edit files). Estava ligada: pare e acompanhe quem está do lado |
+| Limite da conta gratuita | Você continua com o que é garantido: a decisão escrita e a pasta `handoff`, que não depende do Claude. Acompanhe quem ainda tem uso e aplique a correção em casa |
+| Não acho as variáveis no Figma | Variables, na barra de navegação da esquerda. Em versão anterior: nada selecionado, painel da direita, Local variables. Ou a busca de ações (Cmd+K ou Ctrl+K), digitando `variables` |
+| `npx` não reconhecido (em casa) | O `npx` vem com o Node. Confira três coisas: `node -v` mostra v18 ou maior; `npm -v` mostra um número (se não, reinstale o Node pelo site); e, se você acabou de instalar, feche e abra o Terminal ou o PowerShell, para ele achar o comando |
+| Erro de script no PowerShell (em casa) | Use `npx.cmd` no lugar de `npx` |
+| O comando não baixa (em casa) | Plano B: na pasta do ZIP, rode `node scripts/instalar.mjs`. Ainda precisa de internet para o último passo |
+| O instalador parou dizendo que já existe uma conexão `figma-console`, ou que a configuração não é válida | Ele não mexeu em nada. Leia o que ele diz que seria substituído. Na dúvida, não digite `sim`: faça a Parte B pelo telão |
+| O instalador diz que a instalação não terminou | Siga os passos que ele mostra e rode de novo. Ele reaproveita a chave que você já colou. Persistiu: telão no dia |
+| O navegador não abriu a página da chave | O endereço aparece escrito no Terminal: copie e abra. É https://www.figma.com/settings |
+| O Claude não diz o nome do arquivo | O plugin Figma Desktop Bridge precisa estar rodando no Figma Desktop com a sua cópia aberta. Ele cai se o Figma dormir ou o arquivo fechar. Rode o plugin de novo |
+| No Windows, o Claude não mostra a conexão com o Figma | Feche o Claude também pelo ícone perto do relógio e abra de novo. Persistiu: telão no dia, e avise o Thiago |
+| A pasta do plugin não existe | O Claude ainda não abriu depois da instalação. Feche o Claude por completo, abra, espere e só então importe |
+| Chave recusada | Confira se começa com `figd_` e se não entrou espaço ao colar. Persistiu: gere outra e rode o comando de novo |
+| B1 volta vazio | Pergunte qual arquivo o Claude está lendo e confira se o plugin está rodando. Só depois repita |
+| VPN, rede da empresa ou antivírus | A conexão usa as portas locais 9223 a 9232. Desligue a VPN. Não resolveu: telão |
+| A IA trouxe um nome de token ou um valor que não existe | Não conclua nada ainda. Confira quatro coisas, nesta ordem: qual arquivo está aberto no Figma, o pedido que o Claude fez, o que voltou desse pedido e o valor no seu Figma. Só então peça a leitura de novo |
+
+
+## 9. Para fazer em casa depois
+
+- **Com uma tela sua.** Repita a Parte A com uma tela do seu trabalho. Ajuste o prompt do A2 e do A4 para o que a tela tem: o prompt da Tela demo fala de campos e de envio porque ela é um formulário. Evite tela de cliente com dado sensível: a imagem vai para o Claude.
+- **A outra correção.** Repita o B2 com a correção que você não escolheu.
+- **A extensão,** no apêndice logo abaixo, com calma.
+- **Com o Claude Code.** Quem já tem plano pago do Claude pode usar o Claude Code no lugar do Claude Desktop. O comando de conexão está em `docs/pipeline-facts.md`, no repositório.
+
+
+---
+
+# Apêndice. Extensão: gerar a sua própria pasta
+
+> **Isto não é da sala.** O workshop termina na seção 6. Este apêndice é para fazer em casa, ou para quem terminou o B2 antes do tempo e está conectado. Quem não fizer não perde nada do que foi prometido, e nenhum voluntário vai puxar você para cá.
 
 Precisa da conexão com o Figma funcionando. Na sala, termine antes das 19h30, porque os prompts leem o Figma e a chave é revogada nessa hora. Em casa, depois do workshop, rode o instalador de novo com uma chave nova e revogue no fim.
 
@@ -506,36 +559,3 @@ Depois de `conferir-pasta.mjs`, dê um espaço e arraste a pasta `fora-do-frame`
 Medida sem `px`, como `24` solto, vira `24rem` na conversão do Mateus. Se vier assim, mande: `Refaça o JSON com todas as medidas como texto com px.`
 
 Não conferiu a contagem, ou ela não deu 23? A pasta não está conferida: crie nela um arquivo `nao-conferida.txt` e leve também a `handoff`. Às 20h, diga ao Mateus que a sua é a `fora-do-frame`.
-
-
-## 9. Quando dá errado
-
-| Sintoma | O que fazer |
-|---|---|
-| Não dupliquei o arquivo do exercício | Use a imagem pronta: `fortaleza/telao/tela-demo.png`, no ZIP. Você faz a Parte A com ela e confere no Figma depois |
-| Não acho o Export no Figma | Selecione o frame clicando no nome dele, em cima da tela. O Export fica no fim do painel da direita |
-| O Claude não aceita a imagem | Confira se é PNG. Arraste o arquivo para a caixa de mensagem |
-| O protótipo veio só como código | Mande uma vez: `Mostre o protótipo funcionando aqui na conversa.` Continuou: confira em Settings > Capabilities a opção Cloud code execution and file creation (ou Create and edit files). Estava ligada: pare e acompanhe quem está do lado |
-| Limite da conta gratuita | Você continua com o que é garantido: a decisão escrita e a pasta `handoff`, que não depende do Claude. Acompanhe quem ainda tem uso e aplique a correção em casa |
-| Não acho as variáveis no Figma | Variables, na barra de navegação da esquerda. Em versão anterior: nada selecionado, painel da direita, Local variables. Ou a busca de ações (Cmd+K ou Ctrl+K), digitando `variables` |
-| `npx` não reconhecido (em casa) | O `npx` vem com o Node. Confira três coisas: `node -v` mostra v18 ou maior; `npm -v` mostra um número (se não, reinstale o Node pelo site); e, se você acabou de instalar, feche e abra o Terminal ou o PowerShell, para ele achar o comando |
-| Erro de script no PowerShell (em casa) | Use `npx.cmd` no lugar de `npx` |
-| O comando não baixa (em casa) | Plano B: na pasta do ZIP, rode `node scripts/instalar.mjs`. Ainda precisa de internet para o último passo |
-| O instalador parou dizendo que já existe uma conexão `figma-console`, ou que a configuração não é válida | Ele não mexeu em nada. Leia o que ele diz que seria substituído. Na dúvida, não digite `sim`: faça a Parte B em grupo |
-| O instalador diz que a instalação não terminou | Siga os passos que ele mostra e rode de novo. Ele reaproveita a chave que você já colou. Persistiu: grupo no dia |
-| O navegador não abriu a página da chave | O endereço aparece escrito no Terminal: copie e abra. É https://www.figma.com/settings |
-| O Claude não diz o nome do arquivo | O plugin Figma Desktop Bridge precisa estar rodando no Figma Desktop com a sua cópia aberta. Ele cai se o Figma dormir ou o arquivo fechar. Rode o plugin de novo |
-| No Windows, o Claude não mostra a conexão com o Figma | Feche o Claude também pelo ícone perto do relógio e abra de novo. Persistiu: grupo no dia, e avise o Thiago |
-| A pasta do plugin não existe | O Claude ainda não abriu depois da instalação. Feche o Claude por completo, abra, espere e só então importe |
-| Chave recusada | Confira se começa com `figd_` e se não entrou espaço ao colar. Persistiu: gere outra e rode o comando de novo |
-| B1 volta vazio | Pergunte qual arquivo o Claude está lendo e confira se o plugin está rodando. Só depois repita |
-| VPN, rede da empresa ou antivírus | A conexão usa as portas locais 9223 a 9232. Desligue a VPN. Não resolveu: grupo |
-| A IA trouxe um nome de token ou um valor que não existe | Ela não leu o Figma antes de responder. Peça a leitura de novo e confira no seu Figma |
-
-
-## 10. Para fazer em casa depois
-
-- **Com uma tela sua.** Repita a Parte A com uma tela do seu trabalho. Ajuste o prompt do A2 e do A4 para o que a tela tem: o prompt da Tela demo fala de campos e de envio porque ela é um formulário. Evite tela de cliente com dado sensível: a imagem vai para o Claude.
-- **A outra correção.** Repita o B2 com a correção que você não escolheu.
-- **A extensão** da seção 8, com calma.
-- **Com o Claude Code.** Quem já tem plano pago do Claude pode usar o Claude Code no lugar do Claude Desktop. O comando de conexão está em `docs/pipeline-facts.md`, no repositório.
