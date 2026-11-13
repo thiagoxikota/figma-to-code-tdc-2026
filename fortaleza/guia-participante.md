@@ -56,19 +56,29 @@ São quatro passos. O Thiago chama um de cada vez no telão. Travou? Pare de rep
 
 Figma Desktop e Claude Desktop abertos e logados. No Figma, a sua cópia do arquivo do exercício aberta na página "01 Comece aqui".
 
-### Passo 2. Token
+### Passo 2. Instalar com um comando
 
-No Figma: menu do usuário > Settings > Security > Personal access tokens > Generate new token.
+Abra o **Terminal** (Mac: Cmd+Espaço, digite Terminal) ou o **PowerShell** (Windows: tecla Windows, digite PowerShell). Cole este comando e aperte Enter:
 
-- Validade: 1 dia. Mesmo esquecido, ele morre sozinho.
-- Escopos: `file_content:read`, `file_variables:read`, `file_comments:read`, `file_comments:write`.
-- O token começa com `figd_` e **aparece uma vez só**. Copie na hora.
+```
+npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/heads/main.tar.gz
+```
 
-O token é seu. Não mande para ninguém, não cole em grupo, não deixe voluntário digitar por você.
+É o mesmo comando no Mac e no Windows. Ele:
 
-### Passo 3. Conectar
+1. confere se o Node, o Figma Desktop e o Claude Desktop estão instalados e dá o link do que faltar;
+2. abre as configurações do Figma para você gerar o token (aba Security > Personal access tokens > Generate new token, validade de 1 dia, leitura em File content, Variables e Comments);
+3. pede o token num campo escondido: cole e aperte Enter (aparecem só asteriscos);
+4. liga o Figma no Claude Desktop sem apagar nada que já esteja lá;
+5. prepara o plugin do Figma e mostra o arquivo dele, com o caminho já copiado.
 
-No Claude Desktop: Settings > Developer > Edit Config. Isso abre o arquivo `claude_desktop_config.json` no lugar certo.
+O token começa com `figd_` e **aparece uma vez só** no Figma. Copie na hora. Ele é seu: não mande para ninguém nem deixe voluntário digitar por você.
+
+Quando terminar, **feche o Claude por completo e abra de novo**. No Mac é Cmd+Q. No Windows, saia também pelo ícone perto do relógio, não só pelo X. O MCP só carrega quando o app abre.
+
+### Passo 3. Se o comando falhar: o caminho manual
+
+Só use se o Passo 2 deu erro. Gere o token no Figma como descrito acima. No Claude Desktop: Settings > Developer > Edit Config. Isso abre o arquivo `claude_desktop_config.json` no lugar certo.
 
 Se o arquivo estiver vazio ou só com `{}`, apague tudo e cole o bloco abaixo. Se já tiver outros servidores dentro de `mcpServers`, acrescente só a entrada `figma-console` ao lado deles.
 
@@ -87,15 +97,11 @@ Se o arquivo estiver vazio ou só com `{}`, apague tudo e cole o bloco abaixo. S
 }
 ```
 
-Troque `COLE_SEU_TOKEN_AQUI` pelo seu token, mantendo as aspas. Salve.
-
-Agora **feche o Claude por completo e abra de novo**. No Mac é Cmd+Q. No Windows, saia também pelo ícone perto do relógio, não só pelo X. O MCP só carrega quando o app abre.
-
-A versão fica fixada em `1.35.0` de propósito. Não troque por `@latest`.
+Troque `COLE_SEU_TOKEN_AQUI` pelo seu token, mantendo as aspas. Salve, feche o Claude por completo e abra de novo. A versão fica fixada em `1.35.0` de propósito: não troque por `@latest`.
 
 ### Passo 4. Ligar e testar
 
-No Figma Desktop: Plugins > Development > Import plugin from manifest. Escolha o arquivo:
+No Figma Desktop: Plugins > Development > Import plugin from manifest. Escolha o arquivo que o instalador mostrou (o caminho já está copiado):
 
 - Mac: `~/.figma-console-mcp/plugin/manifest.json`
 - Windows: `%USERPROFILE%\.figma-console-mcp\plugin\manifest.json`
