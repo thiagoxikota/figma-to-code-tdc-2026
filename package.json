@@ -17,7 +17,8 @@
     "workshop:reset": "node scripts/reset.mjs",
     "workshop:doctor": "node scripts/doctor.mjs",
     "workshop:setup-mcp": "node scripts/mcp-config.mjs",
-    "handoff:tokens": "node scripts/tokens-css-to-json.mjs"
+    "handoff:tokens": "node scripts/tokens-css-to-json.mjs",
+    "workshop:instalar": "node scripts/instalar.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -29,5 +30,8 @@
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.6.3",
     "vite": "^6.0.7"
+  },
+  "bin": {
+    "figma-mcp-instalar": "scripts/instalar.mjs"
   }
 }
