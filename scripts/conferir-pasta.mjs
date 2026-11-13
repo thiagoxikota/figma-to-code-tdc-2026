@@ -69,7 +69,10 @@ const caminho = join(pasta, 'tokens.json')
 if (existsSync(caminho)) {
   try {
     dados = JSON.parse(readFileSync(caminho, 'utf8'))
-    certo('é um JSON válido')
+    if (!dados || typeof dados !== 'object' || Array.isArray(dados)) {
+      dados = null
+      errado('o arquivo não tem os tokens: o esperado é um bloco que começa com { e traz os grupos (color, space, ...). Cole de novo o bloco inteiro.')
+    } else certo('é um JSON válido')
   } catch (erro) {
     errado(`não é um JSON válido (${erro.message}). Cole de novo o bloco inteiro, do primeiro { ao último }.`)
   }

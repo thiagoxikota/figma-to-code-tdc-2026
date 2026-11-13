@@ -239,11 +239,23 @@ function writeConfig(token) {
   // JSON quebrado: só chega aqui depois do "sim" de confirmConflict. O backup guarda o original.
   const cfg = state.invalid ? {} : state.cfg
   cfg.mcpServers = cfg.mcpServers || {}
-  cfg.mcpServers[SERVER_KEY] = ourEntry(token)
+  const mine = ourEntry(token)
+  const current = cfg.mcpServers[SERVER_KEY]
+  const sameCommand =
+    current && current.command === mine.command && JSON.stringify(current.args || []) === JSON.stringify(mine.args)
+  // Mesma conexão já instalada: troca só a chave e mantém o que a pessoa tinha a mais (outras opções de env).
+  cfg.mcpServers[SERVER_KEY] = sameCommand
+    ? { ...current, ...mine, env: { ...(current.env || {}), ...mine.env } }
+    : mine
   const out = `${JSON.stringify(cfg, null, 2)}\n`
   JSON.parse(out)
   mkdirSync(dirname(path), { recursive: true })
   writeFileSync(path, out)
+  try {
+    chmodSync(path, 0o600) // o arquivo guarda a chave: só o dono da conta lê
+  } catch {
+    /* Windows ignora o modo */
+  }
   const others = Object.keys(cfg.mcpServers).filter((k) => k !== SERVER_KEY)
   return { path, others, wasInvalid: !!state.invalid, backupPath }
 }
