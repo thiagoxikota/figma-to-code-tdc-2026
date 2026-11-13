@@ -10,7 +10,45 @@ Nome: "Fora do Frame Fortaleza 18/11 - Figma MCP (cópia do deck TDC)", na mesma
 Os slides 14, 15, 26, 27 e 33 foram renderizados e conferidos depois da edição: texto inteiro, sem corte, mesma fonte e hierarquia do deck.
 
 
-## Já aplicado na cópia
+## Nova versão para designers: o que mudar (ainda não aplicado)
+
+O workshop mudou de público e de formato (ver `roteiro.md`): título novo, Parte A sem instalação, ponte imagem x arquivo e Parte B com o Figma conectado. Esta lista é só o que mudar na cópia Fortaleza. **Nada disso foi aplicado no Google Slides.** Os números são os da cópia atual (34 slides).
+
+### Slides alterados
+
+| Slide (cópia) | Hoje | Mudar para |
+|---|---|---|
+| 1 e 2 (capa) | Título do TDC | "Seu Figma vira produto" e, abaixo, "Design com IA, do arquivo ao protótipo que funciona". Sem "MCP" na capa |
+| 4 (promessa) | Promessa do TDC (pipeline rodando, arquivos na mão) | "Você sai com a sua tela revisada como um dev revisaria, um protótipo que funciona e, se conectar o Figma, os tokens reais prontos para o código. Tudo na conta gratuita." |
+| 6 e 7 (como funciona) | Quatro peças e "Código: React + TypeScript" | Vira o slide novo "Duas partes" (abaixo). Se o 6 ficar, trocar "React + TypeScript" por "HTML e CSS" |
+| 8 a 11 (demo de status, leitura e geração) | Demo de 10 min na abertura | Pular (ocultar). O setup é mostrado ao vivo com o comando, e a comparação vai para a ponte |
+| 12 e 13 (Take A e Take B, frase da prova) | Abertura | Movidos para a ponte, às 18h50, depois da Parte A. Título do 12: "Imagem é aproximação. O arquivo é a fonte." |
+| 14 (QR do guia) | Abre o setup | Fica igual. Entra no bloco "Como vai ser", às 18h05 |
+| 15 a 18 (Abrir, Token, Conectar, Ligar e testar) | Quatro slides do setup manual | Um slide "Instale com um comando" (o comando do guia, Passo 2, e as cinco coisas que ele faz) e o slide 18, "Ligar e testar", mantido. Ocultar 16 e 17 (o manual fica só no guia). Rodapé: "Travou? Chame um voluntário e siga a Parte A." |
+| 19 (espera do setup) | Espera da reta final | Ocultar, ou trocar o texto por "Conectou? Já comece a Parte A." |
+| 20 a 27 (passos) | Barra "1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Inspecionar · 6 Corrigir · 7 Exportar · 8 Revogar" | "Parte B: 1 Ler · 2 Tokens · 3 Auditar · 4 Gerar · 5 Conferir · 6 Exportar · 7 Revogar" e "Passo N de 7". Juntar Inspecionar e Corrigir (24 e 25) em "5. Conferir a fonte" |
+| 23 (Gerar) | Card em React + TypeScript | "4. Gere o Card em HTML e CSS, com os tokens do Figma" |
+| 26 (Leve pro código) | Prompts 7a e 7b | "6. Exporte para a pasta": só o JSON dos tokens (o Card já sai em HTML e CSS no passo 4) e o copiar e colar dos três arquivos |
+| 27 (Revogar) | "8. Revogue seu token", "Passo 8 de 8" | "7. Revogue seu token", "Passo 7 de 7" |
+| 28 a 30 (validação e limites) | Três slides, 8 min | Um slide, 4 min: "O que divergiu?" e os limites do guia (seção 8), incluindo "protótipo da imagem é aproximação" |
+| 33 (passagem) | "tokens.json, Card.html e Card.css" | Manter e acrescentar: "Fez só a Parte A? A pasta handoff/ tem os mesmos três arquivos." |
+| Notas do orador | Horários da grade antiga (18h22 a 19h40) | Horários da grade nova do `roteiro.md` |
+
+### Slides novos
+
+| Onde | Título | Conteúdo |
+|---|---|---|
+| Depois do 5 | Duas partes | Parte A: sua tela como imagem, sem instalar, revisão de dev e protótipo. Parte B: o Figma conectado com um comando, os valores reais e a pasta para o Mateus. "Não instalou? A B é em dupla." |
+| Antes do 20 | Parte A, 1: exporte a tela | Selecionar o frame, Export, PNG 2x. "Pode ser a Tela demo ou uma tela sua." |
+| Antes do 20 | Parte A, 2: a revisão de dev | "Cole a imagem no Claude e peça a revisão. O prompt está no guia." Os quatro eixos: estados, espaçamento, texto, acessibilidade |
+| Antes do 20 | Parte A, 3: o protótipo | "Na mesma conversa, peça o protótipo. Ele aparece no próprio Claude. Clique, digite, envie vazio." |
+
+Os prompts não vão inteiros no slide: estão no guia, para copiar.
+
+
+## Já aplicado na cópia (versão anterior, para devs)
+
+As mudanças abaixo foram feitas para a versão anterior e continuam na cópia. A barra de 8 passos e o texto do slide 26 são substituídos pela lista acima.
 
 | Slide (cópia) | Antes | Depois |
 |---|---|---|
@@ -58,6 +96,8 @@ Os dois têm nota do orador nova.
 
 ## Falta decidir (só você)
 
+Além de aprovar e aplicar a lista "Nova versão para designers":
+
 ### Slide 3, "Quem está com vocês hoje"
 
 Hoje: três colunas, Thiago Xikota ("Líder do The AI Collective Florianópolis"), Bruno Bach ("Líder do Friends of Figma Florianópolis.") e Lourena ("Anfitriã Designers no Boteco Florianópolis."), com fotos. A nota do slide 2 e a do 3 também citam os dois.
@@ -73,7 +113,7 @@ Já trocado na cópia. O QR novo (`fortaleza/qr-guia.png`) aponta para `https://
 
 Alternativa melhor, se der tempo: uma URL curta `thiagoxikota.com/fortaleza` redirecionando para o guia. Exige deploy no portfólio, que eu não fiz.
 
-A página `thiagoxikota.com/tdc` continua no ar e ensina o mesmo setup (Claude Desktop, mesmo MCP), mas oferece a rota de máquina reserva e não tem o passo 7. Por isso o guia da sala é o do GitHub.
+A página `thiagoxikota.com/tdc` continua no ar e ensina o mesmo setup (Claude Desktop, mesmo MCP), mas oferece a rota de máquina reserva, não tem a Parte A nem o passo de exportação. Por isso o guia da sala é o do GitHub.
 
 ### Slide 5, "Fique até o final para uma surpresa!", e slide 34, formulário e mentoria
 
@@ -82,7 +122,7 @@ Hoje o 34 diz "Concorra a uma mentoria de 1 hora com Thiago Xikota", QR e `forms
 Opções:
 
 - **Repetir a mentoria.** Criar um formulário novo para Fortaleza (o do TDC mistura as respostas) e trocar URL e QR do slide 34. Manter o slide 5.
-- **Sem mentoria.** Apagar o slide 5 e o 34. O fechamento vira o slide 33, de passagem para o Mateus, que já encerra bem às 19h38.
+- **Sem mentoria.** Apagar o slide 5 e o 34. O fechamento vira o slide 33, de passagem para o Mateus, que já encerra bem às 19h36.
 
 Proposta de texto, se repetir:
 
@@ -96,10 +136,6 @@ Acesse o QR Code e preencha o formulário
 ### Rodapé direito do slide 34, "Xikota.ai, em construção"
 
 Se o slide ficar, decidir se esse rótulo continua. Proposta neutra: "Fechamento".
-
-### Slide 6, "Código: React + TypeScript"
-
-Continua certo para o passo 4. Se quiser antecipar a ponte, trocar por "React, depois HTML e CSS". Opcional.
 
 ### Depois de fechar o deck
 

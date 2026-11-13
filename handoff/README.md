@@ -1,6 +1,6 @@
 # handoff: rede de segurança da edição Fortaleza
 
-Para quem não terminou o passo 7 (Exportar) do workshop, bateu no limite da conta gratuita ou quer conferir o próprio resultado. Copie os arquivos desta pasta para a sua `fora-do-frame`.
+Para quem fez só a Parte A, não terminou a Parte B (passo B6, Exportar) do workshop, bateu no limite da conta gratuita ou quer conferir o próprio resultado. Copie os arquivos desta pasta para a sua `fora-do-frame`.
 
 | Arquivo | O que é |
 |---|---|

@@ -2,6 +2,13 @@
 
 Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o seu (20h). Nada aqui muda o seu plano; é só para você saber exatamente de onde a galera parte.
 
+**Mudou o público e o formato.** O workshop agora se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona" e é para designers, não para devs. Conte com gente que nunca abriu o Terminal. Ele tem duas partes:
+
+- **Parte A, todo mundo, sem instalar nada.** A pessoa exporta uma tela como PNG, cola no Claude gratuito e sai com uma revisão de dev da tela e um protótipo HTML navegável. Esse protótipo fica na conversa do Claude, não vira arquivo, e não é base para o seu workshop: as cores e medidas dele são estimadas da imagem.
+- **Parte B, Figma conectado.** Um comando liga o Figma ao Claude (MCP `figma-console-mcp@1.35.0`, gratuito). O Claude lê o arquivo real, gera o Card em HTML e CSS com os tokens e exporta os tokens em JSON. É daqui que sai a pasta abaixo.
+
+Quem fez só a Parte A ou não terminou a B usa a pasta `handoff/` do repositório. Então todo mundo chega com os mesmos três arquivos.
+
 
 ## O que cada pessoa leva
 
@@ -10,12 +17,12 @@ Uma pasta `fora-do-frame` na área de trabalho, com três arquivos:
 | Arquivo | Conteúdo | Como foi feito |
 |---|---|---|
 | `tokens.json` | Os tokens do mini design system, formato W3C Design Tokens (DTCG) | O Claude leu as variáveis do Figma via MCP e devolveu o JSON; a pessoa copiou e colou |
-| `Card.html` | Página com o componente Card, estados normal e disabled | O Claude converteu o Card corrigido (React) para HTML puro |
-| `Card.css` | Estilo do Card, só com `var(--token)` | Idem, com as mesmas variáveis do componente |
+| `Card.html` | Página com o componente Card, estados normal e disabled | O Claude gerou direto em HTML a partir do frame do Figma, sem passar por React |
+| `Card.css` | Estilo do Card, só com `var(--token)` | Idem, com o nome de variável igual ao token do Figma |
 
 O `Card.html` carrega `tokens.css` e `Card.css`, nessa ordem. O `tokens.css` **ainda não existe** na pasta: ele nasce no seu workshop, quando o Style Dictionary converte o `tokens.json`. Ou seja, o primeiro build já faz o card "acender" no navegador.
 
-Quem não terminou, bateu no limite da conta gratuita ou ficou com um JSON estranho usa a rede de segurança do repositório: `handoff/`, com os mesmos três arquivos prontos e mais o `tokens.css` já gerado. Então todo mundo chega do mesmo ponto.
+Quem fez só a Parte A, não terminou, bateu no limite da conta gratuita ou ficou com um JSON estranho usa a rede de segurança do repositório: `handoff/`, com os mesmos três arquivos prontos e mais o `tokens.css` já gerado. Espere uma parte grande da sala nesse caminho, porque nem todo designer vai conseguir instalar.
 
 Repositório: https://github.com/thiagoxikota/figma-to-code-tdc-2026 (público, MIT, pode usar como base à vontade).
 
@@ -98,20 +105,21 @@ Atenção ao Node: o guia que a sala recebeu pede Node 18 ou maior, por causa do
 
 ## O componente
 
-Mesmo Card do repositório (`src/components/Card.tsx`), agora em HTML:
+Mesmo Card do repositório (`src/components/Card.tsx`), gerado direto em HTML e CSS:
 
 - `<article class="card">` com `card__body`, título `h3.card__title`, `p.card__description` e `button.card__action` ("Ver detalhes").
 - Estados: hover, focus-visible (anel de 2px em `--color-focus`), disabled (`card--disabled` mais `disabled` no botão).
 - Alvo mínimo de 44px no botão (`--tap-target-min`).
 - O prompt fixa as classes, então o HTML da sala e o do `handoff/` têm a mesma forma, o que deve ajudar no Storybook e no Magu.
+- O Card.css da sala traz, ao lado de cada `var(--token)`, um comentário com o valor que veio do frame. É o que a pessoa usa para conferir a fonte; não atrapalha o build.
 
 Pontos que a sua auditoria de acessibilidade pode levantar, para não serem surpresa:
 
-- O nível do título é fixo em `h3` no HTML (no React era por prop).
-- O estado disabled usa `opacity: 0.7` no card inteiro, além das cores de disabled no botão.
+- O nível do título é fixo em `h3` no HTML.
+- No `handoff/`, o estado disabled usa `opacity: 0.7` no card inteiro, além das cores de disabled no botão. O da sala pode variar, porque o Claude escreve o CSS.
 - A ação é um `button` sem destino. No HTML estático ele não faz nada.
 
 
 ## Se quiser combinar algo
 
-Se você preferir outro formato de token, outro nome de arquivo ou outra estrutura de pasta, me fala até segunda (16/11), que é quando o material vai para o grupo. Eu ajusto o prompt do passo 7 e o `handoff/`.
+Se você preferir outro formato de token, outro nome de arquivo ou outra estrutura de pasta, me fala até segunda (16/11), que é quando o material vai para o grupo. Eu ajusto os prompts B4 e B6 e o `handoff/`.
