@@ -205,7 +205,7 @@ async function confirmConflict(path) {
   const answer = await askLine('  Digite sim para substituir, ou só Enter para parar sem mexer em nada: ')
   if (answer.toLowerCase() !== 'sim') {
     console.log('\nParei sem mexer em nada. A sua configuração continua como estava.')
-    console.log('No dia você faz a Parte A inteira e a Parte B em grupo. Se quiser ajuda, mostre esta tela a um voluntário.\n')
+    console.log('No dia você faz a Parte A inteira e a Parte B pelo telão. Se quiser ajuda, mostre esta tela a um voluntário.\n')
     process.exit(4)
   }
 }
@@ -393,7 +393,7 @@ async function main() {
     console.log('  1. Confira a internet. Este passo baixa a conexão pelo npm, mesmo quando você roda pelo ZIP.')
     console.log(`  2. Feche o Claude Desktop por completo (${IS_MAC ? 'Cmd+Q' : 'clique direito no ícone perto do relógio > Quit'}), abra de novo e espere 2 minutos.`)
     console.log('  3. Rode este mesmo comando outra vez. A chave do Figma é a mesma: não precisa criar outra.')
-    console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B em grupo.\n')
+    console.log('\nNão resolveu até quarta? Tudo bem: você faz a Parte A inteira e a Parte B pelo telão.\n')
     process.exit(3)
   }
   ok(`plugin pronto em ${manifest}`)
@@ -408,7 +408,7 @@ async function main() {
   console.log('     Deu certo quando o Claude disser o NOME do arquivo que está aberto no Figma.')
   console.log('     Só isso prova a conexão. O "ok" deste instalador não prova.\n')
   revealFile(manifest)
-  console.log('Travou em casa? Sem problema: no dia você faz a Parte A inteira e a Parte B em grupo.\n')
+  console.log('Travou em casa? Sem problema: no dia você faz a Parte A inteira e a Parte B pelo telão.\n')
 }
 
 main().catch((error) => {
