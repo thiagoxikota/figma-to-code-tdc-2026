@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criar sua conta: exemplo do material do workshop</title>
+<!--
+  Exemplo do material do workshop de Fortaleza. Não é saída do Claude.
+  Reproduz a Tela demo com as medidas lidas do arquivo (frame de 400px, padding 20,
+  gap 24, campos com gap 12) e o mínimo que o protótipo da Parte A precisa fazer:
+  aceitar digitação, mostrar erro com campo vazio e mostrar "Conta criada".
+  Serve para gerar as imagens de exemplo do deck. Endereço com parâmetros:
+    ?correcao=texto   aplica a correção do texto de apoio (#6C665F)
+    ?correcao=nome    aplica a correção do campo nome (igual ao de e-mail)
+    ?estado=erro | sucesso | preenchido
+-->
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; font-family: Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1f1c1a; }
+  .tela { width: 400px; padding: 20px; display: flex; flex-direction: column; gap: 24px; background: #ffffff; }
+  h1 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .apoio { margin: 0; font-size: 14px; color: #a29b93; }
+  .correcao-texto .apoio { color: #6c665f; }
+  .campos { display: flex; flex-direction: column; gap: 12px; }
+  input[type="email"], input[type="text"] { width: 100%; height: 44px; padding: 0 16px; font: inherit; font-size: 16px; color: #1f1c1a; border: 1px solid #e2ddd6; border-radius: 8px; background: #f5f3f0; }
+  input::placeholder { color: #6c665f; opacity: 1; }
+  #nome { background: #ffffff; }
+  .correcao-nome #nome { background: #f5f3f0; }
+  input:focus-visible, button:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
+  .erro { margin: 6px 0 0; font-size: 14px; color: #a82a22; }
+  input[aria-invalid="true"] { border-color: #a82a22; }
+  .optin { display: flex; align-items: center; gap: 8px; font-size: 16px; color: #6c665f; cursor: pointer; }
+  .optin input { position: absolute; opacity: 0; }
+  .bolinha { width: 20px; height: 20px; border-radius: 50%; background: #c8352b; flex: none; }
+  .optin input:not(:checked) + .bolinha { background: #ffffff; box-shadow: inset 0 0 0 2px #c8352b; }
+  button { height: 44px; border: 0; border-radius: 8px; background: #c8352b; color: #ffffff; font: inherit; font-size: 16px; font-weight: 500; cursor: pointer; }
+  .sucesso { display: none; }
+  .ok .formulario { display: none; }
+  .ok .sucesso { display: flex; flex-direction: column; gap: 24px; }
+  .formulario { display: flex; flex-direction: column; gap: 24px; }
+</style>
+</head>
+<body>
+<main class="tela" id="tela">
+  <form class="formulario" id="form" novalidate>
+    <h1>Criar sua conta</h1>
+    <p class="apoio">Leva menos de um minuto</p>
+    <div class="campos">
+      <div>
+        <input id="email" type="email" placeholder="seu@email.com" aria-label="E-mail" aria-describedby="erro-email">
+        <p class="erro" id="erro-email" hidden>Preencha o e-mail.</p>
+      </div>
+      <div>
+        <input id="nome" type="text" placeholder="Seu nome" aria-label="Nome" aria-describedby="erro-nome">
+        <p class="erro" id="erro-nome" hidden>Preencha o nome.</p>
+      </div>
+    </div>
+    <label class="optin"><input type="checkbox" checked><span class="bolinha"></span>Receber novidades por email</label>
+    <button type="submit">Continuar</button>
+  </form>
+  <section class="sucesso" aria-live="polite">
+    <h1>Conta criada</h1>
+    <p class="apoio">Tudo certo. Você já pode entrar.</p>
+  </section>
+</main>
+<script>
+  const tela = document.getElementById('tela');
+  const form = document.getElementById('form');
+  const campos = ['email', 'nome'].map((id) => document.getElementById(id));
+  function validar() {
+    let ok = true;
+    for (const campo of campos) {
+      const vazio = campo.value.trim() === '';
+      campo.setAttribute('aria-invalid', vazio ? 'true' : 'false');
+      document.getElementById('erro-' + campo.id).hidden = !vazio;
+      if (vazio) ok = false;
+    }
+    return ok;
+  }
+  form.addEventListener('submit', (e) => { e.preventDefault(); if (validar()) tela.classList.add('ok'); });
+  const p = new URLSearchParams(location.search);
+  if (p.get('correcao') === 'texto') tela.classList.add('correcao-texto');
+  if (p.get('correcao') === 'nome') tela.classList.add('correcao-nome');
+  const estado = p.get('estado');
+  if (estado === 'preenchido' || estado === 'sucesso') { campos[0].value = 'ana@exemplo.com'; campos[1].value = 'Ana Lima'; }
+  if (estado === 'erro' || estado === 'sucesso') form.requestSubmit();
+</script>
+</body>
+</html>

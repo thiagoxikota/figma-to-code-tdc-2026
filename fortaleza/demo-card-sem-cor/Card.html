@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card, rede de segurança do workshop</title>
+  <!-- tokens.css é a saída do Style Dictionary a partir de tokens.json -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="Card.css">
+</head>
+<body>
+  <main class="card-list">
+    <!-- Estado padrão: hover e focus-visible aparecem ao passar o mouse e ao navegar com Tab -->
+    <article class="card">
+      <div class="card__body">
+        <h3 class="card__title">Criar sua conta</h3>
+        <p class="card__description">Cor, espaçamento, raio e tipografia vêm dos tokens do Figma.</p>
+        <button class="card__action" type="button">Ver detalhes</button>
+      </div>
+    </article>
+
+    <!-- Estado disabled -->
+    <article class="card card--disabled">
+      <div class="card__body">
+        <h3 class="card__title">Criar sua conta</h3>
+        <p class="card__description">O mesmo card no estado desabilitado.</p>
+        <button class="card__action" type="button" disabled>Ver detalhes</button>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
