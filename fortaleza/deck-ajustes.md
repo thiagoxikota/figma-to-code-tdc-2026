@@ -32,10 +32,10 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 1 | 18h00 | Capa | texto à esquerda, imagem dominante à direita | "Figma + IA, na prática" ("na prática" em vermelho), "do seu Figma ao primeiro site", `hero-exemplo-thiago.png` grande, legenda "Exemplo pronto: a hero do Thiago, no Figma", nome e evento |
 | 2 | até 18h05 | O que vamos fazer hoje | três cartões | 1 o agente edita sua hero no Figma (número em vermelho, logo Figma); 2 ela vira HTML (ícone de arquivo); 3 você confere (ícone de navegador). "E, se der tempo, no ar." |
 | 3 | até 18h10 | As peças | fileira de logos | Figma "onde está o arquivo"; Desktop Bridge "plugin que abre a conversa com o arquivo aberto"; Figma Console MCP "servidor que dá ferramentas ao agente"; Claude / Codex "o agente: lê e altera o design, e escreve o código". "MCP é o protocolo" em vermelho |
-| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a tag `fortaleza-v5`, link curto do repositório |
+| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a tag `v1` do `figma-ia-na-pratica`, link curto do repositório |
 | 5 | até 18h22 | Instale e confira | lista com logos e captura | Node.js (`node -v`), instalador do kit, Claude Desktop reiniciado. "Você deve ver isto" em vermelho sobre o espaço de print |
-| 6 | até 18h30 | O plugin no Figma | captura dominante | caminho do plugin, "Local · ready" em vermelho, espaço de print grande |
-| 7 | até 18h35 | O alô de leitura | cartão escuro e número | pergunta do alô no cartão escuro, "104" grande em vermelho, conferir no painel da direita |
+| 6 | até 18h30 | O plugin no Figma | captura dominante | caminho do plugin, "Connected" em vermelho, espaço de print grande |
+| 7 | até 18h35 | O alô de leitura | cartão escuro e número | pergunta do alô no cartão escuro, "Fale comigo" grande em vermelho, conferir olhando o frame |
 | 8 | 18h35 | Sua hero pelo agente | abertura escura | "Sua hero pelo agente" ("pelo agente" em vermelho), "O agente escreve no seu Figma. Você confere." |
 | 9 | até 18h50 | Prompt 1 | cartão escuro e passos | primeira linha do prompt 1, "+ dados do meus-dados.txt" em vermelho, 3 passos, "Confira: as camadas seguem editáveis." |
 | 10 | até 18h55 | Antes e depois | comparação | `hero-molde.png` e `hero-exemplo-thiago.png` lado a lado, "Depois" em vermelho |
@@ -44,15 +44,14 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 13 | até 19h20 | Prompt 2: o index.html | diagrama de três peças | Minha hero, `index.html` em vermelho, Navegador. Plano B (TextEdit) e site reserva no rodapé |
 | 14 | até 19h30 | Confira como designer | Figma ao lado do navegador | hero do exemplo e espaço de print do navegador; "Um ajuste por vez, terminando com: “Não mude mais nada.”" em vermelho |
 | 15 | até 19h35 | Próximos passos | bento com logos | Netlify Drop (grande), GitHub, PageSpeed Insights, React Bits, Mobbin (Mobbin MCP: Pro e Team), faixa "Galeria" em vermelho |
-| 16 | até 19h40 | Revogue e Mateus | divisão clara e escura | "Revogue só o token do workshop" com o caminho no Figma; painel escuro "Às 20h, Mateus Villain. Levem a pasta handoff." |
+| 16 | até 19h40 | Fecho e LinkedIn | fundo escuro, frase grande | "A barreira do código caiu. O critério continua sendo seu." em destaque; QR code do LinkedIn (linkedin.com/in/thiagoxikota), "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn" |
 
 
 ## Pendências
 
 - [VERIFICAR] Primeira linha do prompt 1 no slide 9 ("Altere só o frame “Minha hero” no Figma, com os meus dados abaixo.") precisa bater com o guia reescrito.
-- [VERIFICAR] Pergunta do alô no slide 7 e o tamanho 104 precisam bater com o guia e com o molde.
+- Pergunta do alô no slide 7 e o "Fale comigo" batem com o guia e com o molde.
 - [VERIFICAR] Prints do ensaio nos slides 5, 6, 11 e 14: trocar o espaço cinza pela captura real com `replaceImage`.
-- [VERIFICAR] Encurtador para o link do slide 4; sem domínio novo sem ordem.
-- O QR aponta para `blob/fortaleza-v5/fortaleza/guia-participante.md`: a tag precisa existir antes do dia.
+- O QR e o link do slide 4 apontam para https://github.com/thiagoxikota/figma-ia-na-pratica.
 - Logos inseridos por URL pública (Iconify via images.weserv.nl, ícone oficial do Mobbin). O Slides guarda a cópia; não dependem do link depois de inseridos.
 - Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários).

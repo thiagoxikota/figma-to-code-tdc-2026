@@ -4,11 +4,11 @@
 
 Fora do Frame, uma experiência UXFor, 3º dia (workshops presenciais). Quarta, 18/11/2026, Digital College Aldeota, Av. Santos Dumont, 1510, 1º andar, Fortaleza.
 
-Janela do Thiago: 18h00 às 19h40 (100 min). Mesa de instalação com os voluntários às 17h30. Às 19h40 entra o coffee; às 20h, o workshop do Mateus Villain (tokens e componente para código, Style Dictionary), a partir da pasta `handoff`.
+Janela do Thiago: 18h00 às 19h40 (100 min). Mesa de instalação com os voluntários às 17h30. Às 19h40 entra o coffee.
 
 **Público: designers.** Linguagem de designer no palco. A frase que costura tudo: "Designer não precisa programar. Precisa dar regra."
 
-Fonte das decisões: `.critica/spec-v9.md` (local, fora do Git), seção v10. Prompts palavra por palavra: `guia-participante.md`. Fala no prompter: `roteiro-prompter.txt`. Deck: `deck-ajustes.md`.
+Fonte das decisões: `.critica/spec-v9.md` (local, fora do Git), seção v10. Prompts palavra por palavra: o guia, em https://github.com/thiagoxikota/figma-ia-na-pratica. Fala no prompter: `roteiro-prompter.txt`. Deck: `deck-ajustes.md`.
 
 **Horário só aqui e nas notas.** Nenhum slide mostra horário no canto.
 
@@ -28,7 +28,7 @@ O foco é o Figma ligado ao agente pelo Figma Console MCP e o plugin Desktop Bri
 
 **A segunda, a que dá o nome ao workshop:** "A IA escreveu no meu Figma, e as camadas continuam editáveis."
 
-**Cada um conecta o Figma ao próprio agente.** A instalação é no preparo obrigatório de casa: Claude Desktop, com o Codex como alternativa. Mesa de instalação às 17h30. Na sala, o setup guiado é para conferir as peças, ver o plugin em "Local · ready" e fazer o alô; ninguém instala na sala. Quem não conectou segue pelo telão.
+**Cada um conecta o Figma ao próprio agente.** A instalação é no preparo obrigatório de casa: Claude Desktop, com o Codex como alternativa. Mesa de instalação às 17h30. Na sala, o setup guiado é para conferir as peças, ver o plugin em "Connected" e fazer o alô; ninguém instala na sala. Quem não conectou segue pelo telão.
 
 **As peças, com o nome certo:**
 
@@ -50,12 +50,12 @@ O foco é o Figma ligado ao agente pelo Figma Console MCP e o plugin Desktop Bri
 |---|---|---|---|
 | 17h30 a 18h00 | Mesa de instalação, com os voluntários (fora da grade) | | |
 | 18h00 a 18h10 | Abertura: capa com a hero, 1 min de demo do agente mexendo no Figma, as peças com logos | 1 a 3 | 10 |
-| 18h10 a 18h35 | Setup guiado: guia e QR, instale e confira, o plugin em "Local · ready", o alô de leitura | 4 a 7 | 25 |
+| 18h10 a 18h35 | Setup guiado: guia e QR, instale e confira, o plugin em "Connected", o alô de leitura | 4 a 7 | 25 |
 | 18h35 a 18h55 | Sua hero pelo agente: abertura de etapa, prompt 1 escreve no Figma, confira no Figma | 8 a 10 | 20 |
 | 18h55 a 19h05 | Possibilidades (telão): comentário lido e aplicado, handoff, regras escritas, harness, Desktop x Code | 11 e 12 | 10 |
 | 19h05 a 19h20 | Do Figma ao HTML: prompt 2 com o `DESIGN.md`, baixar, abrir | 13 | 15 |
 | 19h20 a 19h30 | Confira como designer: Figma ao lado do navegador, tela estreita, um ajuste | 14 | 10 |
-| 19h30 a 19h40 | Próximos passos e galeria, revogar o token do workshop, Mateus às 20h | 15 e 16 | 10 |
+| 19h30 a 19h40 | Próximos passos e galeria, fecho com a frase de impacto e o QR do LinkedIn | 15 e 16 | 10 |
 
 Soma: 100 min. A validar no ensaio cronometrado (`checklist-thiago.md`).
 
@@ -64,7 +64,7 @@ Soma: 100 min. A validar no ensaio cronometrado (`checklist-thiago.md`).
 1. **A galeria encolhe primeiro:** um link, ou nenhum.
 2. **Depois os próximos passos:** viram o slide 15 parado na tela, com "está tudo no guia".
 3. **Depois a demo do comentário:** fica a gravação, sem ao vivo.
-4. **O alô, o prompt 1, o prompt 2, a conferência e revogar não são cortados.**
+4. **O alô, o prompt 1, o prompt 2, a conferência e o fecho não são cortados.**
 5. Quem atrasou num passo segue com a sala. A conversa continua no Claude, o guia tem tudo e o kit tem o site reserva.
 
 
@@ -95,9 +95,9 @@ Depois: "MCP é o protocolo, a regra da conversa. É como um cabo USB-C: o agent
 
 **Slide 5, instale e confira.** Três quadros: Node (`node -v` com v18 ou maior), o instalador, e "você deve ver isto" com a tela real do instalador terminando bem [VERIFICAR: captura real do setup para o slide]. Fala: "Isso foi feito em casa. Aqui a gente só confere." Claude Desktop fechado por completo depois da instalação (Mac: Cmd+Q). Os voluntários circulam.
 
-**Slide 6, o plugin.** A janelinha do Figma Desktop Bridge com "Local · ready" [VERIFICAR: captura real]. Passos: Figma Desktop com a cópia aberta, página "Minha hero"; Plugins > Development > Figma Desktop Bridge; deixar a janela aberta. Fala: "Viu 'Local · ready'? A porta está aberta." O Thiago faz junto no telão, devagar.
+**Slide 6, o plugin.** A janelinha do Figma Desktop Bridge com "Connected" [VERIFICAR: captura real]. Passos: Figma Desktop com a cópia aberta, página "Minha hero"; Plugins > Development > Figma Desktop Bridge; deixar a janela aberta. Fala: "Viu 'Connected'? A porta está aberta." O Thiago faz junto no telão, devagar.
 
-**Slide 7, o alô de leitura: a primeira vitória.** Selecionar o frame "Minha hero" e mandar o prompt do alô: o nome do arquivo e o tamanho da fonte da camada "Nome". O Thiago faz no telão e confere no painel: clica em "Seu Nome", o painel mostra 104. Fala: "A IA leu uma propriedade do frame de vocês. Agora confiram: cliquem no nome e olhem o painel da direita. Bateu? Essa é a primeira vitória. Ela leu o arquivo, não uma imagem." Depois: "Quem não conectou, levanta a mão." Os voluntários conferem plugin e Claude Desktop; ninguém instala na sala. Não deu: segue pelo telão.
+**Slide 7, o alô de leitura: a primeira vitória.** Selecionar o frame "Minha hero" e mandar o prompt do alô: o nome do arquivo e o texto do botão. O Thiago faz no telão: o Claude responde o nome do arquivo e "Fale comigo". Fala: "A IA leu o frame de vocês pela conexão. Agora confiram: o botão do frame diz Fale comigo? Bateu? Essa é a primeira vitória. Ela leu o arquivo, não uma imagem." Depois: "Quem não conectou, levanta a mão." Os voluntários conferem plugin e Claude Desktop; ninguém instala na sala. Não deu: segue pelo telão.
 
 ### 18h35 a 18h55. Sua hero pelo agente (slides 8 a 10)
 
@@ -154,9 +154,7 @@ Se a geração do palco falhar: mostrar a saída do ensaio e dizer que é do ens
 
 "Nada disso é obrigatório. Está tudo no guia." Galeria relâmpago: até três heros da sala no telão, quem topar. Atrasou: uma, ou nenhuma.
 
-**Slide 16, revogue o token do workshop e Mateus às 20h.** Revogar: "Figma, Settings, Security, Personal access tokens. Achem a chave que vocês criaram para o workshop, a de 7 dias, e cliquem em Revoke. Só ela. As outras que vocês já tinham ficam." O Thiago mostra o caminho sem abrir a lista com a chave do palco; a dele é revogada depois, fora do telão. Nunca cortado.
-
-Passagem: "Às 20h, depois do coffee, levem a pasta `handoff` da Área de Trabalho. Ela tem um Card e os tokens de design: é dela que o Mateus parte." Fecho: "Hoje o agente leu o Figma de vocês, escreveu nele, e transformou em site. Vocês conferiram cada passo. Designer não precisa programar. Precisa dar regra." Dúvida individual: coffee. Fecha no horário. Detalhes em `para-o-mateus.md`.
+**Slide 16, fecho e LinkedIn (19h35 a 19h40).** Frase de impacto na tela: "A barreira do código caiu. O critério continua sendo seu." Embaixo, o QR code do LinkedIn (linkedin.com/in/thiagoxikota), com o nome "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn". Fala: "A barreira do código caiu. O critério continua sendo seu." Pausa. "Me segue no LinkedIn, o QR tá na tela. Obrigado." Dúvida individual: coffee. Fecha no horário.
 
 
 ## Contingências

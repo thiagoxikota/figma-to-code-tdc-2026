@@ -27,7 +27,7 @@
  *   env -i PATH="$PATH" HOME=/tmp/casa-teste MCP_CONFIG_PATH=/tmp/casa-teste/x.json FIGMA_ACCESS_TOKEN=figd_TESTE node scripts/instalar.mjs --sem-plugin
  */
 import { spawn, spawnSync } from 'node:child_process'
-import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { chmodSync, copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir, platform } from 'node:os'
 import { dirname, join } from 'node:path'
 import readline from 'node:readline'
@@ -53,6 +53,25 @@ function configPath() {
   return join(homedir(), '.config', 'Claude', 'claude_desktop_config.json')
 }
 
+// Claude Desktop da Microsoft Store (MSIX) lê o config de uma pasta virtualizada,
+// não de %APPDATA%\Claude. Gravamos nas duas para servir a qualquer instalação.
+function msixConfigPaths() {
+  if (!IS_WIN || process.env.MCP_CONFIG_PATH) return []
+  const local = process.env.LOCALAPPDATA || join(homedir(), 'AppData', 'Local')
+  const pkgs = join(local, 'Packages')
+  try {
+    return readdirSync(pkgs)
+      .filter((d) => /^(Anthropic\.)?Claude_/i.test(d))
+      .map((d) => join(pkgs, d, 'LocalCache', 'Roaming', 'Claude', 'claude_desktop_config.json'))
+  } catch {
+    return []
+  }
+}
+
+function allConfigPaths() {
+  return [configPath(), ...msixConfigPaths()]
+}
+
 function pluginManifestPath() {
   return join(homedir(), '.figma-console-mcp', 'plugin', 'manifest.json')
 }
@@ -74,15 +93,19 @@ function hasClaudeDesktop() {
   if (IS_MAC) return anyExists(['/Applications/Claude.app', join(homedir(), 'Applications', 'Claude.app')])
   if (IS_WIN) {
     const local = process.env.LOCALAPPDATA || ''
-    return anyExists([join(local, 'AnthropicClaude'), join(local, 'Programs', 'Claude'), join(local, 'Claude')])
+    return anyExists([join(local, 'AnthropicClaude'), join(local, 'Programs', 'Claude'), join(local, 'Claude')]) || msixConfigPaths().length > 0
   }
   return true
 }
 
+// Testes automáticos: INSTALAR_SEM_ABRIR=1 não abre navegador nem Finder.
+const NO_OPEN = process.env.INSTALAR_SEM_ABRIR === '1'
+
 function openUrl(url) {
+  if (NO_OPEN) return
   try {
     if (IS_MAC) spawnSync('open', [url])
-    else if (IS_WIN) spawnSync('cmd', ['/c', 'start', '""', url])
+    else if (IS_WIN) spawnSync('cmd', ['/c', 'start', '', url])
     else spawnSync('xdg-open', [url])
   } catch {
     /* sem navegador: a pessoa abre o link impresso */
@@ -90,9 +113,10 @@ function openUrl(url) {
 }
 
 function revealFile(file) {
+  if (NO_OPEN) return
   try {
     if (IS_MAC) spawnSync('open', ['-R', file])
-    else if (IS_WIN) spawnSync('explorer', [`/select,${file}`])
+    else if (IS_WIN) spawnSync('explorer', [`/select,"${file}"`], { windowsVerbatimArguments: true })
   } catch {
     /* o caminho também vai impresso */
   }
@@ -181,9 +205,11 @@ function findConflict(path) {
   return same ? null : { kind: 'entrada', atual: describeEntry(current) }
 }
 
-async function confirmConflict(path) {
-  const conflict = findConflict(path)
-  if (!conflict) return
+async function confirmConflict(paths) {
+  const found = paths.map((p) => ({ p, c: findConflict(p) })).find((x) => x.c)
+  if (!found) return
+  const path = found.p
+  const conflict = found.c
   const mine = ourEntry('')
   console.log('')
   if (conflict.kind === 'invalido') {
@@ -221,8 +247,7 @@ function readConfig(p) {
   }
 }
 
-function writeConfig(token) {
-  const path = configPath()
+function writeConfig(token, path = configPath()) {
   const state = readConfig(path)
   let backupPath = ''
   if (state.existed) {
@@ -303,8 +328,8 @@ function warmPlugin(token) {
     const timer = setInterval(() => {
       const secs = Math.round((Date.now() - started) / 1000)
       if (existsSync(manifest)) return finish({ ok: true })
-      if (secs >= 180) return finish({ ok: false, reason: 'demorou mais de 3 minutos (rede lenta ou bloqueada?)' })
-      if (secs % 10 === 0) console.log(`     baixando e preparando o plugin... ${secs} s (pode levar até 2 min na primeira vez)`)
+      if (secs >= 300) return finish({ ok: false, reason: 'demorou mais de 5 minutos (rede lenta ou bloqueada?)' })
+      if (secs % 10 === 0) console.log(`     baixando e preparando o plugin... ${secs} s (pode levar alguns minutos na primeira vez)`)
     }, 1000)
     child.on('error', (error) =>
       finish({ ok: false, npx: true, reason: `não consegui rodar o npx (${error.code || error.message})` }),
@@ -338,7 +363,7 @@ async function main() {
   for (const [name, url] of missing) warn(`Não achei o ${name}. Baixe aqui: ${url} (dá para continuar e instalar depois)`)
 
   // Antes de pedir a chave: se a configuração tem algo que seria trocado, avisa e para.
-  await confirmConflict(configPath())
+  await confirmConflict(allConfigPaths())
 
   step(2, 'Chave do Figma (personal access token)')
   let token = process.env.FIGMA_ACCESS_TOKEN || ''
@@ -353,7 +378,7 @@ async function main() {
   if (!token) {
     console.log('  Vou abrir as configurações do Figma no navegador.')
     console.log('  Lá: aba Security > Personal access tokens > Generate new token.')
-    console.log('  Validade: 7 dias (cobre até o workshop; você revoga no fim). Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
+    console.log('  Validade: 7 dias (cobre até o workshop). Em escopos, marque só leitura em File content. O resto pode ficar sem acesso.')
     console.log('  Use a sua conta pessoal do Figma: a chave lê qualquer arquivo que a conta abre, não só o do exercício.')
     console.log('  A chave começa com figd_ e aparece uma vez só: copie na hora.')
     await askEnter('  Aperte Enter para abrir o Figma...')
@@ -371,11 +396,13 @@ async function main() {
   ok('chave recebida (não aparece na tela; vai só para o config do Claude Desktop)')
 
   step(3, 'Ligando o Figma no Claude Desktop')
-  const result = writeConfig(token)
-  if (result.wasInvalid) warn('O arquivo antigo era inválido: guardei a cópia .bak e criei um novo, só com a conexão do Figma.')
-  ok(`configurado em ${result.path}`)
-  if (result.backupPath) ok(`cópia do config anterior: ${result.backupPath}`)
-  if (result.others.length) ok(`outros conectores preservados: ${result.others.join(', ')}`)
+  for (const path of allConfigPaths()) {
+    const result = writeConfig(token, path)
+    if (result.wasInvalid) warn('O arquivo antigo era inválido: guardei a cópia .bak e criei um novo, só com a conexão do Figma.')
+    ok(`configurado em ${result.path}`)
+    if (result.backupPath) ok(`cópia do config anterior: ${result.backupPath}`)
+    if (result.others.length) ok(`outros conectores preservados: ${result.others.join(', ')}`)
+  }
 
   step(4, 'Preparando o plugin do Figma')
   const manifest = pluginManifestPath()

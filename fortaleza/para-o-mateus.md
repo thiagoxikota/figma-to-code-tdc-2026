@@ -10,7 +10,7 @@ Isso conversa com a sua sessão: a sala acabou de ver, na prática, uma cor muda
 
 O que a sala leva:
 
-- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v5` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
+- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `v1` do `figma-ia-na-pratica` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
 - **A própria hero, no Figma e em `index.html`,** e a pasta `meu-site-kit` com o `DESIGN.md`. **Não entram no seu workshop.**
 
 Eu não gero Card no telão. Na passagem eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte."

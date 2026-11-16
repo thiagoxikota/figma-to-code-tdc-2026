@@ -124,7 +124,8 @@ Figma Desktop Bridge.
 
 Deixem a janelinha aberta.
 
-Viu Local, ready?
+Viu a bolinha verde
+e Connected?
 A porta está aberta.
 
 FAZER: Faço junto no telão, devagar.
@@ -136,20 +137,18 @@ Minha hero.
 
 Mandem o prompt do alô:
 o nome do arquivo
-e o tamanho da fonte
-do Nome.
+e o texto do botão.
 
-Agora conferem no Figma.
-Cliquem no Seu Nome
-e olhem o painel
-da direita.
+Agora olhem o frame.
+O botão diz
+Fale comigo?
 
 Bateu?
-Cento e quatro?
 
 Essa é a primeira vitória.
-A IA leu uma propriedade
-do frame de vocês.
+A IA leu o frame
+de vocês
+pela conexão.
 Ela leu o arquivo,
 não uma imagem.
 
@@ -162,7 +161,7 @@ Aqui ninguém instala.
 Não deu:
 acompanhem pelo telão.
 
-FAZER: Faço o alô no telão e confiro no painel: clico em Seu Nome, o painel mostra 104. Voluntários contam as mãos.
+FAZER: Faço o alô no telão: o Claude responde o nome do arquivo e Fale comigo. Voluntários contam as mãos.
 
 >>> SLIDE 08  (FALA. 18h35. Sua hero pelo agente)
 
@@ -437,47 +436,18 @@ Quem quer mostrar a hero?
 
 FAZER: Até três heros no telão. Atrasou: uma, ou nenhuma.
 
->>> SLIDE 16  (SALA FAZ, DEPOIS FALA. 19h35, até 19h40. Revogar e passagem. Nunca cortado)
+>>> SLIDE 16  (FALA. 19h35, até 19h40. Fecho e LinkedIn. Nunca cortado)
 
-Agora todo mundo
-revoga a chave
-do workshop.
+A barreira do código caiu.
 
-No Figma:
-Settings,
-Security,
-Personal access tokens.
+O critério
+continua sendo seu.
 
-Achem a chave
-que vocês criaram para hoje,
-a de 7 dias.
-Revoke.
+(pausa)
 
-Só ela.
-As outras que vocês já tinham
-ficam.
+Me segue no LinkedIn.
+O QR tá na tela.
 
-Às 20h, depois do coffee,
-levem a pasta handoff
-da Área de Trabalho.
-Ela tem um Card
-e os tokens de design.
-É dela que o Mateus Villain parte.
+Obrigado.
 
-Hoje o agente leu
-o Figma de vocês,
-escreveu nele,
-e transformou em site.
-
-Vocês conferiram
-cada passo.
-
-Designer não precisa programar.
-Precisa dar regra.
-
-Dúvida individual:
-me procurem no coffee.
-
-Valeu, gente.
-
-FAZER: Mostro o caminho sem abrir a lista com a chave do palco. A minha eu revogo depois, fora do telão.
+FAZER: Frase de impacto, pausa, QR do LinkedIn na tela com "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn". Dúvida individual: coffee.
