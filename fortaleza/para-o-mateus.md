@@ -2,16 +2,18 @@
 
 Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o seu (20h). Nada aqui muda o seu plano; é só para você saber exatamente de onde a galera parte.
 
-**O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício.
+**O público é de designers.** O workshop agora se chama "Seu primeiro site, do Figma ao ar". Conte com gente que nunca abriu o Terminal.
 
-**Mudou em relação à versão anterior:** agora cada pessoa conecta o Figma ao Claude Desktop na própria máquina, no preparo obrigatório de casa (com mesa de instalação às 17h30 para quem travou). O preparo inclui instalar o Node. Na sala, cada pessoa transforma a Tela demo num formulário que funciona, no Claude gratuito, brinca com ele, pergunta ao próprio arquivo do Figma pela conexão e corrige um ponto com o valor que leu. No fim, todo mundo revoga a chave do Figma. O bloco em que a sala abria a `handoff` e a extensão que gerava a pasta `fora-do-frame` continuam fora.
+**Mudou em relação à versão anterior:** o formulário saiu. Agora cada pessoa conecta o Figma ao agente (Claude Desktop; Codex como alternativa) na própria máquina, no preparo obrigatório de casa, com mesa de instalação às 17h30 para quem travou. O preparo inclui instalar o Node. Na sala, cada pessoa parte de um frame pronto de mini portfólio, dá as regras num `DESIGN.md`, o agente lê o frame pela conexão, aponta duas cores digitadas direto em vez das variáveis e gera um `index.html` único, que a pessoa publica no Netlify Drop, testando o link numa janela anônima e no celular. A primeira vitória da sala é o alô: a IA diz o tamanho da fonte do nome e a pessoa confere no painel do Figma. Quem bater no limite do Claude gratuito usa um site reserva do kit. GitHub é explicado e mostrado no telão, sem ser obrigatório. No fim, todo mundo revoga a chave do Figma.
+
+Isso conversa com a sua sessão: a sala acabou de ver, na prática, o que acontece quando uma cor não está ligada à variável. Você pode partir daí para tokens.
 
 O que a sala leva:
 
-- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v3` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
-- **O próprio formulário, corrigido.** Fica na conversa do Claude e **não entra no seu workshop**.
+- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v4` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
+- **O próprio site, publicado no Netlify,** e a pasta `meu-site-kit` com o `DESIGN.md`. **Não entram no seu workshop.**
 
-Eu não gero Card no telão. O Card aparece na minha sessão só no último slide, dentro da `handoff`, como o objeto da sua. Na sala eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte. O formulário fica com vocês, no Claude."
+Eu não gero Card no telão. Na passagem eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte."
 
 Como a sala não abre a pasta na minha sessão, conte com gente vendo a `handoff` pela primeira vez às 20h. O `Card.html` dela já abre com cor, porque ela traz o `tokens.css` pronto. O botão "Ver detalhes" não faz nada no HTML estático.
 

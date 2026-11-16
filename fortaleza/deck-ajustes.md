@@ -1,77 +1,95 @@
-# Deck de Fortaleza v8: slide a slide
+# Deck de Fortaleza v9.1: slide a slide
 
-Este arquivo descreve o deck v8, com 17 slides seguindo a grade da seção "v8" de `.critica/spec-v7.md`. O PDF `fortaleza/deck-fortaleza.pdf` já tem os 17 slides da v8 (exportado em 16/11, às 14h57); conferir contra esta tabela antes do commit.
+Este arquivo descreve o deck v9.1, com 16 slides seguindo a grade de `roteiro.md`. Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540).
 
 **Cópia Fortaleza no Google Slides:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
+
+**Backup da v8 (17 slides), antes da reconstrução:** https://docs.google.com/presentation/d/1If559sYX9j6idzjM89FIjieSAi37jd58mHGOMRIAUoM/edit
 
 **A apresentação é pelo Google Slides, com as notas do apresentador.** O PDF é reserva e não mostra as notas. Mudou algo no Slides? Exporte o PDF de novo para `fortaleza/deck-fortaleza.pdf` e atualize a tabela abaixo no mesmo commit.
 
 
 ## Regras de todo slide
 
-- Horário só como "até 18h21", no canto do slide. Sem marcadores de modo (nada de "Faça agora", "Olhe o telão", "1. Olhe 2. Faça") e sem "Deu certo quando" no slide.
-- Linguagem de designer. Nada de "propriedade", "estado", "origem do valor", "rota", "comparação pendente", VIU ou SUPÔS.
-- A parte técnica é "a conexão" ou "conectar o Figma ao Claude". A sigla MCP aparece uma vez, no slide 4, explicada: "MCP, o jeito de o Claude conversar com o Figma". "Chave do Figma" só no slide 16.
-- Prompt inteiro só no guia. No slide, no máximo a primeira linha.
-- Corpo de 24 pt ou mais no PDF de 960 x 540. Legenda em 18 pt. Contraste AA.
+- Fundo claro liso, fonte Sora, logo xikota no canto superior esquerdo. Vermelho só no destaque.
+- Horário só como "até 19h20", no canto superior direito, em 18 pt. A capa mostra "18h00". Sem marcadores de modo e sem "Pronto quando" como rótulo de etapa.
+- Linguagem de designer. A frase da casa: "Designer não precisa programar. Precisa dar regra."
+- Prompt inteiro só no guia. No slide, no máximo a primeira linha ou a pergunta resumida.
+- Corpo de 24 pt ou mais. Legenda em 18 pt. Contraste AA.
+- O próprio deck segue o `DESIGN.md`: sem gradiente, sem sombra genérica, sem pílula, sem ícone em círculo, sem emoji. A capa da v8 tinha um borrão vermelho em degradê; na v9.1 o fundo é liso.
 - Nunca chamar `#C8352B` de cor errada. O valor é igual ao do token; o que falta é a ligação.
-- Os valores do texto de apoio e do campo nome só aparecem no slide 11, depois dos chutes e da leitura de cada um.
-- A correção é "um valor copiado do arquivo". Nenhum slide diz que o protótipo ficou ligado ao Figma.
+- Os dois erros do molde só aparecem no slide 9, depois de a sala mandar o prompt 1.
 - Imagem que não saiu de uma execução real leva a legenda "Exemplo do material". Nenhuma legenda diz "ao vivo".
-- FALA, SALA FAZ, DEMO e as falas ficam nas notas do orador, que seguem `roteiro-prompter.txt`.
+- As falas ficam nas notas do orador, em linhas curtas de prompter, tiradas de `roteiro.md`.
 
 
 ## A sequência
 
-| # | Canto | Slide | Na tela | Imagem |
+| # | Canto | Slide | Na tela | Imagem ou diagrama |
 |---|---|---|---|---|
-| 1 | 18h00 | Capa | Título, evento, nome e cargo | sem imagem |
-| 2 | até 18h05 | O que você leva | "Você sai com o Figma conectado ao Claude, com o seu formulário funcionando, corrigido com um valor que o seu Claude leu do seu arquivo, e sabendo o que a imagem não mostra." Abaixo: a tela tem problemas de propósito; umas 7 mensagens no Claude gratuito, cada prompt uma vez | formulário com o texto de apoio corrigido (exemplo do material, `exemplo-form-texto-corrigido.png`) |
-| 3 | até 18h05 | Abra o guia no notebook | Link da mensagem do grupo, endereço do guia na tag `fortaleza-v3` e QR | `qr-guia.png` (guia na tag `fortaleza-v3`) |
-| 4 | até 18h10 | Teste da conexão | "Qual arquivo está aberto no Figma agora?" O Claude diz o nome. "MCP, o jeito de o Claude conversar com o Figma." Não conectou: acompanhe a leitura pelo telão | espaço reservado: o Claude Desktop respondendo o nome do arquivo |
-| 5 | até 18h14 | 1. Exporte a tela | Clique no nome Tela demo, Export, PNG 2x. Legenda: imagem pronta no guia | `tela-demo.png` (real) |
-| 6 | até 18h21 | 2. O Claude revisa, você decide | "Até 3 sugestões. Anote quais aceita e por que recusa." Exemplo: recusar o campo de senha, porque esta etapa não pede senha. Conversa nova, separada da do teste | espaço reservado: a lista da revisão |
-| 7 | até 18h35 | 3. A tela vira formulário | O mínimo: digitar, erro com campo vazio, "Conta criada", mais só as sugestões aceitas | `exemplo-form-preenchido.png`, `exemplo-form-erro.png`, `exemplo-form-sucesso.png` (exemplos do material) |
-| 8 | até 18h47 | 4. Brinque com o formulário | Até 2 ajustes. O menu: versão escura, mais respiro, erro mais gentil, botão desabilitado até preencher, animação no "Conta criada", trocar o vermelho da marca. "Mostre ao vizinho" | sem imagem, ou captura do ajuste do ensaio |
-| 9 | até 19h05 | 5. Chuta o valor | "Qual é a cor de 'Leva menos de um minuto'? Passa no AA? O campo nome é preenchido ou só contorno?" Primeiro o seu Claude chuta, olhando só a imagem; depois a sala. Sem nenhum valor | `tela-demo.png` (real), com o texto de apoio e o campo nome marcados |
-| 10 | até 19h05 | Pergunte ao arquivo, na sua máquina | "Na conversa do arquivo, no Claude Desktop, mande a leitura do guia." As três perguntas em uma linha cada: texto de apoio, campo nome, botão | espaço reservado: a leitura do ensaio no Claude Desktop |
-| 11 | até 19h05 | O arquivo responde | Texto de apoio `#A29B93`, 2,75 para 1 (AA pede 4,5), token certo `color/text-muted` `#6C665F`. Campo nome só contorno, padrão `color/surface-alt` `#F5F3F0`. "Confira com o que o seu Claude leu" | `figma-texto-apoio.png`, `figma-campos.png` (reais) |
-| 12 | até 19h05 | E o botão? | Botão `#C8352B` igual a `color/brand-primary`, digitado direto: "Se a marca mudar, esse botão fica para trás. A imagem não tem como mostrar isso." | `figma-botao.png` (real) |
-| 13 | até 19h05 | Uma leitura que não está no guia | "Escolham uma camada e um valor." Os passos em uma linha cada; depois, cada um repete na própria máquina. Rodapé: a tese | espaço reservado: o painel do Figma, o pedido e a resposta |
-| 14 | até 19h20 | 6. Corrija com o valor que o seu Claude leu | Texto de apoio ou campo nome, na conversa do protótipo. "É um valor copiado do arquivo agora." | `exemplo-texto-antes.png` e `exemplo-texto-depois.png`, `exemplo-campos-antes.png` e `exemplo-campos-depois.png` (exemplos do material) |
-| 15 | até 19h30 | 7. Galeria | "Qual correção você fez, e por quê?" | sem imagem |
-| 16 | até 19h35 | Revogue a chave | Settings > Security > Personal access tokens > Revoke, em todas que você criou para hoje | sem imagem, ou captura da tela de revogação sem nenhuma chave visível |
-| 17 | até 19h40 | Imagem ou arquivo, e às 20h com o Mateus | Imagem para como a tela parece; arquivo para cor, medida e ligação com o design system. Três limites em uma linha cada. "Levem a pasta `handoff`." O formulário fica com vocês, no Claude | Card do `handoff/` (real) |
+| 1 | 18h00 | Capa | "Seu primeiro site, do Figma ao ar" (a segunda linha em vermelho). "Um método que serve para qualquer agente". Nome, evento, Fortaleza 18/11 | sem imagem |
+| 2 | até 18h15 | Print ou arquivo? | Print: "Aparência achatada. O agente vê pixels e chuta cor, espaço e fonte." Arquivo (vermelho): "Variável, Auto Layout e hierarquia. O agente não chuta: confere." | frame "Meu portfólio", legenda "Um print mostra só isto." |
+| 3 | até 18h15 | As peças | Diagrama 1. "MCP = o protocolo: a regra da conversa." Rodapé: o MCP oficial do Figma é outra rota | diagrama 1 |
+| 4 | até 18h45 | Abra o guia pelo QR | "Copie os prompts do guia, não do telão." "Cada prompt uma vez." "meu-site-kit na Área de Trabalho?" Endereço do guia na tag `fortaleza-v4` | QR desenhado no próprio slide |
+| 5 | até 18h45 | A ponte em 4 passos | Diagrama 2. "Eu faço junto no telão, devagar. Travou? Levante a mão: os voluntários circulam." | diagrama 2 |
+| 6 | até 18h45 | O alô: a primeira vitória | Pergunta do alô resumida; "Confira no Figma: clique no nome e olhe o painel da direita." Em vermelho: "A IA leu uma propriedade do meu frame, e eu conferi no Figma." "Não conectou? Siga a leitura pelo telão e faça o resto igual." | sem imagem |
+| 7 | até 18h55 | O harness contra AI slop | "Sem regra, o agente preenche o vazio com a média da internet." Tabela de 3 linhas (abaixo). Rodapé vermelho: a frase da casa | tabela nativa |
+| 8 | até 18h55 | Prepare o molde | "2 minutos, sem perfeccionismo." 1 edite direto o frame Meu portfólio; 2 troque nome, bio e projetos; 3 mexa só no texto, as cores ficam. "Duas coisas estão erradas de propósito." | frame "Meu portfólio" |
+| 9 | até 19h02 | Prompt 1: leitura e auditoria | 1 anexe o `DESIGN.md`; 2 mande o prompt 1; 3 o agente compara com as suas regras. Caixa Bio: `#A29B93` digitado direto, certo `color/text-muted`. Caixa Botão Fale comigo: `#C8352B` digitado direto, sem ligação com `color/brand-primary`. "O valor é igual. A ligação não existe. Se a marca mudar, esse botão fica para trás." | caixas nativas |
+| 10 | até 19h10 | Prompt 2: o index.html | "Um arquivo, com o CSS dentro, já corrigido." 1 prompt 2; 2 baixe para `meu-site`; 3 dois cliques, abre no navegador. Plano B: TextEdit em texto simples. Plano C: site reserva do kit | sem imagem |
+| 11 | até 19h20 | Confira como designer | 4 conferências: texto igual ao do frame, bio legível, botão na cor da marca, tela estreita em 1 coluna. "Um ajuste, pedido como designer, terminando com: “Não mude mais nada.”" | frame (legenda "No Figma") e site reserva (legenda "Exemplo do material") lado a lado |
+| 12 | até 19h30 | Pasta, GitHub e Netlify | Diagrama 3. "Hoje vocês pulam o cofre e vão direto para a vitrine." | diagrama 3 |
+| 13 | até 19h30 | No ar | 1 app.netlify.com/drop; 2 arraste a pasta `meu-site` inteira; 3 janela anônima; 4 celular. Atalhos da janela anônima. "Seu primeiro site está no ar." | sem imagem |
+| 14 | até 19h40 | Próximo passo: GitHub + Netlify | 1 peço um ajuste ao agente; 2 a mudança vai para o GitHub; 3 o site atualiza sozinho. "Não é obrigatório hoje. Fica de lição de casa." | demo ao vivo no navegador |
+| 15 | até 19h40 | Galeria relâmpago | "Qual regra do seu DESIGN.md fez diferença?" "Três links da sala no telão." | os links da sala, no navegador |
+| 16 | até 19h40 | Revogue a chave. Às 20h, Mateus | Settings > Security > Personal access tokens > Revoke em todas. "Pronto quando a lista não mostra mais nenhuma." "Às 20h, depois do coffee, com o Mateus Villain: levem a pasta handoff da Área de Trabalho." Rodapé: o método e a frase da casa | sem imagem |
 
-A tese, "A imagem mostra como a tela parece. O arquivo mostra do que ela é feita.", entra no rodapé do slide 13 e é dita no fim dele.
+
+## Os diagramas e a tabela
+
+Caixas retas, contorno fino escuro, fundo branco, setas simples. Vermelho só onde marca o destaque.
+
+**Diagrama 1, as peças (slide 3).** Quatro caixas em fila, ligadas por setas nos dois sentidos. Em cima, o tipo em cinza; no meio, o nome; embaixo da caixa, o papel:
+
+1. app, **Figma**: "guarda o design".
+2. plugin, **Desktop Bridge**: "abre a porta no Figma".
+3. servidor, **Figma Console MCP** (contorno vermelho): "leva o pedido e traz o arquivo".
+4. agente, **Claude Desktop ou Codex**: "escreve o código".
+
+Abaixo: "MCP = o protocolo: a regra da conversa." Rodapé: "O MCP oficial do Figma é outra rota, com requisitos próprios. Hoje vamos por esta."
+
+**Diagrama 2, a ponte em 4 passos (slide 5).** Quatro caixas numeradas em vermelho, com seta entre elas:
+
+1. Figma Desktop: na sua cópia, página Portfólio.
+2. Plugin Desktop Bridge: rodando no Figma.
+3. Claude Desktop: aberto, depois de fechar por completo.
+4. Conversa nova: e o alô.
+
+**Diagrama 3, pasta, GitHub e Netlify (slide 12).** Três caixas: Sua pasta ("onde o site nasce"), GitHub ("cofre com histórico"), Netlify ("vitrine: dá o link"). Setas cheias da pasta ao GitHub e do GitHub ao Netlify, com "próximo passo" sob o GitHub. Linha tracejada vermelha da pasta direto ao Netlify, com "hoje: Netlify Drop".
+
+**Tabela do harness (slide 7).** Tabela nativa do Slides:
+
+| Onde você roda | Onde mora a regra | Lê sozinho? |
+|---|---|---|
+| Claude Desktop (chat) | `DESIGN.md` anexado na conversa, ou colado no prompt | Não. Anexe em toda conversa nova (em vermelho) |
+| Claude Code | `CLAUDE.md` na pasta do projeto | Sim |
+| Codex | `AGENTS.md` na pasta do projeto | Sim |
 
 
 ## De onde vem cada imagem
 
-Nenhuma captura é inventada. A legenda do slide diz o tipo.
+Nenhuma captura é inventada.
 
-**Reais** (em `fortaleza/telao/`): `tela-demo.png`, os recortes `figma-botao.png`, `figma-texto-apoio.png` e `figma-campos.png`, e o Card do `handoff/` aberto no navegador.
+- **Frame "Meu portfólio"** (slides 2, 8 e 11): `fortaleza/img/frame-meu-portfolio.png`, inserido pela URL raw do GitHub na `main`.
+- **Site reserva** (slide 11, legenda "Exemplo do material"): `fortaleza/img/site-reserva.png`, também pela URL raw da `main`.
+- **QR do guia** (slide 4): `qr-guia.png` e `qr-guia.svg` foram refeitos com segno para `https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/fortaleza-v4/fortaleza/guia-participante.md`. No slide, o QR é desenhado com retângulos nativos do Slides, sem arquivo hospedado; a leitura foi conferida na miniatura renderizada. O link só abre depois de a tag `fortaleza-v4` existir no GitHub. Se a URL mudar, o QR do slide precisa ser redesenhado.
 
-**Exemplo do material:** renderizados de `fortaleza/telao/formulario-exemplo.html`, feito com as medidas e as cores da Tela demo. Não é saída do Claude. São os `exemplo-*.png`, usados nos slides 2, 7 e 14.
-
-**QR:** `qr-guia.svg` e `qr-guia.png` foram refeitos em 16/11 para o guia na tag `fortaleza-v3`. Só abrem depois de a tag existir.
-
-**Espaço reservado,** que só o ensaio preenche:
+**Espaço reservado para o ensaio** (capturas que podem entrar depois, sempre ditas como ensaio):
 
 | Slide | Captura do ensaio |
 |---|---|
-| 4 | O Claude Desktop respondendo o nome do arquivo aberto no Figma |
-| 6 | A lista da revisão, com até 3 sugestões |
-| 10 | A resposta da leitura, em 3 linhas, no Claude Desktop |
-| 13 | O painel do Figma com o valor escolhido, o pedido do Claude ao Figma e o retorno. Entra dito como ensaio; o que vale é a leitura feita na sala |
-
-**Capturas opcionais:**
-
-| Slide | Captura do ensaio |
-|---|---|
-| 5 | O frame Tela demo selecionado e o painel Export aberto |
-| 7 | O protótipo do Thiago na conversa |
-| 8 | Um ajuste do menu aplicado ao protótipo |
-| 9 | O chute do Claude pela imagem |
-| 14 | O formulário do Thiago antes e depois da correção |
-| 16 | A lista de Personal access tokens vazia, sem nenhuma chave à vista |
+| 6 | O Claude Desktop respondendo o arquivo e o tamanho da fonte |
+| 9 | A resposta do prompt 1, com os dois pontos |
+| 10 | O `index.html` do ensaio aberto no navegador |
+| 13 | O Netlify Drop com o link gerado |
+| 14 | Reserva da demo GitHub+Netlify |
