@@ -1,47 +1,79 @@
-# Guia do participante: Seu Figma vira produto
+# Guia do participante: Seu primeiro site, do Figma ao ar
 
-Design com IA, do arquivo ao protótipo que funciona. Workshop do Thiago Xikota no Fora do Frame, uma experiência UXFor. Quarta, 18/11/2026, das 18h00 às 19h40, na Digital College Aldeota, Fortaleza.
+Workshop do Thiago Xikota no Fora do Frame, uma experiência UXFor. Quarta, 18/11/2026, das 18h00 às 19h40, na Digital College Aldeota, Fortaleza.
 
-É para designer. Você não precisa saber programar. Precisa só preparar o notebook em casa, antes de quarta: é lá que você conecta o Figma ao Claude.
+É para designer. Você não precisa programar. Precisa dar regra.
 
 
 ## O que você leva
 
-Você sai com o Figma conectado ao Claude na sua máquina, com o seu formulário funcionando, corrigido com um valor que o seu Claude leu do seu arquivo, e sabendo o que a imagem não mostra.
+Você sai com o seu primeiro site no ar: um mini portfólio feito do seu Figma, com regras suas, e um link para mandar a quem quiser.
 
-Todo mundo trabalha na mesma tela: a **Tela demo**, um formulário "Criar sua conta" com problemas colocados de propósito. Cada pessoa faz no próprio notebook, sem dupla.
+E sai sabendo o método, que serve para qualquer agente:
 
-A conta gratuita do Claude tem limite de mensagens, e ele varia com o dia. Hoje cada pessoa usa umas 7: o teste da conexão, a revisão, o protótipo, até 2 ajustes, a leitura do arquivo e a correção. Mande cada prompt uma vez. Bateu no limite? Acompanhe o resto pelo telão e termine em casa, com os prompts deste guia.
+1. O agente lê o arquivo do Figma, não um print.
+2. Você dá as regras num arquivo, o `DESIGN.md`.
+3. O agente gera um `index.html`.
+4. Você confere e publica.
+
+A primeira vitória do dia: a IA lê uma propriedade do seu frame, e você confere no Figma.
+
+Cada pessoa faz no próprio notebook, sem dupla. A conta gratuita do Claude tem limite de mensagens, e ele varia com o dia. O fluxo usa poucas: o alô, a leitura, o site e, se sobrar, um ajuste. Mande cada prompt uma vez. Bateu no limite? O kit tem um site reserva pronto (veja "Plano C" no passo 3).
+
+
+## O mapa das peças
+
+São quatro peças, ligadas em fila:
+
+```
+Figma  ->  plugin Desktop Bridge  ->  servidor Figma Console MCP  ->  agente (Claude Desktop ou Codex)
+```
+
+- **Figma:** guarda o design. Cores, variáveis, Auto Layout, hierarquia.
+- **Figma Desktop Bridge (plugin):** roda dentro do Figma e abre uma porta para fora.
+- **Figma Console MCP (servidor):** traduz. Pega o pedido do agente e devolve o que está no arquivo.
+- **Agente:** escreve o código, seguindo as suas regras.
+
+**MCP** é o protocolo, a regra da conversa entre o agente e a ferramenta. É como um cabo USB-C: o agente na ponta pode mudar, a ponte é a mesma. Hoje a ponta é o Claude Desktop. Se você usa Codex, veja "Usa Codex?" abaixo.
+
+O Figma também tem um MCP oficial. É outra rota, com requisitos próprios, e não faz parte desta cadeia. Hoje seguimos por esta.
+
+
+## O harness: onde mora a sua regra
+
+O `DESIGN.md` do kit tem as suas regras: tipografia, só as variáveis do arquivo, contraste, e o que é proibido inventar (gradiente, sombra genérica, pílula, ícone em círculo, emoji). É o que separa o seu site de um site genérico de IA. O conteúdo é o mesmo em qualquer agente; muda onde ele mora:
+
+| Onde você roda | Onde mora a regra | Lê sozinho? |
+|---|---|---|
+| Claude Desktop (chat) | `DESIGN.md` anexado na conversa, ou colado no prompt | Não. Anexe em toda conversa nova |
+| Claude Code | `CLAUDE.md` na pasta do projeto | Sim |
+| Codex | `AGENTS.md` na pasta do projeto | Sim |
+
+Hoje é o Claude Desktop: você anexa o `DESIGN.md` no prompt 1.
 
 
 ## Preparo obrigatório, em casa, antes de quarta (30 a 45 minutos)
 
-São duas partes. A primeira é rápida. A segunda é a conexão do Figma com o Claude, e é ela que deixa o Claude ler o seu arquivo, em vez de olhar uma imagem.
+São três partes. A primeira é rápida. A segunda é a conexão do Figma com o agente, e é ela que deixa o agente ler o seu arquivo, em vez de olhar uma imagem. A terceira é a conta do Netlify, onde o site vai ao ar.
 
-**Não conseguiu terminar a parte 2?** Chegue às **17h30**: tem uma mesa de instalação com voluntários, antes do workshop. Depois das 18h ninguém mexe em máquina na sala: quem não conectou acompanha a leitura do arquivo pelo telão e faz todo o resto igual.
+**Não conseguiu terminar a parte 2?** Chegue às **17h30**: tem uma mesa de instalação com voluntários, antes do workshop. Depois das 18h ninguém instala nada na sala: quem não conectou acompanha a leitura pelo telão.
 
 Notebook da empresa que não deixa instalar programa não serve para a parte 2. Se puder, traga o pessoal.
 
-### Parte 1. Contas, arquivo e pasta (15 minutos)
+### Parte 1. Contas, arquivo e pastas (15 minutos)
 
 1. **Conta gratuita do Figma:** https://www.figma.com/signup (prefira a pessoal, não a do trabalho).
 2. **Conta gratuita do Claude:** https://claude.ai
-3. **Duplique o arquivo do exercício** para a sua conta: https://www.figma.com/community/file/1659374868260259462 . A Tela demo fica na página "01 Comece aqui".
-4. **Ligue a opção do protótipo.** No Claude, abra **Settings > Capabilities** e ligue **Cloud code execution and file creation** (em algumas versões o nome é **Create and edit files**). Numa conversa nova, mande:
+3. **Duplique o arquivo do exercício** para a sua conta: https://www.figma.com/community/file/1659374868260259462 . O molde do site fica na página **"Portfólio"**, no frame **"Meu portfólio"**. Duplicou antes e não tem essa página? Duplique de novo: ela é nova. [VERIFICAR no ensaio: a atualização do arquivo publicada na Community]
+4. **Baixe o ZIP:** https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v4.zip . Descompacte e copie para a Área de Trabalho:
+   - a pasta `fortaleza/meu-site-kit`. Ela tem o `DESIGN.md` (as regras do seu site) e a pasta `meu-site`, vazia, onde o site vai entrar;
+   - a pasta `handoff`, para o workshop do Mateus Villain, às 20h.
 
-```
-Crie um botão vermelho em HTML e mostre funcionando aqui na conversa.
-```
-
-5. **Baixe o ZIP e guarde a pasta `handoff`:** https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v3.zip . Descompacte e copie a pasta `handoff` para a Área de Trabalho. Ela é para o workshop do Mateus Villain, às 20h. O ZIP também traz a imagem pronta da tela (`fortaleza/telao/tela-demo.png`), para quem não conseguiu duplicar o arquivo.
-
-Pronto quando: você vê a Tela demo na sua cópia do arquivo, o botão vermelho apareceu na conversa e dá para clicar nele, e a pasta `handoff` está na Área de Trabalho.
-
-Veio só o código do botão? Confira a opção do item 4 e mande de novo, uma vez.
+Pronto quando: você vê o frame "Meu portfólio" na sua cópia do arquivo, e as pastas `meu-site-kit` e `handoff` estão na Área de Trabalho.
 
 ### Parte 2. Conecte o Figma ao Claude (20 a 30 minutos)
 
-O nome técnico disso é MCP, o jeito de o Claude conversar com o Figma. Se um dia você for procurar sobre o assunto, é essa a palavra.
+O nome técnico disso é MCP. Se um dia você for procurar sobre o assunto, é essa a palavra.
 
 Os passos indicam as diferenças do Windows, mas foram ensaiados só no Mac. No Windows, a mesa das 17h30 ajuda.
 
@@ -62,13 +94,13 @@ Abra o Figma Desktop e o Claude Desktop, logados. No Terminal ou no PowerShell, 
 Mac:
 
 ```
-npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v3.tar.gz
+npx -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v4.tar.gz
 ```
 
 Windows (repare no `.cmd`, que evita o bloqueio de scripts do PowerShell):
 
 ```
-npx.cmd -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v3.tar.gz
+npx.cmd -y https://github.com/thiagoxikota/figma-to-code-tdc-2026/archive/refs/tags/fortaleza-v4.tar.gz
 ```
 
 Na tela, nesta ordem:
@@ -102,159 +134,158 @@ Plugins > Development > **Figma Desktop Bridge**. Abre uma janelinha do plugin. 
 
 **Passo 6. Teste.**
 
-No Claude Desktop, conversa nova:
+Selecione o frame "Meu portfólio". No Claude Desktop, conversa nova:
 
 ```
-Qual arquivo está aberto no Figma agora? Responda só o nome.
+Qual arquivo está aberto no Figma e qual frame está selecionado? Responda em uma linha.
 ```
 
-Pronto quando: o Claude responde o nome da sua cópia do arquivo. O `[ok]` do instalador não conta como teste. O instalador sugere outra frase para o teste; as duas servem.
+Pronto quando: o Claude responde o nome da sua cópia do arquivo e "Meu portfólio". O `[ok]` do instalador não conta como teste. O instalador sugere outra frase para o teste; as duas servem.
 
 Não respondeu? Veja "Quando dá errado", no fim deste guia. Não resolveu? Mesa das 17h30.
 
+### Parte 3. Conta grátis no Netlify (5 minutos)
+
+O Netlify é onde o seu site fica no ar. Crie a conta gratuita antes: https://app.netlify.com/signup . Com a conta, o site não expira.
+
+Pronto quando: você entra em https://app.netlify.com/drop e vê a área para arrastar a pasta.
+
 ### Leve no dia
 
-- Notebook com a parte 1 e a parte 2 prontas, e o carregador.
+- Notebook com as partes 1, 2 e 3 prontas, e o carregador.
 - Celular (login com código no e-mail trava sem ele).
-- A pasta `handoff` na Área de Trabalho.
+- As pastas `meu-site-kit` e `handoff` na Área de Trabalho.
 
-Este guia no navegador: https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/fortaleza-v3/fortaleza/guia-participante.md
+Este guia no navegador: https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/fortaleza-v4/fortaleza/guia-participante.md
+
+
+## Usa Codex?
+
+Funciona também. É o mesmo servidor, com outro agente na ponta: o cabo USB-C. O Thiago usa assim no Mac dele. É uma alternativa; o workshop segue com o Claude Desktop.
+
+1. Faça as partes 1 e 2 do mesmo jeito. O instalador prepara o plugin mesmo que o seu agente seja o Codex. Sem o Claude Desktop, ele avisa e deixa continuar.
+2. Acrescente a conexão no arquivo `~/.codex/config.toml`, no bloco `[mcp_servers.figma-console]`. O formato fica assim, com a sua chave no lugar de `figd_...`:
+
+```
+[mcp_servers.figma-console]
+command = "npx"
+args = ["-y", "figma-console-mcp@1.35.0"]
+env = { FIGMA_ACCESS_TOKEN = "figd_...", ENABLE_MCP_APPS = "true" }
+```
+
+Antes de salvar, confira o comando, a versão e os nomes do `env` no ZIP, em `scripts/instalar.mjs` (função `ourEntry`) ou em `scripts/mcp-config.mjs`. Vale o que está lá. No Windows, o instalador usa `cmd` com `/c npx -y ...`; confira no mesmo trecho.
+
+3. Abra o Codex de novo, com o plugin rodando no Figma, e mande o mesmo teste da parte 2.
+
+Esse caminho não foi ensaiado com participantes [VERIFICAR no ensaio]. Travou? Volte para o Claude Desktop.
 
 
 ## No dia
 
-Use duas conversas:
+Tudo acontece numa conversa só, no Claude Desktop, com o Figma Desktop aberto na sua cópia e o plugin Figma Desktop Bridge rodando.
 
-- **A conversa do arquivo**, no Claude Desktop: a do teste da conexão. Ela volta no passo 5.
-- **A conversa da imagem**, do passo 2 ao 6. Pode ser no Claude Desktop (mesma conta, sem trocar de app) ou no navegador.
+### O alô: a primeira vitória (até 18h45)
 
-### Teste da conexão (até 18h10)
-
-Figma Desktop com a sua cópia aberta e o plugin Figma Desktop Bridge rodando. No Claude Desktop, na conversa do teste de casa ou numa nova:
+Selecione o frame "Meu portfólio". No Claude Desktop, conversa nova:
 
 ```
-Qual arquivo está aberto no Figma agora? Responda só o nome.
+Pela conexão com o Figma: qual arquivo está aberto, e qual o tamanho da fonte do nome no frame 'Meu portfólio'? Responda em uma linha.
 ```
 
-Pronto quando: o Claude diz o nome do arquivo. Não disse? Levante a mão quando o Thiago pedir e siga: a leitura do arquivo você acompanha pelo telão, e todo o resto você faz igual.
+Agora confira no Figma: clique no nome dentro do frame e olhe o tamanho da fonte no painel da direita.
 
-### 1. Exporte a tela (até 18h14)
+Pronto quando: o Claude diz o nome do arquivo e um tamanho de fonte, e o painel do Figma mostra o mesmo número. A IA leu uma propriedade do seu frame, e você conferiu. Não disse? Levante a mão quando o Thiago pedir. Os voluntários ajudam com o plugin e com o Claude Desktop, mas ninguém instala nada na sala. Não deu? Siga a leitura pelo telão e faça o resto com o Thiago.
 
-Na sua cópia, clique no nome **Tela demo**, em cima do frame. No painel da direita, lá no fim, em **Export**, clique no **+**, deixe **PNG** em **2x** e exporte.
+### 1. Prepare o molde (até 18h55)
 
-Não duplicou o arquivo? Use a imagem pronta: `fortaleza/telao/tela-demo.png` no ZIP, ou https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/fortaleza-v3/fortaleza/telao/tela-demo.png (botão de download).
+Dois minutos, sem perfeccionismo.
 
-Pronto quando: você tem a imagem do formulário inteiro, do título ao botão. Saiu só um pedaço? Clique no nome do frame e exporte de novo.
+O arquivo já é a sua cópia, então mexa direto no frame "Meu portfólio", na página "Portfólio". Troque o nome, a bio e os títulos dos dois projetos pelos seus. Mexa só no texto. As cores ficam como estão: tem duas coisas erradas de propósito ali, e o agente vai achar.
 
-### 2. O Claude revisa, você decide (até 18h21)
+Pronto quando: existe um frame "Meu portfólio" com o seu nome.
 
-Conversa nova, anexe a imagem e mande:
+### 2. A leitura com as suas regras (até 19h02)
 
-```
-Você é um designer sênior revisando esta tela de cadastro. Me dê no máximo 3 sugestões de melhoria, numeradas, cada uma com o motivo em uma linha. Contexto: é a primeira etapa do cadastro e não pede senha.
-```
-
-Leia e decida. Anote os números que você aceita e, para cada recusa, uma frase do porquê. A IA aponta, quem conhece a tela é você.
-
-Pronto quando: você tem os números anotados e o motivo de cada recusa.
-
-### 3. A tela vira formulário (até 18h35)
-
-Na mesma conversa, troque `[números]` pelos que você aceitou (ou escreva `nenhuma`) e mande:
+Na mesma conversa do alô, anexe o arquivo `DESIGN.md` da pasta `meu-site-kit` e mande:
 
 ```
-Crie um protótipo funcional desta tela em HTML, aqui na conversa, o mais fiel possível à imagem. Precisa: dá para digitar nos campos, mostrar erro se tentar continuar com campo vazio e mostrar 'Conta criada' quando der certo. Aplique só as sugestões [números]. Não invente outras mudanças.
+Siga as regras do DESIGN.md anexo. Pela conexão com o Figma, leia o frame 'Meu portfólio'. Liste no máximo 3 pontos em que o frame foge das variáveis da coleção Workshop Tokens ou do contraste AA, cada um com o valor atual e o valor certo. Não gere código ainda.
 ```
 
-Teste: Continuar com tudo vazio dá erro; com e-mail e nome preenchidos, aparece "Conta criada".
+O Claude Desktop não lê arquivo sozinho: por isso o `DESIGN.md` vai anexado.
 
-Veio só código? Peça uma vez: `Mostre o protótipo funcionando aqui na conversa.` Continuou? Confira a opção de Settings > Capabilities.
-
-Pronto quando: o formulário aparece na conversa, aceita digitação, dá erro vazio e mostra "Conta criada".
-
-### 4. Brinque com o formulário (até 18h47)
-
-Peça até 2 ajustes, do jeito que você pediria a um colega. Termine o pedido com "Não mude mais nada." Ideias:
-
-- versão escura;
-- mais respiro entre os campos;
-- mensagem de erro mais gentil;
-- botão desabilitado até preencher;
-- animação curta no "Conta criada";
-- trocar o vermelho da marca por outra cor e ver o que muda.
-
-Mostre ao vizinho.
-
-Pronto quando: o seu formulário tem a sua cara e ainda funciona.
-
-### 5. Chuta o valor (até 19h05)
-
-**Primeiro, o chute pela imagem.** Na conversa da imagem, a do protótipo, mande:
-
-```
-Olhando só a imagem: qual é a cor exata, em hexadecimal, do texto 'Leva menos de um minuto'? Esse texto passa no contraste AA? O campo nome é preenchido ou só tem contorno? Responda em 3 linhas.
-```
-
-O Thiago manda o mesmo no telão. Depois a sala chuta. Está perto do limite de mensagens? Pule este e acompanhe o chute do telão: a leitura e a correção valem mais.
-
-**Depois, pergunte ao seu arquivo.** Na conversa do arquivo, no Claude Desktop, com o plugin rodando:
-
-```
-Pela conexão com o Figma, leia no arquivo aberto, na Tela demo: a cor do texto 'Leva menos de um minuto' e se ela está ligada a alguma variável; o preenchimento e o contorno do campo nome comparados com o campo de e-mail; se o botão Continuar usa a variável color/brand-primary; e o valor de color/text-muted e color/surface-alt na coleção Workshop Tokens. Responda em 4 linhas curtas, com os valores.
-```
-
-O Thiago faz o mesmo no telão, junto com a sala. Compare o que o seu Claude leu com o seu chute.
-
-**Uma leitura que não está em material nenhum.** A sala escolhe uma camada e um valor. O Thiago pergunta no telão e compara com o painel do Figma. Repita na sua conversa do arquivo, trocando o trecho entre colchetes:
-
-```
-Pela conexão com o Figma, na Tela demo: [o valor que a sala escolheu]? Responda só o valor.
-```
-
-Depois, clique na mesma camada no seu Figma e compare com o painel da direita.
-
-A imagem mostra como a tela parece. O arquivo mostra do que ela é feita.
+Pronto quando: a lista tem os pontos, cada um com o valor atual e o valor certo.
 
 <details>
-<summary>A resposta do arquivo (abra depois do telão)</summary>
+<summary>O que o arquivo tem de errado (abra depois do telão)</summary>
 
-- **Texto "Leva menos de um minuto":** `#A29B93` sobre branco, contraste de 2,75 para 1. O AA pede 4,5. A cor certa é o token `color/text-muted`, `#6C665F` (cerca de 5,7 para 1).
-- **Campo nome:** só contorno. O padrão do sistema, como no campo de e-mail, é preenchido com `color/surface-alt`, `#F5F3F0`.
-- **Botão "Continuar":** `#C8352B`, igual ao token `color/brand-primary`, mas digitado direto, sem ligação. Se a marca mudar, esse botão fica para trás. A imagem não tem como mostrar isso.
+- **Bio:** cor `#A29B93` digitada direto, com contraste baixo no fundo claro. O certo é a variável `color/text-muted`.
+- **Botão "Fale comigo":** `#C8352B` digitado direto, sem ligação com a variável `color/brand-primary`. O valor é igual; o que falta é a ligação. Se a marca mudar, esse botão fica para trás.
 
 </details>
 
-### 6. Corrija com o valor que o seu Claude leu (até 19h20)
+### 3. O site (até 19h10)
 
-Escolha uma correção e mande na **conversa da imagem**, a do protótipo. Troque o trecho entre colchetes pelo valor do seu arquivo.
-
-Campo nome. O valor é o preenchimento do campo de e-mail, que a sua leitura trouxe:
+Na mesma conversa, mande:
 
 ```
-No protótipo, deixe o campo nome igual ao campo de e-mail: preenchido com [valor], sem contorno diferente. Não mude mais nada.
+Agora gere um único arquivo index.html, com o CSS dentro, fiel ao frame e às variáveis, já com as correções acima. Sem bibliotecas, sem fontes externas além da do frame, até 150 linhas. Entregue como arquivo para baixar.
 ```
 
-Texto de apoio. A sua leitura mostrou que o cinza está solto, sem variável. O valor certo é o da variável `color/text-muted`, que o seu Claude acabou de ler. Quer conferir com os olhos? No Figma, **Variables**, na barra da esquerda, coleção Workshop Tokens.
+Depois:
+
+1. Baixe o arquivo pelo botão de download do Claude [VERIFICAR no ensaio: o nome do botão no Claude Desktop gratuito].
+2. Coloque o arquivo dentro da pasta `meu-site`, em `meu-site-kit`. O nome tem que ser exatamente `index.html`.
+3. Dê dois cliques no `index.html`. Ele abre no navegador.
+
+Não achou o botão de baixar? Plano B: copie o código da resposta. Mac: abra o TextEdit, menu Formatar > Converter em Texto Simples, cole e salve como `index.html` dentro de `meu-site`; se ele perguntar, use `.html`. Windows: abra o Bloco de Notas, cole, Salvar como, em Tipo escolha "Todos os arquivos" e salve como `index.html` dentro de `meu-site`.
+
+Plano C, se a conta bateu no limite ou o site não saiu: na pasta `meu-site-kit/reserva` tem um `index.html` pronto, igual ao frame e já corrigido. Abra no TextEdit (Bloco de Notas no Windows), troque "Seu Nome", a bio, os projetos e o `seu@email.com`, salve e copie o arquivo para dentro de `meu-site`.
+
+Pronto quando: o `index.html` abre no navegador.
+
+### 4. Confira e corrija (até 19h20)
+
+Coloque o site no navegador ao lado do frame no Figma e confira como designer:
+
+1. O texto é o do frame, palavra por palavra.
+2. A bio está legível, mais escura que no frame.
+3. O botão usa o vermelho da marca.
+4. Estreite a janela do navegador: os dois projetos viram uma coluna só.
+
+Achou diferença e sobrou mensagem? Um ajuste, pedido como designer, terminando com:
 
 ```
-No protótipo, troque a cor do texto 'Leva menos de um minuto' para [valor] (é o token color/text-muted do arquivo). Não mude mais nada.
+Não mude mais nada.
 ```
 
-Não conectou? Use o valor que o telão mostrou (está na resposta do arquivo, acima).
+Baixe de novo e substitua o `index.html` dentro de `meu-site`.
 
-Compare antes e depois. Mudou mais do que você pediu? Mande uma vez: `Desfaça o resto. Só a mudança que eu pedi.`
+Pronto quando: as quatro conferências batem.
 
-Pronto quando: o ponto escolhido mudou, o resto ficou igual, e erro e "Conta criada" continuam funcionando.
+### 5. Publique no Netlify Drop (até 19h30)
 
-É um valor copiado do arquivo agora. O protótipo não fica ligado ao Figma: se o token mudar amanhã, ele não muda sozinho.
+1. Entre na sua conta e abra https://app.netlify.com/drop
+2. Arraste a pasta `meu-site` inteira para a área indicada. A pasta, não o arquivo solto.
+3. Espere alguns segundos. O Netlify mostra um link terminando em `.netlify.app`.
+4. Copie o link e abra numa janela anônima: Cmd+Shift+N no Chrome e no Safari do Mac, Ctrl+Shift+N no Chrome do Windows. Se abriu lá, abre para qualquer pessoa.
+5. Abra no celular. Mande para alguém.
 
-### 7. Galeria (até 19h30)
+Sem GitHub e sem terminal.
 
-Três ou quatro pessoas mostram o formulário e dizem qual correção fizeram e por quê.
+Pronto quando: o link abre o seu site na janela anônima e no celular.
 
-Pronto quando: você sabe dizer em uma frase por que escolheu a sua.
+### E o GitHub?
 
-### Revogue a chave do Figma (até 19h35)
+Não é obrigatório hoje. Mas vale entender a diferença:
+
+- **A sua pasta** é onde o site nasce, no seu computador.
+- **O GitHub** é um cofre com histórico. Cada versão do site fica guardada, com data e o que mudou. Errou? Volta para a de ontem. Esse cofre se chama repositório.
+- **O Netlify** é a vitrine. Ele pega a pasta e dá um link.
+
+Por que isso muda a vida do designer: quando o GitHub está ligado ao Netlify, cada mudança guardada no cofre vira site novo sozinha. Você pede um ajuste ao agente, ele guarda no GitHub, e o link já mostra a versão nova. O Thiago mostra no telão.
+
+### Revogue a chave do Figma (até 19h40)
 
 Todo mundo que criou chave faz, na sala. No Figma: **Settings > Security > Personal access tokens**. Clique em **Revoke** em todas as chaves que você criou para o workshop e confirme na janela que o Figma abre. Repetiu a instalação e criou mais de uma? Revogue todas.
 
@@ -264,12 +295,11 @@ Depois, se quiser, desligue também a conexão nas configurações do Claude Des
 
 ### No fim
 
-- O protótipo serve para testar a ideia e conversar com o time. Não é produto pronto.
-- Imagem serve para conversar sobre como a tela parece. Para cor, medida e ligação com o design system, vá ao arquivo.
-- O arquivo só diz o que existe nele: valor digitado direto volta solto, como o botão de hoje. Numa tela sua, confira antes se as cores e os espaços estão ligados a variáveis. Evite tela de cliente com dado sensível.
-- O seu formulário fica no histórico do Claude. Para guardar o arquivo, procure no painel do protótipo a opção de baixar ou copiar o código.
+- O método vale para qualquer frame seu: arquivo lido pela conexão, regras no `DESIGN.md`, um `index.html`, conferir, publicar.
+- O agente só lê o que existe no arquivo. Valor digitado direto volta solto, como a bio e o botão de hoje. Numa tela sua, ligue cores e espaços a variáveis antes de pedir o código. Evite arquivo de cliente com dado sensível.
+- O site é um ponto de partida. Para mudar, edite o frame, peça um novo `index.html` e arraste a pasta de novo no Netlify [VERIFICAR no ensaio: se arrastar de novo atualiza o mesmo site ou cria outro].
 
-**Às 20h, com o Mateus:** leve a pasta `handoff` da Área de Trabalho. Ela tem um Card e os tokens de design. O seu formulário fica com você, no Claude. O Node que você instalou no preparo serve para a sessão dele.
+**Às 20h, com o Mateus:** leve a pasta `handoff` da Área de Trabalho. Ela tem um Card e os tokens de design. O Node que você instalou no preparo serve para a sessão dele.
 
 
 ## Quando dá errado
@@ -285,9 +315,15 @@ Depois, se quiser, desligue também a conexão nas configurações do Claude Des
 | O instalador diz que a instalação NÃO terminou | Siga os passos que ele mostra e rode de novo. Ele reaproveita a chave que você já colou |
 | O Claude não diz o nome do arquivo | Figma Desktop (não o navegador) com a sua cópia aberta e o plugin Figma Desktop Bridge rodando. Ele cai se o Figma dormir ou o arquivo fechar: rode de novo. O Claude Desktop foi fechado por completo depois da instalação? Desligue a VPN |
 | A chave venceu ou foi revogada | Crie outra (7 dias, só leitura em File content) e rode o instalador de novo |
-| Não acho o Export | Clique no nome do frame, em cima da tela. O Export fica no fim do painel da direita |
-| O Claude não aceita a imagem | Confira se é PNG e arraste para a caixa de mensagem |
-| O protótipo veio só como código | Peça uma vez para mostrar funcionando. Depois confira Settings > Capabilities |
-| Não acho as variáveis no Figma | Variables, na barra da esquerda. Em versão anterior: nada selecionado, painel da direita, Local variables. Ou a busca de ações (Cmd+K ou Ctrl+K), digitando `variables` |
-| Bateu no limite da conta | Acompanhe pelo telão. Em casa, use os prompts deste guia |
-| Não tenho a pasta `handoff` | Chame um voluntário: ele copia do pendrive |
+| Não tenho a página "Portfólio" | A sua cópia é antiga. Duplique o arquivo da Community de novo |
+| O Claude leu o frame errado | Confira se só um frame se chama "Meu portfólio" e se ele está selecionado |
+| Não consigo anexar o `DESIGN.md` | Arraste o arquivo para a caixa de mensagem. Não deu? Abra o arquivo, copie o texto e cole antes do prompt |
+| O site veio só como código, sem arquivo para baixar | Use o plano B do passo 3: TextEdit em texto simples ou Bloco de Notas, salvo como `index.html` |
+| O tamanho da fonte do alô não bate com o painel | Confira se o nome que você clicou está dentro do frame "Meu portfólio" e se o Claude leu o arquivo certo |
+| O link não abre na janela anônima | Sem login, o site do Drop expira. Entre na sua conta do Netlify e arraste a pasta de novo |
+| O arquivo baixou com outro nome, ou como `index.html.txt` | Renomeie para `index.html`. No Windows, mostre as extensões do arquivo para ver o nome inteiro |
+| O `index.html` abre como texto no navegador | Ele foi salvo com formatação. Refaça pelo plano B, em texto simples |
+| O Netlify Drop não aceita ou o link mostra "Page not found" | Arraste a pasta `meu-site`, não o arquivo solto, e confira que dentro dela está `index.html` com esse nome exato |
+| O Netlify pede login | Entre na conta que você criou na parte 3. Sem conta, o site expira |
+| Bateu no limite da conta | Use o site reserva (plano C do passo 3) e publique igual. Em casa, use os prompts deste guia |
+| Não tenho a pasta `meu-site-kit` ou a `handoff` | Chame um voluntário: ele copia do pendrive |

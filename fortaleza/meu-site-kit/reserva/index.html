@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seu Nome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* Site reserva do workshop: use só se o seu não saiu. Troque os textos marcados abaixo. */
+  :root {
+    --brand-primary: #c8352b;
+    --surface: #ffffff;
+    --surface-alt: #f5f3f0;
+    --text: #1f1c1a;
+    --text-muted: #6c665f;
+    --border: #e2ddd6;
+    --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+    --radius-md: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--surface); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  main { max-width: 1280px; margin: 0 auto; padding: 96px 120px; display: flex; flex-direction: column; gap: 64px; }
+  h1, h2, h3 { font-family: Sora, Inter, sans-serif; font-weight: 600; }
+  .apresentacao { display: flex; align-items: center; gap: var(--space-4); }
+  .foto { width: 120px; height: 120px; flex: none; border-radius: 50%; background: var(--surface-alt); border: 1px solid var(--border); }
+  .nome-bio { display: flex; flex-direction: column; gap: var(--space-1); }
+  h1 { font-size: 48px; }
+  .bio { font-size: 20px; color: var(--text-muted); }
+  .secao { display: flex; flex-direction: column; gap: var(--space-3); }
+  h2 { font-size: 24px; }
+  .projetos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .card { background: var(--surface-alt); padding: var(--space-3); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-2); }
+  .imagem { aspect-ratio: 472 / 280; background: var(--border); border-radius: var(--radius-md); }
+  h3 { font-size: 20px; }
+  .card p { font-size: 16px; color: var(--text-muted); }
+  .botao { align-self: flex-start; background: var(--brand-primary); color: var(--surface); font-weight: 600; font-size: 18px; padding: 16px 32px; border-radius: var(--radius-md); text-decoration: none; }
+  @media (max-width: 720px) {
+    main { padding: 48px 24px; gap: 48px; }
+    .apresentacao { flex-direction: column; align-items: flex-start; }
+    h1 { font-size: 36px; }
+    .projetos { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <section class="apresentacao">
+    <div class="foto" aria-hidden="true"></div>
+    <div class="nome-bio">
+      <h1>Seu Nome</h1>
+      <p class="bio">Product designer em Fortaleza. Desenho interfaces simples para gente de verdade.</p>
+    </div>
+  </section>
+  <section class="secao">
+    <h2>Projetos</h2>
+    <div class="projetos">
+      <article class="card">
+        <div class="imagem" aria-hidden="true"></div>
+        <h3>Projeto um</h3>
+        <p>App de agendamento para clínicas de bairro.</p>
+      </article>
+      <article class="card">
+        <div class="imagem" aria-hidden="true"></div>
+        <h3>Projeto dois</h3>
+        <p>Redesign do site de uma cafeteria local.</p>
+      </article>
+    </div>
+  </section>
+  <a class="botao" href="mailto:seu@email.com">Fale comigo</a>
+</main>
+</body>
+</html>
