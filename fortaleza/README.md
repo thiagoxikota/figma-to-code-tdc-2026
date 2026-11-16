@@ -11,7 +11,7 @@ Versão v10 (16/11), decisões em `.critica/spec-v9.md` (seção v10). O foco é
 | `guia-participante.md` | Participantes | Aviso de que o guia mudou para o `figma-ia-na-pratica` |
 | `meu-site-kit/` | Participantes | O kit que vai no ZIP: `meus-dados.txt` (os 6 dados, preenchidos em casa), `DESIGN.md` (as regras da hero), `LEIA.md`, a pasta `reserva/` (o `index.html` do plano C, só a hero) e a pasta `meu-site/`, vazia, onde entra o `index.html` |
 | `img/` | Deck e guia | `hero-molde.png` (o frame "Minha hero"), `hero-exemplo-thiago.png` (o exemplo personalizado) e `site-reserva.png` (o site reserva renderizado a 1440 de largura) |
-| `guia-voluntarios.md` | Voluntários | Mesa de instalação às 17h30 (o que conferir e quando desistir), relógio com o critério de cada bloco, pendrive e contingências |
+| `guia-voluntarios.md` | Voluntários | Aviso de que o guia mudou para o `figma-ia-na-pratica` (`voluntarios.md`) |
 | `roteiro.md` | Thiago | Tese, grade v10 em 7 blocos, prioridade quando atrasar, fala dos 16 slides e contingências |
 | `roteiro-prompter.txt` | Thiago | A fala dos 16 slides, em linhas curtas para o notch prompter |
 | `checklist-thiago.md` | Thiago | Pendências (arquivo na Community, ensaio no Claude gratuito, Mac e Windows, capturas do setup, demos), material, terça e o dia |

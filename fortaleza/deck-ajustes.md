@@ -44,7 +44,7 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 13 | até 19h20 | Prompt 2: o index.html | diagrama de três peças | Minha hero, `index.html` em vermelho, Navegador. Plano B (TextEdit) e site reserva no rodapé |
 | 14 | até 19h30 | Confira como designer | Figma ao lado do navegador | hero do exemplo e espaço de print do navegador; "Um ajuste por vez, terminando com: “Não mude mais nada.”" em vermelho |
 | 15 | até 19h35 | Próximos passos | bento com logos | Netlify Drop (grande), GitHub, PageSpeed Insights, React Bits, Mobbin (Mobbin MCP: Pro e Team), faixa "Galeria" em vermelho |
-| 16 | até 19h40 | Fecho e LinkedIn | fundo escuro, frase grande | "A barreira do código caiu. O critério continua sendo seu." em destaque; QR code do LinkedIn (linkedin.com/in/thiagoxikota), "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn" |
+| 16 | até 19h40 | Fecho e LinkedIn | fundo branco, frase grande em preto | "A barreira do código caiu. O critério continua sendo seu." em destaque; QR code do LinkedIn (linkedin.com/in/thiagoxikota), "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn" |
 
 
 ## Pendências
