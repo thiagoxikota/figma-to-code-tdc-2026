@@ -37,7 +37,7 @@ O foco é o Figma ligado ao agente pelo Figma Console MCP e o plugin Desktop Bri
 - **Figma Desktop Bridge** é o plugin que roda dentro do Figma e abre a porta para o servidor. É ele que escreve no arquivo; a chave do Figma fica só de leitura.
 - **O MCP oficial do Figma** é outra rota, com requisitos próprios. Também escreve no canvas, num beta para planos elegíveis; o Starter (gratuito) fica de fora. Nunca dizer que ele só lê nem que é sempre pago.
 
-**O molde:** página "Minha hero" (a primeira do arquivo da Community), frame "Minha hero", 1440 por 860, com Auto Layout e as variáveis da coleção Workshop Tokens. Camadas: Disponibilidade (ponto e "Status"), Nome (Sora 104), Título profissional (Sora 40, cor `color/brand-primary`), Bio (Inter 22), Ações ("Botão principal" com "Texto do botão", e "Link secundário"), Foto (opcional). Sem projetos e sem erro plantado. Ao lado, "Exemplo pronto: Thiago", a mesma hero personalizada com a foto do Thiago. Imagens: `img/hero-molde.png`, `img/hero-exemplo-thiago.png`.
+**O molde:** página "Minha hero" (a primeira do arquivo da Community), frame "Minha hero", 1440 por 860, com Auto Layout e as variáveis da coleção Workshop Tokens. Camadas: Nome (Sora 104), Título profissional (Sora 40, cor `color/brand-primary`), Bio (Inter 22), Ações ("Botão principal" com "Texto do botão", e "Link secundário"), Foto (opcional). Sem projetos e sem erro plantado. Ao lado, "Exemplo pronto: Thiago", a mesma hero personalizada com a foto do Thiago. Imagens: `img/hero-molde.png`, `img/hero-exemplo-thiago.png`.
 
 **Os dados vêm de casa:** cada pessoa preenche o `meu-site-kit/meus-dados.txt` (nome, título, bio, botão e link, cor principal, fundo) e cola no prompt 1. Ninguém escreve bio na sala.
 

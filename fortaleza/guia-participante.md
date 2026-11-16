@@ -270,7 +270,7 @@ Coloque o navegador ao lado do Figma, com o frame "Minha hero" na tela, e confir
 
 1. Os textos são os do frame, palavra por palavra.
 2. As fontes são as do frame: Sora no nome e no título, Inter no resto.
-3. A cor principal está no título e no ponto do status, e o fundo é o que você escolheu.
+3. A cor principal está no título profissional, e o fundo é o que você escolheu.
 4. O botão e o link levam para os endereços certos. Clique para ver.
 5. Estreite a janela do navegador até ficar do tamanho de um celular: a foto vai para baixo e nenhum texto é cortado.
 

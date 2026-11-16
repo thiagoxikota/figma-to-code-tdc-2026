@@ -20,7 +20,7 @@ Uma página com uma seção só: a hero do frame "Minha hero". Em 10 segundos, q
 - Contraste AA no mínimo: 4,5 para 1 no texto comum.
 - Sem gradiente e sem sombra genérica.
 - Sem pílula: o botão usa o raio do frame.
-- Sem ícone dentro de círculo e sem emoji.
+- Sem ícone dentro de círculo, sem emoji, sem selo de status ("Disponível para...") com ponto colorido.
 - Sem texto de enfeite: nada de sobretítulo, slogan ou frase que não está no frame.
 
 ## Código

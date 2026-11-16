@@ -11,5 +11,5 @@ Fundo (claro ou escuro): claro
 
 Dicas:
 - Bio: conte os caracteres. Mais de 180 quebra a hero em muitas linhas.
-- Cor principal: ela pinta o título profissional e o ponto do status. Escolha uma cor que dê para ler sobre o fundo.
-- A frase do status ("Disponível para novos projetos") e a foto você troca à mão no Figma, se quiser.
+- Cor principal: ela pinta o título profissional. Escolha uma cor que dê para ler sobre o fundo.
+- A foto você coloca à mão no Figma, se quiser.
