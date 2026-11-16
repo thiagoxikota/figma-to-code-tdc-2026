@@ -1,20 +1,19 @@
-SEU PRIMEIRO SITE, DO FIGMA AO AR v9.1 | Fora do Frame, Digital College Aldeota | qua 18/11, 18h00 a 19h40 | notch prompter
+FIGMA + IA, NA PRÁTICA v10 | Fora do Frame, Digital College Aldeota | qua 18/11, 18h00 a 19h40 | notch prompter
 
->>> SLIDE 01  (FALA. 18h00, até 18h15. Capa)
+>>> SLIDE 01  (FALA. 18h00, até 18h10. Capa)
 
 Boa noite, gente.
 Bem-vindos ao Fora do Frame.
 Eu sou o Thiago Xikota,
 designer de produto.
 
-Hoje vocês saem daqui
-com o primeiro site no ar,
-feito do Figma de vocês,
-com regras de vocês.
+Hoje um agente de IA
+vai mexer no Figma
+de vocês.
 
-Hoje não é sobre uma ferramenta.
-É um método
-que serve para qualquer agente.
+E depois vai transformar
+o que ele fez
+em site.
 
 Cada um na própria máquina.
 Mandem cada prompt uma vez.
@@ -22,27 +21,24 @@ Mandem cada prompt uma vez.
 Tem voluntários na sala:
 travou, levanta a mão.
 
->>> SLIDE 02  (FALA. Print x arquivo)
+>>> SLIDE 02  (DEMO. 1 minuto. O que vamos fazer hoje)
 
-Quem aqui já mandou
-print de tela para uma IA
-e pediu o código?
+Olhem isso.
 
-Print é aparência achatada.
-A IA vê pixels e chuta.
-Chuta a cor,
-chuta o espaço,
-chuta a fonte.
+O agente está mexendo
+no Figma.
+Trocando texto,
+trocando a cor.
 
-O arquivo tem variável,
-Auto Layout,
-hierarquia.
+Não é print.
+Não é imagem gerada.
+É o arquivo,
+com camadas editáveis.
 
-Quando o agente lê o arquivo,
-ele não chuta.
-Ele confere.
+É isso que cada um de vocês
+vai fazer hoje.
 
-FAZER: Sem prompt da sala aqui.
+FAZER: Demo de 1 minuto. Não uso o arquivo do alô nem gasto o prompt 1 do palco. Se for gravação, digo que é gravação.
 
 >>> SLIDE 03  (FALA. As peças)
 
@@ -53,14 +49,17 @@ O Figma guarda o design.
 O Desktop Bridge
 é um plugin.
 Ele abre uma porta no Figma.
+É por ela que o agente
+lê e escreve.
 
 O Figma Console MCP
 é um servidor.
 Ele leva o pedido do agente
-e traz o que está no arquivo.
+até o plugin.
 
-O agente escreve o código.
-Hoje é o Claude Desktop.
+O agente entende o pedido.
+Hoje é o chat
+do Claude Desktop.
 Eu uso o Codex na mesma ponte.
 
 MCP é o protocolo.
@@ -69,12 +68,9 @@ A regra da conversa.
 o agente na ponta pode mudar,
 a ponte é a mesma.
 
-O Figma tem um MCP oficial.
-É outra estrada,
-com requisitos próprios.
-Hoje a gente vai por esta.
+FAZER: Perguntaram do MCP oficial do Figma: é outra rota, também escreve no canvas num beta para planos elegíveis, fora do gratuito. Hoje vamos pela rota que funciona na conta gratuita.
 
->>> SLIDE 04  (SALA FAZ. 18h15. Guia e QR)
+>>> SLIDE 04  (SALA FAZ. 18h10. Guia e QR)
 
 Abram o guia
 pelo QR.
@@ -88,48 +84,68 @@ Cada prompt uma vez.
 Confiram a pasta meu-site-kit
 na Área de Trabalho.
 
-FAZER: Não espero todo mundo abrir. Sigo para a ponte.
+E o meus-dados.txt
+preenchido.
+Não preencheu?
+Façam agora.
+Seis linhas.
 
->>> SLIDE 05  (SALA FAZ. A ponte em 4 passos)
+FAZER: Não espero todo mundo abrir. Sigo.
 
-Comigo, na máquina de vocês.
+>>> SLIDE 05  (SALA FAZ. Instale e confira)
 
-Um.
+Isso foi feito em casa.
+Aqui a gente só confere.
+
+Node:
+node -v,
+v18 ou maior.
+
+O instalador
+terminou assim.
+Vocês devem ver isto.
+
+Claude Desktop
+fechado por completo
+depois da instalação.
+Mac: Cmd Q.
+
+FAZER: Voluntários circulam. Ninguém instala na sala.
+
+>>> SLIDE 06  (SALA FAZ. O plugin)
+
 Figma Desktop,
 a cópia de vocês,
-página Portfólio.
+página Minha hero.
 
-Dois.
-Plugin Figma Desktop Bridge
-rodando.
+Plugins,
+Development,
+Figma Desktop Bridge.
 
-Três.
-Claude Desktop aberto.
-Fechado por completo
-depois da instalação.
+Deixem a janelinha aberta.
 
-Quatro.
-Conversa nova.
+Viu Local, ready?
+A porta está aberta.
 
-FAZER: Faço junto no telão, devagar. Voluntários circulam.
+FAZER: Faço junto no telão, devagar.
 
->>> SLIDE 06  (SALA FAZ. Até 18h45. O alô, a primeira vitória)
+>>> SLIDE 07  (SALA FAZ. Até 18h35. O alô, a primeira vitória)
 
 Selecionem o frame
-Meu portfólio.
+Minha hero.
 
 Mandem o prompt do alô:
-qual arquivo está aberto
-e qual o tamanho da fonte
-do nome.
+o nome do arquivo
+e o tamanho da fonte
+do Nome.
 
 Agora conferem no Figma.
-Cliquem no nome
+Cliquem no Seu Nome
 e olhem o painel
 da direita.
 
 Bateu?
-Quarenta e oito?
+Cento e quatro?
 
 Essa é a primeira vitória.
 A IA leu uma propriedade
@@ -144,12 +160,124 @@ Os voluntários conferem
 o plugin e o Claude Desktop.
 Aqui ninguém instala.
 Não deu:
-a leitura vocês veem no telão,
-e o resto fazem igual.
+acompanhem pelo telão.
 
-FAZER: Faço o alô no telão e confiro no painel do Figma: clico no nome, o painel mostra 48. Voluntários contam as mãos.
+FAZER: Faço o alô no telão e confiro no painel: clico em Seu Nome, o painel mostra 104. Voluntários contam as mãos.
 
->>> SLIDE 07  (FALA. 18h45. O harness contra AI slop)
+>>> SLIDE 08  (FALA. 18h35. Sua hero pelo agente)
+
+Até aqui
+o agente leu.
+
+Agora ele vai escrever.
+
+Vocês trouxeram
+seis dados de casa.
+
+O agente vai colocar
+esses dados
+no frame de vocês.
+
+>>> SLIDE 09  (SALA FAZ. Prompt 1 escreve no Figma)
+
+Copiem o meus-dados.txt.
+
+Selecionem o frame
+Minha hero.
+
+Mandem o prompt 1
+e colem os dados
+no fim.
+
+Pediu permissão
+para usar o Figma?
+Permitam.
+
+(Mando o mesmo no telão.)
+
+Reparem no que o prompt pede.
+Só este frame.
+Troca os textos.
+Muda a variável da cor.
+Preserva o Auto Layout.
+Não cria nada novo.
+Não pergunta.
+
+Prompt bom
+é prompt com limite.
+
+FAZER: Canvas visível ao lado do Claude. Bateu no limite: editar à mão no Figma e plano C no site. Conexão caiu: digo que caiu e mostro a captura do ensaio.
+
+>>> SLIDE 10  (SALA FAZ. Até 18h55. Confira no Figma)
+
+Antes e depois.
+
+Agora confiram
+como designer.
+
+Os textos
+são os de vocês?
+
+Cliquem numa camada.
+Continua texto?
+Continua editável?
+
+Cliquem no título.
+A cor continua ligada
+à variável
+brand-primary?
+
+O exemplo do Thiago
+também mudou de cor.
+
+Não é erro.
+A variável vale
+para o arquivo todo.
+É a prova
+de que a cor está ligada.
+
+Achou algo errado?
+Corrijam à mão.
+O arquivo é de vocês.
+
+Foto?
+Opcional.
+Arrastem à mão
+para o quadro da foto.
+
+FAZER: Confiro no telão, camada por camada.
+
+>>> SLIDE 11  (DEMO. 18h55. Comentário e handoff)
+
+Agora só olhem.
+Não gastem mensagem.
+
+Um comentário
+deixado no Figma.
+
+O agente lê o comentário
+pela conexão
+e aplica no frame.
+
+O comentário que vocês deixam
+para o time
+pode virar tarefa do agente.
+
+E o handoff:
+o agente lê o frame
+e escreve
+o que o dev precisa saber.
+
+FAZER: Ao vivo falhou: passo a gravação e digo que é gravação.
+
+>>> SLIDE 12  (FALA. Até 19h05. Regras escritas)
+
+Vocês decidiram
+seis coisas
+antes de vir.
+
+Agora escrevam
+as regras.
 
 Sabe aquele site de IA
 que todo mundo reconhece?
@@ -158,22 +286,30 @@ Gradiente roxo,
 sombra em tudo,
 botão pílula,
 ícone dentro de círculo,
-emoji no título.
+emoji.
 
 Isso acontece
 quando ninguém deu regra.
 O agente preenche o vazio
 com a média da internet.
 
+Harness é tudo
+o que envolve o agente:
+o contexto,
+as ferramentas,
+o jeito de executar.
+
 O DESIGN.md
-é a regra de vocês,
+é uma parte disso.
+As regras de design,
 num arquivo.
 
-O conteúdo é o mesmo.
-O nome do arquivo
-muda com o agente.
+Chat do Claude Desktop:
+vocês anexam.
 
-Claude Code:
+Claude Code,
+no terminal
+ou na aba Code do app:
 CLAUDE.md,
 lê sozinho.
 
@@ -181,10 +317,9 @@ Codex:
 AGENTS.md,
 lê sozinho.
 
-Claude Desktop, o chat de hoje:
-não lê arquivo sozinho.
-Vocês anexam
-o DESIGN.md.
+O chat conversa.
+O Claude Code trabalha
+numa pasta do computador.
 
 Designer não precisa programar.
 Precisa dar regra.
@@ -192,225 +327,135 @@ E regra boa é regra escrita.
 
 FAZER: Mostro a tabela: onde roda, onde mora a regra, lê sozinho?
 
->>> SLIDE 08  (SALA FAZ. Até 18h55. Prepare o molde)
-
-Dois minutos,
-sem perfeccionismo.
-
-Mexam direto no frame
-Meu portfólio.
-O arquivo já é de vocês.
-
-Troquem o nome,
-a bio
-e os dois projetos.
-
-Mexam só no texto.
-As cores ficam.
-Tem duas coisas erradas
-de propósito ali,
-e o agente vai achar.
-
->>> SLIDE 09  (SALA FAZ, DEPOIS DEMO. 18h55. Prompt 1: leitura e auditoria)
-
-Mesma conversa do alô.
-Anexem o DESIGN.md
-e mandem o prompt 1.
-
-Ele lê o frame pela conexão
-e compara com as regras.
-Não gera código ainda.
-
-(Mando o mesmo no telão.)
-
-A bio:
-#A29B93, digitado direto.
-Contraste baixo.
-O certo é color/text-muted.
-
-O botão Fale comigo:
-#C8352B, digitado direto.
-O valor é igual
-ao da marca.
-A ligação não existe.
-Se a marca mudar,
-esse botão fica para trás.
-Print nenhum mostra isso.
-
-Vocês não abriram código.
-Vocês deram regra,
-e o agente auditou contra ela.
-
-FAZER: Painel do Figma ao lado, com zoom. Nunca digo que o vermelho está errado. Conexão caiu: digo que caiu e mostro a captura do ensaio, dita como ensaio.
-
->>> SLIDE 10  (SALA FAZ. Até 19h10. Prompt 2: o index.html)
+>>> SLIDE 13  (SALA FAZ. 19h05, até 19h20. Prompt 2: o index.html)
 
 Mesma conversa.
-Prompt 2.
+Anexem o DESIGN.md
+e mandem o prompt 2.
 
 Um arquivo só,
 index.html,
 com o CSS dentro,
-já com as correções.
+fiel ao frame.
 
 Baixem o arquivo
 para a pasta meu-site.
 O nome tem que ser
 index.html.
 
+Pôs foto?
+Exportem em JPG,
+foto.jpg,
+na mesma pasta.
+
 Dois cliques:
 abre no navegador.
 
 Não apareceu o botão de baixar?
 Plano B.
-Copiem o código,
 TextEdit em texto simples,
 ou Bloco de Notas,
-e salvem como index.html.
+salvem como index.html.
 
-Bateu no limite da conta?
+Bateu no limite?
 Plano C.
-A pasta meu-site-kit
-tem a reserva:
-reserva, index.html.
+A pasta reserva
+tem o site pronto.
 Troquem os textos
-e seguem igual.
+marcados TROQUE.
 
 FAZER: Faço no telão. Geração falhou: mostro a do ensaio e digo que é do ensaio.
 
->>> SLIDE 11  (SALA FAZ. 19h10, até 19h20. Confira como designer)
+>>> SLIDE 14  (SALA FAZ. 19h20, até 19h30. Confira como designer)
 
-Site no navegador,
-frame no Figma,
-lado a lado.
+Navegador
+ao lado do Figma.
 
-Quatro conferências.
+Os textos batem?
 
-Um.
-O texto é o do frame?
+As fontes:
+Sora e Inter?
 
-Dois.
-A bio ficou legível?
+A cor e o fundo?
 
-Três.
-O botão usa
-a cor da marca?
+O botão e o link
+levam para o lugar certo?
 
-Quatro.
-Em tela estreita,
-as colunas viram uma?
+Estreitem a janela.
+A foto vai para baixo?
+Algum texto cortado?
 
 A IA entrega rápido.
 Quem diz se está certo
 é vocês.
-Olhem como olham
-um handoff.
 
 Achou diferença?
 Um ajuste,
-pedido como designer,
-terminando com:
+pedido como designer.
+O que vê
+e o que quer.
+Terminando com:
 não mude mais nada.
-
-Baixem de novo
-e troquem o arquivo
-na pasta meu-site.
 
 FAZER: Faço um ajuste real no telão.
 
->>> SLIDE 12  (FALA. 19h20. Pasta, GitHub e Netlify)
+>>> SLIDE 15  (FALA. 19h30. Próximos passos e galeria)
 
-Três lugares.
+Daqui para frente,
+nada é obrigatório.
 
-A pasta de vocês
-é onde o site nasce.
+Netlify Drop:
+arrastem a pasta
+e ganhem um link.
+Testem numa janela anônima.
 
-O GitHub é um cofre
-com histórico.
-Cada versão guardada,
-com data.
-Isso se chama repositório.
+GitHub:
+um cofre com histórico.
+Ligado ao Netlify,
+cada mudança
+vira site novo sozinha.
 
-O Netlify é a vitrine.
-Pega a pasta
-e dá um link.
+PageSpeed Insights:
+cola o link,
+recebe a nota.
+Usa o Lighthouse.
 
-Hoje vocês pulam o cofre
-e vão direto para a vitrine.
+React Bits:
+componentes animados,
+em React.
+Para depois,
+com o Claude Code.
 
->>> SLIDE 13  (SALA FAZ. Até 19h30. No ar)
+Mobbin MCP:
+referência de apps reais
+dentro do agente.
+Planos Pro e Team.
 
-Netlify Drop,
-logados na conta de vocês.
+Está tudo no guia.
 
-Arrastem a pasta meu-site
-inteira.
-A pasta,
-não o arquivo solto.
+Quem quer mostrar a hero?
 
-Copiem o link.
-Abram numa janela anônima.
-Mac: Cmd Shift N.
-Windows: Ctrl Shift N.
-
-Abriu lá?
-Abre para qualquer pessoa.
-
-Agora no celular.
-
-Esse é o primeiro site
-de vocês no ar.
-
-FAZER: Faço no telão. Não abriu na anônima: o site expira sem login, entrar na conta do Netlify e arrastar de novo.
-
->>> SLIDE 14  (DEMO. 19h30. 2 minutos. GitHub ligado ao Netlify)
-
-Agora o próximo nível.
-
-Este site está no GitHub,
-ligado ao Netlify.
-
-Peço um ajuste ao agente.
-A mudança vai para o cofre.
-E a vitrine
-se atualiza sozinha.
-
-É por isso que o GitHub
-muda a vida do designer:
-cada mudança vira histórico,
-e o site acompanha.
-
-Não é obrigatório hoje.
-Fica de lição de casa.
-
-FAZER: Deploy demorou: sigo para a galeria e volto ao link no fim. Atrasou: corto a demo e fico no diagrama do slide 12.
-
->>> SLIDE 15  (FALA E SALA. Galeria relâmpago)
-
-Quem quer mostrar?
-Três links no telão.
-
-Digam uma regra
-do DESIGN.md
-que fez diferença.
-
-FAZER: Atrasou: um link, ou nenhum.
+FAZER: Até três heros no telão. Atrasou: uma, ou nenhuma.
 
 >>> SLIDE 16  (SALA FAZ, DEPOIS FALA. 19h35, até 19h40. Revogar e passagem. Nunca cortado)
 
-Todo mundo criou uma chave.
-Todo mundo revoga.
+Agora todo mundo
+revoga a chave
+do workshop.
 
 No Figma:
 Settings,
 Security,
 Personal access tokens.
 
-Revoke em todas
-que vocês criaram para hoje.
+Achem a chave
+que vocês criaram para hoje,
+a de 7 dias.
+Revoke.
 
-Pronto quando a lista
-não mostra mais nenhuma.
+Só ela.
+As outras que vocês já tinham
+ficam.
 
 Às 20h, depois do coffee,
 levem a pasta handoff
@@ -419,12 +464,13 @@ Ela tem um Card
 e os tokens de design.
 É dela que o Mateus Villain parte.
 
-O método é de vocês:
-arquivo lido,
-regra escrita,
-um HTML,
-conferir,
-publicar.
+Hoje o agente leu
+o Figma de vocês,
+escreveu nele,
+e transformou em site.
+
+Vocês conferiram
+cada passo.
 
 Designer não precisa programar.
 Precisa dar regra.

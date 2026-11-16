@@ -2,16 +2,16 @@
 
 Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o seu (20h). Nada aqui muda o seu plano; é só para você saber exatamente de onde a galera parte.
 
-**O público é de designers.** O workshop agora se chama "Seu primeiro site, do Figma ao ar". Conte com gente que nunca abriu o Terminal.
+**O público é de designers.** O workshop agora se chama "Figma + IA, na prática" (do seu Figma ao primeiro site). Conte com gente que nunca abriu o Terminal.
 
-**Mudou em relação à versão anterior:** o formulário saiu. Agora cada pessoa conecta o Figma ao agente (Claude Desktop; Codex como alternativa) na própria máquina, no preparo obrigatório de casa, com mesa de instalação às 17h30 para quem travou. O preparo inclui instalar o Node. Na sala, cada pessoa parte de um frame pronto de mini portfólio, dá as regras num `DESIGN.md`, o agente lê o frame pela conexão, aponta duas cores digitadas direto em vez das variáveis e gera um `index.html` único, que a pessoa publica no Netlify Drop, testando o link numa janela anônima e no celular. A primeira vitória da sala é o alô: a IA diz o tamanho da fonte do nome e a pessoa confere no painel do Figma. Quem bater no limite do Claude gratuito usa um site reserva do kit. GitHub é explicado e mostrado no telão, sem ser obrigatório. No fim, todo mundo revoga a chave do Figma.
+**Mudou em relação à versão anterior:** o formulário saiu, e o foco agora é o agente mexendo no Figma. Cada pessoa conecta o Figma ao agente (Claude Desktop; Codex como alternativa) na própria máquina, no preparo obrigatório de casa, com mesa de instalação às 17h30 para quem travou. O preparo inclui instalar o Node. Na sala, cada pessoa parte de uma hero section pronta no Figma, com Auto Layout e as variáveis da coleção Workshop Tokens. Primeiro o agente lê uma propriedade do frame e a pessoa confere no painel. Depois o agente escreve no Figma dela: troca os textos e muda o valor da variável `color/brand-primary` para a cor que ela escolheu, com as camadas continuando editáveis. Por fim, com as regras num `DESIGN.md`, o agente gera um `index.html` da hero, que a pessoa confere ao lado do frame. Publicar no Netlify é opcional. Quem bater no limite do Claude gratuito edita à mão e usa um site reserva do kit. No fim, todo mundo revoga a chave do Figma criada para o workshop.
 
-Isso conversa com a sua sessão: a sala acabou de ver, na prática, o que acontece quando uma cor não está ligada à variável. Você pode partir daí para tokens.
+Isso conversa com a sua sessão: a sala acabou de ver, na prática, uma cor mudar no arquivo inteiro porque estava ligada à variável. Você pode partir daí para tokens.
 
 O que a sala leva:
 
-- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v4` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
-- **O próprio site, publicado no Netlify,** e a pasta `meu-site-kit` com o `DESIGN.md`. **Não entram no seu workshop.**
+- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v5` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
+- **A própria hero, no Figma e em `index.html`,** e a pasta `meu-site-kit` com o `DESIGN.md`. **Não entram no seu workshop.**
 
 Eu não gero Card no telão. Na passagem eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte."
 

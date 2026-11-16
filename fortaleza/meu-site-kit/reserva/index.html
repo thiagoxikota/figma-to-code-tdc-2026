@@ -6,69 +6,97 @@
 <title>Seu Nome</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600&display=swap" rel="stylesheet">
 <style>
-  /* Site reserva do workshop: use só se o seu não saiu. Troque os textos marcados abaixo. */
+  /*
+    Site reserva do workshop: a hero do frame "Minha hero", pronta.
+    Use só se a sua não saiu. Troque os textos marcados com TROQUE, lá embaixo.
+    Cor principal: troque o valor de --brand-primary.
+    Fundo escuro: troque os quatro valores pelos de baixo.
+      --surface: #1f1c1a; --surface-alt: #2a2623; --text: #ffffff; --text-muted: #b5aea6;
+  */
   :root {
+    /* Workshop Tokens */
     --brand-primary: #c8352b;
     --surface: #ffffff;
     --surface-alt: #f5f3f0;
     --text: #1f1c1a;
     --text-muted: #6c665f;
-    --border: #e2ddd6;
-    --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
-    --radius-md: 8px;
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-4: 32px;
   }
   * { box-sizing: border-box; margin: 0; }
-  body { background: var(--surface); color: var(--text); font-family: Inter, system-ui, sans-serif; }
-  main { max-width: 1280px; margin: 0 auto; padding: 96px 120px; display: flex; flex-direction: column; gap: 64px; }
-  h1, h2, h3 { font-family: Sora, Inter, sans-serif; font-weight: 600; }
-  .apresentacao { display: flex; align-items: center; gap: var(--space-4); }
-  .foto { width: 120px; height: 120px; flex: none; border-radius: 50%; background: var(--surface-alt); border: 1px solid var(--border); }
-  .nome-bio { display: flex; flex-direction: column; gap: var(--space-1); }
-  h1 { font-size: 48px; }
-  .bio { font-size: 20px; color: var(--text-muted); }
-  .secao { display: flex; flex-direction: column; gap: var(--space-3); }
-  h2 { font-size: 24px; }
-  .projetos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-  .card { background: var(--surface-alt); padding: var(--space-3); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-2); }
-  .imagem { aspect-ratio: 472 / 280; background: var(--border); border-radius: var(--radius-md); }
-  h3 { font-size: 20px; }
-  .card p { font-size: 16px; color: var(--text-muted); }
-  .botao { align-self: flex-start; background: var(--brand-primary); color: var(--surface); font-weight: 600; font-size: 18px; padding: 16px 32px; border-radius: var(--radius-md); text-decoration: none; }
-  @media (max-width: 720px) {
-    main { padding: 48px 24px; gap: 48px; }
-    .apresentacao { flex-direction: column; align-items: flex-start; }
-    h1 { font-size: 36px; }
-    .projetos { grid-template-columns: 1fr; }
+  body {
+    background: var(--surface);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 96px 120px;
+    display: flex;
+    align-items: center;
+    gap: 96px;
+  }
+  .texto { flex: 1 1 0; min-width: 0; max-width: 664px; display: flex; flex-direction: column; gap: 40px; }
+  .nome-titulo { display: flex; flex-direction: column; gap: var(--space-2); }
+  .status { display: flex; align-items: center; gap: var(--space-1); font-size: 18px; font-weight: 500; color: var(--text-muted); }
+  .ponto { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--brand-primary); }
+  h1, .titulo { font-family: Sora, Inter, sans-serif; font-weight: 600; overflow-wrap: break-word; }
+  h1 { font-size: clamp(48px, 7.2vw, 104px); line-height: 1; letter-spacing: -0.03em; }
+  .titulo { font-size: clamp(26px, 2.8vw, 40px); line-height: 1.1; letter-spacing: -0.015em; color: var(--brand-primary); }
+  .bio { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--text-muted); }
+  .acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+  .acoes a { font-size: 18px; font-weight: 600; text-decoration: none; }
+  .botao { background: var(--text); color: var(--surface); padding: 18px 32px; border-radius: 12px; }
+  .link { color: var(--text); }
+  .acoes a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .acoes a:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 4px; }
+  .foto {
+    flex: 0 0 440px;
+    height: 560px;
+    border-radius: 28px;
+    background: var(--surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 1180px) {
+    .hero { padding: 80px 64px; gap: 64px; }
+    .foto { flex-basis: 360px; height: 460px; }
+  }
+  @media (max-width: 860px) {
+    .hero { flex-direction: column; align-items: stretch; padding: 56px 24px; gap: 48px; }
+    .texto { max-width: none; gap: 32px; }
+    .foto { flex: none; width: 100%; max-width: 440px; height: auto; aspect-ratio: 440 / 560; }
   }
 </style>
 </head>
 <body>
-<main>
-  <section class="apresentacao">
-    <div class="foto" aria-hidden="true"></div>
-    <div class="nome-bio">
-      <h1>Seu Nome</h1>
-      <p class="bio">Product designer em Fortaleza. Desenho interfaces simples para gente de verdade.</p>
+<main class="hero">
+  <div class="texto">
+    <div class="nome-titulo">
+      <p class="status"><span class="ponto" aria-hidden="true"></span>Disponível para novos projetos</p><!-- TROQUE, se quiser -->
+      <h1>Seu Nome</h1><!-- TROQUE -->
+      <p class="titulo">Product designer</p><!-- TROQUE -->
     </div>
-  </section>
-  <section class="secao">
-    <h2>Projetos</h2>
-    <div class="projetos">
-      <article class="card">
-        <div class="imagem" aria-hidden="true"></div>
-        <h3>Projeto um</h3>
-        <p>App de agendamento para clínicas de bairro.</p>
-      </article>
-      <article class="card">
-        <div class="imagem" aria-hidden="true"></div>
-        <h3>Projeto dois</h3>
-        <p>Redesign do site de uma cafeteria local.</p>
-      </article>
+    <p class="bio">Desenho produtos digitais claros e úteis, da pesquisa ao detalhe da interface. Hoje em Fortaleza, aberto a times do mundo todo.</p><!-- TROQUE: até 180 caracteres -->
+    <div class="acoes">
+      <a class="botao" href="mailto:seu@email.com">Fale comigo</a><!-- TROQUE o e-mail -->
+      <a class="link" href="https://www.linkedin.com/in/seu-perfil">Ver meu LinkedIn</a><!-- TROQUE o link -->
     </div>
-  </section>
-  <a class="botao" href="mailto:seu@email.com">Fale comigo</a>
+  </div>
+  <!-- Foto: coloque foto.jpg dentro de meu-site e troque o texto abaixo por <img src="foto.jpg" alt="Seu Nome"> -->
+  <div class="foto">Sua foto (opcional)</div>
 </main>
 </body>
 </html>

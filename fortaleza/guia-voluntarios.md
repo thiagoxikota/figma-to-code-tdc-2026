@@ -1,4 +1,4 @@
-# Guia dos voluntários: Seu primeiro site, do Figma ao ar (Fortaleza)
+# Guia dos voluntários: Figma + IA, na prática (Fortaleza)
 
 Quarta, 18/11/2026, 18h00 às 19h40, Digital College Aldeota. Mesa de instalação a partir das 17h30. Obrigado por estar junto.
 
@@ -6,18 +6,25 @@ O público é de designers, não de devs. Tom de quem ajuda colega, sem jargão.
 
 O Thiago fica no palco do começo ao fim. Vocês são quem vai até a pessoa travada. A meta é ninguém ficar parado.
 
-**A promessa da sala:** "Você sai com o primeiro site no ar, feito do seu Figma, com regras suas." Quem bater no limite do Claude gratuito usa o site reserva do kit (`meu-site-kit/reserva/index.html`), troca os textos e publica igual; se preferir, termina em casa com os prompts do guia. Não prometam mais do que isso.
+**A promessa da sala:** "Um agente de IA vai mexer no seu Figma, e depois transformar o que ele fez em site." Quem bater no limite do Claude gratuito edita a hero à mão no Figma e usa o site reserva do kit (`meu-site-kit/reserva/index.html`); se preferir, termina em casa com os prompts do guia. Não prometam mais do que isso.
 
 
 ## Como o workshop funciona
 
-O método: o agente lê o arquivo do Figma pela conexão, segue as regras do `DESIGN.md`, gera um `index.html` único e a pessoa publica no Netlify Drop. GitHub é explicado e mostrado no telão, não é obrigatório.
+Cada pessoa parte do frame "Minha hero" (primeira página do arquivo da Community), uma hero section só. Ela traz de casa o `meus-dados.txt` preenchido (nome, título, bio, botão e link, cor principal, fundo). Na sala:
 
-**Todo mundo conecta o Figma ao Claude Desktop na própria máquina, sem dupla.** A conexão faz parte do preparo obrigatório em casa. Quem usa Codex pode usar no lugar (seção "Usa Codex?" do guia), mas a sala segue no Claude Desktop e a mesa não configura Codex. Quem não conectou chega às 17h30, na mesa. **Depois das 18h ninguém instala nada na sala:** quem não conectou acompanha a leitura pelo telão.
+1. **O alô:** o agente lê o tamanho da fonte do "Nome" e a pessoa confere no painel do Figma.
+2. **Prompt 1:** o agente escreve no Figma da pessoa. Troca os textos, muda o valor da variável `color/brand-primary` e, se o fundo for escuro, as variáveis de fundo e texto. A pessoa confere que as camadas continuam editáveis.
+3. **Possibilidades:** só telão (comentário lido e aplicado, handoff, `DESIGN.md`, harness).
+4. **Prompt 2:** com o `DESIGN.md` anexado, o agente gera um `index.html` da hero. A pessoa baixa para `meu-site` e abre no navegador.
+5. **Conferir como designer:** site ao lado do frame, janela estreita, um ajuste.
+6. **Próximos passos opcionais** (Netlify Drop para quem terminou, GitHub, PageSpeed, React Bits, Mobbin) e **revogar a chave do workshop.**
 
-Tudo acontece numa conversa só, no Claude Desktop: o alô, o prompt 1 (leitura com o `DESIGN.md` anexo), o prompt 2 (o `index.html`) e um ajuste opcional. Não prometam número de mensagens: o limite da conta gratuita varia com o dia.
+**Todo mundo conecta o Figma ao Claude Desktop na própria máquina, sem dupla.** A conexão faz parte do preparo obrigatório em casa. Quem usa Codex pode usar no lugar (seção "Usa Codex?" do guia), mas a sala segue no chat do Claude Desktop e a mesa não configura Codex. Quem não conectou chega às 17h30, na mesa. **Depois das 18h ninguém instala nada na sala:** quem não conectou acompanha pelo telão e edita a hero à mão.
 
-Cada pessoa precisa ter, na Área de Trabalho, a pasta `meu-site-kit` (com o `DESIGN.md` e a pasta `meu-site`, vazia) e a pasta `handoff`, para o Mateus às 20h.
+Tudo acontece numa conversa só, no chat do Claude Desktop. Não prometam número de mensagens: o limite da conta gratuita varia com o dia.
+
+Cada pessoa precisa ter, na Área de Trabalho, a pasta `meu-site-kit` (com `meus-dados.txt`, `DESIGN.md`, `reserva` e a pasta `meu-site`, vazia) e a pasta `handoff`, para o Mateus às 20h.
 
 
 ## Mesa de instalação, 17h30 às 18h00
@@ -27,25 +34,26 @@ Para quem não terminou a parte 2 do preparo em casa. O guia do participante tem
 **O que conferir, nesta ordem:**
 
 1. **Os três programas.** Figma Desktop (o app, não o navegador), Claude Desktop logado na conta da pessoa, e `node -v` no Terminal ou no PowerShell mostrando v18 ou maior.
-2. **O instalador.** O comando do guia, pela tag `fortaleza-v4` (no Windows, `npx.cmd`). A chave é criada **pela própria pessoa**, na conta dela: 7 dias, só leitura em File content. Vocês não digitam nem veem a chave.
+2. **O instalador.** O comando do guia, pela tag `fortaleza-v5` (no Windows, `npx.cmd`). A chave é criada **pela própria pessoa**, na conta dela: 7 dias, só leitura em File content, com um nome fácil de achar, como `workshop fortaleza`. Vocês não digitam nem veem a chave.
    - Disse que já existe uma conexão com o mesmo nome, ou que a configuração não é válida: leiam juntos o que seria substituído. A pessoa decide se digita `sim`. Na dúvida, não.
    - Disse que a instalação NÃO terminou: seguir os passos que ele mostra e rodar de novo. Ele reaproveita a chave.
    - O comando não baixa: na pasta do ZIP, `node scripts/instalar.mjs`. Ainda precisa de internet.
 3. **O Claude Desktop fechado por completo e aberto de novo.** Mac: Cmd+Q. Windows: sair também pelo ícone perto do relógio.
-4. **O plugin.** Figma Desktop com a cópia do arquivo aberta, Plugins > Development > Import plugin from manifest, o caminho que o instalador copiou (Mac: Cmd+Shift+G e colar; Windows: colar no campo "Nome do arquivo" e Abrir). Depois rodar o **Figma Desktop Bridge** e deixar a janela aberta.
-5. **O teste (o alô).** Frame "Meu portfólio" selecionado. No Claude Desktop, conversa nova, com o prompt do alô do guia: o arquivo aberto e o tamanho da fonte do nome. Depois a pessoa confere no Figma: clica no nome e olha o painel da direita. **Pronto quando o Claude diz o nome do arquivo e um tamanho de fonte, e o painel mostra o mesmo número.** O `[ok]` do instalador não conta.
+4. **O plugin.** Figma Desktop com a cópia do arquivo aberta, Plugins > Development > Import plugin from manifest, o caminho que o instalador copiou (Mac: Cmd+Shift+G e colar; Windows: colar no campo "Nome do arquivo" e Abrir). Depois rodar o **Figma Desktop Bridge** e deixar a janela aberta. **Pronto quando a janelinha mostra "Local · ready".**
+5. **O teste (o alô).** Frame "Minha hero" selecionado. No Claude Desktop, conversa nova, com o prompt do alô do guia: o nome do arquivo e o tamanho da fonte da camada "Nome". Depois a pessoa confere no Figma: clica em "Seu Nome" e olha o painel da direita. **Pronto quando o Claude diz o nome do arquivo e um tamanho de fonte, e o painel mostra o mesmo número (104 no molde).** O `[ok]` do instalador não conta.
 
-Não respondeu: plugin rodando? Arquivo aberto no Figma Desktop? VPN desligada (a conexão usa as portas locais 9223 a 9232)?
+Não respondeu: plugin rodando, com "Local · ready"? Arquivo aberto no Figma Desktop? VPN desligada (a conexão usa as portas locais 9223 a 9232)?
 
 **Confiram também, rápido:**
 
-- A cópia do arquivo tem a página "Portfólio" (a primeira), com o frame "Meu portfólio". Não tem: a cópia é antiga, duplicar de novo da Community.
+- A cópia do arquivo tem a página "Minha hero" (a primeira), com o frame "Minha hero". Não tem: a cópia é antiga, duplicar de novo da Community.
+- O `meus-dados.txt` está preenchido. Não está: a pessoa preenche ali, são seis linhas.
 - A pasta `meu-site-kit` e a `handoff` estão na Área de Trabalho. Não estão: pendrive.
-- A pessoa tem conta no Netlify. Não tem: criar agora em https://app.netlify.com/signup , é rápido.
+- Conta no Netlify é opcional. Não insistam.
 
 **Quando desistir:**
 
-- **Uma volta completa pelos 5 itens por pessoa.** Não subiu, a pessoa acompanha a leitura pelo telão. Não investiguem problema profundo de uma máquina.
+- **Uma volta completa pelos 5 itens por pessoa.** Não subiu, a pessoa acompanha pelo telão. Não investiguem problema profundo de uma máquina.
 - Notebook da empresa que não deixa instalar, Linux, ou antivírus corporativo bloqueando: telão, sem tentar.
 - Rede da sala não baixa o instalador: telão.
 - **Às 18h00 a mesa fecha,** com quem estiver no meio. Na sala, nada de instalação.
@@ -55,31 +63,30 @@ Não respondeu: plugin rodando? Arquivo aberto no Figma Desktop? VPN desligada (
 
 | Relógio | Slide | Pronto quando | Foco de vocês |
 |---|---|---|---|
-| 18h00 a 18h15 | 1 a 3. Mapa | A sala ouviu o print x arquivo e as peças | Nada a fazer nas máquinas. Quem chegou atrasado: guia aberto e `meu-site-kit` na Área de Trabalho |
-| 18h15 a 18h20 | 4. Guia e QR | Guia aberto no notebook | Quem não achou o link: o QR do slide |
-| 18h20 a 18h45 | 5 e 6. A ponte e o alô | O Claude Desktop disse o nome do arquivo e o tamanho da fonte do nome, e o painel do Figma mostra o mesmo número | Conferir plugin rodando, Figma Desktop (não navegador), Claude Desktop reaberto. Ajudar a pessoa a clicar no nome e achar o tamanho no painel da direita. Contar as mãos. Não instalar: quem não conectou segue pelo telão |
-| 18h45 a 18h55 | 7 e 8. Harness e prepare o molde | Um frame "Meu portfólio" com o nome da pessoa | Editado direto, sem duplicar. Só texto muda; as cores ficam |
-| 18h55 a 19h10 | 9 e 10. Prompt 1 e prompt 2 | Lista com até 3 pontos, valor atual e valor certo; depois `index.html` dentro de `meu-site`, abrindo no navegador | `DESIGN.md` anexado antes do prompt 1. Leitura vazia: plugin rodando? Frame com o nome certo e só um? Não digam os dois erros antes do telão. Prompt 2: achar o botão de baixar. Não achou: plano B do guia (TextEdit em texto simples ou Bloco de Notas, "Todos os arquivos"). Bateu no limite: plano C, o `index.html` de `meu-site-kit/reserva`. Nome exato `index.html` |
-| 19h10 a 19h20 | 11. Conferir e corrigir | Site conferido ao lado do frame, um ajuste feito | Ajudar a comparar texto, bio, botão e tela estreita. O ajuste termina com "Não mude mais nada" |
-| 19h20 a 19h30 | 12 e 13. Pasta, GitHub e Netlify; no ar | O link abre na janela anônima e no celular | Logado na conta. Arrastar a pasta `meu-site`, não o arquivo. "Page not found": conferir o nome `index.html`. Não abriu na anônima: o site expirou sem login, entrar na conta e arrastar de novo |
-| 19h30 a 19h40 | 14 a 16. Demo, galeria, revogar e passagem | 3 links no telão; nenhuma chave do workshop na lista do Figma; todo mundo sabe que leva a `handoff` às 20h | Quem ainda não publicou: ajudar no Drop em silêncio. Achar quem tem um site bonito e topa mostrar. Ajudar a achar Settings > Security > Personal access tokens. Revogar nunca é cortado |
+| 18h00 a 18h10 | 1 a 3. Abertura | A sala viu a demo de 1 minuto e as peças | Nada a fazer nas máquinas. Quem chegou atrasado: guia aberto e `meu-site-kit` na Área de Trabalho |
+| 18h10 a 18h35 | 4 a 7. Setup guiado e alô | Plugin em "Local · ready"; o Claude disse o nome do arquivo e o tamanho da fonte do Nome, e o painel mostra o mesmo número | Quem não achou o link: o QR do slide. `meus-dados.txt` preenchido. Plugin rodando, Figma Desktop (não navegador), Claude Desktop reaberto. Ajudar a clicar em "Seu Nome" e achar o tamanho no painel da direita. Contar as mãos. Não instalar |
+| 18h35 a 18h55 | 8 a 10. Sua hero pelo agente | O frame "Minha hero" com os dados da pessoa, camadas ainda editáveis | Frame "Minha hero" selecionado antes do prompt 1, dados colados no fim. Pediu permissão para usar o Figma: permitir. Mexeu no frame errado ou criou camadas: Cmd+Z (Ctrl+Z) e corrigir à mão, sem outra mensagem. Ajudar a conferir: camada de texto continua texto, título ligado a `color/brand-primary`. O exemplo do Thiago também muda de cor: é esperado. Foto: arrastar à mão para "Foto (opcional)". Bateu no limite: editar à mão os textos e o valor da variável no painel |
+| 18h55 a 19h05 | 11 e 12. Possibilidades | A sala viu a demo do comentário e a tabela do harness | Ninguém manda mensagem aqui. Quem atrasou no prompt 1 termina em silêncio |
+| 19h05 a 19h20 | 13. Prompt 2 | `index.html` dentro de `meu-site`, abrindo no navegador | `DESIGN.md` anexado antes do prompt 2. Achar o botão de baixar. Não achou: plano B (TextEdit em texto simples, ou Bloco de Notas com "Todos os arquivos"). Bateu no limite: plano C, o `index.html` de `meu-site-kit/reserva`, trocando os textos marcados `TROQUE`. Nome exato `index.html`. Foto: exportar JPG como `foto.jpg` na mesma pasta |
+| 19h20 a 19h30 | 14. Confira como designer | Site conferido ao lado do frame, um ajuste feito | Ajudar a comparar textos, fontes, cor, links e janela estreita. O ajuste termina com "Não mude mais nada" |
+| 19h30 a 19h40 | 15 e 16. Próximos passos, galeria, revogar e passagem | Até 3 heros no telão; a chave do workshop fora da lista do Figma; todo mundo sabe que leva a `handoff` às 20h | Quem terminou e quer: ajudar no Netlify Drop em silêncio (pasta `meu-site`, não o arquivo; testar na janela anônima). Achar quem topa mostrar a hero. Ajudar a achar Settings > Security > Personal access tokens e revogar **só a chave do workshop**. Revogar nunca é cortado |
 
-Atrasou: a galeria encolhe primeiro, depois a demo do GitHub. Conectar, gerar, conferir, publicar e revogar não são cortados.
+Atrasou: a galeria encolhe primeiro, depois os próximos passos, depois a demo do comentário vira gravação. O alô, o prompt 1, o prompt 2, a conferência e revogar não são cortados.
 
 
 ## Limite da conta
 
-A conta gratuita do Claude tem limite, e ele varia com o dia; não há número prometido. Bateu no limite: plano C, o site reserva do kit (`meu-site-kit/reserva/index.html`). A pessoa troca os textos e publica igual. Termina em casa com os prompts do guia, se quiser. Sem drama, sem tentar outra conta.
+A conta gratuita do Claude tem limite, e ele varia com o dia; não há número prometido. A lista de ferramentas da conexão também consome parte do limite [VERIFICAR no ensaio: quanto]. Bateu no limite no prompt 1: a pessoa edita a hero à mão no Figma, com os dados do `meus-dados.txt` (textos nas camadas e o valor de `color/brand-primary` no painel de variáveis). Bateu no prompt 2: plano C, o site reserva do kit. Termina em casa com os prompts do guia, se quiser. Sem drama, sem tentar outra conta.
 
 
 ## Antes de quarta
 
-1. Faça o preparo inteiro do guia do participante (partes 1, 2 e 3) e os passos da sala na sua conta gratuita, até publicar no Netlify Drop e testar o link numa janela anônima e no celular. Quem já passou pelo erro destrava o outro mais rápido.
-2. **Quem tem Windows:** faça a conexão e o passo do `index.html` no Windows e conte ao Thiago se o Claude Desktop disse o nome do arquivo, se a importação do plugin funcionou colando o caminho no campo "Nome do arquivo" e como o `index.html` foi salvo. O Windows ainda não foi ensaiado.
+1. Faça o preparo inteiro do guia do participante (partes 1 e 2, e a 3 se quiser) e os passos da sala na sua conta gratuita, até abrir o `index.html` no navegador. Quem já passou pelo erro destrava o outro mais rápido.
+2. **Quem tem Windows:** faça a conexão, o prompt 1 e o passo do `index.html` no Windows e conte ao Thiago se o plugin mostrou "Local · ready", se o Claude disse o nome do arquivo, se o prompt 1 escreveu no Figma, se a importação do plugin funcionou colando o caminho no campo "Nome do arquivo" e como o `index.html` foi salvo. O Windows ainda não foi ensaiado.
 3. **O pendrive tem dono.** Um de vocês confirma no grupo que leva. Quem confirmar:
-   - baixa o ZIP da tag `fortaleza-v4` e copia **três coisas** para o pendrive: a pasta `handoff`, a pasta `fortaleza/meu-site-kit` e o guia em arquivo (`fortaleza/guia-participante.md`);
+   - baixa o ZIP da tag `fortaleza-v5` e copia **três coisas** para o pendrive: a pasta `handoff`, a pasta `fortaleza/meu-site-kit` e o guia em arquivo (`fortaleza/guia-participante.md`);
    - leva pendrive USB comum **e** um jeito de ligar em USB-C;
-   - testa com o wifi desligado: `handoff/Card.html` abre com cor direto do pendrive, e o `DESIGN.md` e o guia abrem;
+   - testa com o wifi desligado: `handoff/Card.html` abre com cor direto do pendrive, e o `meus-dados.txt`, o `DESIGN.md` e o guia abrem;
    - responde no grupo "pendrive testado".
    Se ninguém confirmar, avisem o Thiago: ele leva o dele.
 
@@ -93,7 +100,7 @@ O pendrive circula durante a sala, sem parar o workshop, ou no coffee.
 
 ## Regras
 
-- **Na sala, ninguém instala.** Quem chegou sem conexão segue pelo telão.
+- **Na sala, ninguém instala.** Quem chegou sem conexão segue pelo telão e edita à mão.
 - **Uma tentativa, depois telão.** Não investiguem problema profundo de uma máquina.
 - **Fila no mesmo ponto:** avisem o Thiago. Ele resolve no telão para todos.
 
@@ -102,10 +109,10 @@ O pendrive circula durante a sala, sem parar o workshop, ou no coffee.
 
 - Não usa a própria conta (Figma, Claude ou Netlify) na máquina de outra pessoa.
 - Não cria, digita nem vê a chave do Figma de ninguém.
-- Não diz os dois erros do molde antes do telão.
-- Não diz que o vermelho do botão "está errado": o valor é igual ao do token, o que falta é a ligação.
+- Não escreve a bio nem escolhe a cor pela pessoa: os dados são dela.
 - Não promete que o site sai pronto para produção.
 - Não escreve o código pela pessoa nem edita o `DESIGN.md` dela.
+- Não manda revogar "todas as chaves": só a do workshop.
 - Não pede para ninguém apagar ou alterar arquivo da própria `handoff`.
 
 
@@ -113,20 +120,20 @@ O pendrive circula durante a sala, sem parar o workshop, ou no coffee.
 
 Não há máquina reserva nem máquina do evento [VERIFICAR com a Gi].
 
-- **Conexão não subiu ou caiu:** telão. Uma volta na mesa, nenhuma na sala.
+- **Conexão não subiu ou caiu:** telão e edição à mão. Uma volta na mesa, nenhuma na sala.
 - **Chave vencida ou revogada:** na mesa, a pessoa cria outra e roda o instalador de novo. Na sala, telão.
-- **Limite da conta:** plano C, o site reserva em `meu-site-kit/reserva/index.html`: a pessoa troca os textos e publica igual. Telão e casa como complemento.
-- **Sem a página "Portfólio":** duplicar o arquivo de novo da Community.
+- **Limite da conta:** prompt 1, edição à mão no Figma; prompt 2, plano C. Telão e casa como complemento.
+- **O prompt 1 quebrou o frame:** Cmd+Z (Ctrl+Z) e corrigir à mão.
+- **Sem a página "Minha hero":** duplicar o arquivo de novo da Community.
 - **Sem botão de baixar:** plano B do guia.
-- **Link não abre na janela anônima:** o site do Drop expira sem login. Entrar na conta do Netlify e arrastar a pasta de novo.
-- **Netlify Drop falha:** conferir a pasta e o nome `index.html`, uma tentativa, depois casa.
+- **Netlify Drop falha ou o link não abre na janela anônima:** conferir a pasta e o nome `index.html`; sem login o site expira. Uma tentativa, depois casa. É opcional.
 - **Rede da sala cai:** avisem o Thiago. Ele segue no telão. A `handoff` abre sem internet; o Netlify fica para casa.
 - **Sem `meu-site-kit` ou `handoff`:** pendrive.
 
 
 ## No fim
 
-- Todo mundo revogou a chave do Figma.
+- Todo mundo revogou a chave do workshop.
 - Quem usou máquina que não é sua: sair das contas do Figma, do Claude e do Netlify.
 - Todo mundo com a pasta `handoff` para as 20h.
-- Contem ao Thiago quantas pessoas conectaram na mesa, quantas publicaram e quantas pastas saíram pelo pendrive.
+- Contem ao Thiago quantas pessoas conectaram na mesa, quantas tiveram a hero escrita pelo agente, quantas abriram o site e quantas pastas saíram pelo pendrive.

@@ -1,95 +1,58 @@
-# Deck de Fortaleza v9.1: slide a slide
+# Deck de Fortaleza v10: slide a slide
 
-Este arquivo descreve o deck v9.1, com 16 slides seguindo a grade de `roteiro.md`. Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540).
+Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critica/spec-v9.md` (seção "## v10"). Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540).
 
 **Cópia Fortaleza no Google Slides:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
 
-**Backup da v8 (17 slides), antes da reconstrução:** https://docs.google.com/presentation/d/1If559sYX9j6idzjM89FIjieSAi37jd58mHGOMRIAUoM/edit
+**Backup da v9.1, antes da reconstrução:** https://docs.google.com/presentation/d/1n1a9pa95XMcuP6NTCwRu_wXOJmZ_145LdtS9yxayJHY/edit
+
+**Backup da v8 (17 slides):** https://docs.google.com/presentation/d/1If559sYX9j6idzjM89FIjieSAi37jd58mHGOMRIAUoM/edit
 
 **A apresentação é pelo Google Slides, com as notas do apresentador.** O PDF é reserva e não mostra as notas. Mudou algo no Slides? Exporte o PDF de novo para `fortaleza/deck-fortaleza.pdf` e atualize a tabela abaixo no mesmo commit.
 
 
 ## Regras de todo slide
 
-- Fundo claro liso, fonte Sora, logo xikota no canto superior esquerdo. Vermelho só no destaque.
-- Horário só como "até 19h20", no canto superior direito, em 18 pt. A capa mostra "18h00". Sem marcadores de modo e sem "Pronto quando" como rótulo de etapa.
-- Linguagem de designer. A frase da casa: "Designer não precisa programar. Precisa dar regra."
+- Xikota System com Apple: fundo branco `#FFFFFF`, tinta sumi `#161722`, texto secundário `#4C4A45`, Sora em tudo, títulos em 700. Sem creme.
+- Superfícies arredondadas cinza claro (`#F3F3F4`), sem traço. Nenhum contorno preto ou vermelho de 1 px. O canto arredondado é montado com dois retângulos e quatro círculos agrupados, porque a API do Slides não controla o raio do `ROUND_RECTANGLE`.
+- Logos no lugar de caixas de texto: Figma, Claude, OpenAI, Node.js, Netlify, GitHub, React, PageSpeed Insights, Mobbin, o símbolo do MCP e ícones Hugeicons (plugin, arquivo, navegador, terminal).
+- Vermelho em um foco só por slide: `#DC000C` no claro, `#FF2A1C` no escuro.
+- Aberturas de bloco em fundo void `#0B0C11` (slides 8 e 11).
+- Nenhum horário no slide. O horário-alvo fica na primeira linha das notas.
+- Sem gradiente, sem sombra genérica, sem pílula, sem ícone dentro de círculo, sem emoji, sem travessão.
+- Print real só do ensaio. Onde ainda não há print, um espaço cinza arredondado com o rótulo "Print do ensaio", nunca interface falsa.
 - Prompt inteiro só no guia. No slide, no máximo a primeira linha ou a pergunta resumida.
-- Corpo de 24 pt ou mais. Legenda em 18 pt. Contraste AA.
-- O próprio deck segue o `DESIGN.md`: sem gradiente, sem sombra genérica, sem pílula, sem ícone em círculo, sem emoji. A capa da v8 tinha um borrão vermelho em degradê; na v9.1 o fundo é liso.
-- Nunca chamar `#C8352B` de cor errada. O valor é igual ao do token; o que falta é a ligação.
-- Os dois erros do molde só aparecem no slide 9, depois de a sala mandar o prompt 1.
-- Imagem que não saiu de uma execução real leva a legenda "Exemplo do material". Nenhuma legenda diz "ao vivo".
-- As falas ficam nas notas do orador, em linhas curtas de prompter, tiradas de `roteiro.md`.
+- Notas do orador em linhas curtas de prompter.
 
 
 ## A sequência
 
-| # | Canto | Slide | Na tela | Imagem ou diagrama |
+| # | Horário-alvo (notas) | Slide | Composição | Na tela |
 |---|---|---|---|---|
-| 1 | 18h00 | Capa | "Seu primeiro site, do Figma ao ar" (a segunda linha em vermelho). "Um método que serve para qualquer agente". Nome, evento, Fortaleza 18/11 | sem imagem |
-| 2 | até 18h15 | Print ou arquivo? | Print: "Aparência achatada. O agente vê pixels e chuta cor, espaço e fonte." Arquivo (vermelho): "Variável, Auto Layout e hierarquia. O agente não chuta: confere." | frame "Meu portfólio", legenda "Um print mostra só isto." |
-| 3 | até 18h15 | As peças | Diagrama 1. "MCP = o protocolo: a regra da conversa." Rodapé: o MCP oficial do Figma é outra rota | diagrama 1 |
-| 4 | até 18h45 | Abra o guia pelo QR | "Copie os prompts do guia, não do telão." "Cada prompt uma vez." "meu-site-kit na Área de Trabalho?" Endereço do guia na tag `fortaleza-v4` | QR desenhado no próprio slide |
-| 5 | até 18h45 | A ponte em 4 passos | Diagrama 2. "Eu faço junto no telão, devagar. Travou? Levante a mão: os voluntários circulam." | diagrama 2 |
-| 6 | até 18h45 | O alô: a primeira vitória | Pergunta do alô resumida; "Confira no Figma: clique no nome e olhe o painel da direita." Em vermelho: "A IA leu uma propriedade do meu frame, e eu conferi no Figma." "Não conectou? Siga a leitura pelo telão e faça o resto igual." | sem imagem |
-| 7 | até 18h55 | O harness contra AI slop | "Sem regra, o agente preenche o vazio com a média da internet." Tabela de 3 linhas (abaixo). Rodapé vermelho: a frase da casa | tabela nativa |
-| 8 | até 18h55 | Prepare o molde | "2 minutos, sem perfeccionismo." 1 edite direto o frame Meu portfólio; 2 troque nome, bio e projetos; 3 mexa só no texto, as cores ficam. "Duas coisas estão erradas de propósito." | frame "Meu portfólio" |
-| 9 | até 19h02 | Prompt 1: leitura e auditoria | 1 anexe o `DESIGN.md`; 2 mande o prompt 1; 3 o agente compara com as suas regras. Caixa Bio: `#A29B93` digitado direto, certo `color/text-muted`. Caixa Botão Fale comigo: `#C8352B` digitado direto, sem ligação com `color/brand-primary`. "O valor é igual. A ligação não existe. Se a marca mudar, esse botão fica para trás." | caixas nativas |
-| 10 | até 19h10 | Prompt 2: o index.html | "Um arquivo, com o CSS dentro, já corrigido." 1 prompt 2; 2 baixe para `meu-site`; 3 dois cliques, abre no navegador. Plano B: TextEdit em texto simples. Plano C: site reserva do kit | sem imagem |
-| 11 | até 19h20 | Confira como designer | 4 conferências: texto igual ao do frame, bio legível, botão na cor da marca, tela estreita em 1 coluna. "Um ajuste, pedido como designer, terminando com: “Não mude mais nada.”" | frame (legenda "No Figma") e site reserva (legenda "Exemplo do material") lado a lado |
-| 12 | até 19h30 | Pasta, GitHub e Netlify | Diagrama 3. "Hoje vocês pulam o cofre e vão direto para a vitrine." | diagrama 3 |
-| 13 | até 19h30 | No ar | 1 app.netlify.com/drop; 2 arraste a pasta `meu-site` inteira; 3 janela anônima; 4 celular. Atalhos da janela anônima. "Seu primeiro site está no ar." | sem imagem |
-| 14 | até 19h40 | Próximo passo: GitHub + Netlify | 1 peço um ajuste ao agente; 2 a mudança vai para o GitHub; 3 o site atualiza sozinho. "Não é obrigatório hoje. Fica de lição de casa." | demo ao vivo no navegador |
-| 15 | até 19h40 | Galeria relâmpago | "Qual regra do seu DESIGN.md fez diferença?" "Três links da sala no telão." | os links da sala, no navegador |
-| 16 | até 19h40 | Revogue a chave. Às 20h, Mateus | Settings > Security > Personal access tokens > Revoke em todas. "Pronto quando a lista não mostra mais nenhuma." "Às 20h, depois do coffee, com o Mateus Villain: levem a pasta handoff da Área de Trabalho." Rodapé: o método e a frase da casa | sem imagem |
+| 1 | 18h00 | Capa | texto à esquerda, imagem dominante à direita | "Figma + IA, na prática" ("na prática" em vermelho), "do seu Figma ao primeiro site", `hero-exemplo-thiago.png` grande, legenda "Exemplo pronto: a hero do Thiago, no Figma", nome e evento |
+| 2 | até 18h05 | O que vamos fazer hoje | três cartões | 1 o agente edita sua hero no Figma (número em vermelho, logo Figma); 2 ela vira HTML (ícone de arquivo); 3 você confere (ícone de navegador). "E, se der tempo, no ar." |
+| 3 | até 18h10 | As peças | fileira de logos | Figma "onde está o arquivo"; Desktop Bridge "plugin que abre a conversa com o arquivo aberto"; Figma Console MCP "servidor que dá ferramentas ao agente"; Claude / Codex "o agente: lê e altera o design, e escreve o código". "MCP é o protocolo" em vermelho |
+| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a tag `fortaleza-v5`, link curto do repositório |
+| 5 | até 18h22 | Instale e confira | lista com logos e captura | Node.js (`node -v`), instalador do kit, Claude Desktop reiniciado. "Você deve ver isto" em vermelho sobre o espaço de print |
+| 6 | até 18h30 | O plugin no Figma | captura dominante | caminho do plugin, "Local · ready" em vermelho, espaço de print grande |
+| 7 | até 18h35 | O alô de leitura | cartão escuro e número | pergunta do alô no cartão escuro, "104" grande em vermelho, conferir no painel da direita |
+| 8 | 18h35 | Sua hero pelo agente | abertura escura | "Sua hero pelo agente" ("pelo agente" em vermelho), "O agente escreve no seu Figma. Você confere." |
+| 9 | até 18h50 | Prompt 1 | cartão escuro e passos | primeira linha do prompt 1, "+ dados do meus-dados.txt" em vermelho, 3 passos, "Confira: as camadas seguem editáveis." |
+| 10 | até 18h55 | Antes e depois | comparação | `hero-molde.png` e `hero-exemplo-thiago.png` lado a lado, "Depois" em vermelho |
+| 11 | 18h55 a 19h00 | Comentário no Figma | abertura escura com demo | "Comentário no Figma: o agente lê e aplica", handoff em uma linha, espaço de print "gravação reserva" |
+| 12 | até 19h05 | Regras escritas | cartão de código e dois cartões | trecho real do `meu-site-kit/DESIGN.md`; Harness "contexto + ferramentas + execução", "O DESIGN.md é uma parte."; chat do Claude Desktop (anexa) e Claude Code (lê da pasta) |
+| 13 | até 19h20 | Prompt 2: o index.html | diagrama de três peças | Minha hero, `index.html` em vermelho, Navegador. Plano B (TextEdit) e site reserva no rodapé |
+| 14 | até 19h30 | Confira como designer | Figma ao lado do navegador | hero do exemplo e espaço de print do navegador; "Um ajuste por vez, terminando com: “Não mude mais nada.”" em vermelho |
+| 15 | até 19h35 | Próximos passos | bento com logos | Netlify Drop (grande), GitHub, PageSpeed Insights, React Bits, Mobbin (Mobbin MCP: Pro e Team), faixa "Galeria" em vermelho |
+| 16 | até 19h40 | Revogue e Mateus | divisão clara e escura | "Revogue só o token do workshop" com o caminho no Figma; painel escuro "Às 20h, Mateus Villain. Levem a pasta handoff." |
 
 
-## Os diagramas e a tabela
+## Pendências
 
-Caixas retas, contorno fino escuro, fundo branco, setas simples. Vermelho só onde marca o destaque.
-
-**Diagrama 1, as peças (slide 3).** Quatro caixas em fila, ligadas por setas nos dois sentidos. Em cima, o tipo em cinza; no meio, o nome; embaixo da caixa, o papel:
-
-1. app, **Figma**: "guarda o design".
-2. plugin, **Desktop Bridge**: "abre a porta no Figma".
-3. servidor, **Figma Console MCP** (contorno vermelho): "leva o pedido e traz o arquivo".
-4. agente, **Claude Desktop ou Codex**: "escreve o código".
-
-Abaixo: "MCP = o protocolo: a regra da conversa." Rodapé: "O MCP oficial do Figma é outra rota, com requisitos próprios. Hoje vamos por esta."
-
-**Diagrama 2, a ponte em 4 passos (slide 5).** Quatro caixas numeradas em vermelho, com seta entre elas:
-
-1. Figma Desktop: na sua cópia, página Portfólio.
-2. Plugin Desktop Bridge: rodando no Figma.
-3. Claude Desktop: aberto, depois de fechar por completo.
-4. Conversa nova: e o alô.
-
-**Diagrama 3, pasta, GitHub e Netlify (slide 12).** Três caixas: Sua pasta ("onde o site nasce"), GitHub ("cofre com histórico"), Netlify ("vitrine: dá o link"). Setas cheias da pasta ao GitHub e do GitHub ao Netlify, com "próximo passo" sob o GitHub. Linha tracejada vermelha da pasta direto ao Netlify, com "hoje: Netlify Drop".
-
-**Tabela do harness (slide 7).** Tabela nativa do Slides:
-
-| Onde você roda | Onde mora a regra | Lê sozinho? |
-|---|---|---|
-| Claude Desktop (chat) | `DESIGN.md` anexado na conversa, ou colado no prompt | Não. Anexe em toda conversa nova (em vermelho) |
-| Claude Code | `CLAUDE.md` na pasta do projeto | Sim |
-| Codex | `AGENTS.md` na pasta do projeto | Sim |
-
-
-## De onde vem cada imagem
-
-Nenhuma captura é inventada.
-
-- **Frame "Meu portfólio"** (slides 2, 8 e 11): `fortaleza/img/frame-meu-portfolio.png`, inserido pela URL raw do GitHub na `main`.
-- **Site reserva** (slide 11, legenda "Exemplo do material"): `fortaleza/img/site-reserva.png`, também pela URL raw da `main`.
-- **QR do guia** (slide 4): `qr-guia.png` e `qr-guia.svg` foram refeitos com segno para `https://github.com/thiagoxikota/figma-to-code-tdc-2026/blob/fortaleza-v4/fortaleza/guia-participante.md`. No slide, o QR é desenhado com retângulos nativos do Slides, sem arquivo hospedado; a leitura foi conferida na miniatura renderizada. O link só abre depois de a tag `fortaleza-v4` existir no GitHub. Se a URL mudar, o QR do slide precisa ser redesenhado.
-
-**Espaço reservado para o ensaio** (capturas que podem entrar depois, sempre ditas como ensaio):
-
-| Slide | Captura do ensaio |
-|---|---|
-| 6 | O Claude Desktop respondendo o arquivo e o tamanho da fonte |
-| 9 | A resposta do prompt 1, com os dois pontos |
-| 10 | O `index.html` do ensaio aberto no navegador |
-| 13 | O Netlify Drop com o link gerado |
-| 14 | Reserva da demo GitHub+Netlify |
+- [VERIFICAR] Primeira linha do prompt 1 no slide 9 ("Altere só o frame “Minha hero” no Figma, com os meus dados abaixo.") precisa bater com o guia reescrito.
+- [VERIFICAR] Pergunta do alô no slide 7 e o tamanho 104 precisam bater com o guia e com o molde.
+- [VERIFICAR] Prints do ensaio nos slides 5, 6, 11 e 14: trocar o espaço cinza pela captura real com `replaceImage`.
+- [VERIFICAR] Encurtador para o link do slide 4; sem domínio novo sem ordem.
+- O QR aponta para `blob/fortaleza-v5/fortaleza/guia-participante.md`: a tag precisa existir antes do dia.
+- Logos inseridos por URL pública (Iconify via images.weserv.nl, ícone oficial do Mobbin). O Slides guarda a cópia; não dependem do link depois de inseridos.
+- Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários).

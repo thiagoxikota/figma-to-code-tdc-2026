@@ -1,30 +1,30 @@
-# DESIGN.md: regras do meu site
+# DESIGN.md: regras da minha hero
 
-Anexe este arquivo no começo da conversa. Ele vale para todas as respostas.
+Anexe este arquivo na conversa. Ele vale para todas as respostas.
 
 ## Objetivo
 
-Um mini portfólio de uma página, feito a partir do frame "Meu portfólio" do Figma. Quem visita entende em 10 segundos quem eu sou, vê 2 projetos e sabe como falar comigo.
+Uma página com uma seção só: a hero do frame "Minha hero". Em 10 segundos, quem visita sabe quem eu sou, o que eu faço e como falar comigo.
 
 ## Fonte da verdade
 
-- O frame "Meu portfólio", lido pela conexão com o Figma. Não use print nem imagem.
-- Use só as variáveis da coleção Workshop Tokens: cores, espaços, raios e tipografia. Valor digitado direto no frame que tem variável equivalente vira a variável.
+- O frame "Minha hero", lido pela conexão com o Figma. Não use print nem imagem.
+- Use só as variáveis da coleção Workshop Tokens (color/brand-primary, color/surface, color/surface-alt, color/text, color/text-muted e os espaços). Não invente cor.
 - Respeite o Auto Layout do frame: ordem, direção, espaçamento e alinhamento.
-- Nada de inventar conteúdo. Use os textos do frame, palavra por palavra.
+- Tipografia do frame: Sora no nome e no título, Inter no resto.
+- Use os textos do frame, palavra por palavra. Nada de inventar conteúdo.
+- Uma hero só. Sem projetos, cards, rodapé ou outras seções.
 
 ## Regras visuais
 
 - Contraste AA no mínimo: 4,5 para 1 no texto comum.
-- Uma família tipográfica, a do frame.
 - Sem gradiente e sem sombra genérica.
-- Sem pílula: botão e card usam o raio da variável, não um raio exagerado.
-- Sem ícone dentro de círculo.
-- Sem emoji.
+- Sem pílula: o botão usa o raio do frame.
+- Sem ícone dentro de círculo e sem emoji.
 - Sem texto de enfeite: nada de sobretítulo, slogan ou frase que não está no frame.
 
 ## Código
 
-- Um único index.html, com o CSS dentro. Sem bibliotecas. JavaScript só se for indispensável.
-- Responsivo simples: em tela estreita, as colunas viram uma coluna só.
+- Um único index.html, com o CSS dentro e as variáveis como variáveis CSS. Sem bibliotecas.
+- Responsivo: em tela estreita, a foto vai para baixo do texto e nenhum texto é cortado.
 - Antes de mudar algo que não pedi, pergunte.

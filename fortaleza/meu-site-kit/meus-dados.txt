@@ -1,0 +1,15 @@
+MEUS DADOS PARA A HERO
+Preencha em casa, antes do workshop. Troque o exemplo de cada linha pelo seu. Salve.
+No dia, você copia este arquivo inteiro e cola no fim do prompt 1.
+
+Nome: Ana Ribeiro
+Título profissional: Product designer
+Bio (até 180 caracteres): Desenho apps de saúde que qualquer pessoa entende. Hoje em Fortaleza, aberta a times do mundo todo.
+Texto do botão e link: Fale comigo, mailto:ana@email.com | Ver meu LinkedIn, https://www.linkedin.com/in/seu-perfil
+Cor principal (hex ou nome): #1F6FEB
+Fundo (claro ou escuro): claro
+
+Dicas:
+- Bio: conte os caracteres. Mais de 180 quebra a hero em muitas linhas.
+- Cor principal: ela pinta o título profissional e o ponto do status. Escolha uma cor que dê para ler sobre o fundo.
+- A frase do status ("Disponível para novos projetos") e a foto você troca à mão no Figma, se quiser.
