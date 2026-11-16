@@ -2,56 +2,33 @@
 
 Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o seu (20h). Nada aqui muda o seu plano; é só para você saber exatamente de onde a galera parte.
 
-**O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício. O que a sala leva:
+**O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício.
 
-- **A pasta `handoff`, aberta e conferida. É o que chega a você, e é garantido para todo mundo.** É a pasta de exemplo do repositório, que todo mundo baixa no ZIP antes de quarta e copia para a Área de Trabalho. Na sala, das 19h21 às 19h30, cada pessoa abre o `Card.html` (dois cards com cor) e acha três valores de amostra no `tokens.json`: `#C8352B`, `20px` e `24px`. Quem tem rede compara os mesmos três com as variáveis do Figma; quem não tem fica com essa comparação pendente e sabe dizer isso. Quem chegar sem a pasta recebe por pendrive nesse mesmo bloco.
-- **Uma decisão de design escrita e, para quem conseguir gerar, o próprio formulário corrigido.** Na Parte A, a Tela demo vira PNG, o Claude revisa, a pessoa decide o que aceita e gera um protótipo do formulário. Na Parte B, ela aplica nele uma correção com um valor conferido no Figma. O protótipo depende do Claude gratuito de cada um, fica na conversa do Claude e **não entra no seu workshop**.
+**Mudou em relação à versão anterior:** a minha sessão ficou mais leve. Ninguém instala nada na sala. Cada pessoa transforma a Tela demo num formulário que funciona, no Claude gratuito, brinca com ele e corrige um ponto com um valor que eu leio do arquivo do Figma no telão. A conexão entre o Claude Desktop e o Figma é só minha, no palco; quem quiser faz em casa, pelo bônus do guia. O bloco em que a sala abria a `handoff` e a extensão que gerava a pasta `fora-do-frame` saíram.
 
-Eu não gero Card no telão. O Card aparece na minha sessão só dentro da `handoff`, como o objeto da sua.
+O que a sala leva:
 
-Na sala eu digo com estas palavras: "O Card não é a continuação do formulário de vocês. É o material da próxima sessão. Às 20h, levem a pasta `handoff` aberta: é dela que o Mateus parte." O botão do Card ("Ver detalhes") não faz nada no HTML estático, e ninguém na sala ouviu o contrário.
+- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v2` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
+- **O próprio formulário, corrigido.** Fica na conversa do Claude e **não entra no seu workshop**.
 
-**Mudou em relação ao que eu tinha te falado:** gerar o próprio Card e o próprio `tokens.json` saiu do percurso da sala. Não cabia em 100 minutos para quem nunca salvou um arquivo de código. Virou extensão, para quem terminar antes.
+Eu não gero Card no telão. O Card aparece na minha sessão só no último slide, dentro da `handoff`, como o objeto da sua. Na sala eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte. O formulário fica com vocês, no Claude."
+
+Como a sala não abre a pasta na minha sessão, conte com gente vendo a `handoff` pela primeira vez às 20h. O `Card.html` dela já abre com cor, porque ela traz o `tokens.css` pronto. O botão "Ver detalhes" não faz nada no HTML estático.
 
 
-## A pasta: quase todo mundo com `handoff`
+## A pasta `handoff`
 
-| Origem | Nome da pasta | Quem tem | O que tem | Tokens |
-|---|---|---|---|---|
-| **Exemplo** do repositório, conferido na sala | `handoff` | Todo mundo. Quem chegar sem o ZIP recebe por pendrive às 19h21 | `tokens.json`, `tokens.css`, `Card.html`, `Card.css` e `config.json`, prontos e testados | 24, com `font.body` |
-| **Gerada** na extensão | `fora-do-frame` | Poucas pessoas: só quem terminou antes e está com a conexão funcionando | `tokens.json`, `Card.html`, `Card.css`, colados da conversa, mais o `config.json` que já vem na pasta | 23, sem `font.body` |
+`tokens.json`, `tokens.css`, `Card.html`, `Card.css` e `config.json`, prontos e testados. 24 tokens.
 
-Planeje para a `handoff`. Quem tiver a `fora-do-frame` leva as duas e te diz. Essa pessoa foi orientada a conferir a própria pasta com `node scripts/conferir-pasta.mjs` (nomes dos arquivos, JSON válido e as 23 variáveis com nome, tipo e valor) ou, sem isso, a deixar um `nao-conferida.txt` dentro dela.
-
-As duas origens trazem o mesmo `config.json` do Style Dictionary (mostrado abaixo). Ninguém precisa criar esse arquivo às 20h.
-
-Eu te conto no coffee quantas pastas geradas apareceram.
-
-### Por que 23 contra 24
+### Por que 24, se o Figma tem 23 variáveis
 
 Confira em `handoff/tokens.json`. A coleção **Workshop Tokens** do Figma tem 23 variáveis: 10 cores (`color/*`) e 13 numéricas (`space/1..4`, `radius/md`, `border/width`, `focus/ring-width`, `tap-target/min`, `size/icon`, `font-size/body`, `font-size/heading`, `font-weight/heading`, `line-height/body`).
 
-O `handoff/` tem um token a mais: `font.body`, com `$type` `fontFamily` e a pilha `-apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif`. Ele não é variável no Figma: família de fonte vive no estilo de texto, e o próprio token traz um `$description` dizendo isso. O prompt da extensão pede só as variáveis da coleção, então o JSON gerado chega sem ele.
+O `handoff/` tem um token a mais: `font.body`, com `$type` `fontFamily` e a pilha `-apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif`. Ele não é variável no Figma: família de fonte vive no estilo de texto, e o próprio token traz um `$description` dizendo isso.
 
-### Como tratar 23 e 24 às 20h
+### O momento em que o card "acende"
 
-Não precisa tratar: as duas contagens passam no mesmo build, com o mesmo `config.json`. A única diferença visível é a fonte, descrita abaixo. Se você quiser todo mundo igual, o caminho curto é pedir a quem tem 23 que acrescente o bloco `font` mostrado a seguir.
-
-### O que muda para você em cada origem
-
-- **`handoff`:** já tem `tokens.css`. O card aparece com cor no navegador antes do build, e a sala já viu isso. Rodar o Style Dictionary gera o mesmo `tokens.css` de novo (testado, abaixo). **Ninguém da sala apaga arquivo da própria pasta:** ela acabou de ser conferida, e eu disse isso no palco.
-- **Se você quiser o momento em que o card "acende":** use `fortaleza/demo-card-sem-cor/`, no repositório e no ZIP. É uma cópia de demonstração da `handoff` sem o `tokens.css`: o `Card.html` abre sem cor e sem espaçamento e ganha cor depois de `npx style-dictionary build --config config.json` dentro dela. Dá para fazer no telão, ou pedir que a sala copie essa pasta, sem tocar na `handoff`.
-- **`fora-do-frame`:** não tem `tokens.css`. O `Card.html` abre sem cor e sem espaçamento até o primeiro build.
-- **A fonte na `fora-do-frame`:** o prompt do Card pede `font-family: var(--font-body, system-ui, sans-serif)`. Sem o token, cai em `system-ui`, sem quebrar. Se quiser igualar ao `handoff`, é acrescentar ao `tokens.json`:
-
-```json
-"font": {
-  "body": {
-    "$value": ["-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-    "$type": "fontFamily"
-  }
-}
-```
+**Ninguém da sala precisa apagar arquivo da própria pasta.** Se você quiser mostrar o card ganhando cor, use `fortaleza/demo-card-sem-cor/`, no repositório e no ZIP. É uma cópia de demonstração da `handoff` sem o `tokens.css`: o `Card.html` abre sem cor e sem espaçamento e ganha cor depois de `npx style-dictionary build --config config.json` dentro dela. Dá para fazer no telão, ou pedir que a sala copie essa pasta, sem tocar na `handoff`.
 
 Repositório: https://github.com/thiagoxikota/figma-to-code-tdc-2026 (público, MIT, pode usar como base à vontade).
 
@@ -86,19 +63,11 @@ Tipos usados: `color`, `dimension`, `fontWeight`, `number` e, só no `handoff/`,
 
 ### Por que DTCG e não o formato clássico do Style Dictionary
 
-- É o formato do W3C Design Tokens Community Group, então o JSON da sala não fica preso a uma ferramenta.
+- É o formato do W3C Design Tokens Community Group, então o JSON não fica preso a uma ferramenta.
 - O Style Dictionary 4 e 5 leem DTCG direto, sem configuração extra (reconhecem `$value` e `$type`).
-- O `$type` explícito deixa o `tokens.json` mais auditável, que é o fio do meu workshop: cada valor com tipo e origem.
+- O `$type` explícito deixa o `tokens.json` mais fácil de conferir: cada valor com tipo.
 
 Medidas vão como texto com unidade (`"24px"`), a forma que funciona igual no Style Dictionary 4 e 5.
-
-### Desvios possíveis na pasta gerada
-
-O JSON de cada um vem do Claude, então pode variar:
-
-- **Medida sem `px`. É o desvio que mais engana.** Se o Claude devolver `"$value": 8` com `"$type": "dimension"`, o transform `size/rem` do grupo `css` gera `--space-1: 8rem` (testado no 5.8.0), e o card estoura. Se vier `"$type": "number"`, sai `16` sem unidade. O build passa nos dois casos, sem aviso. Quem fez a extensão é orientado a conferir a pasta com o verificador local, que acusa medida sem `px`, mas confira: todo token de espaço, raio, borda e tamanho tem que ter `px`.
-- **Ordem das chaves** pode mudar. Não afeta nada.
-- **JSON inválido** por colagem quebrada: troca pelo do `handoff/`.
 
 
 ## Conversão testada
@@ -109,11 +78,9 @@ Testei o `handoff/tokens.json` em 13/11/2026, num diretório temporário, com `n
 - Style Dictionary **4.4.0** (Node 18 ou maior): build ok.
 - Nos dois, as 24 variáveis de `build/tokens.css` batem uma a uma com `src/tokens.css` do repositório (só a caixa do hex muda: o SD devolve minúsculo).
 
-Em 13/11 rodei de novo, agora com o `config.json` que vai dentro das pastas: `npx style-dictionary@4 build --config config.json` sobre o `handoff/tokens.json` gerou um `tokens.css` com as mesmas 24 variáveis do `handoff/tokens.css`.
+Em 13/11 rodei de novo, agora com o `config.json` que vai dentro da pasta: `npx style-dictionary@4 build --config config.json` sobre o `handoff/tokens.json` gerou um `tokens.css` com as mesmas 24 variáveis do `handoff/tokens.css`.
 
-**Pendente:** a pasta gerada na extensão (23 tokens) ainda não foi convertida. Depende do meu ensaio na conta gratuita. Eu te aviso do resultado antes de quarta.
-
-O `config.json` que já está nas duas pastas (`handoff/` e `fora-do-frame`, que nasce de `fortaleza/pasta-modelo`). Com `buildPath` na própria pasta, o `tokens.css` cai onde o `Card.html` espera:
+O `config.json` já está na `handoff/`. Com `buildPath` na própria pasta, o `tokens.css` cai onde o `Card.html` espera:
 
 ```json
 {
@@ -132,7 +99,7 @@ O `config.json` que já está nas duas pastas (`handoff/` e `fora-do-frame`, que
 npx style-dictionary build --config config.json
 ```
 
-Atenção ao Node: quem não instalou a conexão em casa pode chegar **sem Node nenhum**, porque a rota pelo telão não pede. Quem instalou tem 18 ou maior. Recomendei 22 ou maior para quem vai no seu workshop, mas alguém pode chegar com 18 ou 20. Nesse caso, `npx style-dictionary@4` resolve.
+Atenção ao Node: como ninguém instala nada na minha sessão, a maior parte da sala chega **sem Node nenhum**. Só quem fez o bônus em casa tem 18 ou maior. Style Dictionary 5 pede 22 ou maior; com 18 ou 20, `npx style-dictionary@4` resolve.
 
 
 ## O componente
@@ -142,24 +109,16 @@ O mesmo Card do repositório, gerado direto em HTML e CSS:
 - `<article class="card">` com `card__body`, título `h3.card__title`, `p.card__description` e `button.card__action` ("Ver detalhes").
 - Estados: hover, foco visível (anel de 2px em `--color-focus`), desabilitado (`card--disabled` mais `disabled` no botão).
 - Alvo mínimo de 44px no botão (`--tap-target-min`).
-- O prompt da extensão fixa as classes, então o HTML gerado e o do `handoff/` têm a mesma forma.
-- O `Card.css` gerado na extensão traz, ao lado de cada `var(--token)`, um comentário com o valor do Figma. Não atrapalha o build.
-- Nem tudo é token: a largura máxima do card (`360px`), o peso do texto do botão (`600`) e a opacidade do desabilitado (`0.7`) são valores fixos no `handoff/`. O prompt da extensão permite os mesmos três, e só eles.
+- Nem tudo é token: a largura máxima do card (`360px`), o peso do texto do botão (`600`) e a opacidade do desabilitado (`0.7`) são valores fixos no `handoff/`.
 
 Pontos que a sua auditoria de acessibilidade pode levantar:
 
 - O nível do título é fixo em `h3`.
-- No `handoff/`, o estado desabilitado usa `opacity: 0.7` no card inteiro, além das cores de desabilitado no botão. O da pasta gerada pode variar, porque o Claude escreve o CSS.
+- No `handoff/`, o estado desabilitado usa `opacity: 0.7` no card inteiro, além das cores de desabilitado no botão.
 - A ação é um `button` sem destino. No HTML estático ele não faz nada.
 
 
 ## O que eu ainda te devo
 
-- O resultado do ensaio na conta gratuita: se a pasta gerada na extensão converte sem ajuste.
 - A sua confirmação de que parte da `handoff` já colorida, ou de que prefere a `demo-card-sem-cor` para o começo.
-- Quantas pastas `fora-do-frame` apareceram, que eu te conto no coffee.
-
-
-## Se quiser combinar algo
-
-Se você preferir outro formato de token, outro nome de arquivo ou outra estrutura de pasta, me fala até segunda (16/11), que é quando o material vai para o grupo. Eu ajusto o `handoff/` e os prompts da extensão.
+- Quantos chegaram com a `handoff`, que eu te conto no coffee.
