@@ -4,11 +4,11 @@ Mateus, este é o ponto de entrega entre o meu workshop (18h00 às 19h40) e o se
 
 **O público é de designers.** O workshop se chama "Seu Figma vira produto: design com IA, do arquivo ao protótipo que funciona". Conte com gente que nunca abriu o Terminal. Todo mundo trabalha na mesma tela, a "Tela demo" (formulário "Criar sua conta") do arquivo do exercício.
 
-**Mudou em relação à versão anterior:** a minha sessão ficou mais leve. Ninguém instala nada na sala. Cada pessoa transforma a Tela demo num formulário que funciona, no Claude gratuito, brinca com ele e corrige um ponto com um valor que eu leio do arquivo do Figma no telão. A conexão entre o Claude Desktop e o Figma é só minha, no palco; quem quiser faz em casa, pelo bônus do guia. O bloco em que a sala abria a `handoff` e a extensão que gerava a pasta `fora-do-frame` saíram.
+**Mudou em relação à versão anterior:** agora cada pessoa conecta o Figma ao Claude Desktop na própria máquina, no preparo obrigatório de casa (com mesa de instalação às 17h30 para quem travou). O preparo inclui instalar o Node. Na sala, cada pessoa transforma a Tela demo num formulário que funciona, no Claude gratuito, brinca com ele, pergunta ao próprio arquivo do Figma pela conexão e corrige um ponto com o valor que leu. No fim, todo mundo revoga a chave do Figma. O bloco em que a sala abria a `handoff` e a extensão que gerava a pasta `fora-do-frame` continuam fora.
 
 O que a sala leva:
 
-- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v2` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
+- **A pasta `handoff`. É o que chega a você.** É a pasta de exemplo do repositório. Cada pessoa baixa o ZIP da tag `fortaleza-v3` no preparo de casa e copia a `handoff` para a Área de Trabalho. Na sala ela não é aberta: no fim eu digo "às 20h, levem a pasta `handoff`". Quem chegar sem recebe por pendrive, durante a sala ou no coffee.
 - **O próprio formulário, corrigido.** Fica na conversa do Claude e **não entra no seu workshop**.
 
 Eu não gero Card no telão. O Card aparece na minha sessão só no último slide, dentro da `handoff`, como o objeto da sua. Na sala eu digo: "Ela tem um Card e os tokens de design: é dela que o Mateus parte. O formulário fica com vocês, no Claude."
@@ -99,7 +99,7 @@ O `config.json` já está na `handoff/`. Com `buildPath` na própria pasta, o `t
 npx style-dictionary build --config config.json
 ```
 
-Atenção ao Node: como ninguém instala nada na minha sessão, a maior parte da sala chega **sem Node nenhum**. Só quem fez o bônus em casa tem 18 ou maior. Style Dictionary 5 pede 22 ou maior; com 18 ou 20, `npx style-dictionary@4` resolve.
+Atenção ao Node: **a sala agora tem Node.** A conexão com o Figma pede o Node instalado, e o instalador só roda com 18 ou maior, então quem conectou chega com 18 ou maior. O guia pede a versão LTS e recomenda 22 ou maior a quem vai no seu workshop, mas não dá para garantir que todos seguiram. Style Dictionary 5 pede 22 ou maior; com 18 ou 20, `npx style-dictionary@4` resolve. Quem não conseguiu conectar pode ter chegado sem Node.
 
 
 ## O componente

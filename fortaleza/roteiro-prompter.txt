@@ -1,4 +1,4 @@
-SEU FIGMA VIRA PRODUTO v7 | Fora do Frame, Digital College Aldeota | qua 18/11, 18h00 a 19h40 | notch prompter
+SEU FIGMA VIRA PRODUTO v8 | Fora do Frame, Digital College Aldeota | qua 18/11, 18h00 a 19h40 | notch prompter
 
 >>> SLIDE 01  (FALA. 18h00, abertura, 5 minutos)
 
@@ -8,14 +8,16 @@ Eu sou o Thiago Xikota,
 designer de produto.
 
 Hoje vocês fazem, não só assistem.
-E ninguém instala nada.
+Cada um na própria máquina.
 
->>> SLIDE 02  (FALA. O que cada um leva e a regra do vizinho)
+>>> SLIDE 02  (FALA. O que cada um leva e o limite)
 
 Vocês saem daqui
+com o Figma conectado ao Claude,
 com o formulário de vocês funcionando,
 corrigido com um valor
-que veio do arquivo,
+que o Claude de vocês leu
+do arquivo de vocês,
 e sabendo o que a imagem não mostra.
 
 A tela de hoje tem
@@ -24,16 +26,11 @@ problemas colocados de propósito.
 
 A conta gratuita do Claude
 tem limite.
-Hoje cada um usa umas 5 mensagens:
-a revisão, o protótipo,
-até 2 ajustes e a correção.
+Hoje cada um usa umas 7 mensagens:
+o teste, a revisão, o protótipo,
+até 2 ajustes,
+a leitura e a correção.
 Mandem cada prompt uma vez.
-
-Bateu no limite?
-Junta com o vizinho
-e segue no notebook dele.
-Em casa vocês aplicam
-com o prompt do guia.
 
 Tem voluntários na sala:
 travou, levanta a mão.
@@ -46,9 +43,40 @@ para quem quiser no celular.
 Copiem os prompts do guia,
 não do telão.
 
-FAZER: 18h05 começa o passo 1, sem esperar todo mundo abrir.
+FAZER: 18h05 começa o teste da conexão, sem esperar todo mundo abrir.
 
->>> SLIDE 04  (DEMO E SALA FAZ. 18h05, até 18h10)
+>>> SLIDE 04  (SALA FAZ. 18h05, até 18h10. Teste da conexão)
+
+Figma Desktop
+com a cópia de vocês aberta.
+Plugin Figma Desktop Bridge rodando.
+Claude Desktop aberto.
+
+Mandem o prompt do teste:
+qual arquivo está aberto no Figma.
+
+O Claude disse o nome
+do arquivo de vocês?
+Então ele está lendo o Figma,
+não uma imagem.
+
+Isso se chama MCP,
+o jeito de o Claude
+conversar com o Figma.
+É a palavra para procurar depois.
+
+Quem não conectou,
+levanta a mão.
+
+Vocês acompanham a leitura
+pelo telão
+e fazem todo o resto igual.
+Aqui na sala
+ninguém mexe em máquina.
+
+FAZER: Faço o teste no telão. Voluntários contam as mãos.
+
+>>> SLIDE 05  (DEMO E SALA FAZ. 18h10, até 18h14)
 
 No meu Figma, com zoom:
 clico no nome Tela demo,
@@ -66,10 +94,16 @@ com link direto.
 
 FAZER: Saiu só um pedaço: selecionou uma camada de dentro.
 
->>> SLIDE 05  (SALA FAZ. 18h10, até 18h18)
+>>> SLIDE 06  (SALA FAZ. 18h14, até 18h21)
 
-Conversa nova no Claude,
-anexem a imagem
+Conversa nova,
+no Claude Desktop
+ou no navegador.
+Essa é a conversa da imagem.
+A do teste fica guardada
+para depois.
+
+Anexem a imagem
 e colem o prompt da revisão.
 
 Ele dá no máximo 3 sugestões.
@@ -89,7 +123,7 @@ não pede senha.
 
 FAZER: Mostro a minha lista no telão.
 
->>> SLIDE 06  (SALA FAZ. 18h18, até 18h33)
+>>> SLIDE 07  (SALA FAZ. 18h21, até 18h35)
 
 Mesma conversa.
 Prompt do protótipo,
@@ -109,12 +143,11 @@ Veio só código?
 Peçam uma vez
 para mostrar funcionando.
 Continuou: confiram
-Settings, Capabilities,
-e sigam com o vizinho.
+Settings, Capabilities.
 
 FAZER: Mostro o meu abrindo. Se a geração falhar, mostro a do ensaio e digo que é do ensaio.
 
->>> SLIDE 07  (SALA FAZ. 18h33, até 18h48. O momento gostoso)
+>>> SLIDE 08  (SALA FAZ. 18h35, até 18h47. O momento gostoso)
 
 Agora é brincar.
 Até 2 ajustes,
@@ -134,18 +167,20 @@ não mude mais nada.
 
 Depois mostrem ao vizinho.
 
-FAZER: Faço um ajuste no telão. Atrasou: um ajuste só, 5 minutos.
+FAZER: Faço um ajuste no telão. Atrasou: um ajuste só.
 
->>> SLIDE 08  (PERGUNTA PARA A SALA. 18h48, até 19h05. Chuta o valor)
+>>> SLIDE 09  (PERGUNTA PARA A SALA. 18h47, até 19h05. Chuta o valor, pela imagem)
 
 Agora um jogo.
 Olhem o texto
 Leva menos de um minuto.
 
-Primeiro o Claude chuta,
+Primeiro o Claude de vocês chuta,
 olhando só a imagem.
+Na conversa da imagem,
+o prompt do chute.
 
-(Mando o prompt do chute no telão.)
+(Mando o mesmo no telão.)
 
 Agora vocês.
 Qual é a cor desse texto?
@@ -155,11 +190,23 @@ ou só tem contorno?
 
 FAZER: Duas ou três vozes. Não revelo nada antes do arquivo.
 
->>> SLIDE 09  (DEMO. O arquivo responde)
+>>> SLIDE 10  (SALA FAZ. Pergunte ao arquivo, na sua máquina)
 
-Agora eu pergunto ao arquivo,
-pela conexão entre
-o Claude Desktop e o Figma.
+Agora a conversa do arquivo,
+a do teste,
+no Claude Desktop.
+
+Mandem o prompt da leitura.
+Ele pergunta três coisas:
+a cor do texto de apoio,
+o campo nome
+e o botão.
+
+Eu mando o mesmo aqui.
+
+FAZER: Prompt da leitura no Claude Desktop do palco, painel do Figma ao lado.
+
+>>> SLIDE 11  (DEMO. O arquivo responde)
 
 O texto de apoio
 é #A29B93.
@@ -175,7 +222,10 @@ O padrão é preenchido,
 color/surface-alt,
 #F5F3F0.
 
->>> SLIDE 10  (DEMO. E o botão Continuar?)
+Confiram com o que
+o Claude de vocês leu.
+
+>>> SLIDE 12  (DEMO. E o botão Continuar?)
 
 E o botão Continuar.
 #C8352B,
@@ -192,7 +242,7 @@ como mostrar isso.
 
 FAZER: Painel do Figma ao lado, com zoom. Nunca digo que o vermelho está errado.
 
->>> SLIDE 11  (A TESE. PERGUNTA PARA A SALA, DEPOIS DEMO. Não se pula passo)
+>>> SLIDE 13  (A TESE. PERGUNTA PARA A SALA, DEPOIS DEMO E SALA FAZ. Não se pula passo)
 
 Esses valores
 estão no guia.
@@ -226,6 +276,11 @@ e o que voltou.
 5.
 Comparo com o painel.
 
+Agora vocês,
+na máquina de vocês.
+O prompt está no guia.
+Confiram no painel de vocês.
+
 Esse valor não está escrito
 em lugar nenhum do material.
 Vocês viram o pedido sair
@@ -236,17 +291,28 @@ como a tela parece.
 O arquivo mostra
 do que ela é feita.
 
-FAZER: Conexão caiu: digo que caiu e mostro a captura do ensaio, dita como ensaio.
+FAZER: Conexão do palco caiu: digo que caiu, peço a leitura em voz alta a alguém conectado, ou mostro a captura do ensaio, dita como ensaio.
 
->>> SLIDE 12  (SALA FAZ. 19h05, até 19h20)
+>>> SLIDE 14  (SALA FAZ. 19h05, até 19h20)
 
 Cada um escolhe uma:
 o texto de apoio
 ou o campo nome.
 
-O prompt está no guia.
-Não precisa de conexão:
-o valor vocês já têm.
+A correção vai
+na conversa da imagem,
+a do protótipo,
+com o valor que o Claude
+de vocês leu.
+
+Texto de apoio:
+o valor certo é a variável
+color/text-muted.
+Ela está em Variables,
+no Figma de vocês.
+
+Quem não conectou
+usa o valor do telão.
 
 Comparem antes e depois.
 Mudou só ali?
@@ -262,7 +328,7 @@ ele não muda sozinho.
 
 FAZER: Faço a do texto de apoio no telão, antes e depois.
 
->>> SLIDE 13  (FALA E SALA. 19h20, até 19h32. Galeria)
+>>> SLIDE 15  (FALA E SALA. 19h20, até 19h30. Galeria)
 
 Quem quer mostrar?
 Três ou quatro pessoas.
@@ -274,7 +340,29 @@ e por quê.
 
 FAZER: Ou projeto uma conversa compartilhada. Atrasou: duas pessoas.
 
->>> SLIDE 14  (FALA. 19h32, até 19h37. Uma respiração)
+>>> SLIDE 16  (SALA FAZ. 19h30, até 19h35. Revogue a chave. Nunca cortado)
+
+Todo mundo criou uma chave.
+Todo mundo revoga.
+
+No Figma:
+Settings,
+Security,
+Personal access tokens.
+
+Revoke em todas
+que vocês criaram para hoje.
+
+Pronto quando a lista
+não mostra mais nenhuma.
+
+Quer usar em casa?
+Cria uma chave nova
+e roda o instalador de novo.
+
+FAZER: Mostro o caminho sem abrir a lista com a chave do palco. A minha eu revogo depois, fora do telão.
+
+>>> SLIDE 17  (FALA. 19h35, até 19h40. Uma respiração e a passagem)
 
 O protótipo não é produto pronto.
 Serve para testar a ideia
@@ -292,15 +380,6 @@ Imagem, para conversar
 sobre como a tela parece.
 Arquivo, para cor, medida
 e ligação com o design system.
-
-O que eu fiz no telão
-vocês fazem em casa.
-Está no fim do guia,
-no bônus,
-com o passo a passo
-e como apagar a chave depois.
-
->>> SLIDE 15  (FALA. 19h37, até 19h40. Passagem)
 
 Às 20h, depois do coffee,
 levem a pasta handoff
