@@ -1,6 +1,6 @@
 # Deck de Fortaleza v10: slide a slide
 
-Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critica/spec-v9.md` (seção "## v10"). Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540). Em 18/11 ganhou 9 slides bônus depois do fecho (B1 a B9; o slide 11 saiu do deck), e o PDF passou a 24 páginas.
+Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critica/spec-v9.md` (seção "## v10"). Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540). Em 18/11 ganhou 14 slides bônus depois do fecho (B1 a B14; o slide 11 saiu do deck), e o PDF passou a 29 páginas.
 
 **Cópia Fortaleza no Google Slides:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
 
@@ -48,12 +48,17 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | B1 | bônus | Bônus | abertura escura | "Bônus" e "para quem quer ir além" em vermelho; "Só se a sala inteira chegou aqui." |
 | B2 | bônus | Quebra-gelo | três perguntas e hero | crítica do diretor de arte com "Concorda com o agente?" em vermelho; `hero-exemplo-thiago.png` |
 | B3 | bônus | Fluxos opcionais | quatro cartões com ícone | Handoff, Versão celular, Codex na mesma ponte, Site no ar; rodapé em vermelho |
-| B4 | bônus | Case: portfólio | texto e print computador + celular | prints reais de thiagoxikota.com (`img/bonus/portfolio*.jpg`), logos Claude, GitHub, Netlify |
-| B5 | bônus | Case: Touch Grass | texto e print | print real do repositório público `thiagoxikota/touch-grass`, logos GitHub, Figma, React, Swift |
-| B6 | bônus | Mais dicas | lista numerada | "não mude mais nada." em vermelho |
-| B7 | bônus | Roube minha stack | cinco cartões e três skills | Claude Code, Codex, Figma Console MCP, Context7, Playwright MCP; frontend-design, superpowers, skill-creator |
-| B8 | bônus | Sites para roubar | grade de prints reais | Refero, Mobbin, Land-book, Godly, shadcn/ui, React Bits |
-| B9 | bônus | Ícones, fontes e docs | quatro prints reais | Hugeicons, Fontshare, Context7, superpowers; links no guia, seção Bônus |
+| B4 | bônus | Site no ar: Netlify | pra que, quando, outras opções e cartão escuro "Como" | Vercel, GitHub Pages, Cloudflare Pages; três passos do Drop |
+| B5 | bônus | Histórico do site: GitHub | pra que, quando, outras opções e cartão escuro "Como, sem terminal" | GitHub Desktop, GitLab, Bitbucket; New repository, upload, Commit changes, Import an existing project |
+| B6 | bônus | Handoff, celular e Codex | três cartões "O que é, Quando, Como" | prompts no guia, seção Bônus |
+| B7 | bônus | Case: portfólio | texto e print computador + celular | prints reais de thiagoxikota.com, logos Claude, GitHub, Netlify |
+| B8 | bônus | Case: Touch Grass | texto e print | print real do repositório público `thiagoxikota/touch-grass` |
+| B9 | bônus | Mais dicas | lista numerada | "não mude mais nada." em vermelho |
+| B10 | bônus | Roube minha stack | cinco cartões e três skills | Claude Code, Codex, Figma Console MCP, Context7, Playwright MCP; frontend-design, superpowers, skill-creator |
+| B11 | bônus | Sites para roubar | grade de prints reais | Refero, Mobbin, Land-book, Godly, shadcn/ui, React Bits |
+| B12 | bônus | Ícones, fontes e docs | quatro prints reais | Hugeicons, Fontshare, Context7, superpowers |
+| B13 | bônus | Plano B: instalação manual | passos e cartão de código | Edit Config, bloco JSON (Mac) e variação Windows com `cmd /c` |
+| B14 | bônus | Plano B: o plugin e o teste | passos e print real | Import plugin from manifest, caminhos Mac e Windows, "Connected" em vermelho, `print-06-plugin.png` |
 
 
 ## Pendências
@@ -63,5 +68,5 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 - [VERIFICAR] Prints do ensaio nos slides 5, 6, 11 e 14: trocar o espaço cinza pela captura real com `replaceImage`.
 - O QR e o link do slide 4 apontam para https://github.com/thiagoxikota/figma-ia-na-pratica.
 - Logos inseridos por URL pública (Iconify via images.weserv.nl, ícone oficial do Mobbin). O Slides guarda a cópia; não dependem do link depois de inseridos.
-- Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários). Bônus: `deck-build/bonus.py` (refaz os slides B1 a B9 sem tocar no resto).
+- Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários). Bônus: `deck-build/bonus.py` (refaz os slides B1 a B14 sem tocar no resto).
 - Prints do bônus capturados em 18/11 com Playwright, em `img/bonus/`, servidos pelo raw do GitHub.

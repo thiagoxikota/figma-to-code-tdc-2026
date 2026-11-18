@@ -455,40 +455,54 @@ FAZER: Frase de impacto, pausa, QR do LinkedIn na tela com "Thiago Xikota" e "Va
 
 >>> BÔNUS  (Só se a sala inteira terminou. Depois do slide 16)
 
-Bônus 1. Bônus,
-para quem quer ir além.
+Bônus 1. Para quem quer ir além.
 
 Bônus 2. Quebra-gelo.
 Mostrem a hero
 para quem está do lado.
-Quem tem mensagem sobrando:
-peçam a crítica.
 Qual tarefa chata
 vocês dariam a um agente?
 
 Bônus 3. Fluxos opcionais.
-Handoff, versão celular,
-Codex, site no ar.
 Um por vez.
 
-Bônus 4. Meu portfólio.
+Bônus 4. Netlify.
+Hospedagem: pasta vira link.
+Pra mandar a qualquer um.
+Drop: arrastar a pasta.
+Ou Vercel, GitHub Pages,
+Cloudflare Pages.
+
+Bônus 5. GitHub.
+O cofre com cada versão.
+Sem terminal:
+New repository, upload,
+Commit changes.
+Ligado ao Netlify,
+publica sozinho.
+
+Bônus 6. Handoff, celular, Codex.
+O que é, quando, como.
+
+Bônus 7. Meu portfólio.
 Claude Code, GitHub, Netlify.
 
-Bônus 5. Touch Grass.
+Bônus 8. Touch Grass.
 Um design system
 em dois dias.
-Não foi vibe coding.
 
-Bônus 6. Mais dicas.
-Um ajuste por vez:
-não mude mais nada.
+Bônus 9. Mais dicas.
+Não mude mais nada.
 
-Bônus 7. Roubem minha stack.
+Bônus 10. Roubem minha stack.
 
-Bônus 8. Sites para roubar.
+Bônus 11. Sites para roubar.
 
-Bônus 9. Ícones, fontes e docs.
-Links no guia, seção Bônus.
+Bônus 12. Ícones, fontes e docs.
+
+Bônus 13 e 14. Plano B.
+Se o instalador falhou:
+Edit Config, colar o bloco,
+reiniciar, importar o plugin.
 
 FAZER: Volte ao slide 16 do LinkedIn no fim.
-
