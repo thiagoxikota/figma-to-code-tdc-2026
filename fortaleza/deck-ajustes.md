@@ -32,7 +32,7 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 1 | 18h00 | Capa | texto à esquerda, imagem dominante à direita | "Figma + IA, na prática" ("na prática" em vermelho), "do seu Figma ao primeiro site", `hero-exemplo-thiago.png` grande, legenda "Exemplo pronto: a hero do Thiago, no Figma", nome e evento |
 | 2 | até 18h05 | O que vamos fazer hoje | três cartões | 1 o agente edita sua hero no Figma (número em vermelho, logo Figma); 2 ela vira HTML (ícone de arquivo); 3 você confere (ícone de navegador). "E, se der tempo, no ar." |
 | 3 | até 18h10 | As peças | fileira de logos | Figma "onde está o arquivo"; Desktop Bridge "plugin que abre a conversa com o arquivo aberto"; Figma Console MCP "servidor que dá ferramentas ao agente"; Claude / Codex "o agente: lê e altera o design, e escreve o código". "MCP é o protocolo" em vermelho |
-| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a raiz do `figma-ia-na-pratica` (conferido por leitura do QR em 18/11), link curto do repositório |
+| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR (imagem) para o guia dos voluntários, https://workshop-dia3.vercel.app/ (trocado e lido do render em 18/11 17h), link curto workshop-dia3.vercel.app |
 | 5 | até 18h22 | Instale e confira | lista com logos e captura | Node.js (`node -v`), instalador do kit, Claude Desktop reiniciado. "Você deve ver isto" em vermelho sobre o espaço de print |
 | 6 | até 18h30 | O plugin no Figma | captura dominante | caminho do plugin, "Connected" em vermelho, espaço de print grande |
 | 7 | até 18h35 | O alô de leitura | cartão escuro e número | pergunta do alô no cartão escuro, "Fale comigo" grande em vermelho, conferir olhando o frame |
@@ -66,7 +66,7 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 - [VERIFICAR] Primeira linha do prompt 1 no slide 9 ("Altere só o frame “Minha hero” no Figma, com os meus dados abaixo.") precisa bater com o guia reescrito.
 - Pergunta do alô no slide 7 e o "Fale comigo" batem com o guia e com o molde.
 - [VERIFICAR] Prints do ensaio nos slides 5, 6, 11 e 14: trocar o espaço cinza pela captura real com `replaceImage`.
-- O QR e o link do slide 4 apontam para https://github.com/thiagoxikota/figma-ia-na-pratica.
+- O QR e o link do slide 4 apontam para o guia dos voluntários, https://workshop-dia3.vercel.app/ (que baixa o kit da tag v3 do figma-ia-na-pratica).
 - Logos inseridos por URL pública (Iconify via images.weserv.nl, ícone oficial do Mobbin). O Slides guarda a cópia; não dependem do link depois de inseridos.
 - Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários). Bônus: `deck-build/bonus.py` (refaz os slides B1 a B14 sem tocar no resto).
 - Prints do bônus capturados em 18/11 com Playwright, em `img/bonus/`, servidos pelo raw do GitHub.
