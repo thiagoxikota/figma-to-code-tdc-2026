@@ -110,7 +110,7 @@ fechado por completo
 depois da instalação.
 Mac: Cmd Q.
 
-FAZER: Voluntários circulam. Ninguém instala na sala.
+FAZER: Voluntários circulam. Quem não instalou: voluntário instala no lugar da pessoa, sem parar a aula.
 
 >>> SLIDE 06  (SALA FAZ. O plugin)
 
@@ -157,8 +157,9 @@ levanta a mão.
 
 Os voluntários conferem
 o plugin e o Claude Desktop.
-Aqui ninguém instala.
-Não deu:
+Quem não instalou,
+voluntário instala aí.
+Enquanto isso,
 acompanhem pelo telão.
 
 FAZER: Faço o alô no telão: o Claude responde o nome do arquivo e Fale comigo. Voluntários contam as mãos.
@@ -440,7 +441,7 @@ FAZER: Até três heros no telão. Atrasou: uma, ou nenhuma.
 
 A barreira do código caiu.
 
-O critério
+O olhar
 continua sendo seu.
 
 (pausa)
@@ -451,3 +452,43 @@ O QR tá na tela.
 Obrigado.
 
 FAZER: Frase de impacto, pausa, QR do LinkedIn na tela com "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn". Dúvida individual: coffee.
+
+>>> BÔNUS  (Só se a sala inteira terminou. Depois do slide 16)
+
+Bônus 1. Bônus,
+para quem quer ir além.
+
+Bônus 2. Quebra-gelo.
+Mostrem a hero
+para quem está do lado.
+Quem tem mensagem sobrando:
+peçam a crítica.
+Qual tarefa chata
+vocês dariam a um agente?
+
+Bônus 3. Fluxos opcionais.
+Handoff, versão celular,
+Codex, site no ar.
+Um por vez.
+
+Bônus 4. Meu portfólio.
+Claude Code, GitHub, Netlify.
+
+Bônus 5. Touch Grass.
+Um design system
+em dois dias.
+Não foi vibe coding.
+
+Bônus 6. Mais dicas.
+Um ajuste por vez:
+não mude mais nada.
+
+Bônus 7. Roubem minha stack.
+
+Bônus 8. Sites para roubar.
+
+Bônus 9. Ícones, fontes e docs.
+Links no guia, seção Bônus.
+
+FAZER: Volte ao slide 16 do LinkedIn no fim.
+

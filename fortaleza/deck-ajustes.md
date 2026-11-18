@@ -1,6 +1,6 @@
 # Deck de Fortaleza v10: slide a slide
 
-Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critica/spec-v9.md` (seção "## v10"). Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540).
+Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critica/spec-v9.md` (seção "## v10"). Montado no Google Slides em 16/11 e exportado para `fortaleza/deck-fortaleza.pdf` (16 páginas, 960 x 540). Em 18/11 ganhou 9 slides bônus depois do fecho (B1 a B9; o slide 11 saiu do deck), e o PDF passou a 24 páginas.
 
 **Cópia Fortaleza no Google Slides:** https://docs.google.com/presentation/d/1BCULdnIibjQC0t571Nh77tcL1wnz-PRLkp0gWYTLyhU/edit
 
@@ -32,7 +32,7 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 1 | 18h00 | Capa | texto à esquerda, imagem dominante à direita | "Figma + IA, na prática" ("na prática" em vermelho), "do seu Figma ao primeiro site", `hero-exemplo-thiago.png` grande, legenda "Exemplo pronto: a hero do Thiago, no Figma", nome e evento |
 | 2 | até 18h05 | O que vamos fazer hoje | três cartões | 1 o agente edita sua hero no Figma (número em vermelho, logo Figma); 2 ela vira HTML (ícone de arquivo); 3 você confere (ícone de navegador). "E, se der tempo, no ar." |
 | 3 | até 18h10 | As peças | fileira de logos | Figma "onde está o arquivo"; Desktop Bridge "plugin que abre a conversa com o arquivo aberto"; Figma Console MCP "servidor que dá ferramentas ao agente"; Claude / Codex "o agente: lê e altera o design, e escreve o código". "MCP é o protocolo" em vermelho |
-| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a tag `v1` do `figma-ia-na-pratica`, link curto do repositório |
+| 4 | até 18h13 | Abra o guia | tipografia e QR | "Abra o guia", "Copie do guia, não do telão." QR desenhado no slide para a raiz do `figma-ia-na-pratica` (conferido por leitura do QR em 18/11), link curto do repositório |
 | 5 | até 18h22 | Instale e confira | lista com logos e captura | Node.js (`node -v`), instalador do kit, Claude Desktop reiniciado. "Você deve ver isto" em vermelho sobre o espaço de print |
 | 6 | até 18h30 | O plugin no Figma | captura dominante | caminho do plugin, "Connected" em vermelho, espaço de print grande |
 | 7 | até 18h35 | O alô de leitura | cartão escuro e número | pergunta do alô no cartão escuro, "Fale comigo" grande em vermelho, conferir olhando o frame |
@@ -44,7 +44,16 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 | 13 | até 19h20 | Prompt 2: o index.html | diagrama de três peças | Minha hero, `index.html` em vermelho, Navegador. Plano B (TextEdit) e site reserva no rodapé |
 | 14 | até 19h30 | Confira como designer | Figma ao lado do navegador | hero do exemplo e espaço de print do navegador; "Um ajuste por vez, terminando com: “Não mude mais nada.”" em vermelho |
 | 15 | até 19h35 | Próximos passos | bento com logos | Netlify Drop (grande), GitHub, PageSpeed Insights, React Bits, Mobbin (Mobbin MCP: Pro e Team), faixa "Galeria" em vermelho |
-| 16 | até 19h40 | Fecho e LinkedIn | fundo branco, frase grande em preto | "A barreira do código caiu. O critério continua sendo seu." em destaque; QR code do LinkedIn (linkedin.com/in/thiagoxikota), "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn" |
+| 16 | até 19h40 | Fecho e LinkedIn | fundo branco, frase grande em preto | "A barreira do código caiu. O olhar continua sendo seu." (emoji 👀 posto pelo Thiago) em destaque; QR code do LinkedIn (linkedin.com/in/thiagoxikota), "Thiago Xikota" e "Vamos continuar a conversa no LinkedIn" |
+| B1 | bônus | Bônus | abertura escura | "Bônus" e "para quem quer ir além" em vermelho; "Só se a sala inteira chegou aqui." |
+| B2 | bônus | Quebra-gelo | três perguntas e hero | crítica do diretor de arte com "Concorda com o agente?" em vermelho; `hero-exemplo-thiago.png` |
+| B3 | bônus | Fluxos opcionais | quatro cartões com ícone | Handoff, Versão celular, Codex na mesma ponte, Site no ar; rodapé em vermelho |
+| B4 | bônus | Case: portfólio | texto e print computador + celular | prints reais de thiagoxikota.com (`img/bonus/portfolio*.jpg`), logos Claude, GitHub, Netlify |
+| B5 | bônus | Case: Touch Grass | texto e print | print real do repositório público `thiagoxikota/touch-grass`, logos GitHub, Figma, React, Swift |
+| B6 | bônus | Mais dicas | lista numerada | "não mude mais nada." em vermelho |
+| B7 | bônus | Roube minha stack | cinco cartões e três skills | Claude Code, Codex, Figma Console MCP, Context7, Playwright MCP; frontend-design, superpowers, skill-creator |
+| B8 | bônus | Sites para roubar | grade de prints reais | Refero, Mobbin, Land-book, Godly, shadcn/ui, React Bits |
+| B9 | bônus | Ícones, fontes e docs | quatro prints reais | Hugeicons, Fontshare, Context7, superpowers; links no guia, seção Bônus |
 
 
 ## Pendências
@@ -54,4 +63,5 @@ Este arquivo descreve o deck v10, com 16 slides seguindo a grade v10 de `.critic
 - [VERIFICAR] Prints do ensaio nos slides 5, 6, 11 e 14: trocar o espaço cinza pela captura real com `replaceImage`.
 - O QR e o link do slide 4 apontam para https://github.com/thiagoxikota/figma-ia-na-pratica.
 - Logos inseridos por URL pública (Iconify via images.weserv.nl, ícone oficial do Mobbin). O Slides guarda a cópia; não dependem do link depois de inseridos.
-- Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários).
+- Script de montagem: `/tmp/fortaleza-v10/work/build.py` e `notes.py` (temporários). Bônus: `deck-build/bonus.py` (refaz os slides B1 a B9 sem tocar no resto).
+- Prints do bônus capturados em 18/11 com Playwright, em `img/bonus/`, servidos pelo raw do GitHub.
